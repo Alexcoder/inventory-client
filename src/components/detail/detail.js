@@ -15,7 +15,6 @@ const Detail = () => {
   const  {category}  = useParams();
   const id = useLocation().state.id ;
   const dispatch = useDispatch();
-  const pathname = useLocation().pathname
 
 
   const navigate = useNavigate()
