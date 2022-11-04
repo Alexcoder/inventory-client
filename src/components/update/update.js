@@ -4,22 +4,19 @@ import {
   Grid,
   TextField,
   MenuItem,
-  Container,
   Button,
-  List,
   Paper
 } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { SingleMain } from "./singleMain";
 import { useGlobalContext } from "../../state/context";
 import { createPost } from "../../state/action/posts";
-import { MainInput, Category } from "../../objects/object";
-import ListSingle from "../list/list";
+import { Category } from "../../objects/object";
 
 const Update =()=>{
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { formData, setFormData, user, creator, setTransaction } = useGlobalContext();
+    const { formData, setFormData, user, creator } = useGlobalContext();
     // const {user, type, location, category, quantity, price, date }= formData
   
     const amount = formData.price * formData.quantity;

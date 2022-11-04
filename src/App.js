@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import {Route, Routes, Navigate, useLocation, useNavigate} from 'react-router-dom'
+import {Route, Routes, Navigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux';
 import {Container} from '@mui/material'
-import {Navbar, Main, Detail, Auth, SideBar, Update, Dashboard} from './components';
+import {Navbar, Main, Detail, Auth, SideBar, Update} from './components';
 import {getPosts,} from './state/action/posts';
 import { useGlobalContext } from './state/context';
 import ProtectedRoute from './components/protectedRoute';
@@ -11,18 +11,12 @@ import ProtectedRoute from './components/protectedRoute';
 
 function App() {
   const dispatch = useDispatch();
-  const {user, transaction}= useGlobalContext();
-  const location = useLocation().pathname
-  const navigate = useNavigate();
+  const {user}= useGlobalContext();
 
   
   useEffect(()=> {
     dispatch(getPosts());
   },[dispatch])
-
-  // useEffect(() => {
-  //   history.push(location);
-  // },[location])
 
 
 

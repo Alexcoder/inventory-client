@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useNavigate} from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { Grid, ButtonBase, Button, Paper, List as MUIList,ListItem, ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, IconButton, Slide  } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { List as MUIList,ListItem, ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, IconButton, Slide  } from "@mui/material";
 import moment from 'moment'
 import { Delete, MoneyOff } from '@mui/icons-material';
 import { deletePost, } from "../../state/action/posts";
 import { useGlobalContext } from "../../state/context";
 
 const ListSingle = () => {
-  const { creator, filteredByUser,search} = useGlobalContext();
+  const {filteredByUser,search} = useGlobalContext();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

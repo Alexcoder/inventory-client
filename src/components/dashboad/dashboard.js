@@ -1,24 +1,21 @@
 import React, {useEffect} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom'
-import {Auth} from '../index'
 import { useGlobalContext } from "../../state/context";
-
 import "./dashboard.css"
 
 const Dashboard = () => {
     const {
-        formData,FluidLossIn, FluidLossOut,AntifoamIn, AntifoamOut,
+        FluidLossIn, FluidLossOut,AntifoamIn, AntifoamOut,
         DispersantIn, DispersantOut, RetarderIn, RetarderOut, CementIn, CementOut, BentoniteIn, BentoniteOut,
         CalciumChlorideIn, CalciumChlorideOut, ButylGlycolIn, ButylGlycolOut, SurfactantIn, SurfactantOut,
         ViscosifierIn, ViscosifierOut,AntifoamAmountIn,AntifoamAmountOut,RetarderAmountIn, RetarderAmountOut,
         FluidLossAmountIn, FluidLossAmountOut,DispersantAmountIn, DispersantAmountOut,CementAmountIn,
         CementAmountOut, BentoniteAmountIn,BentoniteAmountOut,CalciumChlorideAmountIn, CalciumChlorideAmountOut,
         ButylGlycolAmountIn, ButylGlycolAmountOut,SurfactantAmountIn, SurfactantAmountOut, ViscosifierAmountIn,
-        ViscosifierAmountOut, HandleTotal, filteredByUser, IncommingTotalAmount, OutgoingTotalAmount, user
+        ViscosifierAmountOut, IncommingTotalAmount, OutgoingTotalAmount, 
    }= useGlobalContext();
 
    const location = useLocation().pathname
-   const navigate = useNavigate();
 
 
    useEffect(() => {
@@ -27,8 +24,6 @@ const Dashboard = () => {
     };
     Update()
   },[location])
-
-  // if(!user?.resut){ return (<Auth/>)}
   
 
    const displayData = [

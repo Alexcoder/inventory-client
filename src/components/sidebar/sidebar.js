@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useGlobalContext } from "../../state/context";
 
 const SideBar = () => {
-  const { transaction, setTransaction } = useGlobalContext();
+  const { setTransaction } = useGlobalContext();
   const navigate = useNavigate();
   return (
     <div style={{width: "15rem", margin:"0rem 0rem 0rem 0rem",

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useDispatch} from "react-redux";
-import {Container, Grid, Paper, TextField, Typography, Button} from '@mui/material';
+import {Container, Grid, Paper, TextField, Button} from '@mui/material';
 import {signIn, signUp} from '../../state/action/user';
 
 const Auth = () => {

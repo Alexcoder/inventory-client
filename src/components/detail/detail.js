@@ -1,13 +1,12 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment'
-import { CircularProgress,Grid, ButtonBase, Button, Paper, List as MUIList,ListItem, 
-  ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, IconButton, Slide  } from "@mui/material";
+import { CircularProgress, Paper, List as MUIList,ListItem, 
+  ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, Slide  } from "@mui/material";
 import { Delete, MoneyOff } from '@mui/icons-material';
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { getPost } from '../../state/action/posts';
 import { useGlobalContext } from '../../state/context';
-import { Auth } from '../index';
 
 
 const Detail = () => { 
@@ -19,9 +18,6 @@ const Detail = () => {
   const pathname = useLocation().pathname
 
 
-  // const View = pathname.split("/")[1]
-
-
   const navigate = useNavigate()
   const {post} = useSelector((state)=> state.posts)
 
@@ -31,7 +27,7 @@ const Detail = () => {
  
   useEffect(()=>{
     dispatch(getPost(id))
-  },[id])
+  },[id, dispatch])
 
   
   return (
