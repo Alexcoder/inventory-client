@@ -1,0 +1,50 @@
+#container {
+    background-color: rgba(0, 0, 0, 0.600);
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#container>div {
+    padding: 1rem 2rem 1rem 2rem;
+    border: 1px solid gray;
+    background-color: white;
+    box-shadow: 0.2rem 0.2rem 0.3rem 0rem gray;
+}
+
+#container>div>h2 {
+    text-align: center;
+    margin: 0rem 0rem 3rem 0rem;
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 2rem;
+}
+
+.button {
+    color: white;
+    font-size: 17px;
+    border-radius: 0.2rem;
+    width: 8rem;
+    padding: 0.5rem;
+    border: inherit;
+}
+
+.botton :hover {
+    border: 2px solid black;
+}
+
+.bColor1 {
+    background-color: red
+}
+
+.bColor2 {
+    background-color: green
+}

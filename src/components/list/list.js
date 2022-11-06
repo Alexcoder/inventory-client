@@ -13,11 +13,8 @@ const ListSingle = () => {
   const navigate = useNavigate();
 
   const SearchResult = filteredByUser.filter((p)=>
-  p.category.startsWith(search) || p.category.toLowerCase().startsWith(search)|| 
   p.category.includes(search) || p.category.toLowerCase().includes(search) ||
-  p.type.startsWith(search) || p.type.toLowerCase().startsWith(search) ||
   p.type.includes(search) || p.type.toLowerCase().includes(search) ||
-  p.user.startsWith(search) || p.user.toLowerCase().startsWith(search) ||
   p.user.includes(search) || p.user.toLowerCase().includes(search) 
   )
 
