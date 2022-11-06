@@ -30,7 +30,7 @@ const Detail = () => {
 
   
   return (
-    <div id="container">
+    <div id="detailContainer">
         <Paper key={post._id} elevation={5} sx={{margin: "0rem 3rem 0rem 5rem", padding: "2rem", width:"20rem"}} >
         <div  style={{textAlign: "start", gap: "1rem"}}> 
           <h2 style={{textAlign: "center"}}>{post.type==="incomming"? <span style={{color:"blue"}}>RECEIVED</span>: <span style={{color:"red"}}>SENT</span>}</h2>

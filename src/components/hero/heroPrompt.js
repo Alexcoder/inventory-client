@@ -4,7 +4,7 @@ import './heroPrompt.css';
 const HeroPrompt=({promt, onClick1, onClick2})=>{
 
     return(
-        <div id="container">
+        <div id="heroContainer">
          <div>
             <h2>{"promt"}</h2>
              <div className="buttonContainer">

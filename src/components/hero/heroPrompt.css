@@ -1,4 +1,4 @@
-#container {
+#heroContainer {
     background-color: rgba(0, 0, 0, 0.600);
     align-items: center;
     justify-content: center;
@@ -11,14 +11,14 @@
     flex-direction: column;
 }
 
-#container>div {
+#heroContainer>div {
     padding: 1rem 2rem 1rem 2rem;
     border: 1px solid gray;
     background-color: white;
     box-shadow: 0.2rem 0.2rem 0.3rem 0rem gray;
 }
 
-#container>div>h2 {
+#heroContainer>div>h2 {
     text-align: center;
     margin: 0rem 0rem 3rem 0rem;
 }
