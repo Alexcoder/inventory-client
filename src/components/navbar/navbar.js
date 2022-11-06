@@ -11,6 +11,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
 
+
   return (
     <div  style={{position: "sticky"}}>
       <div
@@ -40,7 +41,7 @@ const Navbar = () => {
           type="text"
           value={search}
           onChange={(e)=> setSearch(e.target.value)}
-          style={{ height: "2rem", margin: "1.2rem 0rem 0rem 0rem" }}
+          style={{ height: "2rem", margin: "1.2rem 0rem 0rem 0rem", textTransform: "capitalize" }}
         />
         { user?.result?
         <Button

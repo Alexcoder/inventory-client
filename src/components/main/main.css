@@ -1,0 +1,18 @@
+#mainContainer{
+    margin:0.5rem 0rem 0rem 1rem 
+}
+#mainContainer >div{
+    border: 1px solid gray ;
+    box-shadow: 0.1rem 0.1rem 0.1rem 0rem gray;
+}
+
+@media screen and (max-width: 620px){
+    #mainContainer{
+        margin:0.5rem 0rem 0rem 0.3rem 
+    }
+    #mainContainer >div{
+            max-width: 280px;
+            overflow: auto; 
+    }
+
+}

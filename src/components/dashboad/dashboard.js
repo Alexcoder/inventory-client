@@ -1,5 +1,4 @@
-import React, {useEffect} from 'react';
-import {useLocation} from 'react-router-dom'
+import React from 'react';
 import { useGlobalContext } from "../../state/context";
 import "./dashboard.css"
 
@@ -15,15 +14,6 @@ const Dashboard = () => {
         ViscosifierAmountOut, IncommingTotalAmount, OutgoingTotalAmount, 
    }= useGlobalContext();
 
-   const location = useLocation().pathname
-
-
-   useEffect(() => {
-    const Update=()=>{
-      JSON.parse(localStorage.getItem("profile"))
-    };
-    Update()
-  },[location])
   
 
    const displayData = [
@@ -123,9 +113,10 @@ const Dashboard = () => {
  
 
   return (
-   <div style={{marginTop: "2rem"}}>
+   <div id="dashboardContainer">
    
-    <div className="paper-wrap">
+    <div >
+      <div className="paper-wrap">
         <div style={{display: "flex", gap: "2.5rem", margin: "0rem 0rem 0rem 3rem"}}>
             <div style={{fontWeight: "700", marginLeft: "-1rem"}}>Chemical</div>
             <div style={{fontWeight: "700", marginLeft: "1.5rem"}}>Quantity In</div>
@@ -137,7 +128,7 @@ const Dashboard = () => {
         </div>
         <hr/>
 
-        <div style={{display: "grid"}}>
+        <div className="data">
         {displayData?.map((p,i)=>(
             <div key={i}>
             <div style={{display: "flex",margin:"0rem 0rem 0rem 2rem" }} >
@@ -159,7 +150,7 @@ const Dashboard = () => {
         <div><span style={{fontWeight:"700"}}>Amount Out Total</span>: ${OutgoingTotalAmount}</div>
         <div><span style={{fontWeight:"700"}}>Total Balance</span>: ${IncommingTotalAmount-OutgoingTotalAmount}</div>
         </div>
-
+        </div>
         </div>
  
     </div>

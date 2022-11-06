@@ -11,11 +11,11 @@ const ListSingle = () => {
   const {filteredByUser,search} = useGlobalContext();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  
   const SearchResult = filteredByUser.filter((p)=>
-  p.category.includes(search) || p.category.toLowerCase().includes(search) ||
-  p.type.includes(search) || p.type.toLowerCase().includes(search) ||
-  p.user.includes(search) || p.user.toLowerCase().includes(search) 
+  p.category.includes(search) || p.category.toLowerCase().includes(search)||p.category.toUpperCase().includes(search)||
+  p.type.includes(search) || p.type.toUpperCase().includes(search) ||
+  p.user.includes(search) || p.user.toUpperCase().includes(search) 
   )
 
 

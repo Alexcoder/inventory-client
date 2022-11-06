@@ -7,7 +7,7 @@ import { Delete, MoneyOff } from '@mui/icons-material';
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { getPost } from '../../state/action/posts';
 import { useGlobalContext } from '../../state/context';
-
+import './detail.css';
 
 const Detail = () => { 
   const { HandleTotal, filteredByUser}= useGlobalContext();
@@ -30,7 +30,7 @@ const Detail = () => {
 
   
   return (
-    <div style={{marginTop:"2rem", display: "flex"}}>
+    <div id="container">
         <Paper key={post._id} elevation={5} sx={{margin: "0rem 3rem 0rem 5rem", padding: "2rem", width:"20rem"}} >
         <div  style={{textAlign: "start", gap: "1rem"}}> 
           <h2 style={{textAlign: "center"}}>{post.type==="incomming"? <span style={{color:"blue"}}>RECEIVED</span>: <span style={{color:"red"}}>SENT</span>}</h2>

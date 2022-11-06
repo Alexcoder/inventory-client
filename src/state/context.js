@@ -1,4 +1,5 @@
-import React, {useState, createContext,useContext} from 'react';
+import React, {useState, createContext,useContext, useEffect} from 'react';
+import {useLocation} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 
@@ -21,6 +22,12 @@ export const Context =({children})=>{
     const [transaction, setTransaction] = useState(false)
     const { allposts } = useSelector((state)=> state.posts)
     const user =  JSON.parse(localStorage.getItem("profile"));
+    const location= useLocation()
+
+    useEffect(()=>{
+       JSON.parse(localStorage.getItem("profile"))
+    },[location])
+  
     const creator =   user?.result._id
     const filteredByUser = allposts.filter((p)=> p.creator === creator)
 

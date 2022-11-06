@@ -1,15 +1,22 @@
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {useDispatch} from "react-redux";
-import {Container, Grid, Paper, TextField, Button} from '@mui/material';
+import React, {useState, useEffect} from 'react';
+import {useNavigate, useLocation} from 'react-router-dom';
+import {useDispatch, useSelector} from "react-redux";
+import {Container, Grid, Paper, TextField, Button, CircularProgress} from '@mui/material';
 import {signIn, signUp} from '../../state/action/user';
+
 
 const Auth = () => {
     const dispatch = useDispatch();
+    const {Loading} = useSelector((state)=> state.auth);
     const navigate = useNavigate();
     const initialState = {username: "", password: "", confirmPassword: "", firstName: "", lastName: ""};
     const [mode, setMode] = useState(true)
     const [authPage, setAuthPage] = useState(initialState)
+    const location= useLocation()
+
+useEffect(()=>{
+   JSON.parse(localStorage.getItem("profile"))
+},[location])
 
   const handleAuthChange =(e)=>{
    setAuthPage({...authPage, [e.target.name] : e.target.value})
@@ -59,9 +66,16 @@ const Auth = () => {
       </Button>
         </Grid>
 
-     <Grid item xs={12} sm={12} md={12}>
-     <Button sx={{width:"15rem"}} variant="contained" onClick={handleAuthSubmit}>LOGIN</Button>
-     </Grid>
+     {
+       Loading? (
+        <div style={{textAlign: "center", alignItem: "center", justifyContent:"center", marginLeft: "8rem"}}>
+          <CircularProgress />
+        </div>):(
+        <Grid item xs={12} sm={12} md={12}>
+          <Button sx={{width:"15rem"}} variant="contained" onClick={handleAuthSubmit}>LOGIN</Button>
+       </Grid>)
+      }
+
     </Grid>
 
     </Paper>
