@@ -3,16 +3,21 @@ import { Navigate } from 'react-router-dom'
 import { useGlobalContext } from '../state/context';
 
 
-const ProtectedRoute = ({children}) => {
-    const {user}= useGlobalContext();
-
-  return (
-    <div>
-        {
-            user?.result ? children : <Navigate to="/auth"/>
-        }
-    </div>
-  )
+export const ProtectedRoute = ({children}) => {
+  const {user}= useGlobalContext();
+  if(user) return children;
+  else return <Navigate to="/auth"/>
 }
 
-export default ProtectedRoute
+export const AdminRoute = ({children}) => {
+  const {user}= useGlobalContext();
+  if(user?.isAdmin) return children;
+  else return <Navigate to="/auth"/>
+}
+
+export const LoginRoute = ({children}) => {
+  const {user}= useGlobalContext();
+    if(!user) return children;
+    else return <Navigate to="/"/>
+}
+

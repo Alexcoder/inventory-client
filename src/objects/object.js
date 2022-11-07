@@ -1,28 +1,19 @@
 
 
 export const Category = [
-    {category: "antifoam", value:"antifoam"},
-    {category: "retarder", value:"retarder"},
-    {category: "dispersant",value:"dispersant"},
-    {category: "fluidloss", value:"fluidloss"},
-    {category: "cement",    value:"cement"},
-    {category: "bentonite", value:"bentonite"},
-    {category: "calcium chloride", value:"calciumchloride"},
-    {category: "butylglycol", value:"butylglycol"},
-    {category: "surfactant", value:"surfactant"},
-    {category: "viscosifier", value:"viscosifier"},
+    {category: "Antifoam", value:"Antifoam"},
+    {category: "Retarder", value:"Retarder"},
+    {category: "Dispersant",value:"Dispersant"},
+    {category: "Fluidloss", value:"Fluidloss"},
+    {category: "Cement",    value:"Cement"},
+    {category: "Bentonite", value:"Bentonite"},
+    {category: "Calcium Chloride", value:"Calciumchloride"},
+    {category: "Butylglycol", value:"Butylglycol"},
+    {category: "Surfactant", value:"Surfactant"},
+    {category: "Viscosifier", value:"Viscosifier"},
 ]
 
-export const MainInput = [
-    {name:"user",     value:"user",     type:"string"},
-    // {name:"type",     value:"type",     type:"string"},
-    {name:"location", value:"location", type:"string"},
-    {name:"quantity", value:"quantity", type:"number"},
-    {name:"price", value:"price", type:"number"},
-    // {name:"amount",   value:"amount",   type:"number"},
-    // {name:"date",     value:"date",     type:"date"},
-    {name:"time",     value:"time",     type:"time"},
-]
+
 
 // const displayData = [
 //     { 

@@ -1,0 +1,45 @@
+#navContainer >div{
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    background-color: blue;
+    opacity: 0.8;
+    box-shadow: 0px 1px 0.4rem 0.2px gray;
+    border: 1px solid gray;
+}
+#navContainer >div >h1{
+    flex-basis: 50%; 
+    color: white;
+    margin: 1.2rem 0rem 1rem 0rem; 
+}
+#navContainer >div >h1 >h4{
+    flex-basis: 10%;
+    color: white;
+    margin: 1.7rem 0rem 0rem 0rem;
+}
+.navInput{
+    height: 2rem;
+    margin: 1.2rem 0rem 0rem 0rem; 
+}
+
+
+@media screen and (max-width:420px){
+    #navContainer {
+        padding: 0.2rem;
+        width: 24rem
+    }
+    #navContainer >div >h1{
+        display: none;
+    }
+    #navContainer >div >h1 >h4{
+        color: white;
+        margin: 1.7rem 0.5rem 0rem 0rem;
+        width: 4rem;
+    }
+    .navInput{
+        height: 2rem;
+        margin: 1.2rem 0rem 0rem 1rem; 
+        width: 6rem;
+    }
+    
+}

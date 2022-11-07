@@ -5,7 +5,7 @@ import {Container} from '@mui/material'
 import {Navbar, Main, Detail, Auth, SideBar, Update} from './components';
 import {getPosts,} from './state/action/posts';
 import { useGlobalContext } from './state/context';
-import ProtectedRoute from './components/protectedRoute';
+import {ProtectedRoute} from './components/protectedRoute';
 // import BookSearch from './BookSearch';
 
 
@@ -17,7 +17,6 @@ function App() {
   useEffect(()=> {
     dispatch(getPosts());
   },[dispatch])
-
 
 
   return (
