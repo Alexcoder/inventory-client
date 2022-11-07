@@ -31,7 +31,9 @@ const Detail = () => {
   
   return (
     <div id="detailContainer">
-        <Paper key={post._id} elevation={5} sx={{margin: "0rem 3rem 0rem 5rem", padding: "2rem", width:"20rem"}} >
+        <Paper key={post._id} elevation={5} 
+        sx={{margin: {md:"0rem 3rem 0rem 5rem", sm:"0rem 3rem 0rem 2rem", xs:"0rem 3rem 0rem 0.3rem"},
+             padding: "2rem", width:{md:"20rem", sm: "18rem", xs:"18rem"} }} >
         <div  style={{textAlign: "start", gap: "1rem"}}> 
           <h2 style={{textAlign: "center"}}>{post.type==="incomming"? <span style={{color:"blue"}}>RECEIVED</span>: <span style={{color:"red"}}>SENT</span>}</h2>
           <div><span style={{fontWeight:"700"}}>By:  </span> {post.user}</div>
@@ -43,6 +45,12 @@ const Detail = () => {
           <div><span style={{fontWeight:"700"}}>Date:  </span>{moment(post.date).format('MMMM Do YYYY, h:mm:ss a')}</div>
         </div>
         <h3>{HandleTotal(post.type, post.category)}</h3>
+        <p>
+          <button 
+          style={{width: "18rem", padding:"0.7rem", fontSize:"1.4rem",
+                 borderRadius:"0.2rem", border: "1px solid inherit", color:"white",
+                 background: "linear-gradient(to bottom right, brown , blue)"}} onClick={()=> navigate('/')}>Back</button>
+        </p>
         </Paper>
 
 

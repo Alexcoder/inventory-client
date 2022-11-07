@@ -12,7 +12,7 @@
     color: white;
     margin: 1.2rem 0rem 1rem 0rem; 
 }
-#navContainer >div >h1 >h4{
+ .user{
     flex-basis: 10%;
     color: white;
     margin: 1.7rem 0rem 0rem 0rem;
@@ -31,14 +31,13 @@
     #navContainer >div >h1{
         display: none;
     }
-    #navContainer >div >h1 >h4{
-        color: white;
-        margin: 1.7rem 0.5rem 0rem 0rem;
-        width: 4rem;
+    .user{
+        flex-basis: 17%;
+        margin: 1.3rem 0.5rem 0rem 0rem;
     }
     .navInput{
         height: 2rem;
-        margin: 1.2rem 0rem 0rem 1rem; 
+        margin: 1.2rem 0rem 0rem 3rem; 
         width: 6rem;
     }
     

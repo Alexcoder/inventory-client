@@ -17,7 +17,7 @@ const Navbar = () => {
     <div id="navContainer" >
       <div>
         <h1 >INVENTORY</h1>
-        <h4>
+        <h4 className="user">
           {user?.result ? user?.result.name : null}
         </h4>
         {
@@ -32,10 +32,11 @@ const Navbar = () => {
         }
         { user?.result?
         <Button
-                  style={{
+                  sx={{
                     flexBasis: "10%",
                     color: "white",
                     margin: "1.1rem 0rem 1.3rem 1rem",
+                    width:{xs:"8rem"}
                   }}
         
           variant="contained"

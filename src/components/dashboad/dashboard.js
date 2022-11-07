@@ -121,8 +121,8 @@ const Dashboard = () => {
             <div style={{fontWeight: "700", marginLeft: "-1rem"}}>Chemical</div>
             <div style={{fontWeight: "700", marginLeft: "1.5rem"}}>Quantity In</div>
             <div style={{fontWeight: "700",}}>Quantity Out</div>
-            <div style={{fontWeight: "700",}}>Stock</div>
-            <div style={{fontWeight: "700",}}>Amount In</div>
+            <div style={{fontWeight: "700", marginLeft: "1rem"}}>Stock</div>
+            <div style={{fontWeight: "700",  marginLeft: "1.5rem"}}>Amount In</div>
             <div style={{fontWeight: "700",}}>Amount Out</div>
             <div style={{fontWeight: "700",}}>Balance</div>
         </div>
@@ -133,12 +133,12 @@ const Dashboard = () => {
             <div key={i}>
             <div style={{display: "flex",margin:"0rem 0rem 0rem 2rem" }} >
                 <div style={{flexBasis:"15%", borderRight:"1px solid gray"}}>{p.type}</div>
-                <div style={{flexBasis:"15%", textAlign:"center"}}>{p.quantityin}</div>
-                <div style={{flexBasis:"15%", textAlign:"center"}}>{p.quantityout}</div>
-                <div style={{flexBasis:"15%", textAlign:"center"}}>{p.stock}</div>
-                <div style={{flexBasis:"15%", textAlign:"center"}}>$ {p.amountIn}</div>
-                <div style={{flexBasis:"15%", textAlign:"center"}}>$ {p.amountOut}</div>
-                <div style={{flexBasis:"15%", textAlign:"center"}}>$ {p.balance}</div>
+                <div style={{flexBasis:"15%", textAlign:"center", color: "blue", fontWeight:"500"}}>{p.quantityin}</div>
+                <div style={{flexBasis:"15%", textAlign:"center",color: "red", fontWeight:"500"}}>{p.quantityout}</div>
+                <div style={{flexBasis:"15%", textAlign:"center", fontWeight:"500"}}>{p.stock}</div>
+                <div style={{flexBasis:"15%", textAlign:"center", color: "blue", fontWeight:"500"}}>$ {p.amountIn}</div>
+                <div style={{flexBasis:"15%", textAlign:"center", color: "red", fontWeight:"500"}}>$ {p.amountOut}</div>
+                <div style={{flexBasis:"15%", textAlign:"center", fontWeight:"500"}}>$ {p.balance}</div>
             </div>
             <hr/>
             </div>
