@@ -67,7 +67,7 @@ RecommendedPosts.map((p) => (
           <MoneyOff />
         </Avatar>
       </ListItemAvatar>
-      <ListItemText primary={p.category} secondary={` Quantity:${p.quantity} - $${p.amount} - ${moment(p.date).format('MMMM Do YYYY, h:mm:ss a')}`} />
+      <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY, h:mm:ss a')}`} />
       <ListItemSecondaryAction>
         {/* <IconButton edge="end" aria-label="delete" onClick={() =>  dispatch(deletePost(p._id))}> */}
           <Delete />

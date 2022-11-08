@@ -30,7 +30,7 @@ const ListSingle = () => {
 
   return (
 
-<MUIList dense={false} sx={{maxHeight:"200px", overflow:"auto", width:"30rem"}} >
+<MUIList dense={false} sx={{maxHeight:"200px", overflow:"auto", width:{xs:"30rem",sm:"35rem", md:"60rem"}}} >
 {handleMap().map((p) => (
   <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
      onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
@@ -40,7 +40,7 @@ const ListSingle = () => {
           <MoneyOff />
         </Avatar>
       </ListItemAvatar>
-      <ListItemText primary={p.category} secondary={`${p.type} - Quantity:${p.quantity} - $${p.amount} - ${moment(p.date).format('MMMM Do YYYY, h:mm:ss a')}`} />
+      <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY, h:mm:ss a')}`} />
       <ListItemSecondaryAction>
         <IconButton edge="end" aria-label="delete" onClick={() =>  dispatch(deletePost(p._id))}>
           <Delete />
