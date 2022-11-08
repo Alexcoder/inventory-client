@@ -7,10 +7,12 @@ import { Delete, MoneyOff } from '@mui/icons-material';
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { getPost } from '../../state/action/posts';
 import { useGlobalContext } from '../../state/context';
+import {NavHero} from "../index";
+
 import './detail.css';
 
 const Detail = () => { 
-  const { HandleTotal, filteredByUser}= useGlobalContext();
+  const { HandleTotal, filteredByUser, open}= useGlobalContext();
 
   const  {category}  = useParams();
   const id = useLocation().state.id ;
@@ -65,7 +67,7 @@ RecommendedPosts.map((p) => (
           <MoneyOff />
         </Avatar>
       </ListItemAvatar>
-      <ListItemText primary={p.category} secondary={`${p.type} - Quantity:${p.quantity} - $${p.amount} - ${moment(p.date).format('MMMM Do YYYY, h:mm:ss a')}`} />
+      <ListItemText primary={p.category} secondary={` Quantity:${p.quantity} - $${p.amount} - ${moment(p.date).format('MMMM Do YYYY, h:mm:ss a')}`} />
       <ListItemSecondaryAction>
         {/* <IconButton edge="end" aria-label="delete" onClick={() =>  dispatch(deletePost(p._id))}> */}
           <Delete />
@@ -109,6 +111,10 @@ RecommendedPosts.map((p) => (
  )}
 </Grid>
  */}
+            {
+            open && <NavHero/>
+           } 
+
 </div>
   )
 }

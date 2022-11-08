@@ -2,12 +2,13 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import { useGlobalContext } from "../../state/context";
 import {logOut} from '../../state/action/user'
 import './navbar.css';
 
 const Navbar = () => {
-  const { user, search, setSearch } = useGlobalContext();
+  const { user, search, setSearch, setOpen } = useGlobalContext();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -16,6 +17,9 @@ const Navbar = () => {
   return (
     <div id="navContainer" >
       <div>
+            <button 
+             onClick={()=> {setOpen((prev)=> !prev)}}
+             className="menuIcon"><MenuOutlinedIcon/></button>
         <h1 >INVENTORY</h1>
         <h4 className="user">
           {user?.result ? user?.result.name : null}
@@ -36,7 +40,7 @@ const Navbar = () => {
                     flexBasis: "10%",
                     color: "white",
                     margin: "1.1rem 0rem 1.3rem 1rem",
-                    width:{xs:"8rem"}
+                    width:{xs:"4.3rem"}
                   }}
         
           variant="contained"

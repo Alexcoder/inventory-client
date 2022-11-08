@@ -1,11 +1,17 @@
 #navContainer >div{
     height: 5rem;
-    display: flex;
+    display: grid;
+    grid-template-columns:repeat(5, 1fr);
     justify-content: center;
     background-color: blue;
     opacity: 0.8;
     box-shadow: 0px 1px 0.4rem 0.2px gray;
     border: 1px solid gray;
+}
+.menuIcon{
+    margin:1.5rem 0rem 0rem 1.5rem;
+    width:2.5rem ;
+    height:2rem;
 }
 #navContainer >div >h1{
     flex-basis: 50%; 
@@ -13,7 +19,7 @@
     margin: 1.2rem 0rem 1rem 0rem; 
 }
  .user{
-    flex-basis: 10%;
+    flex-basis: 2%;
     color: white;
     margin: 1.7rem 0rem 0rem 0rem;
 }
@@ -28,6 +34,13 @@
         padding: 0.2rem;
         width: 22.4rem
     }
+    #navContainer >div{
+        padding:0rem 0.5rem 0rem 0.5rem;
+    }
+    .menuIcon{
+        margin:1.5rem 0.7rem 0rem 0.3rem;
+    }
+    
     #navContainer >div >h1{
         display: none;
     }

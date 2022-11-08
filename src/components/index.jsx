@@ -7,5 +7,6 @@ import SideBar from './sidebar/sidebar';
 import Update from './update/update';
 import Hero from './hero/heroPrompt';
 import Auth from './auth/auth';
+import NavHero from './hero/navHero';
 
-export {Main, Navbar, Dashboard, Detail, List, Auth, SideBar, Update, Hero}
+export {Main, Navbar, Dashboard, Detail, List, Auth, SideBar, Update, Hero, NavHero}

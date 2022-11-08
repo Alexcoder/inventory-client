@@ -20,6 +20,7 @@ export const Context =({children})=>{
     const [formData, setFormData]= useState(initialState)
     const [search, setSearch] = useState()
     const [transaction, setTransaction] = useState(false)
+    const [open, setOpen] = useState(false)
     const { allposts } = useSelector((state)=> state.posts)
     const user =  JSON.parse(localStorage.getItem("profile"));
     const location= useLocation()
@@ -145,7 +146,7 @@ export const Context =({children})=>{
       CementAmountOut, BentoniteAmountIn,BentoniteAmountOut,CalciumChlorideAmountIn, CalciumChlorideAmountOut,
       ButylGlycolAmountIn, ButylGlycolAmountOut,SurfactantAmountIn, SurfactantAmountOut, ViscosifierAmountIn,
       ViscosifierAmountOut,IncommingTotalAmount, OutgoingTotalAmount, HandleTotal, user, creator, 
-      filteredByUser,search, setSearch, transaction, setTransaction
+      filteredByUser,search, setSearch, transaction, setTransaction, open, setOpen
       }}
     >
       {children}

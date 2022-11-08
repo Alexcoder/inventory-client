@@ -30,7 +30,7 @@ const ListSingle = () => {
 
   return (
 
-<MUIList dense={false} sx={{maxHeight:"200px", overflow:"auto", width:"60rem"}} >
+<MUIList dense={false} sx={{maxHeight:"200px", overflow:"auto", width:"30rem"}} >
 {handleMap().map((p) => (
   <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
      onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
