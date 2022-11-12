@@ -9,22 +9,30 @@ const NavHero = ({onClick1, onClick2, onClick3, onClick4,}) => {
 
   return (
     <div >
-      <div style={{width: "20rem", top:"0", margin:"0rem 0rem 0rem 0rem",left:"0", position: "fixed",
-               border:"1px solid gray", height:"100vh", display: "flex", backgroundColor:"black",
-               flexDirection: "column", zIndex:"1000000"}}>
+      <div style={{width: "17rem", top:"0", margin:"0rem 0rem 0rem 0rem",left:"0", position: "fixed",
+               border:"1px solid gray", height:"100vh", display: "flex", background:"linear-gradient(to bottom right, blue seagreen)",
+               flexDirection: "column", zIndex:"10000000"}}>
         <div>
           <button 
           onClick={()=> {setOpen(false)}}
           style={{float:"right",width:"2rem"}}><CloseIcon/></button>
         </div>
+        <div>
         <button onClick={onClick1} style={{marginTop:"0.5rem", height:"4rem"}}>CREATE TRANSACTION</button>
         <hr/>
+        </div>
+        <div>
         <button onClick={onClick2} style={{ height:"4rem"}}>VIEW USER</button>
         <hr/>
+        </div>
+        <div>
         <button onClick={onClick3} style={{ height:"4rem"}}>OTHER PAGE</button>
         <hr/>
+        </div>
+        <div>
         <button onClick={onClick4} style={{ height:"4rem"}}>LAST PAGE</button>
         <hr/>
+        </div>
       </div>
     </div>
   )
