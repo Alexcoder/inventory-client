@@ -1,4 +1,5 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 import ListSingle from "../list/list";
 import Dashboard from "../dashboad/dashboard";
 import {NavHero} from "../index";
@@ -11,6 +12,7 @@ import './main.css'
 
 const Main = () =>{ 
   const {open}= useGlobalContext();
+  const navigate = useNavigate();
 
   return (
     <div id="mainContainer">
@@ -21,7 +23,7 @@ const Main = () =>{
              <ListSingle style={{ marginTop: "4rem" }} />
            </Container>
            {
-            open && <NavHero/>
+            open && <NavHero onClick1={()=>{navigate('/update')} }/>
            } 
     </div>
   );
