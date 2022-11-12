@@ -10,8 +10,8 @@ const NavHero = ({onClick1, onClick2, onClick3, onClick4,}) => {
   return (
     <div >
       <div style={{width: "17rem", top:"0", margin:"0rem 0rem 0rem 0rem",left:"0", position: "fixed",
-               border:"1px solid gray", height:"100vh", backgroundColor:"blue",
-                zIndex:"100000"}}>
+               border:"1px solid gray", height:"100vh", background:"linear-gradient(blue, seagreen)",
+                zIndex:"100000", display:"grid", gridTemplateColumns:"repeat(1, 1fr)" }}>
         <div>
           <button 
           onClick={()=> {setOpen(false)}}
