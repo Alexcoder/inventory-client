@@ -17,9 +17,12 @@ const Navbar = () => {
   return (
     <div id="navContainer" >
       <div>
+        {
+          user?.result &&
             <button 
              onClick={()=> {setOpen((prev)=> !prev)}}
              className="menuIcon"><MenuOutlinedIcon/></button>
+        }
         <h1 >INVENTORY</h1>
         <h4 className="user">
           {user?.result ? user?.result.name : null}
