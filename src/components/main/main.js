@@ -11,7 +11,7 @@ import './main.css'
 
 
 const Main = () =>{ 
-  const {open}= useGlobalContext();
+  const {open, setOpen}= useGlobalContext();
   const navigate = useNavigate();
 
   return (
@@ -23,7 +23,7 @@ const Main = () =>{
              <ListSingle style={{ marginTop: "4rem" }} />
            </Container>
            {
-            open && <NavHero onClick1={()=>{navigate('/update')} }/>
+            open && <NavHero onClick1={()=>{navigate('/update'); setOpen(false)} }/>
            } 
     </div>
   );
