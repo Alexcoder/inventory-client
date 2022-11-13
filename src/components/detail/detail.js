@@ -20,7 +20,7 @@ const Detail = () => {
 
 
   const navigate = useNavigate()
-  const {post} = useSelector((state)=> state.posts)
+  const {post, Loading} = useSelector((state)=> state.posts)
 
 
   const RecommendedPosts = filteredByUser.filter((p)=>id? p._id !==id & p.category=== category : null )   
@@ -56,8 +56,8 @@ const Detail = () => {
         </Paper>
 
 
-<MUIList dense={false} sx={{maxHeight:"30rem", overflow:"auto", width:"30rem"}} >
-{!RecommendedPosts? <CircularProgress/> :
+<MUIList dense={false} sx={{maxHeight:"20rem", marginTop:{sm:"1.5rem", xs:"1.5rem"} ,overflow:"auto", width:{md: "30rem", sm:"23rem", xs:"23rem"}}} >
+{Loading ? <div style={{textAlign: "center"}}><CircularProgress/></div> :
 RecommendedPosts.map((p) => (
   <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
      onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
