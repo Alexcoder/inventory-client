@@ -20,7 +20,9 @@ function App() {
 
 
   return (
-    <Container  maxWidth="xl" sx={{background: "linear-gradient(to top right, brown, rgba(0, 0, 0, 0.600))"}} >
+    <Container  maxWidth="xl" 
+    sx={{height: "100vh",
+        background: "linear-gradient(to top right, brown, rgba(0, 0, 0, 0.600))"}} >
      <Navbar />
         <div style={{display: "flex"}}>
           {

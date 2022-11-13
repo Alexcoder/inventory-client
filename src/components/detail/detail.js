@@ -56,7 +56,12 @@ const Detail = () => {
         </Paper>
 
 
-<MUIList dense={false} sx={{maxHeight:"20rem", marginTop:{sm:"1.5rem", xs:"1.5rem"} ,overflow:"auto", width:{md: "30rem", sm:"23rem", xs:"23rem"}}} >
+<MUIList dense={false} 
+sx={{maxHeight:"20rem", 
+     marginTop:{sm:"0.2rem", xs:"1.5rem"} ,
+     overflow:"auto", width:{md: "30rem", sm:"23rem", xs:"23rem"},
+     background:"white",
+    }} >
 {Loading ? <div style={{textAlign: "center"}}><CircularProgress/></div> :
 RecommendedPosts.map((p) => (
   <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 

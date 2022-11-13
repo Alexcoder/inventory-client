@@ -44,8 +44,8 @@ const Navbar = () => {
                   sx={{
                     flexBasis: "10%",
                     color: "white",
-                    margin: "1.1rem 0rem 1.3rem 1rem",
-                    width:{xs:"4.3rem"}
+                    margin: "0.5rem 0rem 1.3rem 1rem",
+                    width:{md:"8rem",xs:"4.3rem"}
                   }}
         
           variant="contained"

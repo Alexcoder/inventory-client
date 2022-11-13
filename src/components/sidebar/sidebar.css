@@ -1,7 +1,7 @@
 #sidebarContainer{
         width: 15rem; 
         margin:0rem 0rem 0rem 0rem;
-        background-color:rgba(0, 0, 0, 0.600);
+        background:linear-gradient(blue, black);
         text-align: center;
         padding: 1rem;
         cursor:pointer

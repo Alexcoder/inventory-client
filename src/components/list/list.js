@@ -31,7 +31,13 @@ const ListSingle = () => {
 
   return (
 
-<MUIList dense={false} sx={{maxHeight:"200px", overflow:"auto", width:{xs:"30rem",sm:"35rem", md:"50rem"}}} >
+<MUIList dense={false} 
+sx={{maxHeight:"200px", 
+    overflow:"auto", 
+    width:{xs:"30rem", sm:"35rem", md:"80rem"},
+    background: "white" 
+  }}
+    >
 { Loading ? "Loading..." :
 (
 handleMap().map((p) => (
