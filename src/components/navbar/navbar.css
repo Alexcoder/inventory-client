@@ -31,8 +31,9 @@
 
 @media screen and (max-width:420px){
     #navContainer {
-        padding: 0.2rem;
-        width: 22.4rem
+        /* padding: 0.2rem; */
+        /* width: 22.4rem; */
+        width: 100%
     }
     #navContainer >div{
         padding:0rem 0.5rem 0rem 0.5rem;
@@ -52,6 +53,24 @@
         height: 2rem;
         margin: 1.2rem 0rem 0rem 3rem; 
         width: 6rem;
+    }
+    
+}
+
+@media screen and (max-width:420px){
+    #navContainer {
+        /* padding: 0.2rem; */
+        /* width: 22.4rem; */
+        width: 100%
+    }
+    
+}
+
+@media screen and (max-width:375px){
+    #navContainer {
+        /* padding: 0.2rem; */
+        /* width: 22.4rem; */
+        width: 375%
     }
     
 }

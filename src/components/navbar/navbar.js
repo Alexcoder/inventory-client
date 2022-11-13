@@ -2,7 +2,9 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+// import {AiOutlineMenu} from 'react-icons/ai'
+// import {BiMenu} from 'react-icons/bi'
+import {MdMenu} from 'react-icons/md'
 import { useGlobalContext } from "../../state/context";
 import {logOut} from '../../state/action/user'
 import './navbar.css';
@@ -21,7 +23,7 @@ const Navbar = () => {
           user?.result &&
             <button 
              onClick={()=> {setOpen((prev)=> !prev)}}
-             className="menuIcon"><MenuOutlinedIcon/></button>
+             className="menuIcon"><MdMenu/></button>
         }
         <h1 >INVENTORY</h1>
         <h4 className="user">

@@ -40,6 +40,12 @@
   margin: 1rem 0rem 0rem 2rem;
 }
 
+@media screen and (max-width: 1024px){
+  #dashboardContainer{
+    max-width: 615px;
+    overflow: auto;
+   }
+}
 @media screen and (max-width: 620px){
   #dashboardContainer{
     max-width: 300px;

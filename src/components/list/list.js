@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate} from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { List as MUIList,ListItem, ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, IconButton, Slide  } from "@mui/material";
 import moment from 'moment'
 import { Delete, MoneyOff } from '@mui/icons-material';
@@ -8,6 +8,7 @@ import { deletePost, } from "../../state/action/posts";
 import { useGlobalContext } from "../../state/context";
 
 const ListSingle = () => {
+  const {Loading} = useSelector((state)=> state.posts);
   const {filteredByUser,search} = useGlobalContext();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,7 +32,9 @@ const ListSingle = () => {
   return (
 
 <MUIList dense={false} sx={{maxHeight:"200px", overflow:"auto", width:{xs:"30rem",sm:"35rem", md:"60rem"}}} >
-{handleMap().map((p) => (
+{ Loading ? "Loading..." :
+(
+handleMap().map((p) => (
   <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
      onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
     <ListItem>
@@ -48,7 +51,7 @@ const ListSingle = () => {
       </ListItemSecondaryAction>
     </ListItem>
   </Slide>
-))}
+)))}
 </MUIList>
 
   );
