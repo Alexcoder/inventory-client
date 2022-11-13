@@ -50,7 +50,9 @@ const Update =()=>{
       };
     
     return(
-        <Paper elevation={5} sx={{margin:"2rem 0rem 0rem 8rem", maxHeight: {md: "21rem", sm:"20rem", xs:"35rem"}}}>
+        <Paper elevation={5} 
+        sx={{margin:{md:"2rem 0rem 0rem 8rem", sm: "2rem 0rem 0rem 0rem", xs:"2rem 0rem 0rem 0rem"},
+         maxHeight: {md: "21rem", sm:"20rem", xs:"35rem"}}}>
         <Grid
           container
           p={2}
