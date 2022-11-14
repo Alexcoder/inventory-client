@@ -59,10 +59,11 @@ const Detail = () => {
   {Loading ? <div style={{textAlign: "center", marginTop:"1rem"}}><CircularProgress/></div> :
 <MUIList dense={false} 
 sx={{maxHeight:"20rem", 
-     marginTop:{sm:"1.5rem", xs:"1.5rem"} ,
+     marginTop:{sm:"0.5rem", xs:"0.5rem"} ,
      overflow:"auto", width:{md: "30rem", sm:"22rem", xs:"22rem"},
      background:"white",    }} >
-{RecommendedPosts.map((p) => (
+{!RecommendedPosts ? "No Similar Transaction" : 
+ RecommendedPosts.map((p) => (
   <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
      onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
     <ListItem>
