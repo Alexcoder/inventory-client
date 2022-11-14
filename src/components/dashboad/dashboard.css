@@ -1,20 +1,19 @@
-#dashboardContainer{
+#dashboardContainer {
   /* margin-top: 1rem; */
   max-width: 990px;
   background: white;
   box-shadow: 0.1rem 0.1rem 0.1rem 0rem gray;
-  
+
 
 }
-.paper-wrap{
-    width: 55rem;
-    margin: 0rem -2rem 0rem 0.5rem;
-    padding: 1rem 0rem 0.3rem 0rem;
-    
-  
+
+.paper-wrap {
+  width: 55rem;
+  margin: 0rem -2rem 0rem 0.5rem;
+  padding: 1rem 0rem 0.3rem 0rem;
 }
 
-#dashboard >div{
+#dashboard>div {
   overflow: auto;
   border: 1.4px solid gray;
   margin: 0rem 0rem 0rem 4rem;
@@ -22,36 +21,64 @@
 
 }
 
-.data{
+.data {
   display: grid;
 
 }
 
 
-.sumDiv{
-    width: 7rem; 
-    margin: 0.1rem 0.05rem 0rem 0rem; 
-    text-align:center
+.sumDiv {
+  width: 7rem;
+  margin: 0.1rem 0.05rem 0rem 0rem;
+  text-align: center
 }
-.itemDiv{
+
+.itemDiv {
   width: 8rem
 }
-.itemDisplayDiv{
+
+.itemDisplayDiv {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   width: 25rem;
   margin: 1rem 0rem 0rem 2rem;
 }
 
-@media screen and (max-width: 1024px){
-  #dashboardContainer{
+@media screen and (max-width: 1024px) {
+  #dashboardContainer {
     max-width: 615px;
     overflow: auto;
-   }
+  }
+
+  .paper-wrap {
+    width: 55rem;
+    margin: 0rem -2rem 0rem 0.5rem;
+    padding: 1rem 0rem 0.3rem 0rem;
+  }
 }
-@media screen and (max-width: 620px){
-  #dashboardContainer{
-    max-width: 300px;
+
+@media screen and (max-width: 620px) {
+  #dashboardContainer {
+    max-width: 500px;
     overflow: auto;
-   }
+  }
+
+  .paper-wrap {
+    width: 55rem;
+    margin: 0rem -2rem 0rem 0.5rem;
+    padding: 1rem 0rem 0.3rem 0rem;
+  }
+}
+
+@media screen and (max-width: 412px) {
+  #dashboardContainer {
+    max-width: 375px;
+    overflow: auto;
+  }
+
+  .paper-wrap {
+    width: 55rem;
+    margin: 0rem -2rem 0rem 0.5rem;
+    padding: 1rem 0rem 0.3rem 0rem;
+  }
 }

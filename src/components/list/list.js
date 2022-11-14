@@ -29,12 +29,18 @@ const ListSingle = () => {
   } 
  } 
 
+ if(Loading){
+  return "Loading"
+ }
+
+
   return (
 
 <MUIList dense={false} 
 sx={{maxHeight:"200px", 
     overflow:"auto", 
-    width:{xs:"30rem", sm:"35rem", md:"80rem"},
+    width:{xs:"26rem", sm:"26rem", md:"80rem"},
+    marginTop:{xs:"0.3rem", sm:"0.3rem", md:"2rem"},
     background: "white" 
   }}
     >

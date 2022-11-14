@@ -21,9 +21,9 @@ const {Loading} = useSelector((state)=> state.posts);
            <div >
             <Dashboard/>
            </div>
-           { Loading ? <h2 style={{color: "blue", fontStyle:"italics"}}>Loading . . .</h2> :
+           { Loading ? <h3 style={{color: "white", fontStyle:"italics"}}>Loading . . .</h3> :
               <Container sx={{ marginTop: "2rem", display: {md:"flex", sm:"grid",xs:"grid"}, gap: "2rem"}}>
-              <ListSingle style={{ marginTop: "4rem" }} />
+              <ListSingle style={{ marginTop: "1rem" }} />
            </Container>
             }
             {

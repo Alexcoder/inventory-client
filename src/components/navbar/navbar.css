@@ -39,20 +39,20 @@
     #navContainer >div{
         padding:0rem 0.5rem 0rem 0.5rem;
     }
-    .menuIcon{
-        margin:1.5rem 0.7rem 0rem 0.3rem;
-    }
+    /* .menuIcon{ */
+        /* margin:0.5rem 0.7rem 0rem 0.3rem; */
+    /* } */
     
     #navContainer >div >h1{
         display: none;
     }
     .user{
         flex-basis: 17%;
-        margin: 1.3rem 0.5rem 0rem 0rem;
+        margin: 0.2rem 0rem 0rem 1rem;
     }
     .navInput{
         height: 2rem;
-        margin: 1.2rem 0rem 0rem 3rem; 
+        /* margin: 1.2rem 0rem 0rem 3rem;  */
         width: 6rem;
     }
     

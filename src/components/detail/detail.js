@@ -56,14 +56,13 @@ const Detail = () => {
         </Paper>
 
 
+  {Loading ? <div style={{textAlign: "center", marginTop:"1rem"}}><CircularProgress/></div> :
 <MUIList dense={false} 
 sx={{maxHeight:"20rem", 
-     marginTop:{sm:"0.2rem", xs:"1.5rem"} ,
-     overflow:"auto", width:{md: "30rem", sm:"23rem", xs:"23rem"},
-     background:"white",
-    }} >
-{Loading ? <div style={{textAlign: "center"}}><CircularProgress/></div> :
-RecommendedPosts.map((p) => (
+     marginTop:{sm:"1.5rem", xs:"1.5rem"} ,
+     overflow:"auto", width:{md: "30rem", sm:"22rem", xs:"22rem"},
+     background:"white",    }} >
+{RecommendedPosts.map((p) => (
   <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
      onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
     <ListItem>
@@ -82,7 +81,7 @@ RecommendedPosts.map((p) => (
   </Slide>
 ))}
 </MUIList>
-
+  }
 
 {/* <Grid container textAlign="center" gap={2} mt={3}  sx={{display:"grid", gridTemplateColumns:{md: "repeat(6, 1fr)", sm: "1fr 1fr", xs: "1fr"}}}>
      {!RecommendedPosts? <CircularProgress/> :
