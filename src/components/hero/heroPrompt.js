@@ -19,7 +19,7 @@ const HeroPrompt=({onClickDelete})=>{
               {
                logout ?
                <button className="button bColor2" onClick={()=>{dispatch(logOut(navigate)) ; setLogout(false) }}>Yes</button>:
-               <button className="button bColor2" onClick={onClickDelete}>Bin Yes</button>
+               <button className="button bColor2" onClick={onClickDelete}>Delete</button>
               }
              </div>
          </div> 
