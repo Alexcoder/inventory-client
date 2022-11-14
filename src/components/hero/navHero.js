@@ -1,6 +1,7 @@
 import React from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import {useGlobalContext} from '../../state/context';
+import "./navHero.css";
 
 
 const NavHero = ({onClick1, onClick2, onClick3, onClick4,}) => { 
