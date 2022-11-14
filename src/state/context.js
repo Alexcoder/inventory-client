@@ -19,6 +19,10 @@ export const StateContext = createContext()
 export const Context =({children})=>{
     const [formData, setFormData]= useState(initialState)
     const [search, setSearch] = useState()
+    const[deleteId, setDeleteId]= useState();
+    const [bin, setBin] = useState(false)
+    const [sidebar, setSidebar] = useState(false)
+    const [logout, setLogout] = useState(false)
     const [transaction, setTransaction] = useState(false)
     const [open, setOpen] = useState(false)
     const { allposts } = useSelector((state)=> state.posts)
@@ -146,7 +150,8 @@ export const Context =({children})=>{
       CementAmountOut, BentoniteAmountIn,BentoniteAmountOut,CalciumChlorideAmountIn, CalciumChlorideAmountOut,
       ButylGlycolAmountIn, ButylGlycolAmountOut,SurfactantAmountIn, SurfactantAmountOut, ViscosifierAmountIn,
       ViscosifierAmountOut,IncommingTotalAmount, OutgoingTotalAmount, HandleTotal, user, creator, 
-      filteredByUser,search, setSearch, transaction, setTransaction, open, setOpen
+      filteredByUser,search, setSearch, transaction, setTransaction, open, setOpen,bin, setBin, logout, setLogout,
+      deleteId, setDeleteId, sidebar, setSidebar,
       }}
     >
       {children}

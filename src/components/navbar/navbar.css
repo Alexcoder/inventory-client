@@ -32,16 +32,11 @@
 
 @media screen and (max-width:420px){
     #navContainer {
-        /* padding: 0.2rem; */
-        /* width: 22.4rem; */
         width: 100%
     }
     #navContainer >div{
         padding:0rem 0.5rem 0rem 0.5rem;
     }
-    /* .menuIcon{ */
-        /* margin:0.5rem 0.7rem 0rem 0.3rem; */
-    /* } */
     
     #navContainer >div >h1{
         display: none;

@@ -1,18 +1,19 @@
-import React from "react";
-import { useNavigate} from "react-router-dom";
+import React, {useState} from "react";
+import { useNavigate,} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { List as MUIList,ListItem, ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, IconButton, Slide  } from "@mui/material";
 import moment from 'moment'
 import { Delete, MoneyOff } from '@mui/icons-material';
 import { deletePost, } from "../../state/action/posts";
 import { useGlobalContext } from "../../state/context";
+import {Hero} from '../index';
 
 const ListSingle = () => {
   const {Loading} = useSelector((state)=> state.posts);
-  const {filteredByUser,search} = useGlobalContext();
+  const {filteredByUser,search, setBin, bin, deleteId, setDeleteId} = useGlobalContext();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   const SearchResult = filteredByUser.filter((p)=>
   p.category.includes(search) || p.category.toLowerCase().includes(search)||
   p.type.includes(search) || p.type.toUpperCase().includes(search) ||
@@ -31,6 +32,11 @@ const ListSingle = () => {
 
  if(Loading){
   return "Loading"
+ }
+
+ const deleteItem = ()=>{
+  dispatch(deletePost(deleteId));
+  setBin(false)
  }
 
 
@@ -57,13 +63,14 @@ handleMap().map((p) => (
       </ListItemAvatar>
       <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY, h:mm:ss a')}`} />
       <ListItemSecondaryAction>
-        <IconButton edge="end" aria-label="delete" onClick={() =>  dispatch(deletePost(p._id))}>
+        <IconButton edge="end" aria-label="delete" onClick={() => { setBin(true); setDeleteId(p._id) }}>
           <Delete />
         </IconButton>
       </ListItemSecondaryAction>
     </ListItem>
   </Slide>
 )))}
+{bin && <Hero onClickDelete={deleteItem} /> } 
 </MUIList>
 
   );

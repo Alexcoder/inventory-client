@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {Route, Routes, Navigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux';
 import {Container} from '@mui/material'
-import {Navbar, Main, Detail, Auth, SideBar, Update} from './components';
+import {Navbar, Main, Detail, Auth, SideBar, Update, Hero} from './components';
 import {getPosts,} from './state/action/posts';
 import { useGlobalContext } from './state/context';
 import {ProtectedRoute, LoginRoute} from './components/protectedRoute';
@@ -11,7 +11,7 @@ import {ProtectedRoute, LoginRoute} from './components/protectedRoute';
 
 function App() {
   const dispatch = useDispatch();
-  const {user}= useGlobalContext();
+  const {user, logout, }= useGlobalContext();
 
   
   useEffect(()=> {
@@ -37,6 +37,7 @@ function App() {
            <Route path='/auth'  element={<LoginRoute><Auth/></LoginRoute>}/>
            <Route path='/update'  element={<ProtectedRoute><Update/></ProtectedRoute>}/>
      </Routes>
+     {logout ? <Hero/> : null}
          </div>
     </Container>
   );

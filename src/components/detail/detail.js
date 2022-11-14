@@ -2,17 +2,19 @@ import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment'
 import { CircularProgress, Paper, List as MUIList,ListItem, 
-  ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, Slide  } from "@mui/material";
+  ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, Slide , IconButton } from "@mui/material";
 import { Delete, MoneyOff } from '@mui/icons-material';
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { getPost } from '../../state/action/posts';
+import { getPost,deletePost, } from '../../state/action/posts';
 import { useGlobalContext } from '../../state/context';
-import {NavHero} from "../index";
+
+import {NavHero, Hero} from "../index";
 
 import './detail.css';
 
 const Detail = () => { 
-  const { HandleTotal, filteredByUser, open}= useGlobalContext();
+  const { HandleTotal, filteredByUser, 
+        setBin, bin, open, deleteId, setDeleteId}= useGlobalContext();
 
   const  {category}  = useParams();
   const id = useLocation().state.id ;
@@ -25,6 +27,11 @@ const Detail = () => {
 
   const RecommendedPosts = filteredByUser.filter((p)=>id? p._id !==id & p.category=== category : null )   
 
+  const deleteItem = ()=>{
+    dispatch(deletePost(deleteId));
+    setBin(false)
+   }
+  
  
   useEffect(()=>{
     dispatch(getPost(id))
@@ -56,13 +63,15 @@ const Detail = () => {
         </Paper>
 
 
-  {Loading ? <div style={{textAlign: "center", marginTop:"1rem"}}><CircularProgress/></div> :
+ { Loading ? <div style={{textAlign: "center", marginTop:"1rem"}}><CircularProgress/></div> :
+  
 <MUIList dense={false} 
-sx={{maxHeight:"20rem", 
+sx={{ 
+     maxHeight:"20rem", 
      marginTop:{sm:"0.5rem", xs:"0.5rem"} ,
      overflow:"auto", width:{md: "30rem", sm:"22rem", xs:"22rem"},
-     background:"white",    }} >
-{!RecommendedPosts ? "No Similar Transaction" : 
+     background: RecommendedPosts===null ? "transparent" : "white",    }} >
+{ 
  RecommendedPosts.map((p) => (
   <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
      onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
@@ -74,13 +83,14 @@ sx={{maxHeight:"20rem",
       </ListItemAvatar>
       <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY, h:mm:ss a')}`} />
       <ListItemSecondaryAction>
-        {/* <IconButton edge="end" aria-label="delete" onClick={() =>  dispatch(deletePost(p._id))}> */}
+        <IconButton edge="end" aria-label="delete" onClick={()=> {setBin(true); setDeleteId(p._id)}}>
           <Delete />
-        {/* </IconButton> */}
+        </IconButton>
       </ListItemSecondaryAction>
     </ListItem>
   </Slide>
 ))}
+{bin && <Hero onClickDelete={deleteItem} /> } 
 </MUIList>
   }
 

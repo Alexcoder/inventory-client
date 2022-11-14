@@ -1,19 +1,11 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
-// import {AiOutlineMenu} from 'react-icons/ai'
-// import {BiMenu} from 'react-icons/bi'
 import {MdMenu} from 'react-icons/md'
 import { useGlobalContext } from "../../state/context";
-import {logOut} from '../../state/action/user'
 import './navbar.css';
 
 const Navbar = () => {
-  const { user, search, setSearch, setOpen } = useGlobalContext();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
+  const { user, search, setSearch, setOpen,setLogout, } = useGlobalContext();
 
 
   return (
@@ -52,7 +44,7 @@ const Navbar = () => {
           color ="secondary"
           onClick={(e) => {
             e.preventDefault();
-            dispatch(logOut(navigate));
+            setLogout(true);
           }}
         >
           LOGOUT
