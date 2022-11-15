@@ -66,43 +66,7 @@ const Update =()=>{
             width: { md: "25rem", xs: "99%", sm: "99%" },
           }}
         >
-          <SingleMain
-            label="Location"
-            sx={{ width: { md: "12rem", xs: "15rem", sm: "15rem" } }}
-            name="location"
-            value={formData.location}
-            onChange={(e) =>
-              setFormData({ ...formData, location: e.target.value })
-            }
-          />
-          <SingleMain
-            label="Quantity"
-            sx={{ width: { md: "12rem", xs: "15rem", sm: "15rem" } }}
-            type="number"
-            name="quantity"
-            value={formData.quantity}
-            onChange={(e) =>
-              setFormData({ ...formData, quantity: e.target.value })
-            }
-          />
-          <SingleMain
-            label="Price"
-            sx={{ width: { md: "12rem", xs: "15rem", sm: "15rem" } }}
-            type="number"
-            name="price"
-            value={formData.price}
-            onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-          />
-          <SingleMain
-            label="Date"
-            sx={{ width: { md: "12rem", xs: "15rem", sm: "15rem" } }}
-            type="date"
-            name="date"
-            value={formData.date}
-            onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-          />
-  
-          <Grid item xs={12} sm={4} md={6} sx={{ width: "17rem" }}>
+            <Grid item xs={12} sm={4} md={6} sx={{ width: "17rem" }}>
             <TextField
               label="category"
               select
@@ -121,6 +85,46 @@ const Update =()=>{
               ))}
             </TextField>
           </Grid>
+
+          <SingleMain
+            label="Quantity"
+            sx={{ width: { md: "12rem", xs: "15rem", sm: "15rem" } }}
+            type="number"
+            name="quantity"
+            value={formData.quantity}
+            onChange={(e) =>
+              setFormData({ ...formData, quantity: e.target.value })
+            }
+          />
+
+          <SingleMain
+            label="Price"
+            sx={{ width: { md: "12rem", xs: "15rem", sm: "15rem" } }}
+            type="number"
+            name="price"
+            value={formData.price}
+            onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+          />
+
+
+          <SingleMain
+            label="Location"
+            sx={{ width: { md: "12rem", xs: "15rem", sm: "15rem" } }}
+            name="location"
+            value={formData.location}
+            onChange={(e) =>
+              setFormData({ ...formData, location: e.target.value })
+            }
+          />
+          <SingleMain
+            label="Date"
+            sx={{ width: { md: "12rem", xs: "15rem", sm: "15rem" } }}
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+          />
+  
   
           <Grid item xs={12} sm={4} md={6} sx={{ width: "17rem" }}>
             <TextField
