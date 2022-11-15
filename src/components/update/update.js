@@ -51,8 +51,9 @@ const Update =()=>{
     
     return(
         <Paper elevation={5} 
-        sx={{margin:{md:"2rem 0rem 0rem 8rem", sm: "1rem 0rem 0rem 0rem", xs:"1rem 0rem 0rem 0rem"},
-         maxHeight: {md: "21rem", sm:"20rem", xs:"35rem"}}}>
+        sx={{margin:{md:"2rem 0rem 0rem 8rem", sm: "0.2rem 0rem 0rem 0.08rem", xs:"0.2rem 0rem 0rem 0.08rem"},
+         maxHeight: {md: "21rem", sm:"20rem", xs:"35rem"},
+         width: "99%", height: "100%", }}>
         <Grid
           container
           p={2}
@@ -61,7 +62,7 @@ const Update =()=>{
           justifyContent="center"
           textAlign="center"
           sx={{
-            width: { md: "25rem", xs: "22rem", sm: "45rem", position: "sticky" },
+            width: { md: "25rem", xs: "99%", sm: "99%" },
           }}
         >
           <SingleMain
