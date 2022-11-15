@@ -1,7 +1,6 @@
-import React, {useEffect} from 'react';
+import React, {useEffect,} from 'react';
 import {Route, Routes, Navigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux';
-import {Container} from '@mui/material'
 import {Navbar, Main, Detail, Auth, SideBar, Update, Hero} from './components';
 import {getPosts,} from './state/action/posts';
 import { useGlobalContext } from './state/context';
@@ -19,9 +18,10 @@ function App() {
   },[dispatch])
 
 
+
   return (
-    <Container  maxWidth="xl" 
-    sx={{height: "100vh",
+    <div 
+    style={{height: "100%", width:"100%", 
         background: "linear-gradient(to top right, brown, rgba(0, 0, 0, 0.600))"}} >
      <Navbar />
         <div style={{display: "flex"}}>
@@ -39,7 +39,7 @@ function App() {
      </Routes>
      {logout ? <Hero/> : null}
          </div>
-    </Container>
+    </div>
   );
 }
 

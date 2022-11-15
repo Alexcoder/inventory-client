@@ -41,8 +41,8 @@ const Detail = () => {
   return (
     <div id="detailContainer">
         <Paper key={post._id} elevation={5} 
-        sx={{margin: {md:"0rem 3rem 0rem 5rem", sm:"0rem 3rem 0rem 2rem", xs:"0rem 3rem 0rem 0.3rem"},
-             padding: "2rem", width:{md:"20rem", sm: "18rem", xs:"18rem"} }} >
+        sx={{margin: {md:"0rem 4rem 0rem 5rem", sm:"-0.4rem 0rem 0rem 0.3rem", xs:"-0.4rem 0rem 0rem 0.3rem"},
+             padding: "2rem", width:{md:"20rem", sm: "81%", xs:"81%"} }} >
         <div  style={{textAlign: "start", gap: "1rem"}}> 
           <h2 style={{textAlign: "center"}}>{post.type==="incomming"? <span style={{color:"blue"}}>RECEIVED</span>: <span style={{color:"red"}}>SENT</span>}</h2>
           <div><span style={{fontWeight:"700"}}>By:  </span> {post.user}</div>
@@ -69,8 +69,9 @@ const Detail = () => {
 sx={{ 
      maxHeight:"20rem", 
      marginTop:{sm:"0.5rem", xs:"0.5rem"} ,
-     overflow:"auto", width:{md: "30rem", sm:"22rem", xs:"22rem"},
-     background: RecommendedPosts===null ? "transparent" : "white",    }} >
+     marginLeft:{sm:"0.2rem", xs:"0.2rem"},
+     overflow:"auto", width:{md: "30rem", sm:"97vw", xs:"97vw"},
+     background: !RecommendedPosts ? "transparent" : "white",    }} >
 { 
  RecommendedPosts.map((p) => (
   <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 

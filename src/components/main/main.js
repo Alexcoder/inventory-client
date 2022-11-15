@@ -5,9 +5,6 @@ import Dashboard from "../dashboad/dashboard";
 import {NavHero} from "../index";
 import {useGlobalContext} from '../../state/context';
 import { useSelector } from "react-redux";
-import {
-  Container,
-} from "@mui/material";
 import './main.css'
 
 
@@ -22,9 +19,9 @@ const {Loading} = useSelector((state)=> state.posts);
             <Dashboard/>
            </div>
            { Loading ? <h3 style={{color: "white", fontStyle:"italics"}}>Loading . . .</h3> :
-              <Container sx={{ marginTop: "0.3rem", display: {md:"flex", sm:"grid",xs:"grid"}, gap: "2rem"}}>
+              <div style={{ marginTop: "0.2rem", display: {md:"flex", sm:"grid",xs:"grid"}, gap: "2rem"}}>
               <ListSingle  />
-           </Container>
+           </div>
             }
             {
             open && <NavHero onClick1={()=>{navigate('/update'); setOpen(false)} }/>
