@@ -49,6 +49,10 @@
     .navInput{
         height: 2rem;
         width: 6rem;
+        margin-left: 3rem
+    }
+    .menuIcon{
+        margin:0.5rem 0rem 0rem 0.5rem;
     }
     
 }
@@ -57,5 +61,13 @@
     #navContainer {
         width: 95.5%
     }
-    
+    .menuIcon{
+        margin:0.5rem 0rem 0rem 0.5rem;
+    }
+    .navInput{
+        height: 2rem;
+        width: 6rem;
+        margin-left: 2rem
+    }
+
 }

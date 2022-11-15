@@ -45,8 +45,7 @@ const ListSingle = () => {
 <MUIList dense={false} 
 sx={{maxHeight:"200px", 
     overflow:"auto", 
-    // width:{xs:"26rem", sm:"26rem", md:"80rem"},
-    width:"100%",
+    width:{sm:"100%", xs:"100%", md: "80%"},
     marginTop:{xs:"0.3rem", sm:"0.3rem", md:"2rem"},
     background: "white" 
   }}

@@ -50,10 +50,11 @@ const Update =()=>{
       };
     
     return(
+      <div style={{height: "100vh"}}>
         <Paper elevation={5} 
         sx={{margin:{md:"2rem 0rem 0rem 8rem", sm: "0.2rem 0rem 0rem 0.08rem", xs:"0.2rem 0rem 0rem 0.08rem"},
          maxHeight: {md: "21rem", sm:"20rem", xs:"35rem"},
-         width: "99%", height: "100%", }}>
+         width:{xs:"99%", sm:"99%", md:"75%"}, height: "100%", }}>
         <Grid
           container
           p={2}
@@ -144,13 +145,14 @@ const Update =()=>{
               onClick={handleSubmit}
               variant="contained"
               mt={1}
-              sx={{ width: { md: "11rem", xs: "15.1rem", sm: "14rem" }, height: "3.5rem" }}
+              sx={{marginTop:"2rem", width: { md: "12rem", xs: "15.1rem", sm: "14rem" }, height: "3.5rem" }}
             >
               SUBMIT
             </Button>
           </Grid>
         </Grid>
         </Paper>
+        </div>
     )
 }
 

@@ -1,6 +1,5 @@
 #dashboardContainer {
-  /* margin-top: 1rem; */
-  max-width: 990px;
+  max-width: 80%;
   background: white;
   box-shadow: 0.1rem 0.1rem 0.1rem 0rem gray;
 
@@ -8,9 +7,14 @@
 }
 
 .paper-wrap {
-  width: 55rem;
-  margin: 0rem -2rem 0rem 0.5rem;
+  width: 80%;
+  margin: 0rem 0rem 0rem 0.5rem;
   padding: 1rem 0rem 0.3rem 0rem;
+}
+.flexItem{
+  display: flex;
+  margin: 0rem 0rem 0rem 0rem;
+  /* text-align: center; */
 }
 
 #dashboard>div {
@@ -23,7 +27,6 @@
 
 .data {
   display: grid;
-
 }
 
 
@@ -46,9 +49,17 @@
 
 @media screen and (max-width: 1024px) {
   #dashboardContainer {
-    max-width: 615px;
-    overflow: auto;
+    max-width: 100%;
+    /* overflow: auto; */
   }
+  #flexItem{
+    max-width: 100%;
+    /* overflow: auto; */
+  }
+  .data {
+    max-width: 100%;
+    overflow: auto
+  } 
 
   .paper-wrap {
     width: 55rem;
@@ -59,13 +70,17 @@
 
 @media screen and (max-width: 620px) {
   #dashboardContainer {
-    /* max-width: 500px; */
     max-width: 100%;
-    overflow: auto;
+    overflow: hidden;
   }
+  .data {
+    max-width: 60%;
+    overflow: auto
+  }
+  
 
   .paper-wrap {
-    width: 55rem;
+    width: 100%;
     margin: 0rem -2rem 0rem 0.5rem;
     padding: 1rem 0rem 0.3rem 0rem;
   }
@@ -73,10 +88,15 @@
 
 @media screen and (max-width: 412px) {
   #dashboardContainer {
-    /* max-width: 375px; */
     max-width: 100%;
-    overflow: auto;
+    overflow: hidden;
   }
+  .data {
+    display: grid;
+    max-width: 20%;
+    overflow: auto
+  }
+  
 
   .paper-wrap {
     width: 55rem;

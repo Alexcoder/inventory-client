@@ -10,7 +10,7 @@ import {ProtectedRoute, LoginRoute} from './components/protectedRoute';
 
 function App() {
   const dispatch = useDispatch();
-  const {user, logout, }= useGlobalContext();
+  const {user, logout, setOpen}= useGlobalContext();
 
   
   useEffect(()=> {
@@ -26,8 +26,8 @@ function App() {
      <Navbar />
         <div style={{display: "flex"}}>
           {
-            user?.result &&
-            <SideBar /> 
+            user?.result || setOpen ?
+            <SideBar /> : null
           }
 
       <Routes >

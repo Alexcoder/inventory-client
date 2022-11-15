@@ -116,39 +116,53 @@ const Dashboard = () => {
    <div id="dashboardContainer">
    
     <div >
+
       <div className="paper-wrap">
-        <div style={{display: "flex", gap: "2.5rem", margin: "0rem 0rem 0rem 3rem"}}>
-            <div style={{fontWeight: "700", marginLeft: "-1rem"}}>Chemical</div>
-            <div style={{fontWeight: "700", marginLeft: "1.5rem"}}>Quantity In</div>
-            <div style={{fontWeight: "700",}}>Quantity Out</div>
-            <div style={{fontWeight: "700", marginLeft: "1rem"}}>Stock</div>
-            <div style={{fontWeight: "700",  marginLeft: "1.5rem"}}>Amount In</div>
-            <div style={{fontWeight: "700",}}>Amount Out</div>
-            <div style={{fontWeight: "700",}}>Balance</div>
-        </div>
-        <hr/>
+        <div style={{display: "flex",margin:"0rem 0rem 0rem 2rem" }}>
+          <div style={{ marginTop:"3.5rem"}}>
+         {
+            displayData?.map((p,i)=>(
+              <div key={i}  >
+                <div style={{ marginBottom:"1.1rem"}}>{p.type}</div>
+              </div>
+            ))
+         }
+          </div>
 
         <div className="data">
+        <div style={{display: "flex", margin: "0rem 0rem 2rem 0rem"}}>
+            <div style={{fontWeight: "700", marginLeft: "2rem"}}>RECEIVED</div>
+            <div style={{fontWeight: "700",  marginLeft: "3rem"}}>SENT</div>
+            <div style={{fontWeight: "700", marginLeft: "3rem"}}>STOCK</div>
+            <div style={{fontWeight: "700",  marginLeft: "4rem"}}>$RECEIVED</div>
+            <div style={{fontWeight: "700",  marginLeft: "3rem"}}>$SENT</div>
+            <div style={{fontWeight: "700", marginLeft: "3rem"}}>$BALANCE</div>
+        <hr/>
+        </div>
+
         {displayData?.map((p,i)=>(
             <div key={i}>
-            <div style={{display: "flex",margin:"0rem 0rem 0rem 2rem" }} >
-                <div style={{flexBasis:"15%", borderRight:"1px solid gray"}}>{p.type}</div>
-                <div style={{flexBasis:"15%", textAlign:"center", color: "blue", fontWeight:"500"}}>{p.quantityin}</div>
-                <div style={{flexBasis:"15%", textAlign:"center",color: "red", fontWeight:"500"}}>{p.quantityout}</div>
-                <div style={{flexBasis:"15%", textAlign:"center", fontWeight:"500"}}>{p.stock}</div>
-                <div style={{flexBasis:"15%", textAlign:"center", color: "blue", fontWeight:"500"}}>$ {p.amountIn}</div>
-                <div style={{flexBasis:"15%", textAlign:"center", color: "red", fontWeight:"500"}}>$ {p.amountOut}</div>
-                <div style={{flexBasis:"15%", textAlign:"center", fontWeight:"500"}}>$ {p.balance}</div>
+
+            <div className="flexItem" >
+                {/* <div style={{flexBasis:"15%", borderRight:"1px solid gray"}}>{p.type}</div> */}
+                <div style={{flexBasis:"25%", marginLeft:"3.5rem",  textAlign:"start", color: "blue", fontWeight:"500"}}>{p.quantityin}</div>
+                <div style={{flexBasis:"25%", marginLeft:"4rem", textAlign:"start",color: "red", fontWeight:"500"}}>{p.quantityout}</div>
+                <div style={{flexBasis:"25%", marginLeft:"3rem", textAlign:"start", fontWeight:"500"}}>{p.stock}</div>
+                <div style={{flexBasis:"25%", marginLeft:"4rem", color: "blue", fontWeight:"500"}}> {p.amountIn}</div>
+                <div style={{flexBasis:"25%", marginLeft:"4rem", textAlign:"start", color: "red", fontWeight:"500"}}> {p.amountOut}</div>
+                <div style={{flexBasis:"25%", marginLeft:"2rem", textAlign:"start", fontWeight:"500"}}>{p.balance}</div>
             </div>
             <hr/>
             </div>
         ))}
         </div>
+
+        </div>
         {/* Total Amount In and Out Below */}
-        <div style={{display:"flex", gap:"8rem", padding:"0rem 0rem 0rem 2rem", backgroundColor:"smokewhite", height:"2rem"}}>
-        <div><span style={{fontWeight:"700"}}>Amount In Total</span>: ${IncommingTotalAmount}</div>
-        <div><span style={{fontWeight:"700"}}>Amount Out Total</span>: ${OutgoingTotalAmount}</div>
-        <div><span style={{fontWeight:"700"}}>Total Balance</span>: ${IncommingTotalAmount-OutgoingTotalAmount}</div>
+        <div style={{display:"block", gap:"2rem", padding:"2rem 1rem 2rem 2rem", backgroundColor:"smokewhite", height:"2rem"}}>
+        <div><span style={{fontWeight:"700"}}>TOTAL RECEIVED</span>: ${IncommingTotalAmount}</div>
+        <div><span style={{fontWeight:"700"}}>TOTAL SENT</span>: ${OutgoingTotalAmount}</div>
+        <div><span style={{fontWeight:"700"}}>TOTAL BALANCE</span>: ${IncommingTotalAmount-OutgoingTotalAmount}</div>
         </div>
         </div>
         </div>
