@@ -50,7 +50,7 @@ const Update =()=>{
       };
     
     return(
-      <div style={{height: "100vh"}}>
+      <div style={{height: "100vh", marginTop:"3.5rem"}}>
         <Paper elevation={5} 
         sx={{margin:{md:"2rem 0rem 0rem 8rem", sm: "0.2rem 0rem 0rem 0.08rem", xs:"0.2rem 0rem 0rem 0.08rem"},
          maxHeight: {md: "21rem", sm:"20rem", xs:"35rem"},

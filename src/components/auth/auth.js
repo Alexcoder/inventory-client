@@ -31,6 +31,8 @@ useEffect(()=>{
   }  
 
   return (
+    <div style={{height:"100%"}}>
+
   <Container maxWidth="xs" sx={{marginTop: {md:"6rem", xs:"10rem", sm:"7rem"}}}>
     <Paper elevation={5} >
     <Grid container textAlign="center" p={4} rowSpacing={2}>
@@ -81,6 +83,8 @@ useEffect(()=>{
     </Paper>
 
   </Container>
+  </div>
+
   )
 }
 

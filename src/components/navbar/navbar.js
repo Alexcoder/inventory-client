@@ -9,8 +9,8 @@ const Navbar = () => {
 
 
   return (
-    <div id="navContainer" >
-      <div>
+    <div id="navContainer"  >
+      <div >
         {
           user?.result &&
             <button 
@@ -37,7 +37,7 @@ const Navbar = () => {
                     flexBasis: "10%",
                     color: "white",
                     margin: "0.5rem 0rem 1.3rem 1rem",
-                    width:{md:"8rem",xs:"7rem", sm:"7rem"}
+                    width:{md:"8rem",xs:"6.3rem", sm:"6.3rem"}
                   }}
         
           variant="contained"
