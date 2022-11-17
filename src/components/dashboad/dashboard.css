@@ -16,6 +16,60 @@
   margin: 0rem 0rem 0rem 0rem;
   /* text-align: center; */
 }
+.sentText, .stockText, .sentTotalText, .balanceTotalText{
+  font-weight: 700; 
+  margin-left: 3.5rem;
+}
+.receivedText{
+  font-weight: 700; 
+  margin-left: 2rem;
+}
+.receivedTotalText{
+  font-weight: 700; 
+  margin-left: 4rem;
+}
+
+.quantityIn{
+  flex-basis:25% ;
+  margin-left:3.5rem;  
+  text-align:start ;
+  color: blue; 
+  font-weight:500;
+}
+.quantityOut{
+  flex-basis:25% ;
+  margin-left: 4rem;  
+  text-align:start ;
+  color: red; 
+  font-weight:500;
+}
+.stock{
+  flex-basis:25% ;
+  margin-left: 3rem;  
+  text-align:start ;
+  font-weight:500;
+}
+.amountIn{
+  flex-basis:25% ;
+  margin-left: 4rem;  
+  text-align:start ;
+  color: blue; 
+  font-weight:500;
+}
+.amountOut{
+  flex-basis:25% ;
+  margin-left: 4rem;  
+  text-align:start ;
+  color: red; 
+  font-weight:500;
+}
+.balance{
+  flex-basis:25% ;
+  margin-left: 2rem;  
+  text-align:start ;
+  color: red; 
+  font-weight:500;
+}
 
 #dashboard>div {
   overflow: auto;

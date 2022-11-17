@@ -1,7 +1,7 @@
 import React, {useEffect,} from 'react';
-import {Route, Routes, Navigate} from 'react-router-dom'
+import {Route, Routes, Navigate, useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux';
-import {Navbar, Main, Detail, Auth, SideBar, Update, Hero} from './components';
+import {Navbar, Main, Detail, Auth, SideBar, Update, Hero, NavHero} from './components';
 import {getPosts,} from './state/action/posts';
 import { useGlobalContext } from './state/context';
 import {ProtectedRoute, LoginRoute} from './components/protectedRoute';
@@ -10,7 +10,8 @@ import {ProtectedRoute, LoginRoute} from './components/protectedRoute';
 
 function App() {
   const dispatch = useDispatch();
-  const {user, logout, setOpen}= useGlobalContext();
+  const navigate = useNavigate();
+  const {user, logout, setOpen, open}= useGlobalContext();
 
   
   useEffect(()=> {
@@ -39,6 +40,10 @@ function App() {
      </Routes>
      {logout ? <Hero/> : null}
          </div>
+         {
+            open && <NavHero onClick1={()=>{navigate('/update'); setOpen(false)} }/>
+           } 
+
     </div>
   );
 }

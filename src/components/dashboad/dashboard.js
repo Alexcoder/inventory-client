@@ -109,6 +109,10 @@ const Dashboard = () => {
    },
 ]
 
+const Money =(num)=>{
+const moneyFormat =`${Intl.NumberFormat().format(num.toFixed(2))}`
+return moneyFormat
+}
 
  
 
@@ -131,12 +135,12 @@ const Dashboard = () => {
 
         <div className="data">
         <div style={{display: "flex", margin: "0rem 0rem 2rem 0rem"}}>
-            <div style={{fontWeight: "700", marginLeft: "2rem"}}>RECEIVED</div>
-            <div style={{fontWeight: "700",  marginLeft: "3rem"}}>SENT</div>
-            <div style={{fontWeight: "700", marginLeft: "3rem"}}>STOCK</div>
-            <div style={{fontWeight: "700",  marginLeft: "4rem"}}>$RECEIVED</div>
-            <div style={{fontWeight: "700",  marginLeft: "3rem"}}>$SENT</div>
-            <div style={{fontWeight: "700", marginLeft: "3rem"}}>$BALANCE</div>
+            <div className="receivedText">RECEIVED</div>
+            <div className="sentText">SENT</div>
+            <div className="stockText">STOCK</div>
+            <div className="receivedTotalText">$RECEIVED</div>
+            <div className="sentTotalText">$SENT</div>
+            <div className="balanceTotalText" >$BALANCE</div>
         <hr/>
         </div>
 
@@ -144,13 +148,12 @@ const Dashboard = () => {
             <div key={i}>
 
             <div className="flexItem" >
-                {/* <div style={{flexBasis:"15%", borderRight:"1px solid gray"}}>{p.type}</div> */}
-                <div style={{flexBasis:"25%", marginLeft:"3.5rem",  textAlign:"start", color: "blue", fontWeight:"500"}}>{p.quantityin}</div>
-                <div style={{flexBasis:"25%", marginLeft:"4rem", textAlign:"start",color: "red", fontWeight:"500"}}>{p.quantityout}</div>
-                <div style={{flexBasis:"25%", marginLeft:"3rem", textAlign:"start", fontWeight:"500"}}>{p.stock}</div>
-                <div style={{flexBasis:"25%", marginLeft:"4rem", color: "blue", fontWeight:"500"}}> {p.amountIn}</div>
-                <div style={{flexBasis:"25%", marginLeft:"4rem", textAlign:"start", color: "red", fontWeight:"500"}}> {p.amountOut}</div>
-                <div style={{flexBasis:"25%", marginLeft:"2rem", textAlign:"start", fontWeight:"500"}}>{p.balance}</div>
+                <div className="quantityIn">{p.quantityin}</div>
+                <div className="quantityOut">{p.quantityout}</div>
+                <div className="stock">{p.stock}</div>
+                <div className="amountIn">{Money(p.amountIn)}</div>
+                <div className="amountOut">{Money(p.amountOut)}</div>
+                <div className="balance">{Money(p.balance)}</div>
             </div>
             <hr/>
             </div>
@@ -160,9 +163,9 @@ const Dashboard = () => {
         </div>
         {/* Total Amount In and Out Below */}
         <div style={{display:"block", gap:"2rem", padding:"2rem 1rem 2rem 2rem", backgroundColor:"smokewhite", height:"2rem"}}>
-        <div><span style={{fontWeight:"700"}}>TOTAL RECEIVED</span>: ${IncommingTotalAmount}</div>
-        <div><span style={{fontWeight:"700"}}>TOTAL SENT</span>: ${OutgoingTotalAmount}</div>
-        <div><span style={{fontWeight:"700"}}>TOTAL BALANCE</span>: ${IncommingTotalAmount-OutgoingTotalAmount}</div>
+        <div><span style={{fontWeight:"700"}}>TOTAL RECEIVED</span>: ${Money(IncommingTotalAmount)} {}</div>
+        <div><span style={{fontWeight:"700"}}>TOTAL SENT</span>: ${Money(OutgoingTotalAmount)} </div>
+        <div><span style={{fontWeight:"700"}}>TOTAL BALANCE</span>: ${Money(IncommingTotalAmount-OutgoingTotalAmount)}</div>
         </div>
         </div>
         </div>
