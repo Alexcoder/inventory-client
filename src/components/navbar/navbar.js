@@ -1,11 +1,11 @@
 import React from "react";
 import { Button } from "@mui/material";
-import {MdMenu} from 'react-icons/md'
+import {BiMenu} from 'react-icons/bi'
 import { useGlobalContext } from "../../state/context";
 import './navbar.css';
 
 const Navbar = () => {
-  const { user, search, setSearch, setOpen,setLogout, } = useGlobalContext();
+  const { user, search, setSearch, setOpen,setLogout, sidebar, setSidebar } = useGlobalContext();
 
 
   return (
@@ -14,10 +14,10 @@ const Navbar = () => {
         {
           user?.result &&
             <button 
-             onClick={()=> {setOpen((prev)=> !prev)}}
-             className="menuIcon"><MdMenu/></button>
+             onClick={()=> {setOpen((prev)=> !prev); setSidebar(!sidebar)}}
+             className="menuIcon"><BiMenu/></button>
         }
-        <h1 >INVENTORY</h1>
+        <h1>INVENTORY</h1>
         <h4 className="user">
           {user?.result ? user?.result.name : null}
         </h4>

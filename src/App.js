@@ -11,13 +11,12 @@ import {ProtectedRoute, LoginRoute} from './components/protectedRoute';
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {user, logout, setOpen, open}= useGlobalContext();
+  const {user, logout, setOpen, open, sidebar}= useGlobalContext();
 
   
   useEffect(()=> {
     dispatch(getPosts());
   },[dispatch])
-
 
 
   return (
@@ -27,7 +26,7 @@ function App() {
      <Navbar />
         <div style={{display: "flex"}}>
           {
-            user?.result || setOpen ?
+            user?.result && sidebar ?
             <SideBar /> : null
           }
 
@@ -42,7 +41,7 @@ function App() {
          </div>
          {
             open && <NavHero onClick1={()=>{navigate('/update'); setOpen(false)} }/>
-           } 
+         } 
 
     </div>
   );

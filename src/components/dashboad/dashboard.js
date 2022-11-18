@@ -163,7 +163,7 @@ return moneyFormat
         </div>
         {/* Total Amount In and Out Below */}
         <div style={{display:"block", gap:"2rem", padding:"2rem 1rem 2rem 2rem", backgroundColor:"smokewhite", height:"2rem"}}>
-        <div><span style={{fontWeight:"700"}}>TOTAL RECEIVED</span>: ${Money(IncommingTotalAmount)} {}</div>
+        <div><span style={{fontWeight:"700"}}>TOTAL RECEIVED</span>: ${Money(IncommingTotalAmount)}</div>
         <div><span style={{fontWeight:"700"}}>TOTAL SENT</span>: ${Money(OutgoingTotalAmount)} </div>
         <div><span style={{fontWeight:"700"}}>TOTAL BALANCE</span>: ${Money(IncommingTotalAmount-OutgoingTotalAmount)}</div>
         </div>

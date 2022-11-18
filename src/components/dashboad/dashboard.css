@@ -2,19 +2,16 @@
   max-width: 80%;
   background: white;
   box-shadow: 0.1rem 0.1rem 0.1rem 0rem gray;
-
-
 }
 
 .paper-wrap {
-  width: 80%;
+  width: 70%;
   margin: 0rem 0rem 0rem 0.5rem;
   padding: 1rem 0rem 0.3rem 0rem;
 }
 .flexItem{
   display: flex;
-  margin: 0rem 0rem 0rem 0rem;
-  /* text-align: center; */
+  margin: 0rem 2.5rem 0rem 0rem;
 }
 .sentText, .stockText, .sentTotalText, .balanceTotalText{
   font-weight: 700; 

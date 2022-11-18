@@ -7,23 +7,19 @@ import { Delete, MoneyOff } from '@mui/icons-material';
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { getPost,deletePost, } from '../../state/action/posts';
 import { useGlobalContext } from '../../state/context';
-
-import {NavHero, Hero} from "../index";
-
+import {Hero} from "../index";
 import './detail.css';
 
 const Detail = () => { 
   const { HandleTotal, filteredByUser, 
-        setBin, bin, open, deleteId, setDeleteId}= useGlobalContext();
+        setBin, bin, deleteId, setDeleteId}= useGlobalContext();
 
   const  {category}  = useParams();
   const id = useLocation().state.id ;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-
-  const navigate = useNavigate()
   const {post, Loading} = useSelector((state)=> state.posts)
-
 
   const RecommendedPosts = filteredByUser.filter((p)=>id? p._id !==id & p.category=== category : null )   
 
@@ -32,33 +28,37 @@ const Detail = () => {
     setBin(false)
    }
   
- 
   useEffect(()=>{
     dispatch(getPost(id))
   },[id, dispatch])
 
+  const Money =(num)=>{
+    const moneyFormat =`${Intl.NumberFormat().format(num)}`
+    return moneyFormat
+    }
+    
+    
   
   return (
     <div id="detailContainer">
         <Paper key={post._id} elevation={5} 
-        sx={{margin: {md:"0rem 4rem 0rem 5rem", sm:"-0.4rem 0rem 0rem 0.3rem", xs:"-0.4rem 0rem 0rem 0.3rem"},
+        sx={{ 
+          margin: {md:"0rem 4rem 0rem 5rem", sm:"-0.4rem 0rem 0rem 0.3rem", xs:"-0.4rem 0rem 0rem 0.3rem"},
              padding: "2rem", width:{md:"20rem", sm: "81%", xs:"81%"} }} >
         <div  style={{textAlign: "start", gap: "1rem"}}> 
           <h2 style={{textAlign: "center"}}>{post.type==="incomming"? <span style={{color:"blue"}}>RECEIVED</span>: <span style={{color:"red"}}>SENT</span>}</h2>
           <div><span style={{fontWeight:"700"}}>By:  </span> {post.user}</div>
           <div style={{textTransform:"capitalize"}}><span style={{fontWeight:"700"}}>Item:  </span>{post.category}</div>
-          <div><span style={{fontWeight:"700"}}>Price:  </span>${post.price}.00</div>
+          <div><span style={{fontWeight:"700"}}>Price:  </span>${Money(post.price)}.00</div>
           <div><span style={{color: post.type==="incomming"? "blue" : "red",fontWeight:"700"}}>Quantity:  </span>{post.quantity}</div>
-          <div><span style={{color: post.type==="incomming"? "blue" : "red",fontWeight:"700"}}>Amount:  </span>${post.amount}.00</div>
+          <div><span style={{color: post.type==="incomming"? "blue" : "red",fontWeight:"700"}}>Amount:  </span> ${Money(post.amount)}.00</div>
           <div><span style={{fontWeight:"700"}}> Location: </span>{post.location}</div>
           <div><span style={{fontWeight:"700"}}>Date:  </span>{moment(post.date).format('MMMM Do YYYY, h:mm:ss a')}</div>
         </div>
         <h3>{HandleTotal(post.type, post.category)}</h3>
         <p>
-          <button 
-          style={{width: "18rem", padding:"0.7rem", fontSize:"1.4rem",
-                 borderRadius:"0.2rem", border: "1px solid inherit", color:"white",
-                 background: "linear-gradient(to bottom right, brown , blue)"}} onClick={()=> navigate('/')}>Back</button>
+        <button className="backButton"
+         onClick={()=> navigate('/')}>Back</button>
         </p>
         </Paper>
 
@@ -127,10 +127,6 @@ sx={{
  )}
 </Grid>
  */}
-            {
-            open && <NavHero/>
-           } 
-
 </div>
   )
 }

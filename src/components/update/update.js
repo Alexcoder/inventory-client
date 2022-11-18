@@ -26,8 +26,6 @@ const Update =()=>{
     };
    
   
-  
-
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(
@@ -50,11 +48,12 @@ const Update =()=>{
       };
     
     return(
-      <div style={{height: "100vh", marginTop:"3.5rem"}}>
+      <div style={{height: "100vh", marginTop:"3.5rem",}}>
         <Paper elevation={5} 
-        sx={{margin:{md:"2rem 0rem 0rem 8rem", sm: "0.2rem 0rem 0rem 0.08rem", xs:"0.2rem 0rem 0rem 0.08rem"},
+        sx={{  position:"fixed",
+          margin:{md:"1.2rem 0rem 0rem 15rem", sm: "0.2rem 0rem 0rem 0.08rem", xs:"0.2rem 0rem 0rem 0.08rem"},
          maxHeight: {md: "21rem", sm:"20rem", xs:"35rem"},
-         width:{xs:"99%", sm:"99%", md:"75%"}, height: "100%", }}>
+         width:{xs:"99%", sm:"99%", md:"30%"}, height: "100%", }}>
         <Grid
           container
           p={2}
