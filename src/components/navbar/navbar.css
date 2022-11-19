@@ -12,7 +12,6 @@
     position: fixed;
     width: 100%;
     background: linear-gradient(brown, black);
-    /* background:  white; */
     z-index: 300;
 }
 .menuIcon{
@@ -20,7 +19,7 @@
     width:2.5rem ;
     height:2rem;
 }
-#navContainer >div >h1{
+.inventoryControl{
     flex-basis: 50%; 
     color: white;
     margin: 0.2rem 0rem 1rem 0rem; 
@@ -37,6 +36,28 @@
 }
 
 
+@media screen and (max-width:1024px){
+    #navContainer {
+        width: 100%
+    }
+    #navContainer >div{
+        padding:0rem 0.5rem 0rem 0.5rem;
+    }
+    
+    .user{
+        flex-basis: 17%;
+        margin: 0.2rem 0rem 0rem 1rem;
+    }
+    .navInput{
+        height: 2rem;
+        width: 6rem;
+        margin-left: 3rem
+    }
+    .menuIcon{
+        margin:0.5rem 0rem 0rem 0.5rem;
+    }
+    
+}
 @media screen and (max-width:420px){
     #navContainer {
         width: 100%
@@ -45,7 +66,7 @@
         padding:0rem 0.5rem 0rem 0.5rem;
     }
     
-    #navContainer >div >h1{
+    .inventoryControl{
         display: none;
     }
     .user{
@@ -69,6 +90,9 @@
     }
     .menuIcon{
         margin:0.5rem 0rem 0rem 0.5rem;
+    }
+    .inventoryControl{
+        display: none;
     }
     .navInput{
         height: 2rem;

@@ -3,11 +3,12 @@ import {useNavigate, useLocation} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 import {Container, Grid, Paper, TextField, Button, CircularProgress} from '@mui/material';
 import {signIn, signUp} from '../../state/action/user';
+import Dashboard from '../dashboad/dashboard';
+import './auth.css';
 
-
-const Auth = () => {
+const Auth = () => { 
     const dispatch = useDispatch();
-    const {Loading} = useSelector((state)=> state.auth);
+    const {Loading, alert} = useSelector((state)=> state.auth);
     const navigate = useNavigate();
     const initialState = {username: "", password: "", confirmPassword: "", firstName: "", lastName: ""};
     const [mode, setMode] = useState(true)
@@ -30,12 +31,15 @@ useEffect(()=>{
     setAuthPage(initialState);
   }  
 
-  return (
-    <div style={{height:"100%"}}>
+ 
 
-  <Container maxWidth="xs" sx={{marginTop: {md:"6rem", xs:"10rem", sm:"7rem"}}}>
+  return (
+    <div className="authContainer">
+
+  <Container maxWidth="xs" sx={{marginTop: {md:"6rem", xs:"2rem", sm:"2rem"},}}>
+    <div style={{textAlign:"center", marginTop:"1rem"}}>SignUP</div>
     <Paper elevation={5} >
-    <Grid container textAlign="center" p={4} rowSpacing={2}>
+    <Grid container textAlign="center" p={3} rowSpacing={2}>
         <Grid item xs={12} sm={12} md={12}>
             <TextField value={authPage.username} name="username" type="email" label="Username"
             onChange={handleAuthChange}/>
@@ -67,22 +71,26 @@ useEffect(()=>{
         <Button onClick={()=> setMode((prev)=> !prev)}> { mode? "DONT HAVE AN ACCOUNT ? Sign Up": "ALREADY HAVE AN ACCOUNT? Sign In"}
       </Button>
         </Grid>
-
+     
      {
-       Loading? (
-        <div style={{textAlign: "center", alignItem: "center", justifyContent:"center", marginLeft: "8rem"}}>
+       Loading && (
+        <div className="circularProgress">
           <CircularProgress />
-        </div>):(
+        </div>) 
+        }
+
         <Grid item xs={12} sm={12} md={12}>
-          <Button sx={{width:"15rem"}} variant="contained" onClick={handleAuthSubmit}>LOGIN</Button>
-       </Grid>)
-      }
-
+          <Button disabled={Loading} sx={{width:"15rem"}} variant="contained" onClick={handleAuthSubmit}>LOGIN</Button>
+       </Grid>
+        
+        <Grid sx={{textAlign:"center", color:"red", fontWeight:"600"}}>{alert}</Grid>
+       
     </Grid>
-
-    </Paper>
-
+  </Paper>
   </Container>
+
+  <Dashboard/>
+
   </div>
 
   )

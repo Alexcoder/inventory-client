@@ -21,8 +21,11 @@ function App() {
 
   return (
     <div 
-    style={{height: "100%", width:"100%", 
-        background: "linear-gradient(to top right, brown, rgba(0, 0, 0, 0.600))"}} >
+    style={{
+        // height: "100%", width:"100%", 
+        // background: "linear-gradient(to top right, brown, rgba(0, 0, 0, 0.600))"
+      }} 
+        >
      <Navbar />
         <div style={{display: "flex"}}>
           {

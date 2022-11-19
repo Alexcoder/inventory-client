@@ -9,7 +9,7 @@ const NavHero = ({onClick1, onClick2, onClick3, onClick4,}) => {
 
 
   return (
-    <div id="navHeroContainer" onClick={()=> {setOpen(false)}}>
+    <div className="navHeroContainer" onClick={()=> {setOpen(false)}}>
       <div className="container">
         <div>
           <button 

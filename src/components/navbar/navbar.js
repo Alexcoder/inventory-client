@@ -17,7 +17,7 @@ const Navbar = () => {
              onClick={()=> {setOpen((prev)=> !prev); setSidebar(!sidebar)}}
              className="menuIcon"><BiMenu/></button>
         }
-        <h1>INVENTORY</h1>
+        <h1 className="inventoryControl" style={{textAlign:"start", width:"12rem"}}>INVENTORY</h1>
         <h4 className="user">
           {user?.result ? user?.result.name : null}
         </h4>

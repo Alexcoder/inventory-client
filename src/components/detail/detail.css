@@ -1,5 +1,5 @@
 #detailContainer{
-    margin: 4.2rem 0rem 0rem 0.2rem;
+    margin: 4.2rem 0rem 0rem 12rem;
     display: flex;
     height: 70%;
     width: 100%;
@@ -19,5 +19,6 @@
 @media screen and (max-width:1024px){
     #detailContainer{
         flex-direction : column;
+        margin: 4.2rem 0rem 0rem 0rem;
     }
 }

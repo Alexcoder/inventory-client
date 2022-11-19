@@ -6,6 +6,7 @@ import moment from 'moment'
 import { Delete, MoneyOff } from '@mui/icons-material';
 import { deletePost, } from "../../state/action/posts";
 import { useGlobalContext } from "../../state/context";
+import {MdOutlineVisibility} from 'react-icons/md';
 import {Hero} from '../index';
 
 const ListSingle = () => {
@@ -42,38 +43,41 @@ const ListSingle = () => {
 
   return (
 
-<MUIList dense={false} 
-sx={{maxHeight:"300px", 
-    overflow:"auto", 
-    width:{sm:"100%", xs:"100%", md: "50%"},
-    marginTop:{xs:"0.3rem", sm:"0.3rem", md:"2rem"},
-    background: "white" 
-  }}
+     <MUIList dense={false} 
+     sx={{maxHeight:"450px", 
+         overflow:"auto", 
+         width:{sm:"100%", xs:"100%", md: "50%"},
+         marginTop:{xs:"0.3rem", sm:"0.3rem", md:"2rem"},
+         background: "white" 
+       }}
     >
-{ Loading ? "Loading..." :
-(
-handleMap().map((p) => (
-  <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
-     onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
-    <ListItem>
-      <ListItemAvatar>
-        <Avatar sx={{backgroundColor: p.type==="incomming"? "blue" : "red" }}>
-          <MoneyOff />
-        </Avatar>
-      </ListItemAvatar>
-      <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY, h:mm:ss a')}`} />
-      <ListItemSecondaryAction>
-        <IconButton edge="end" aria-label="delete" onClick={() => { setBin(true); setDeleteId(p._id) }}>
-          <Delete />
-        </IconButton>
-      </ListItemSecondaryAction>
-    </ListItem>
-  </Slide>
-)))}
-{bin && <Hero onClickDelete={deleteItem} /> } 
-</MUIList>
+     { Loading ? "Loading..." :
+     (
+     handleMap().map((p) => (
+       <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
+          onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
+         <ListItem>
+           <ListItemAvatar>
+             <Avatar sx={{backgroundColor: p.type==="incomming"? "blue" : "red" }}>
+               <MoneyOff />
+             </Avatar>
+           </ListItemAvatar>
+           <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY, h:mm:ss a')}`} />
+           <ListItemSecondaryAction>
+             <IconButton edge="end" aria-label="delete" onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
+               <MdOutlineVisibility />
+             </IconButton>
+             <IconButton edge="end" aria-label="delete" onClick={() => { setBin(true); setDeleteId(p._id) }}>
+               <Delete />
+             </IconButton>
+           </ListItemSecondaryAction>
+         </ListItem>
+       </Slide>
+     )))}
+     {bin && <Hero onClickDelete={deleteItem} /> } 
+     </MUIList>
 
-  );
-};
+       );
+     };
 
 export default ListSingle;

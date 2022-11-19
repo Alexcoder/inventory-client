@@ -1,6 +1,6 @@
 import {GET_AUTH, LOGOUT } from '../constants';
 
-const Auth = (auth={Loading:false, error:null, AuthData: JSON.parse(localStorage.getItem("profile")) || null }, action)=>{
+const Auth = (auth={Loading:false, alert:"", error:null, AuthData: JSON.parse(localStorage.getItem("profile")) || null }, action)=>{
     switch(action.type){
         case GET_AUTH:
             localStorage.setItem("profile", JSON.stringify({...action?.payload}));
@@ -17,8 +17,11 @@ const Auth = (auth={Loading:false, error:null, AuthData: JSON.parse(localStorage
             return {...auth, AuthData: null};
 
         case "END_LOADING":
+            return {...auth, Loading: false };
+
+        case "ALERT":
             return {...auth,
-                       Loading: false
+                       alert: action.payload
                        };
         
 

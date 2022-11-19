@@ -13,21 +13,23 @@ import * as api from '../api';
       navigate('/')
     }
     catch(error){
-      console.log(error)
+      dispatch({type: "ALERT", payload: error.response.data.message });
+      console.log(error.response.data.message)
     }
   }
 
   export const signUp = (form, navigate)=> async(dispatch)=> {
     try{
       dispatch({type: "START_LOADING"})
-
+      
       const {data} = await api.signUp(form)
       dispatch({type: GET_AUTH, payload: data })
       dispatch({type: "END_LOADING"})
       navigate('/')
+      console.log(data.message)
     }
     catch(error){
-      console.log(error)
+      dispatch({type: "ALERT", payload: error.response.data.message });
     }
   }
 

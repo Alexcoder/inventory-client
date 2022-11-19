@@ -101,14 +101,13 @@
 @media screen and (max-width: 1024px) {
   #dashboardContainer {
     max-width: 100%;
-    /* overflow: auto; */
+    overflow: hidden;
   }
   #flexItem{
     max-width: 100%;
-    /* overflow: auto; */
   }
   .data {
-    max-width: 100%;
+    max-width: 70%;
     overflow: auto
   } 
 

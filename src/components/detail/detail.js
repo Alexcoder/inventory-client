@@ -7,6 +7,7 @@ import { Delete, MoneyOff } from '@mui/icons-material';
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { getPost,deletePost, } from '../../state/action/posts';
 import { useGlobalContext } from '../../state/context';
+import {MdOutlineVisibility} from 'react-icons/md';
 import {Hero} from "../index";
 import './detail.css';
 
@@ -63,11 +64,13 @@ const Detail = () => {
         </Paper>
 
 
- { Loading ? <div style={{textAlign: "center", marginTop:"1rem"}}><CircularProgress/></div> :
+ { 
+ Loading ? <div style={{textAlign: "center", marginTop:"1rem"}}><CircularProgress/></div> :
   
+  // RecommendedPosts===null ? <div>NO OTHER RECORD</div>  :
 <MUIList dense={false} 
 sx={{ 
-     maxHeight:"20rem", 
+     maxHeight:"28rem", 
      marginTop:{sm:"0.5rem", xs:"0.5rem"} ,
      marginLeft:{sm:"0.2rem", xs:"0.2rem"},
      overflow:"auto", width:{md: "30rem", sm:"97vw", xs:"97vw"},
@@ -84,9 +87,12 @@ sx={{
       </ListItemAvatar>
       <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY, h:mm:ss a')}`} />
       <ListItemSecondaryAction>
-        <IconButton edge="end" aria-label="delete" onClick={()=> {setBin(true); setDeleteId(p._id)}}>
+      <IconButton edge="end" aria-label="delete" onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
+          <MdOutlineVisibility />
+      </IconButton>
+      <IconButton edge="end" aria-label="delete" onClick={()=> {setBin(true); setDeleteId(p._id)}}>
           <Delete />
-        </IconButton>
+      </IconButton>
       </ListItemSecondaryAction>
     </ListItem>
   </Slide>
