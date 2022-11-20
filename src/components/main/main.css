@@ -13,12 +13,20 @@
   padding: 1rem; 
   border-radius:0.5rem ;
   border: 1px solid transparent;
-  margin-top:  0.5rem; 
   color:  white;
-  /* background:  linear-gradient(to bottom right, blue, black); */
-  background:  blue;
+  background: rgb(131, 10, 131);
   font-weight:  550;  
   font-size: 15px; 
+}
+.dashboard{
+  color: gold;
+}
+.record{
+  color: gold;
+  margin-bottom: -1.5rem;
+  margin-left: 0.5rem;
+  margin-top: 1rem;
+  /* text-align: center; */
 }
 
 
@@ -34,10 +42,14 @@
     height: 100%;
     overflow: auto;
   }
+  .newTransaction{
+    margin-left: 0.5rem;
+    width: 99%;
+  }
+  
 }
-@media screen and (max-width: 620px) {
-  #mainContainer {
-    margin: 3.5rem 0rem 0rem 0rem;
+#mainContainer {
+  margin: 3.5rem 0rem 0rem 0rem;
     height: 100%;
     width: 100%;
   }
@@ -46,15 +58,33 @@
     height: 100%;
     overflow: auto;
   }
-}
+  
+  @media screen and (max-width: 620px) {
+    .newTransaction{
+      width: 99%;
+      margin-left: 0.5rem;
+      padding: 1rem; 
+    }
+  }
 
-@media screen and (max-width: 420px) {
-  #mainContainer {
-    margin: 3.5rem 0rem 0rem 0rem;
-    height: 100%;
-    width: 100%;
-  }
-  #mainContainer > div {
-    overflow: auto;
-  }
+  @media screen and (max-width: 420px) {
+    #mainContainer {
+      margin: 3.5rem 0rem 0rem 0rem;
+      height: 100%;
+      width: 100%;
+    }
+    #mainContainer > div {
+      overflow: auto;
+    }
+    .newTransaction{
+      width: 99%;
+      margin-left: 0.1rem;
+      padding: 1rem; 
+    }
+    .record{
+      margin-bottom: 0.5rem;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    
 }
