@@ -37,8 +37,10 @@ useEffect(()=>{
     <div className="authContainer">
 
   <Container maxWidth="xs" sx={{marginTop: {md:"6rem", xs:"2rem", sm:"2rem"},}}>
-    <div style={{textAlign:"center", marginTop:"1rem"}}>SignUP</div>
+    {/* <div style={{textAlign:"center", marginTop:"1rem"}}>SignUP</div> */}
     <Paper elevation={5} >
+    <Grid sx={{textAlign:"center", color:"red", fontWeight:"600"}}>{alert}</Grid>
+
     <Grid container textAlign="center" p={3} rowSpacing={2}>
         <Grid item xs={12} sm={12} md={12}>
             <TextField value={authPage.username} name="username" type="email" label="Username"
@@ -73,17 +75,18 @@ useEffect(()=>{
         </Grid>
      
      {
-       Loading && (
+       Loading ? (
         <div className="circularProgress">
           <CircularProgress />
-        </div>) 
+        </div>)  : null
         }
 
         <Grid item xs={12} sm={12} md={12}>
-          <Button disabled={Loading} sx={{width:"15rem"}} variant="contained" onClick={handleAuthSubmit}>LOGIN</Button>
+          <Button disabled={Loading} sx={{width:"15rem"}} variant="contained" onClick={handleAuthSubmit}>
+           { mode ? "LOGIN" : "CREATE ACCOUNT" }
+            </Button>
        </Grid>
         
-        <Grid sx={{textAlign:"center", color:"red", fontWeight:"600"}}>{alert}</Grid>
        
     </Grid>
   </Paper>
