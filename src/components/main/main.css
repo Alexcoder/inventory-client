@@ -1,16 +1,20 @@
-#mainContainer {
-  margin: 4rem 0rem 0rem 2rem;
+.mainContainer {
+  margin: 4rem 0rem 0rem 0rem;
   padding-bottom: 2rem;
   width: 100%;
   height: 100%;
 }
-#mainContainer > div {
+.mainContainer > div {
   width: 100%;
+  margin: 0rem 0rem 0rem 2rem;
+  text-align: start;
+  justify-content: center;
 }
 
 .newTransaction{
   width: 18rem;
   padding: 1rem; 
+  margin-top: 0.2rem;
   border-radius:0.5rem ;
   border: 1px solid transparent;
   color:  white;
@@ -22,25 +26,27 @@
   color: gold;
 }
 .record{
-  color: gold;
+  color: rgb(168, 24, 48);
   margin-bottom: -1.5rem;
   margin-left: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
   /* text-align: center; */
 }
 
 
 
 @media screen and (max-width: 1024px) {
-  #mainContainer {
+  .mainContainer {
     margin: 3.5rem 0rem 0rem 0rem;
     height: 100%;
     max-width: 100%;
   }
-  #mainContainer > div {
+  .mainContainer > div {
     width: 100%;
     height: 100%;
     overflow: auto;
+    margin: 0rem 0rem 0rem 0rem;
+
   }
   .newTransaction{
     margin-left: 0.5rem;
@@ -48,16 +54,6 @@
   }
   
 }
-#mainContainer {
-  margin: 3.5rem 0rem 0rem 0rem;
-    height: 100%;
-    width: 100%;
-  }
-  #mainContainer > div {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-  }
   
   @media screen and (max-width: 620px) {
     .newTransaction{
@@ -65,17 +61,30 @@
       margin-left: 0.5rem;
       padding: 1rem; 
     }
+    .mainContainer > div {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      margin: 0rem 0rem 0rem 0rem;
+  
+    }
+  
   }
 
   @media screen and (max-width: 420px) {
-    #mainContainer {
+    .mainContainer {
       margin: 3.5rem 0rem 0rem 0rem;
       height: 100%;
       width: 100%;
     }
-    #mainContainer > div {
+    .mainContainer > div {
+      width: 100%;
+      height: 100%;
       overflow: auto;
+      margin: 0rem 0rem 0rem 0rem;
+  
     }
+  
     .newTransaction{
       width: 99%;
       margin-left: 0.1rem;
@@ -83,7 +92,7 @@
     }
     .record{
       margin-bottom: 0.5rem;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
       text-align: center;
     }
     

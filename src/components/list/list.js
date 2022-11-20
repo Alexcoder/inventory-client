@@ -48,7 +48,8 @@ const ListSingle = () => {
          overflow:"auto", 
          width:{sm:"100%", xs:"100%", md: "50%"},
          marginTop:{xs:"0.3rem", sm:"0.3rem", md:"2rem"},
-         background: "white" 
+         background: "white",
+         boxShadow:"1px 1px 2rem 0.2rem gray" 
        }}
     >
      { Loading ? "Loading..." :
