@@ -52,6 +52,12 @@
     margin-left: 0.5rem;
     width: 99%;
   }
+  .record{
+    margin-bottom: 0.5rem;
+    margin-top: 2rem;
+    text-align: center;
+  }
+
   
 }
   
@@ -68,6 +74,12 @@
       margin: 0rem 0rem 0rem 0rem;
   
     }
+    .record{
+      margin-bottom: 0.5rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
   
   }
 

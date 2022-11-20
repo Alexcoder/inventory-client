@@ -1,10 +1,10 @@
 #detailContainer{
     margin: 4.2rem 0rem 0rem 12rem;
     display: flex;
-    height: 70%;
+    height: 100%;
     width: 100%;
     padding-bottom: 20rem;
-  position: fixed;
+    position: fixed;
 }
 .backButton{
     width: 18rem; 
@@ -20,5 +20,7 @@
     #detailContainer{
         flex-direction : column;
         margin: 4.2rem 0rem 0rem 0rem;
+        position: relative;
+        height: fit-content;
     }
 }

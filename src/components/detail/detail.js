@@ -44,8 +44,11 @@ const Detail = () => {
     <div id="detailContainer">
         <Paper key={post._id} elevation={5} 
         sx={{ 
-          margin: {md:"0rem 4rem 0rem 5rem", sm:"-0.4rem 0rem 0rem 0.3rem", xs:"-0.4rem 0rem 0rem 0.3rem"},
-             padding: "2rem", width:{md:"20rem", sm: "81%", xs:"81%"} }} >
+           margin: {md:"0rem 4rem 0rem 5rem", sm:"-0.4rem 0rem 0rem 0.3rem", xs:"-0.4rem 0rem 0rem 0.3rem"},
+           padding: "2rem", 
+           width:{md:"20rem", sm: "81%", xs:"81%"} ,
+           height:{md:"28rem"},
+           }} >
         <div  style={{textAlign: "start", gap: "1rem"}}> 
           <h2 style={{textAlign: "center"}}>{post.type==="incomming"? <span style={{color:"blue"}}>RECEIVED</span>: <span style={{color:"red"}}>SENT</span>}</h2>
           <div><span style={{fontWeight:"700"}}>By:  </span> {post.user}</div>
@@ -67,15 +70,16 @@ const Detail = () => {
  { 
  Loading ? <div style={{textAlign: "center", marginTop:"1rem"}}><CircularProgress/></div> :
   
-  // RecommendedPosts===null ? <div>NO OTHER RECORD</div>  :
 <MUIList dense={false} 
 sx={{ 
-     maxHeight:"28rem", 
-     marginTop:{sm:"0.5rem", xs:"0.5rem"} ,
-     marginLeft:{sm:"0.2rem", xs:"0.2rem"},
-     overflow:"auto", width:{md: "30rem", sm:"97vw", xs:"97vw"},
-     background: !RecommendedPosts ? "transparent" : "white",    }} >
+  maxHeight: {md:"28rem", sm:"38rem", xs:"38rem"}, 
+  width:{md: "30rem", sm:"97vw", xs:"97vw"},
+  marginTop:{sm:"0.5rem", xs:"0.5rem"} ,
+  marginLeft:{sm:"0.2rem", xs:"0.2rem"},
+  overflow:"auto", 
+  background: !RecommendedPosts ? "transparent" : "white",    }} >
 { 
+       !RecommendedPosts ? <div style={{color:"black"}}>NO OTHER RECORD</div>  :
  RecommendedPosts.map((p) => (
   <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
      onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
