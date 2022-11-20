@@ -72,14 +72,14 @@ const Detail = () => {
   
 <MUIList dense={false} 
 sx={{ 
-  maxHeight: {md:"28rem", sm:"38rem", xs:"38rem"}, 
+  maxHeight: {md:"28rem", sm:"20rem", xs:"20rem"}, 
   width:{md: "30rem", sm:"97vw", xs:"97vw"},
   marginTop:{sm:"0.5rem", xs:"0.5rem"} ,
   marginLeft:{sm:"0.2rem", xs:"0.2rem"},
   overflow:"auto", 
   background: !RecommendedPosts ? "transparent" : "white",    }} >
 { 
-       !RecommendedPosts ? <div style={{color:"black"}}>NO OTHER RECORD</div>  :
+ !RecommendedPosts ? <div style={{color:"black"}}>NO OTHER RECORD</div>  :
  RecommendedPosts.map((p) => (
   <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
      onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
@@ -87,13 +87,17 @@ sx={{
       <ListItemAvatar>
         <Avatar sx={{backgroundColor: p.type==="incomming"? "blue" : "red" }}>
           <MoneyOff />
-        </Avatar>
+        </Avatar
+        >
       </ListItemAvatar>
       <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY, h:mm:ss a')}`} />
-      <ListItemSecondaryAction>
-      <IconButton edge="end" aria-label="delete" onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
+      <ListItemSecondaryAction
+      >
+      <IconButton edge="end" aria-label="delete" 
+       onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})} }>
           <MdOutlineVisibility />
-      </IconButton>
+      </IconButton
+      >
       <IconButton edge="end" aria-label="delete" onClick={()=> {setBin(true); setDeleteId(p._id)}}>
           <Delete />
       </IconButton>
