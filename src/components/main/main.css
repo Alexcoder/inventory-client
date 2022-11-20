@@ -49,8 +49,9 @@
 
   }
   .newTransaction{
-    margin-left: 0.5rem;
-    width: 99%;
+    margin-top: 1rem;
+    margin-left: 8rem;
+    width: 65%;
   }
   .record{
     margin-bottom: 0.5rem;
@@ -79,8 +80,6 @@
       margin-top: 2rem;
       text-align: center;
     }
-
-  
   }
 
   @media screen and (max-width: 420px) {
@@ -98,8 +97,9 @@
     }
   
     .newTransaction{
-      width: 99%;
-      margin-left: 0.1rem;
+      width: 91%;
+      margin-left: 1rem;
+      margin-top: 0.5rem;
       padding: 1rem; 
     }
     .record{
