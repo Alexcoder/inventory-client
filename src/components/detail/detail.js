@@ -81,6 +81,7 @@ sx={{
 { 
  !RecommendedPosts[0] ?
   <div 
+    onClick={()=> navigate(`/update`)}
     style={{
       color:"red",
       width:"fit-content",

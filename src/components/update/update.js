@@ -52,7 +52,7 @@ const Update =()=>{
         <Paper elevation={5} 
         sx={{  position:"fixed",
           margin:{md:"1.2rem 0rem 0rem 15rem", sm: "0.2rem 0rem 0rem 0.08rem", xs:"0.2rem 0rem 0rem 0.08rem"},
-         maxHeight: {md: "21rem", sm:"20rem", xs:"35rem"},
+         maxHeight: {md: "26rem", sm:"24rem", xs:"39rem"},
          width:{xs:"99%", sm:"99%", md:"30%"}, height: "100%", }}>
         <Grid
           container
@@ -141,7 +141,8 @@ const Update =()=>{
               <MenuItem value={"outgoing"}> Outgoing </MenuItem>
             </TextField>
           </Grid>
-  
+
+          <div>
           <Grid item xs={12} sm={12} md={6}>
             <Button
               type="submit"
@@ -150,9 +151,21 @@ const Update =()=>{
               mt={1}
               sx={{marginTop:"2rem", width: { md: "12rem", xs: "15.1rem", sm: "14rem" }, height: "3.5rem" }}
             >
-              SUBMIT
+              ADD TRANSACTION
             </Button>
           </Grid>
+          <Grid item xs={12} sm={12} md={6}>
+            <Button
+              type="submit"
+              onClick={()=> navigate(`/`)}
+              variant="contained"
+              mt={1}
+              sx={{marginTop:"1rem", width: { md: "12rem", xs: "15.1rem", sm: "14rem" }, height: "3.5rem" }}
+            >
+              BACK
+            </Button>
+          </Grid>
+          </div>
         </Grid>
         </Paper>
         </div>

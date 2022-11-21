@@ -31,10 +31,6 @@ const ListSingle = () => {
   } 
  } 
 
- if(Loading){
-  return "Loading"
- }
-
  const deleteItem = ()=>{
   dispatch(deletePost(deleteId));
   setBin(false)
@@ -46,6 +42,7 @@ const ListSingle = () => {
     {
     Loading ? "Loading..." : !handleMap()[0]?
     <div
+    onClick={()=> navigate(`/update`)}
     style={{
      color:"red",
      width:"fit-content",
