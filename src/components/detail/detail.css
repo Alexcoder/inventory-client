@@ -6,6 +6,18 @@
     padding-bottom: 20rem;
     position: fixed;
 }
+.noSimilarRecord{
+    color: rgb(245, 236, 236);
+    width: fit-content;
+    padding: 2rem;
+    border:  1px solid gray;
+    font-size: 1.3rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    background-color: rgb(110, 84, 84);
+    text-align:  center;
+    box-shadow: 0rem 0.5px 0.5rem 0rem gray;
+}
 .backButton{
     width: 18rem; 
     padding: 0.7rem; 
@@ -22,5 +34,20 @@
         margin: 4.2rem 0rem 0rem 0rem;
         position: relative;
         height: fit-content;
+    }
+}
+
+@media screen and (max-width:620px){
+   
+    .noSimilarRecord{
+        /* color: RED; */
+        width: 96%;
+        padding: 1rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        border-radius: 0.5rem;
+        /* background-color: white; */
+        text-align:  center;
+        box-shadow: 0rem 0.5px 0.5rem 0rem gray;
     }
 }

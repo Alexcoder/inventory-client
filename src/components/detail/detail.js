@@ -81,19 +81,9 @@ sx={{
 { 
  !RecommendedPosts[0] ?
   <div 
-    onClick={()=> navigate(`/update`)}
-    style={{
-      color:"red",
-      width:"fit-content",
-      padding:"2rem",
-      border: "1px solid gray",
-      fontSize:"1.3rem",
-      fontWeight:"700",
-      borderRadius:"0.5rem",
-      backgroundColor:"gray",
-      boxShadow:"0rem 0.5px 0.5rem 0rem gray",
-      }}>
-         NO SIMILAR RECORD
+    className="noSimilarRecord"
+    onClick={()=> navigate(`/update`)}>
+        NO SIMILAR RECORD
    </div>  :
  RecommendedPosts.map((p) => (
   <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
