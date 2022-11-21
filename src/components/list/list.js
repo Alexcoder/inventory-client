@@ -42,6 +42,26 @@ const ListSingle = () => {
 
 
   return (
+    <div>
+    {
+    Loading ? "Loading..." : !handleMap()[0]?
+    <div
+    style={{
+     color:"red",
+     width:"fit-content",
+     padding:"2rem",
+     border: "1px solid gray",
+     fontSize:"1.3rem",
+     fontWeight:"700",
+     borderRadius:"0.5rem",
+     backgroundColor:"gray",
+     margin:"2rem 0rem 0rem 0rem",
+     boxShadow:"0rem 0.5px 0.5rem 0rem gray",
+
+    }}
+    > ADD TRANSACTION TO CONTINUE
+    </div> :
+
 
      <MUIList dense={false} 
      sx={{maxHeight:"450px", 
@@ -52,7 +72,7 @@ const ListSingle = () => {
          boxShadow:"1px 1px 2rem 0.2rem gray" 
        }}
     >
-     { Loading ? "Loading..." :
+     {
      (
      handleMap().map((p) => (
        <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
@@ -77,7 +97,8 @@ const ListSingle = () => {
      )))}
      {bin && <Hero onClickDelete={deleteItem} /> } 
      </MUIList>
-
+    }
+</div>
        );
      };
 

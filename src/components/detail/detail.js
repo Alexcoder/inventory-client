@@ -77,9 +77,23 @@ sx={{
   marginTop:{sm:"0.5rem", xs:"0.5rem"} ,
   marginLeft:{sm:"0.2rem", xs:"0.2rem"},
   overflow:"auto", 
-  background: !RecommendedPosts ? "transparent" : "white",    }} >
+  background: !RecommendedPosts[0] ? "transparent" : "white",    }} >
 { 
- !RecommendedPosts ? <div style={{color:"black"}}>NO OTHER RECORD</div>  :
+ !RecommendedPosts[0] ?
+  <div 
+    style={{
+      color:"red",
+      width:"fit-content",
+      padding:"2rem",
+      border: "1px solid gray",
+      fontSize:"1.3rem",
+      fontWeight:"700",
+      borderRadius:"0.5rem",
+      backgroundColor:"gray",
+      boxShadow:"0rem 0.5px 0.5rem 0rem gray",
+      }}>
+         NO SIMILAR RECORD
+   </div>  :
  RecommendedPosts.map((p) => (
   <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
      onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
