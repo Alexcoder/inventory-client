@@ -24,8 +24,8 @@ const navigate = useNavigate();
 
              <div>
                <h1 className="record">RECORD</h1>
-               { Loading ? <h3 style={{color: "black", fontStyle:"italics"}}>Loading ...</h3> :
-                  <div style={{ marginTop: "0.2rem", display: {md:"flex", sm:"grid",xs:"grid"}, gap: "2rem"}}>
+               { Loading ? <h3 className="loading" >Loading . . .</h3> :
+                  <div style={{ marginTop: "0.1rem"}}>
                   <ListSingle  />
                </div>
                 }
