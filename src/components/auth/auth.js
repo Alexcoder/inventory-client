@@ -25,8 +25,7 @@ useEffect(()=>{
 
   const handleAuthSubmit =(e)=>{
     e.preventDefault();
-    if(!mode & authPage.password !== authPage.confirmPassword) alert("password mismatch");
-    else if(mode) dispatch(signIn({...authPage}, navigate));
+    if(mode) dispatch(signIn({...authPage}, navigate));
     else dispatch(signUp({...authPage}, navigate));
     setAuthPage(initialState);
   }  
@@ -37,9 +36,15 @@ useEffect(()=>{
     <div className="authContainer">
 
   <Container maxWidth="xs" sx={{marginTop: {md:"6rem", xs:"2rem", sm:"2rem"},}}>
-    {/* <div style={{textAlign:"center", marginTop:"1rem"}}>SignUP</div> */}
-    <Paper elevation={5} >
-    <Grid sx={{textAlign:"center", color:"red", fontWeight:"600"}}>{alert}</Grid>
+    <Paper elevation={5} pt={1} >
+    {
+       Loading && (
+        <div className="circularProgress">
+          <CircularProgress />
+        </div>) 
+        }
+
+    <Grid sx={{textAlign:"center", color:"red", fontWeight:"600", paddingTop:"1rem"}}>{alert}</Grid>
 
     <Grid container textAlign="center" p={3} rowSpacing={2}>
         <Grid item xs={12} sm={12} md={12}>
@@ -74,12 +79,6 @@ useEffect(()=>{
       </Button>
         </Grid>
      
-     {
-       Loading ? (
-        <div className="circularProgress">
-          <CircularProgress />
-        </div>)  : null
-        }
 
         <Grid item xs={12} sm={12} md={12}>
           <Button disabled={Loading} sx={{width:"15rem"}} variant="contained" onClick={handleAuthSubmit}>

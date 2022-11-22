@@ -13,8 +13,8 @@ import * as api from '../api';
       navigate('/')
     }
     catch(error){
+      dispatch({type: "END_LOADING"})
       dispatch({type: "ALERT", payload: error.response.data.message });
-      console.log(error.response.data.message)
     }
   }
 
@@ -26,9 +26,9 @@ import * as api from '../api';
       dispatch({type: GET_AUTH, payload: data })
       dispatch({type: "END_LOADING"})
       navigate('/')
-      console.log(data.message)
     }
     catch(error){
+      dispatch({type: "END_LOADING"})
       dispatch({type: "ALERT", payload: error.response.data.message });
     }
   }
