@@ -1,8 +1,11 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../state/context";
 import "./dashboard.css"
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
     const {
         FluidLossIn, FluidLossOut,AntifoamIn, AntifoamOut,
         DispersantIn, DispersantOut, RetarderIn, RetarderOut, CementIn, CementOut, BentoniteIn, BentoniteOut,
@@ -11,7 +14,7 @@ const Dashboard = () => {
         FluidLossAmountIn, FluidLossAmountOut,DispersantAmountIn, DispersantAmountOut,CementAmountIn,
         CementAmountOut, BentoniteAmountIn,BentoniteAmountOut,CalciumChlorideAmountIn, CalciumChlorideAmountOut,
         ButylGlycolAmountIn, ButylGlycolAmountOut,SurfactantAmountIn, SurfactantAmountOut, ViscosifierAmountIn,
-        ViscosifierAmountOut, IncommingTotalAmount, OutgoingTotalAmount, 
+        ViscosifierAmountOut, IncommingTotalAmount, OutgoingTotalAmount, user
    }= useGlobalContext();
 
   
@@ -120,7 +123,6 @@ return moneyFormat
    <div id="dashboardContainer">
    
     <div >
-
       <div className="paper-wrap">
         <div style={{display: "flex",margin:"0rem 0rem 0rem 2rem" }}>
           <div style={{ marginTop:"3.5rem"}}>
@@ -163,14 +165,22 @@ return moneyFormat
         </div>
         {/* Total Amount In and Out Below */}
         <div style={{display:"block", gap:"2rem", padding:"2rem 1rem 2rem 2rem", backgroundColor:"smokewhite", height:"2rem"}}>
-        <div><span style={{fontWeight:"700"}}>TOTAL RECEIVED</span>: ${Money(IncommingTotalAmount)}</div>
-        <div><span style={{fontWeight:"700"}}>TOTAL SENT</span>: ${Money(OutgoingTotalAmount)} </div>
-        <div><span style={{fontWeight:"700"}}>TOTAL BALANCE</span>: ${Money(IncommingTotalAmount-OutgoingTotalAmount)}</div>
+        <div><span style={{fontWeight:"700"}}>TOTAL RECEIVED</span>: ${Money(IncommingTotalAmount)}.00</div>
+        <div><span style={{fontWeight:"700"}}>TOTAL SENT</span>: ${Money(OutgoingTotalAmount)}.00 </div>
+        <div style={{fontWeight:"700", fontSize:"1.2rem"}}><span >TOTAL BALANCE</span>: ${Money(IncommingTotalAmount-OutgoingTotalAmount)}.00</div>
         </div>
-        </div>
-        </div>
- 
+      </div>
     </div>
+     { 
+        <button
+          disabled={!user}
+          className={user? "newTransaction" : "newTransaction disabled"}
+          onClick={() => navigate(`/update`)}>
+          ADD TRANSACTION
+        </button>
+     }
+
+   </div>
   )
 }
 

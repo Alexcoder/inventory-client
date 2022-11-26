@@ -1,0 +1,12 @@
+.addTransactionToContinue{
+    color: red;
+     width: fit-content;
+     padding: 2rem;
+     border:  1px solid gray;
+     font-size: 1.3rem;
+     font-weight: 700;
+     border-radius: 0.5rem;
+     background-color: gray;
+     margin: 2rem 0rem 0rem 0rem;
+     box-shadow: 0rem 0.5px 0.5rem 0rem gray;
+}

@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div >
-     <Navbar />
+      { user?.result && <Navbar />}
         <div style={{display: "flex"}}>
           {
             user?.result && sidebar ?

@@ -65,7 +65,7 @@ const Update =()=>{
             width: { md: "25rem", xs: "99%", sm: "99%" },
           }}
         >
-            <Grid item xs={12} sm={4} md={6} sx={{ width: "17rem" }}>
+          <Grid item xs={12} sm={4} md={6} sx={{ width: "17rem" }}>
             <TextField
               label="category"
               select
@@ -92,10 +92,8 @@ const Update =()=>{
             name="quantity"
             value={formData.quantity}
             onChange={(e) =>
-              setFormData({ ...formData, quantity: e.target.value })
-            }
+              setFormData({ ...formData, quantity: e.target.value })}
           />
-
           <SingleMain
             label="Price"
             sx={{ width: { md: "12rem", xs: "15rem", sm: "15rem" } }}
@@ -104,8 +102,6 @@ const Update =()=>{
             value={formData.price}
             onChange={(e) => setFormData({ ...formData, price: e.target.value })}
           />
-
-
           <SingleMain
             label="Location"
             sx={{ width: { md: "12rem", xs: "15rem", sm: "15rem" } }}

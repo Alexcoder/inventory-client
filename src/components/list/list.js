@@ -8,6 +8,7 @@ import { deletePost, } from "../../state/action/posts";
 import { useGlobalContext } from "../../state/context";
 import {MdOutlineVisibility} from 'react-icons/md';
 import {Hero} from '../index';
+import './list.css';
 
 const ListSingle = () => {
   const {Loading} = useSelector((state)=> state.posts);
@@ -43,20 +44,8 @@ const ListSingle = () => {
     Loading ? "Loading..." : !handleMap()[0]?
     <div
     onClick={()=> navigate(`/update`)}
-    style={{
-     color:"red",
-     width:"fit-content",
-     padding:"2rem",
-     border: "1px solid gray",
-     fontSize:"1.3rem",
-     fontWeight:"700",
-     borderRadius:"0.5rem",
-     backgroundColor:"gray",
-     margin:"2rem 0rem 0rem 0rem",
-     boxShadow:"0rem 0.5px 0.5rem 0rem gray",
-
-    }}
-    > ADD TRANSACTION TO CONTINUE
+    className="addTransactionToContinue">
+     ADD TRANSACTION TO CONTINUE
     </div> :
 
 
