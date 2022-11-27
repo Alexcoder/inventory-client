@@ -1,7 +1,7 @@
 import React, {useEffect,} from 'react';
 import {Route, Routes, Navigate, useNavigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux';
-import {Navbar, Main, Detail, Auth, SideBar, Update, Hero, NavHero} from './components';
+import {Navbar, Main, Detail, Auth, SideBar,Hero, NavHero} from './components';
 import {getPosts,} from './state/action/posts';
 import { useGlobalContext } from './state/context';
 import {ProtectedRoute, LoginRoute} from './components/protectedRoute';
@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div >
-      { user?.result && <Navbar />}
+      <Navbar />
         <div style={{display: "flex"}}>
           {
             user?.result && sidebar ?
@@ -33,7 +33,6 @@ function App() {
            <Route path='/home'  element={<ProtectedRoute><Main/></ProtectedRoute>}/>
            <Route path='/:category'  element={<ProtectedRoute><Detail/></ProtectedRoute>}/>
            <Route path='/auth'  element={<LoginRoute><Auth/></LoginRoute>}/>
-           <Route path='/update'  element={<ProtectedRoute><Update/></ProtectedRoute>}/>
      </Routes>
      {logout ? <Hero/> : null}
          </div>

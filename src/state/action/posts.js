@@ -27,11 +27,11 @@ export const getPost = (id)=> async (dispatch)=> {
     }
   }
 
-  export const createPost = (post, history)=> async(dispatch)=> {
+  export const createPost = (newData)=> async(dispatch)=> {
 
     try{
       dispatch({type: "LOADING_START"})
-      const {data} = await api.createPost(post)
+      const {data} = await api.createPost(newData)
       dispatch({type: CREATE_POST, payload: data })
       dispatch({type: "LOADING_STOP"})
     }

@@ -4,24 +4,22 @@
   box-shadow: 0.1rem 0.1rem 0.1rem 0rem gray;
   padding: 0rem 0rem 1rem 0rem;
 }
-.newTransaction{
+
+.add-transaction{
   width: 18rem;
   padding: 1rem; 
   margin-top: 0.5rem;
-  margin-left: 0.5rem;
+  margin-left: 2rem;
   border-radius:0.5rem ;
   border: 1px solid transparent;
   color:  white;
-  background: rgb(131, 10, 131);
+  background: rgba(131, 10, 131);
   font-weight:  550;  
   font-size: 15px; 
 }
 .disabled{
   background: gray;
-
 }
-
-
 .paper-wrap {
   width: 70%;
   margin: 0rem 0rem 0rem 0.5rem;
@@ -85,20 +83,15 @@
   color: red; 
   font-weight:500;
 }
-
 #dashboard>div {
   overflow: auto;
   border: 1.4px solid gray;
   margin: 0rem 0rem 0rem 4rem;
   padding: 0.3rem 0rem 0.3rem 0rem;
-
 }
-
 .data {
   display: grid;
 }
-
-
 .sumDiv {
   width: 7rem;
   margin: 0.1rem 0.05rem 0rem 0rem;
@@ -116,6 +109,7 @@
   margin: 1rem 0rem 0rem 2rem;
 }
 
+/*--MEDIA QUERY 1024PX-- */
 @media screen and (max-width: 1024px) {
   #dashboardContainer {
     max-width: 100%;
@@ -124,11 +118,15 @@
   #flexItem{
     max-width: 100%;
   }
+  .add-transaction{
+    margin-top: 1rem;
+    margin-left: 8rem;
+    width: 65%;
+  }
   .data {
     max-width: 70%;
     overflow: auto
   } 
-
   .paper-wrap {
     width: 55rem;
     margin: 0rem -2rem 0rem 0.5rem;
@@ -136,6 +134,7 @@
   }
 }
 
+/* -- MEDIA QUERY 620PX-- */
 @media screen and (max-width: 620px) {
   #dashboardContainer {
     max-width: 100%;
@@ -145,8 +144,11 @@
     max-width: 60%;
     overflow: auto
   }
-  
-
+  .add-transaction{
+    width: 99%;
+    margin-left: 0.5rem;
+    padding: 1rem; 
+  }
   .paper-wrap {
     width: 100%;
     margin: 0rem -2rem 0rem 0.5rem;
@@ -154,7 +156,7 @@
   }
 }
 
-@media screen and (max-width: 412px) {
+@media screen and (max-width: 420px) {
   #dashboardContainer {
     max-width: 100%;
     overflow: hidden;
@@ -164,8 +166,12 @@
     max-width: 20%;
     overflow: auto
   }
-  
-
+  .add-transaction{
+    width: 80%;
+    margin-left: 2.5rem;
+    margin-top: 0.5rem;
+    padding: 1rem; 
+  }
   .paper-wrap {
     width: 55rem;
     margin: 0rem -2rem 0rem 0.5rem;

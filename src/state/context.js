@@ -22,6 +22,7 @@ export const Context =({children})=>{
     const[deleteId, setDeleteId]= useState();
     const [bin, setBin] = useState(false)
     const [sidebar, setSidebar] = useState(false)
+    const[update, setUpdate]=useState(false) 
     const [logout, setLogout] = useState(false)
     const [transaction, setTransaction] = useState(false)
     const [open, setOpen] = useState(false)
@@ -151,7 +152,7 @@ export const Context =({children})=>{
       ButylGlycolAmountIn, ButylGlycolAmountOut,SurfactantAmountIn, SurfactantAmountOut, ViscosifierAmountIn,
       ViscosifierAmountOut,IncommingTotalAmount, OutgoingTotalAmount, HandleTotal, user, creator, 
       filteredByUser,search, setSearch, transaction, setTransaction, open, setOpen,bin, setBin, logout, setLogout,
-      deleteId, setDeleteId, sidebar, setSidebar,
+      deleteId, setDeleteId, sidebar, setSidebar,update, setUpdate,
       }}
     >
       {children}
