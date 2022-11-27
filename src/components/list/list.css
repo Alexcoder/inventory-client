@@ -10,3 +10,47 @@
      margin: 2rem 0rem 0rem 0rem;
      box-shadow: 0rem 0.5px -0.5rem 0rem gray;
 }
+.record{
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1.8rem;
+    /* background: gray; */
+  }
+  .listContainer{
+    margin-top:  1rem;
+    background:  white;
+    box-shadow:  1px 1px 2rem -0.2rem gray;
+    width: 50%;
+    border: 0.2px solid lightgray;
+    padding: 0.5rem 1rem;
+
+  }
+
+  @media screen and (max-width: 1024px) {
+    .listContainer{
+        width: 96%;
+      }
+     .record{
+    width: 96%;
+  }
+  }
+    
+    @media screen and (max-width: 620px) {
+        .listContainer{
+            width: 91.5%;
+          }
+        .record{
+        width: 96%;
+      }
+    }
+  
+    @media screen and (max-width: 420px) {
+        .listContainer{
+            width: 91.5%;
+          }
+      .record{
+        width: 96%;
+      }
+  }
+  

@@ -11,7 +11,7 @@ import {ProtectedRoute, LoginRoute} from './components/protectedRoute';
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {user, logout, setOpen, open, sidebar}= useGlobalContext();
+  const {user, logout, setOpen, open, sidebar, setUpdate}= useGlobalContext();
 
   
   useEffect(()=> {
@@ -37,7 +37,7 @@ function App() {
      {logout ? <Hero/> : null}
          </div>
          {
-            open && <NavHero onClick1={()=>{navigate('/update'); setOpen(false)} }/>
+            open && <NavHero onClick1={()=>{setUpdate((prev)=> !prev); setOpen((prev)=> !prev)} }/>
          } 
 
     </div>

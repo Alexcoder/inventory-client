@@ -39,27 +39,13 @@ const Update =()=>{
       };
     
     return(
-      <div className="update"
-      //  sx={{
-      //   position:"absolute",
-      //   padding:"2rem 0rem 0rem 0rem",
-      //   top:"2.5rem",
-      //   left:"0", 
-      //   right:"0", 
-      //   textAlign:"center", 
-      //   justifyContent:"center",
-      //   width:"100vw",
-      //   height : { md:"250%", sm:"200%", xs:"135%"},
-      //   transition:"2s ease in",
-      //   background: "rgba(0, 0, 0, 0.600)",
-      //  }}
-      >
+      <div className="update">
         <Paper elevation={5} 
         sx={{ 
            position:"fixed",
            textAlign:"center",
-          margin:{md:"0rem 0rem 0rem 25rem", sm: "0.2rem 0rem 0rem 6rem", xs:"1.5rem 0rem 0rem 2.5rem"},
-         maxHeight: {md: "34rem", sm:"35rem", xs:"45rem"},
+          margin:{md:"0rem 0rem 0rem 25rem", sm: "0.2rem 0rem 0rem 11rem", xs:"1.5rem 0rem 0rem 2.5rem"},
+         maxHeight: {md: "34rem", sm:"45rem", xs:"45rem"},
          width:{xs:"82%", sm:"55%", md:"25%"}, }}>
 
         <Grid
@@ -147,7 +133,7 @@ const Update =()=>{
 
           <Grid item xs={12} sm={12} md={12}
             sx={{
-            marginLeft:{ md: "rem",  } ,
+            // marginLeft:{ md: "-3rem",  } ,
             marginTop:{ md: "1rem", sm: "3rem", xs: "2rem" } ,
             width: { md: "12rem", xs: "15.1rem", sm: "14rem" }, 
             height: "2rem" }}>
@@ -158,8 +144,9 @@ const Update =()=>{
               variant="contained"
               mt={1}
               sx={{
-                width: { md: "12rem", xs: "15.1rem", sm: "14rem" }, 
-                height: "2rem" 
+                marginLeft:{ md: "-3rem", sm:"3rem"  } ,
+                width: { md: "12rem", xs: "15.1rem", sm: "19rem" }, 
+                height: "2.5rem" 
                 }}>
               ADD TRANSACTION
             </Button>
@@ -171,10 +158,10 @@ const Update =()=>{
               variant="contained"
               mt={1}
               sx={{
-                marginTop:"1rem", 
-                width: { md: "12rem", xs: "15.1rem", sm: "14rem" }, 
-                // marginLeft:{md:"-3rem",sm:"3rem"} ,
-                height: "2rem" }}>
+                marginTop:"1.5rem", 
+                width: { md: "12rem", xs: "15.1rem", sm: "19rem" }, 
+                marginLeft:{md:"-3rem", sm:"3rem"} ,
+                height: "2.5rem" }}>
               BACK
             </Button>
           </Grid>

@@ -29,9 +29,13 @@
   display: flex;
   margin: 0rem 2.5rem 0rem 0rem;
 }
-.sentText, .stockText, .sentTotalText, .balanceTotalText{
+.sentText, .stockText, .sentTotalText{
   font-weight: 700; 
   margin-left: 3.5rem;
+}
+.balanceTotalText{
+  font-weight: 700; 
+  margin-left: 2rem;
 }
 .receivedText{
   font-weight: 700; 
@@ -78,8 +82,8 @@
 }
 .balance{
   flex-basis:25% ;
-  margin-left: 2rem;  
-  text-align:start ;
+  margin-left: 2.5rem;  
+  text-align: end ;
   color: red; 
   font-weight:500;
 }

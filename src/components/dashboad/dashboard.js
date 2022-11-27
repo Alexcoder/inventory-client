@@ -167,8 +167,6 @@ const Dashboard = () => {
           </div>
         </div>
         <button
-          // style={{background: "green"}}
-          // className="add-transaction"
           className= {user?.result ?  "add-transaction" : "add-transaction disabled"}
           disabled={!user?.result}
           onClick={() => setUpdate(true)}>
