@@ -1,5 +1,5 @@
 import React, {useEffect,} from 'react';
-import {Route, Routes, Navigate, useNavigate} from 'react-router-dom'
+import {Route, Routes, Navigate} from 'react-router-dom'
 import {useDispatch} from 'react-redux';
 import {Navbar, Main, Detail, Auth, SideBar,Hero, NavHero} from './components';
 import {getPosts,} from './state/action/posts';
@@ -10,7 +10,6 @@ import {ProtectedRoute, LoginRoute} from './components/protectedRoute';
 
 function App() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const {user, logout, setOpen, open, sidebar, setUpdate}= useGlobalContext();
 
   
