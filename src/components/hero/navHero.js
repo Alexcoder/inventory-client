@@ -4,7 +4,7 @@ import {useGlobalContext} from '../../state/context';
 import "./navHero.css";
 
 
-const NavHero = ({onClick1, onClick2, onClick3, onClick4,}) => { 
+const NavHero = ({onClick}) => { 
   const {setOpen} = useGlobalContext();
 
 
@@ -16,7 +16,7 @@ const NavHero = ({onClick1, onClick2, onClick3, onClick4,}) => {
           onClick={()=> {setOpen(false)}}
           style={{float:"right",width:"2rem"}}><CloseIcon/></button>
         </div>
-        <button onClick={onClick1} style={{marginTop:"0.5rem", height:"4rem"}}>CREATE TRANSACTION</button>
+        <button className="heroNavButton" onClick={onClick}>ADD TRANSACTION</button>
       </div>
     </div>
   )

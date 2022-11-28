@@ -5,7 +5,6 @@ import {Navbar, Main, Detail, Auth, SideBar,Hero, NavHero} from './components';
 import {getPosts,} from './state/action/posts';
 import { useGlobalContext } from './state/context';
 import {ProtectedRoute, LoginRoute} from './components/protectedRoute';
-// import BookSearch from './BookSearch';
 
 
 function App() {
@@ -36,7 +35,7 @@ function App() {
      {logout ? <Hero/> : null}
          </div>
          {
-            open && <NavHero onClick1={()=>{setUpdate((prev)=> !prev); setOpen((prev)=> !prev)} }/>
+            open && <NavHero onClick={()=>{setUpdate(true); setOpen((prev)=> !prev)} }/>
          } 
 
     </div>

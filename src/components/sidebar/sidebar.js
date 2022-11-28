@@ -10,8 +10,8 @@ const SideBar = () => {
     <div id="sidebarContainer" >
       <div>
         <div>
-         <button className="addTransaction" onClick={()=> {setUpdate((prev)=> !prev); setSidebar((prev)=> !prev)}} >ADD TRANSACTION</button>
-
+          <button className="addTransaction" onClick={() => { setUpdate(true); setSidebar(false) }} >ADD TRANSACTION</button>
+         <hr />
         </div>
       </div>
 

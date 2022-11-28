@@ -41,12 +41,12 @@ const Detail = () => {
     
   
   return (
-    <div id="detailContainer">
+    <section id="detailContainer">
         <Paper key={post._id} elevation={5} 
         sx={{ 
-           margin: {md:"0rem 4rem 0rem 5rem", sm:"-0.4rem 0rem 0rem 0.3rem", xs:"-0.4rem 0rem 0rem 0.3rem"},
+           margin: {md:"0rem 4rem 0rem 5rem", sm:"1rem 0rem 0rem 0rem", xs:"1rem 0rem 0rem 0.3rem"},
            padding: "2rem", 
-           width:{md:"20rem", sm: "81%", xs:"81%"} ,
+           width:{md:"20rem", sm: "91%", xs:"82.5%"} ,
            height:{md:"28rem"},
            }} >
         <div  style={{textAlign: "start", gap: "1rem"}}> 
@@ -66,16 +66,19 @@ const Detail = () => {
         </p>
         </Paper>
 
-
  { 
  Loading ? <div style={{textAlign: "center", marginTop:"1rem"}}><CircularProgress/></div> :
-  
+
+<div className='listContainer'>
+  <h1 style={{textAlign:"center"}}>SIMILAR RECORD</h1>
 <MUIList dense={false} 
 sx={{ 
-  maxHeight: {md:"28rem", sm:"20rem", xs:"20rem"}, 
-  width:{md: "30rem", sm:"97vw", xs:"97vw"},
-  marginTop:{sm:"0.5rem", xs:"0.5rem"} ,
-  marginLeft:{sm:"0.2rem", xs:"0.2rem"},
+  border: "2px solid lightgray",
+  borderRadius: "0.5rem",
+  maxHeight: {md:"28rem", sm:"20rem", xs:"30rem"}, 
+  width:{md: "30rem", sm:"95vw", xs:"90vw"},
+  marginBottom:{sm:"0.5rem", xs:"1rem"} ,
+  marginLeft:{sm:"0.2rem", xs:"0rem"},
   overflow:"auto", 
   background: !RecommendedPosts[0] ? "transparent" : "white",    }} >
 { 
@@ -83,7 +86,7 @@ sx={{
   <div 
     className="noSimilarRecord"
     onClick={()=> navigate(`/update`)}>
-        NO SIMILAR RECORD
+        ADD TRANSACTION
    </div>  :
  RecommendedPosts.map((p) => (
   <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
@@ -112,41 +115,10 @@ sx={{
 ))}
 {bin && <Hero onClickDelete={deleteItem} /> } 
 </MUIList>
+</div>
   }
 
-{/* <Grid container textAlign="center" gap={2} mt={3}  sx={{display:"grid", gridTemplateColumns:{md: "repeat(6, 1fr)", sm: "1fr 1fr", xs: "1fr"}}}>
-     {!RecommendedPosts? <CircularProgress/> :
-     RecommendedPosts.map((p)=>
-    <Paper elevation={5} p={3} key={p._id} >
-     <div>
-       <ButtonBase sx={{display:"block", textAlign:"start", }} 
-         onClick={()=>{ navigate(`/${p.category}`, {state:{id:p._id}})  }}>
-          <Grid item sx={{textAlign:"start", paddingLeft:"1rem"}}>
-           <h4 style={{textTransform: "uppercase"}}> {p.user}</h4>
-         </Grid>
-         <Grid item sx={{textAlign:"start", paddingLeft:"1rem"}}>
-          <h4 style={{textTransform: "uppercase"}}> {p.category}</h4>
-        </Grid>
-        <Grid item sx={{textAlign:"start", paddingLeft:"1rem", color: p.type==="incomming"? "blue" : "red"}}>
-         <h4 >QUANTITY: <span style={{color: p.type==="incomming"? "blue" : "red"}}>{p.quantity}</span></h4>
-       </Grid>
-       <Grid item sx={{textAlign:"start", paddingLeft:"1rem",}}>
-        <h4 >UNIT PRICE: NGN {p.price}.0</h4>
-       </Grid>
-       <Grid item sx={{textAlign:"start", paddingLeft:"1rem", color: p.type==="incomming"? "blue" : "red"}}>
-        <h4 >AMOUNT:<span style={{color: p.type==="incomming"? "blue" : "red"}}>NGN {p.amount}.0</span></h4>
-       </Grid>
-       <Grid item sx={{textAlign:"start", paddingLeft:"1rem"}}>
-        <h4 >{moment(p.date).format('MMMM Do YYYY h:mm:ss a')}</h4>
-       </Grid>
-     </ButtonBase>
-   </div>
-   </Paper>
-   
- )}
-</Grid>
- */}
-</div>
+</section>
   )
 }
 

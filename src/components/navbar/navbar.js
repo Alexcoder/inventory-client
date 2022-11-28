@@ -37,7 +37,7 @@ const Navbar = () => {
                     flexBasis: "10%",
                     color: "white",
                     margin: "0.5rem 0rem 1.3rem 1rem",
-                    width:{md:"8rem",xs:"6.3rem", sm:"6.3rem"}
+                    width:{md:"8rem",xs:"4.5rem", sm:"6.3rem"}
                   }}
         
           variant="contained"
