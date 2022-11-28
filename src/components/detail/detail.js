@@ -12,7 +12,7 @@ import {Hero} from "../index";
 import './detail.css';
 
 const Detail = () => { 
-  const { HandleTotal, filteredByUser, 
+  const { HandleTotal, filteredByUser, setUpdate,
         setBin, bin, deleteId, setDeleteId}= useGlobalContext();
 
   const  {category}  = useParams();
@@ -85,7 +85,7 @@ sx={{
  !RecommendedPosts[0] ?
   <div 
     className="noSimilarRecord"
-    onClick={()=> navigate(`/update`)}>
+    onClick={()=> setUpdate(true)}>
         ADD TRANSACTION
    </div>  :
  RecommendedPosts.map((p) => (
