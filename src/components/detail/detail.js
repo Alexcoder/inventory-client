@@ -8,11 +8,11 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { getPost,deletePost, } from '../../state/action/posts';
 import { useGlobalContext } from '../../state/context';
 import {MdOutlineVisibility} from 'react-icons/md';
-import {Hero} from "../index";
+import {Hero, Update} from "../index";
 import './detail.css';
 
 const Detail = () => { 
-  const { HandleTotal, filteredByUser, setUpdate,
+  const { HandleTotal, filteredByUser, setUpdate, update,
         setBin, bin, deleteId, setDeleteId}= useGlobalContext();
 
   const  {category}  = useParams();
@@ -117,7 +117,8 @@ sx={{
 </MUIList>
 </div>
   }
-
+  {update && 
+    <div><Update/></div>}
 </section>
   )
 }
