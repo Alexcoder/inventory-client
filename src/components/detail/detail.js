@@ -44,9 +44,9 @@ const Detail = () => {
     <section id="detailContainer">
         <Paper key={post._id} elevation={5} 
         sx={{ 
-           margin: {md:"0rem 4rem 0rem 5rem", sm:"1rem 0rem 0rem 0rem", xs:"1rem 0rem 0rem 0.3rem"},
+           margin: {md:"0rem 4rem 0rem 5rem", sm:"0.5rem 0rem 0rem 0.5rem", xs:"1rem 0rem -0.7rem 0.3rem"},
            padding: "2rem", 
-           width:{md:"20rem", sm: "91%", xs:"82.5%"} ,
+           width:{md:"20rem", sm: "91.8%", xs:"82.5%"} ,
            height:{md:"28rem"},
            }} >
         <div  style={{textAlign: "start", gap: "1rem"}}> 
@@ -73,10 +73,10 @@ const Detail = () => {
   <h1 style={{textAlign:"center"}}>SIMILAR RECORD</h1>
 <MUIList dense={false} 
 sx={{ 
-  border: "2px solid lightgray",
+  border: "2px solid gray",
   borderRadius: "0.5rem",
   maxHeight: {md:"28rem", sm:"20rem", xs:"30rem"}, 
-  width:{md: "30rem", sm:"95vw", xs:"90vw"},
+  width:{md: "30rem", sm:"91vw", xs:"90vw"},
   marginBottom:{sm:"0.5rem", xs:"1rem"} ,
   marginLeft:{sm:"0.2rem", xs:"0rem"},
   overflow:"auto", 
@@ -123,4 +123,4 @@ sx={{
   )
 }
 
-export default Detail
+export default Detail;

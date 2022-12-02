@@ -24,8 +24,8 @@ const Navbar = () => {
         {
          user &&
         <input
-          className="navInput"
-          placeholder="search"
+          className="navSearch"
+          placeholder="search..."
           type="text"
           value={search}
           onChange={(e)=> setSearch(e.target.value)}
@@ -36,7 +36,7 @@ const Navbar = () => {
                   sx={{
                     flexBasis: "10%",
                     color: "white",
-                    margin: "0.5rem 0rem 1.3rem 1rem",
+                    margin: "0.5rem -1.2rem 1.3rem 1rem",
                     width:{md:"8rem",xs:"4.5rem", sm:"6.3rem"}
                   }}
         

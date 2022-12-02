@@ -118,6 +118,7 @@
   #dashboardContainer {
     max-width: 100%;
     overflow: hidden;
+    margin: 0.5rem;
   }
   #flexItem{
     max-width: 100%;
@@ -143,6 +144,7 @@
   #dashboardContainer {
     max-width: 100%;
     overflow: hidden;
+    margin: 0.5rem;
   }
   .data {
     max-width: 60%;
@@ -164,6 +166,7 @@
   #dashboardContainer {
     max-width: 100%;
     overflow: hidden;
+    margin: 0.5rem;
   }
   .data {
     display: grid;

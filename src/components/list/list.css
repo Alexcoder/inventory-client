@@ -1,3 +1,4 @@
+
 .addTransactionToContinue{
     color: red;
      width: fit-content;
@@ -29,7 +30,8 @@
 
   @media screen and (max-width: 1024px) {
     .listContainer{
-        width: 96%;
+        width: 95.4%;
+        margin:1rem 1rem 0rem 0rem;
       }
      .record{
     width: 96%;
@@ -46,11 +48,15 @@
     }
   
     @media screen and (max-width: 420px) {
+      section{
+        margin: 0.2rem 0.5rem 0.2rem 0rem;
+      }
         .listContainer{
             width: 91.5%;
           }
       .record{
         width: 96%;
+        border-radius: 2rem;
       }
   }
   

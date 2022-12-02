@@ -1,5 +1,5 @@
 #navContainer >div{
-    height: 3.5rem;
+    height: 5rem;
     width: 100%;
     display: grid;
     grid-template-columns:repeat(5, 1fr);
@@ -29,10 +29,11 @@
     color: white;
     margin: 1rem 0rem 0rem 3rem;
 }
-.navInput{
+.navSearch{
     height: 2rem;
     width: 11rem;
     margin: 0.5rem 0rem 0rem 0rem; 
+    border-radius: 0.8rem;
 }
 
 
@@ -48,7 +49,7 @@
         flex-basis: 17%;
         margin: 0.2rem 0rem 0rem 1rem;
     }
-    .navInput{
+    .navSearch{
         height: 2rem;
         width: 6rem;
         margin-left: 3rem
@@ -79,10 +80,11 @@
         flex-basis: 17%;
         margin: 0.2rem 0rem 0rem 1rem;
     }
-    .navInput{
+    .navSearch{
         height: 2rem;
         width: 6rem;
-        margin-left: 3rem
+        margin-left: 3rem;
+        margin-right: 0.5rem;
     }
     .menuIcon{
         margin:0.5rem 0rem 0rem 0.5rem;
@@ -100,10 +102,11 @@
     .inventoryControl{
         display: none;
     }
-    .navInput{
+    .navSearch{
         height: 2rem;
         width: 6rem;
-        margin-left: 2rem
+        margin-left: 2rem;
+        margin-right: 1rem;
     }
 
 }

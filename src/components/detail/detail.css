@@ -1,14 +1,13 @@
 #detailContainer{
-    margin: 4.5rem 0rem 0rem 12rem;
+    margin: 5.5rem 0rem 0rem 12rem;
     display: flex;
     height: 100%;
     width: 97%;
-    /* padding-bottom: 20rem; */
     position: fixed;
 }
 .noSimilarRecord{
     color: rgb(245, 236, 236);
-    width: fit-content;
+    width: 80%;
     padding: 2rem;
     border:  1px solid gray;
     font-size: 1.3rem;
@@ -35,11 +34,12 @@
 @media screen and (max-width:830px){
     #detailContainer{
         flex-direction : column;
-        margin: 4.2rem 0rem 0rem 0rem;
+        margin: 5rem 0rem 0rem 0rem;
         position: relative;
     }
     .listContainer{
-        width: 90%; 
+        width: 90%;
+        margin: 0rem 0rem 0rem 1rem 
       }
       
 }
@@ -54,14 +54,11 @@
         border-radius: 0.5rem;
         text-align:  center;
     }
-    /* .listContainer{
-        width: 90%; 
-      } */
 
 }
 @media screen and (max-width:420px){
    #detailContainer{
-    margin: 0rem;
+    margin: 4.5rem 0rem 0rem 0rem;
    }
     .noSimilarRecord{
         width: 92%;
