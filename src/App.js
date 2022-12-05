@@ -1,43 +1,39 @@
 import React, {useEffect,} from 'react';
-import {Route, Routes, Navigate} from 'react-router-dom'
+import {Route, Routes, Navigate, } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
-import {Navbar, Main, Detail, Auth, SideBar,Hero, NavHero} from './components';
-import {getPosts,} from './state/action/posts';
+import {getPosts} from './state/action/posts';
 import { useGlobalContext } from './state/context';
 import {ProtectedRoute, LoginRoute} from './components/protectedRoute';
+import {Navbar, Main, Detail, Auth, SideBar,Hero, NavHero, Update} from './components';
 
 
 function App() {
   const dispatch = useDispatch();
-  const {user, logout, setOpen, open, sidebar, setUpdate}= useGlobalContext();
-
+  const {user, logout, open, sidebar, update}= useGlobalContext();
   
   useEffect(()=> {
-    dispatch(getPosts());
+     dispatch(getPosts());
   },[dispatch])
 
 
   return (
     <div >
-      <Navbar />
-        <div style={{display: "flex"}}>
-          {
-            user?.result && sidebar ?
-            <SideBar /> : null
-          }
-
-      <Routes >
-           <Route path='/'  element={ <Navigate to="/home"/> } />
-           <Route path='/home'  element={<ProtectedRoute><Main/></ProtectedRoute>}/>
-           <Route path='/:category'  element={<ProtectedRoute><Detail/></ProtectedRoute>}/>
-           <Route path='/auth'  element={<LoginRoute><Auth/></LoginRoute>}/>
-     </Routes>
-     {logout ? <Hero/> : null}
+        <Navbar />
+          <div style={{display: "flex"}}>
+            {
+              user?.result && sidebar ?
+              <SideBar /> : null
+            }
+           <Routes >
+             <Route path='/'  element={ <Navigate to="/home"/> } />
+             <Route path='/home'  element={<ProtectedRoute><Main/></ProtectedRoute>}/>
+             <Route path='/:category'  element={<ProtectedRoute><Detail/></ProtectedRoute>}/>
+             <Route path='/auth'  element={<LoginRoute><Auth/></LoginRoute>}/>
+           </Routes>
          </div>
-         {
-            open && <NavHero onClick={()=>{setUpdate(true); setOpen((prev)=> !prev)} }/>
-         } 
-
+         { logout && <Hero/> }
+         { open && <NavHero /> } 
+         { update && <div><Update/></div> }
     </div>
   );
 }

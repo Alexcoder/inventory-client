@@ -8,11 +8,13 @@ import { deletePost, } from "../../state/action/posts";
 import { useGlobalContext } from "../../state/context";
 import { MdOutlineVisibility } from 'react-icons/md';
 import { Hero } from '../index';
+import { BIN_OPEN, BIN_CLOSE, DELETE_ID, } from '../../state/constants';
+
 import './list.css';
 
 const ListSingle = () => {
   const { Loading } = useSelector((state) => state.posts);
-  const { filteredByUser, search, setBin, bin, deleteId, setDeleteId } = useGlobalContext();
+  const { filteredByUser, search, bin, deleteId, incomming } = useGlobalContext();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -34,7 +36,7 @@ const ListSingle = () => {
 
   const deleteItem = () => {
     dispatch(deletePost(deleteId));
-    setBin(false)
+    dispatch({type: BIN_CLOSE})
   }
 
 
@@ -69,16 +71,17 @@ const ListSingle = () => {
                     onClick={() => { navigate(`/${p.category}`, { state: { id: p._id } }) }}>
                     <ListItem>
                       <ListItemAvatar>
-                        <Avatar sx={{ backgroundColor: p.type === "incomming" ? "blue" : "red" }}>
+                        <Avatar sx={{ backgroundColor: p.type ===  incomming  ? "blue" : "red" }}>
                           <MoneyOff />
                         </Avatar>
                       </ListItemAvatar>
-                      <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY, h:mm:ss a')}`} />
+                      <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY @ h:mm:ss a')}`} />
                       <ListItemSecondaryAction>
                         <IconButton edge="end" aria-label="delete" onClick={() => { navigate(`/${p.category}`, { state: { id: p._id } }) }}>
                           <MdOutlineVisibility />
                         </IconButton>
-                        <IconButton edge="end" aria-label="delete" onClick={() => { setBin(true); setDeleteId(p._id) }}>
+                        <IconButton edge="end" aria-label="delete" 
+                        onClick={() => {dispatch({type: BIN_OPEN}); dispatch({type: DELETE_ID, payload: p._id}) }}>
                           <Delete />
                         </IconButton>
                       </ListItemSecondaryAction>

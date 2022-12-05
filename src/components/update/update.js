@@ -5,11 +5,12 @@ import { SingleMain } from "./singleMain";
 import { useGlobalContext } from "../../state/context";
 import { createPost } from "../../state/action/posts";
 import { Category } from "../../objects/object";
+import {UPDATE_FALSE} from '../../state/constants';
 import './update.css';
 
 const Update =()=>{
     const dispatch = useDispatch();
-    const { formData, setFormData, user, creator,setUpdate } = useGlobalContext();
+    const { formData, setFormData, user, creator } = useGlobalContext();
   
     const amount = formData.price * formData.quantity;
   
@@ -35,7 +36,7 @@ const Update =()=>{
           },
             )
         ); 
-        setUpdate(false)
+        dispatch({type: UPDATE_FALSE})
       };
     
     return(
@@ -154,7 +155,7 @@ const Update =()=>{
           <Grid item xs={12} sm={12} md={12}>
             <Button
               type="submit"
-              onClick={()=> setUpdate(false)}
+              onClick={()=> dispatch({type: UPDATE_FALSE}) }
               variant="contained"
               mt={1}
               sx={{

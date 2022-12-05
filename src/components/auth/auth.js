@@ -20,7 +20,8 @@ useEffect(()=>{
 },[location])
 
   const handleAuthChange =(e)=>{
-   setAuthPage({...authPage, [e.target.name] : e.target.value})
+    const {name, value} = e.target
+   setAuthPage({...authPage, [name] : value})
   }  
 
   const handleAuthSubmit =(e)=>{

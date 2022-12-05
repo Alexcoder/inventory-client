@@ -8,12 +8,13 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { getPost,deletePost, } from '../../state/action/posts';
 import { useGlobalContext } from '../../state/context';
 import {MdOutlineVisibility} from 'react-icons/md';
-import {Hero, Update} from "../index";
+import {Hero, } from "../index";
+import { BIN_OPEN, BIN_CLOSE, DELETE_ID, } from '../../state/constants';
+
 import './detail.css';
 
 const Detail = () => { 
-  const { HandleTotal, filteredByUser, setUpdate, update,
-        setBin, bin, deleteId, setDeleteId}= useGlobalContext();
+  const { HandleTotal, filteredByUser, bin, deleteId}= useGlobalContext();
 
   const  {category}  = useParams();
   const id = useLocation().state.id ;
@@ -26,7 +27,7 @@ const Detail = () => {
 
   const deleteItem = ()=>{
     dispatch(deletePost(deleteId));
-    setBin(false)
+    dispatch({type: BIN_CLOSE})
    }
   
   useEffect(()=>{
@@ -44,9 +45,9 @@ const Detail = () => {
     <section id="detailContainer">
         <Paper key={post._id} elevation={5} 
         sx={{ 
-           margin: {md:"0rem 4rem 0rem 5rem", sm:"0.5rem 0rem 0rem 0.5rem", xs:"1rem 0rem -0.7rem 0.3rem"},
+           margin: {md:"0rem 1rem 0rem 9rem", sm:"0.5rem 0rem 0rem 0.5rem", xs:"0.7rem 0rem 0rem 0.5rem"},
            padding: "2rem", 
-           width:{md:"20rem", sm: "91.8%", xs:"82.5%"} ,
+           width:{md:"20rem", sm: "48%", xs:"82.5%"} ,
            height:{md:"28rem"},
            }} >
         <div  style={{textAlign: "start", gap: "1rem"}}> 
@@ -69,25 +70,20 @@ const Detail = () => {
  { 
  Loading ? <div style={{textAlign: "center", marginTop:"1rem"}}><CircularProgress/></div> :
 
-<div className='listContainer'>
-  <h1 style={{textAlign:"center"}}>SIMILAR RECORD</h1>
+<div className="recommendedRecord">
+  <h1 style={{textAlign:"center", marginTop:"-0.2rem"}}>SIMILAR RECORD</h1>
 <MUIList dense={false} 
 sx={{ 
-  border: "2px solid gray",
+  border: "1px solid gray",
   borderRadius: "0.5rem",
-  maxHeight: {md:"28rem", sm:"20rem", xs:"30rem"}, 
-  width:{md: "30rem", sm:"91vw", xs:"90vw"},
+  maxHeight: {md:"26rem", sm:"25rem", xs:"28rem"}, 
+  width:{md: "25rem", sm:"49vw", xs:"90vw"},
   marginBottom:{sm:"0.5rem", xs:"1rem"} ,
   marginLeft:{sm:"0.2rem", xs:"0rem"},
   overflow:"auto", 
   background: !RecommendedPosts[0] ? "transparent" : "white",    }} >
 { 
- !RecommendedPosts[0] ?
-  <div 
-    className="noSimilarRecord"
-    onClick={()=> setUpdate(true)}>
-        ADD TRANSACTION
-   </div>  :
+ !RecommendedPosts[0] ? "NO SIMILAR RECORD" :
  RecommendedPosts.map((p) => (
   <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
      onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
@@ -106,7 +102,7 @@ sx={{
           <MdOutlineVisibility />
       </IconButton
       >
-      <IconButton edge="end" aria-label="delete" onClick={()=> {setBin(true); setDeleteId(p._id)}}>
+      <IconButton edge="end" aria-label="delete" onClick={()=> {dispatch({type: BIN_OPEN}); dispatch({type: DELETE_ID, payload: p._id})}}>
           <Delete />
       </IconButton>
       </ListItemSecondaryAction>
@@ -117,8 +113,6 @@ sx={{
 </MUIList>
 </div>
   }
-  {update && 
-    <div><Update/></div>}
 </section>
   )
 }

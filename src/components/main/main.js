@@ -1,13 +1,11 @@
 import React from "react";
-import {Dashboard,List, Update } from '../'
+import {Dashboard,List, } from '../'
 import { useSelector } from "react-redux";
 import { CircularProgress  } from "@mui/material";
-import {useGlobalContext} from '../../state/context';
 import './main.css'
 
 
 const Main = () => {  
-  const {update} = useGlobalContext()
   const { Loading } = useSelector((state) => state.posts);
 
   return (
@@ -24,8 +22,6 @@ const Main = () => {
           }
         </div>
       </div>
-      {update && 
-      <div><Update/></div>}
     </div>
   );
 };

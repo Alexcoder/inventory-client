@@ -1,16 +1,18 @@
 import React from 'react'
-// import {useNavigate } from 'react-router-dom';
-import { useGlobalContext } from "../../state/context";
+import {useDispatch} from 'react-redux';
+import { SIDEBAR_FALSE, UPDATE_TRUE, } from '../../state/constants';
+
+
 import './sidebar.css';
 
 const SideBar = () => {
-  const { setUpdate, setSidebar } = useGlobalContext();
-  // const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
     <div id="sidebarContainer" >
       <div>
         <div>
-          <button className="addTransaction" onClick={() => { setUpdate(true); setSidebar(false) }} >ADD TRANSACTION</button>
+          <button className="addTransaction"
+           onClick={() => {dispatch({type: UPDATE_TRUE }); dispatch({type: SIDEBAR_FALSE })}} >ADD TRANSACTION</button>
          <hr />
         </div>
       </div>

@@ -1,11 +1,14 @@
 import React from 'react';
 import { useGlobalContext } from "../../state/context";
+import {useDispatch} from 'react-redux';
 import './dashboard.css';
+import { UPDATE_TRUE } from '../../state/constants';
+
 
 const Dashboard = () => {
+  const dispatch = useDispatch()
 
   const {
-    setUpdate,
     FluidLossIn, FluidLossOut, AntifoamIn, AntifoamOut,
     DispersantIn, DispersantOut, RetarderIn, RetarderOut, CementIn, CementOut, BentoniteIn, BentoniteOut,
     CalciumChlorideIn, CalciumChlorideOut, ButylGlycolIn, ButylGlycolOut, SurfactantIn, SurfactantOut,
@@ -169,7 +172,7 @@ const Dashboard = () => {
         <button
           className= {user?.result ?  "add-transaction" : "add-transaction disabled"}
           disabled={!user?.result}
-          onClick={() => setUpdate(true)}>
+          onClick={() => {dispatch({type: UPDATE_TRUE})}}>
           ADD TRANSACTION
         </button>
 
