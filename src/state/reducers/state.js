@@ -53,7 +53,7 @@ const StateReducer = (stateReducer=INITIAL_STATE, action)=>{
         case OPEN_FALSE:
             return {...stateReducer, open: false}
         case OPEN_TOGGLE:
-            return {...stateReducer, open:  action?.payload}
+            return {...stateReducer, open:  ()=>  !stateReducer.open}
 
         case DELETE_ID:
             return {...stateReducer, deleteId: action?.payload}
