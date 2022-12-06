@@ -70,7 +70,7 @@ useEffect(()=>{
       }
 
       <Grid item xs={12} sm={12} md={12}>
-        <Button disabled={Loading} sx={{width:"14rem", marginTop:"1rem"}} variant="contained" onClick={handleAuthSubmit}>
+        <Button disabled={Loading} sx={{width:"15rem", marginTop:"1rem"}} variant="contained" onClick={handleAuthSubmit}>
          {Loading? <CircularProgress/> : mode ? "LOGIN" : "CREATE ACCOUNT" }
         </Button>
       </Grid>
