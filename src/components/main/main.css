@@ -77,10 +77,10 @@
 
   @media screen and (max-width: 420px) {
     .mainContainer {
-      margin: 3.5rem 0rem 0rem 0rem;
+      margin: 5rem 0rem 0rem 0.5rem;
       padding-bottom: 2rem;
       height: 100%;
-      width: 100%;
+      width: 97%;
     }
     .mainContainer > div {
       width: 100%;
