@@ -113,7 +113,12 @@ const Update =()=>{
             name="date"
             value={formData.date}
             onChange={(e) => setFormData({ ...formData, date: e.target.value })}/>
-  
+   {/* REPLACE INCOMMING AND OUTGOING WITH BUTTON */}
+
+          <Grid>
+            <Button variant="contained" onClick={()=> setFormData({...formData, type: "incomming"})}>Receive</Button>
+            <Button variant="contained" onClick={()=> setFormData({...formData, type: "outgoing"})}> Send</Button>
+          </Grid>
   
           <Grid item xs={12} sm={4} md={6} sx={{ width: "17rem" }}>
             <TextField
@@ -127,8 +132,8 @@ const Update =()=>{
                 color: "black",
               }}
               onChange={handleChange}>
-              <MenuItem value={"incomming"}> Incomming </MenuItem>
-              <MenuItem value={"outgoing"}> Outgoing </MenuItem>
+              <MenuItem value={"incomming"}> Receive </MenuItem>
+              <MenuItem value={"outgoing"}> Send </MenuItem>
             </TextField>
           </Grid>
 
