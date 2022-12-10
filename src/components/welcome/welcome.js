@@ -7,11 +7,10 @@ const Welcome =()=>{
 
 
     return(
-     <main style={{margin: "5rem 0rem 1rem 9rem", width: "80rem"}}>
+     <main className="welcome_main">
             <Dashboard />
 
-        <div className="welcome_main">
-            <Dashboard />
+        <div >
             <div className="welcome_text">
                 <h2 className="inventory_text"> INVENTORY CHECK </h2>
                <div>

@@ -31,10 +31,7 @@ export const OPEN_TOGGLE = "OPEN_TOGGLE"
 
 export const DELETE_ID = "DELETE_ID"
 export const SEARCH = "SEARCH"
-<<<<<<< HEAD
-=======
 
 export const HAVEACCOUNT_TRUE = "HAVEACCOUNT_TRUE"
 export const HAVEACCOUNT_FALSE = "HAVEACCOUNT_FALSE"
 export const HAVEACCOUNT_TOGGLE = "HAVEACCOUNT_TOGGLE"
->>>>>>> 177e499 (refactor login)

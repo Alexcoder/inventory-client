@@ -11,49 +11,29 @@
 #navContainer{
     position: fixed;
     width: 100%;
-<<<<<<< HEAD
-    background: linear-gradient(brown, black);
-    z-index: 300;
-}
-.menuIcon{
-    margin:0.5rem 0rem 0rem 1.5rem;
-=======
     /* background: linear-gradient(brown, black); */
     background: darkred;
     z-index: 300;
 }
 .menuIcon{
     margin: 1.5rem 0rem 0rem 1.5rem;
->>>>>>> 177e499 (refactor login)
     width:2.5rem ;
     height:2rem;
 }
 .inventoryControl{
     flex-basis: 50%; 
     color: white;
-<<<<<<< HEAD
-    margin: 0.2rem 0rem 1rem 2rem; 
-=======
     margin: 1rem 0rem 1rem 2rem; 
->>>>>>> 177e499 (refactor login)
 }
  .user{
     flex-basis: 2%;
     color: white;
-<<<<<<< HEAD
-    margin: 1rem 0rem 0rem 3rem;
-=======
     margin: 1.7rem 0rem 0rem 3rem;
->>>>>>> 177e499 (refactor login)
 }
 .navSearch{
     height: 2rem;
     width: 11rem;
-<<<<<<< HEAD
-    margin: 0.5rem 0rem 0rem 0rem; 
-=======
     margin: 1.3rem 0rem 0rem 0rem; 
->>>>>>> 177e499 (refactor login)
     border-radius: 0.8rem;
 }
 
