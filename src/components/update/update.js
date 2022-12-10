@@ -61,7 +61,11 @@ const Update =()=>{
           }}>
           <Grid item xs={12} sm={12} md={12}  sx={{margin:"0.5rem 0rem 0rem 0rem", textAlign: "center"}}>
             <Button 
+<<<<<<< HEAD
            sx={{margin:"0rem 3rem 0rem -3rem", textAlign: "center"}} variant="contained" onClick={()=> setFormData({...formData, type: "incomming"})}>Receive</Button>
+=======
+           sx={{margin:"0rem 1rem 0rem -4rem", textAlign: "center"}} variant="contained" onClick={()=> setFormData({...formData, type: "incomming"})}>Receive</Button>
+>>>>>>> 177e499 (refactor login)
             <Button variant="contained" onClick={()=> setFormData({...formData, type: "outgoing"})}> Send</Button>
           </Grid>
   

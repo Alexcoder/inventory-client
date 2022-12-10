@@ -5,7 +5,12 @@
     UPDATE_TRUE, UPDATE_FALSE, 
     LOGOUT_TRUE, LOGOUT_FALSE,
     TRANSACTION_OPEN, TRANSACTION_CLOSE,
+<<<<<<< HEAD
     DELETE_ID, SEARCH
+=======
+    DELETE_ID, SEARCH, 
+    HAVEACCOUNT_TRUE, HAVEACCOUNT_FALSE, HAVEACCOUNT_TOGGLE
+>>>>>>> 177e499 (refactor login)
  } from '../constants';
 
 const INITIAL_STATE={
@@ -17,6 +22,10 @@ const INITIAL_STATE={
     logout : false,
     transaction: false,
     open : false,
+<<<<<<< HEAD
+=======
+    haveAccount: true
+>>>>>>> 177e499 (refactor login)
 }
 
 const StateReducer = (stateReducer=INITIAL_STATE, action)=>{
@@ -55,6 +64,17 @@ const StateReducer = (stateReducer=INITIAL_STATE, action)=>{
         case OPEN_TOGGLE:
             return {...stateReducer, open: !stateReducer.open}
 
+<<<<<<< HEAD
+=======
+        case HAVEACCOUNT_TRUE:
+            return {...stateReducer, haveAccount: true}
+        case HAVEACCOUNT_FALSE:
+            return {...stateReducer, haveAccount: false}
+        case HAVEACCOUNT_TOGGLE:
+            return {...stateReducer, haveAccount: !stateReducer.haveAccount}
+    
+    
+>>>>>>> 177e499 (refactor login)
         case DELETE_ID:
             return {...stateReducer, deleteId: action?.payload}
 
