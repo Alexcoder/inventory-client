@@ -21,6 +21,7 @@ const Welcome =()=>{
                </div>
               </div>
         </div>
+    </main>
     )
 }
 
