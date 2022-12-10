@@ -74,7 +74,7 @@ const ListSingle = () => {
                           <MoneyOff />
                         </Avatar>
                       </ListItemAvatar>
-                      <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY @ h:mm:ss a')}`} />
+                      <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY')}`} />
                       <ListItemSecondaryAction>
                         <IconButton edge="end" aria-label="delete" onClick={() => { navigate(`/${p.category}`, { state: { id: p._id } }) }}>
                           <MdOutlineVisibility />
