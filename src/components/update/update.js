@@ -59,6 +59,13 @@ const Update =()=>{
           sx={{
             width: { md: "25rem", xs: "99%", sm: "90%" },
           }}>
+          <Grid item xs={12} sm={12} md={12}  sx={{margin:"0.5rem 0rem 0rem 0rem", textAlign: "center"}}>
+            <Button 
+           sx={{margin:"0rem 3rem 0rem -3rem", textAlign: "center"}} variant="contained" onClick={()=> setFormData({...formData, type: "incomming"})}>Receive</Button>
+            <Button variant="contained" onClick={()=> setFormData({...formData, type: "outgoing"})}> Send</Button>
+          </Grid>
+  
+
           <Grid item xs={12} sm={12} md={12} 
           sx={{ 
             width: {md:"17rem", sm:"12rem" },
@@ -113,33 +120,9 @@ const Update =()=>{
             name="date"
             value={formData.date}
             onChange={(e) => setFormData({ ...formData, date: e.target.value })}/>
-   {/* REPLACE INCOMMING AND OUTGOING WITH BUTTON */}
-
-          <Grid>
-            <Button variant="contained" onClick={()=> setFormData({...formData, type: "incomming"})}>Receive</Button>
-            <Button variant="contained" onClick={()=> setFormData({...formData, type: "outgoing"})}> Send</Button>
-          </Grid>
-  
-          <Grid item xs={12} sm={4} md={6} sx={{ width: "17rem" }}>
-            <TextField
-              label="type"
-              select
-              name="type"
-              value={formData.type}
-              sx={{
-                width: { md: "13.2rem", xs: "15rem", sm: "19rem" },
-                marginLeft: {md: "-3.5rem", sm:"-4rem"},
-                color: "black",
-              }}
-              onChange={handleChange}>
-              <MenuItem value={"incomming"}> Receive </MenuItem>
-              <MenuItem value={"outgoing"}> Send </MenuItem>
-            </TextField>
-          </Grid>
 
           <Grid item xs={12} sm={12} md={12}
             sx={{
-            // marginLeft:{ md: "-3rem",  } ,
             marginTop:{ md: "1rem", sm: "3rem", xs: "2rem" } ,
             width: { md: "12rem", xs: "15.1rem", sm: "14rem" }, 
             height: "2rem" }}>

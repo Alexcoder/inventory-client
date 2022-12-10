@@ -8,5 +8,6 @@ import Update from './update/update';
 import Hero from './hero/heroPrompt';
 import Auth from './auth/auth';
 import NavHero from './hero/navHero';
+import Welcome from './welcome/welcome';
 
-export {Main, Navbar, Dashboard, Detail, List, Auth, SideBar, Update, Hero, NavHero}
+export {Main, Navbar, Dashboard, Detail, List, Auth, SideBar, Update, Hero, NavHero, Welcome}

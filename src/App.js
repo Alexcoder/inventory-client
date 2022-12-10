@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux';
 import {getPosts} from './state/action/posts';
 import { useGlobalContext } from './state/context';
 import {ProtectedRoute, LoginRoute} from './components/protectedRoute';
-import {Navbar, Main, Detail, Auth, SideBar,Hero, NavHero, Update} from './components';
+import {Navbar, Main, Detail, Auth, SideBar,Hero, NavHero, Update, Welcome} from './components';
 
 
 function App() {
@@ -29,6 +29,7 @@ function App() {
              <Route path='/home'  element={<ProtectedRoute><Main/></ProtectedRoute>}/>
              <Route path='/:category'  element={<ProtectedRoute><Detail/></ProtectedRoute>}/>
              <Route path='/auth'  element={<LoginRoute><Auth/></LoginRoute>}/>
+             <Route path='/welcome'  element={<LoginRoute><Welcome/></LoginRoute>}/>
            </Routes>
          </div>
          { logout && <Hero/> }

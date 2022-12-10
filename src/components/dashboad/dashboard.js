@@ -169,12 +169,15 @@ const Dashboard = () => {
             <div style={{ fontWeight: "700", fontSize: "1.2rem" }}><span >TOTAL BALANCE</span>: ${Money(IncommingTotalAmount - OutgoingTotalAmount)}.00</div>
           </div>
         </div>
+        {
+          user && 
         <button
           className= {user?.result ?  "add-transaction" : "add-transaction disabled"}
           disabled={!user?.result}
           onClick={() => {dispatch({type: UPDATE_TRUE})}}>
           ADD TRANSACTION
         </button>
+        }
 
       </main>
     </section>

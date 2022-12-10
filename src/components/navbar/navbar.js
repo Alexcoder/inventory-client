@@ -1,4 +1,5 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 import {useDispatch} from 'react-redux';
 import { Button } from "@mui/material";
 import {BiMenu} from 'react-icons/bi'
@@ -9,8 +10,9 @@ import { SIDEBAR_TOGGLE, OPEN_TOGGLE, LOGOUT_TRUE, SEARCH } from '../../state/co
 import './navbar.css';
 
 const Navbar = () => {
-  const { user, search, sidebar, open } = useGlobalContext();
+  const { user, search } = useGlobalContext();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
 
   return (
@@ -19,7 +21,7 @@ const Navbar = () => {
         {
           user?.result &&
             <button 
-             onClick={()=> {dispatch({type: OPEN_TOGGLE , payload: !open}); dispatch({type:  SIDEBAR_TOGGLE , payload: !sidebar}) }}
+             onClick={()=> { dispatch({type: OPEN_TOGGLE }); dispatch({type: SIDEBAR_TOGGLE }) }}
              className="menuIcon"><BiMenu/></button>
         }
         <h1 className="inventoryControl" style={{textAlign:"start", width:"12rem"}}>INVENTORY</h1>
@@ -53,6 +55,45 @@ const Navbar = () => {
           }}
         >
           LOGOUT
+        </Button> : null
+}
+        { !user?.result?
+        <Button
+                  sx={{
+                    flexBasis: "10%",
+                    color: "white",
+                    margin: "0.5rem -1rem 1.3rem 1rem",
+                    width:{md:"8rem",xs:"4.5rem", sm:"6.3rem"}
+                  }}
+        
+          variant="contained"
+          color ="secondary"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate(`/auth`);
+          }}
+        >
+          SIGN IN
+        </Button> : null
+}
+
+        { !user?.result?
+        <Button
+                  sx={{
+                    flexBasis: "10%",
+                    color: "white",
+                    margin: "0.5rem -1rem 1.3rem 1rem",
+                    width:{md:"8rem",xs:"4.5rem", sm:"6.3rem"}
+                  }}
+        
+          variant="contained"
+          color ="secondary"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate(`/auth`);
+          }}
+        >
+          SIGN UP
         </Button> : null
 }
       </div>

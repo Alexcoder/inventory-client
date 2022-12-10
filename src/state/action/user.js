@@ -37,5 +37,5 @@ import * as api from '../api';
 
       dispatch({type: LOGOUT })
       localStorage.clear("profile")
-      navigate('/')
+      navigate('/welcome')
   }

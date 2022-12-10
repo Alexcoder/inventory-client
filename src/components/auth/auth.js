@@ -3,7 +3,6 @@ import {useNavigate, useLocation} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 import {Container,Typography, Grid, Paper, TextField, Button, CircularProgress} from '@mui/material';
 import {signIn, signUp} from '../../state/action/user';
-import Dashboard from '../dashboad/dashboard';
 import './auth.css';
 
 const Auth = () => { 
@@ -83,9 +82,6 @@ useEffect(()=>{
 
   </Paper>
   </Container>
-  <Grid sx={{margin:{xs: "0rem 0.5rem 0rem 0.5rem"}}}>
-    <Dashboard/>
-  </Grid>
 
   </div>
 

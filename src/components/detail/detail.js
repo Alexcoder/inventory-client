@@ -91,8 +91,7 @@ sx={{
       <ListItemAvatar>
         <Avatar sx={{backgroundColor: p.type==="incomming"? "blue" : "red" }}>
           <MoneyOff />
-        </Avatar
-        >
+        </Avatar>
       </ListItemAvatar>
       <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY, h:mm:ss a')}`} />
       <ListItemSecondaryAction

@@ -26,7 +26,7 @@ const StateReducer = (stateReducer=INITIAL_STATE, action)=>{
         case SIDEBAR_CLOSE:
             return {...stateReducer, sidebar: false}
         case SIDEBAR_TOGGLE:
-            return {...stateReducer, sidebar: ()=>  !stateReducer.sidebar}
+            return {...stateReducer, sidebar: !stateReducer.sidebar}
 
         case BIN_OPEN:
             return {...stateReducer, bin: true}
@@ -53,7 +53,7 @@ const StateReducer = (stateReducer=INITIAL_STATE, action)=>{
         case OPEN_FALSE:
             return {...stateReducer, open: false}
         case OPEN_TOGGLE:
-            return {...stateReducer, open:  ()=>  !stateReducer.open}
+            return {...stateReducer, open: !stateReducer.open}
 
         case DELETE_ID:
             return {...stateReducer, deleteId: action?.payload}

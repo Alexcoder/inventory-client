@@ -2,7 +2,7 @@ import React from 'react';
 import {useDispatch} from 'react-redux';
 import CloseIcon from '@mui/icons-material/Close';
 // import {useGlobalContext} from '../../state/context';
-import { OPEN_FALSE,OPEN_TRUE, UPDATE_TRUE } from '../../state/constants';
+import { OPEN_FALSE, OPEN_TRUE, UPDATE_TRUE } from '../../state/constants';
 
 import "./navHero.css";
 
