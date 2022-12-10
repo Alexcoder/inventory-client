@@ -8,7 +8,7 @@ import { deletePost, } from "../../state/action/posts";
 import { useGlobalContext } from "../../state/context";
 import { MdOutlineVisibility } from 'react-icons/md';
 import { Hero } from '../index';
-import { BIN_OPEN, BIN_CLOSE, DELETE_ID, } from '../../state/constants';
+import { BIN_OPEN, BIN_CLOSE, DELETE_ID, UPDATE_TRUE} from '../../state/constants';
 
 import './list.css';
 
@@ -39,15 +39,14 @@ const ListSingle = () => {
     dispatch({type: BIN_CLOSE})
   }
 
-
   return (
     <section >
       {
         Loading ? "Loading..." : !handleMap()[0] ?
           <div
-            onClick={() => navigate(`/update`)}
-            className="addTransactionToContinue">
-            ADD TRANSACTION TO CONTINUE
+            onClick={() => dispatch({type: UPDATE_TRUE})}
+            className="noRecordFound">
+            NO RECORD FOUND
           </div> :
 
          <div className="listContainer">
@@ -59,7 +58,7 @@ const ListSingle = () => {
               width: { sm: "100%", xs: "100%", md: "100%" },
               marginTop: { xs: "0.3rem", sm: "0.3rem", md: "1rem" },
               background: "white",
-              border:"0.2px solid lightgray",
+              border:"1px solid lightgray",
               borderRadius:"0.4rem"
 
             }}

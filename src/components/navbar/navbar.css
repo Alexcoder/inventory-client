@@ -48,7 +48,7 @@
     
     .user{
         flex-basis: 17%;
-        margin: 0.2rem 0rem 0rem 1rem;
+        margin: 1rem 0rem 0rem 1rem;
     }
     .navSearch{
         height: 2rem;
@@ -56,7 +56,7 @@
         margin-left: 3rem
     }
     .menuIcon{
-        margin:0.5rem 0rem 0rem 0.5rem;
+        margin:1rem 0rem 0rem 0.5rem;
     }
     
 }
@@ -79,7 +79,7 @@
     }
     .user{
         flex-basis: 17%;
-        margin: 0.2rem 0rem 0rem 1rem;
+        margin: 1.5rem 0rem 0rem 1rem;
     }
     .navSearch{
         height: 2rem;
@@ -88,7 +88,7 @@
         margin-right: 0.5rem;
     }
     .menuIcon{
-        margin:0.5rem 0rem 0rem 0.5rem;
+        margin: 1.5rem 0rem 0rem 0.5rem;
     }
     
 }
@@ -98,7 +98,7 @@
         width: 100%
     }
     .menuIcon{
-        margin:0.5rem 0rem 0rem 0.5rem;
+        margin: 1.5rem 0rem 0rem 0.5rem;
     }
     .inventoryControl{
         display: none;

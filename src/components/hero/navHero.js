@@ -24,6 +24,7 @@ const NavHero = () => {
           onClick={()=>{dispatch({type: UPDATE_TRUE}); dispatch({type: OPEN_TRUE}) }}>
           ADD TRANSACTION
         </button>
+        <hr style={{background: "black"}}/>
       </div>
     </div>
   )
