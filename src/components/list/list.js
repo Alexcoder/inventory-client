@@ -65,7 +65,7 @@ const ListSingle = () => {
           >
             {
               (
-                handleMap().map((p) => (
+                handleMap().sort((a,b)=> a.createdAt - b.createdAt).map((p) => (
                   <Slide direction="down" in mountOnEnter unmountOnExit key={p._id}
                     onClick={() => { navigate(`/${p.category}`, { state: { id: p._id } }) }}>
                     <ListItem>

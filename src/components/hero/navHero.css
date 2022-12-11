@@ -16,8 +16,9 @@
     font-weight: 700;
     border: 1px solid gray;
     border-radius: 0.3rem;
-    /* box-shadow: 1px 1px 1rem 0.1px gray; */
-
+}
+.mt{
+    margin-top: -1rem;
 }
 
 .container {

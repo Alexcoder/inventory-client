@@ -1,6 +1,6 @@
 import React from 'react'
 import {useDispatch} from 'react-redux';
-import { SIDEBAR_OPEN, UPDATE_TRUE, } from '../../state/constants';
+import { SIDEBAR_OPEN, UPDATE_TRUE, RECEIVE_TRUE, RECEIVE_FALSE} from '../../state/constants';
 
 
 import './sidebar.css';
@@ -12,7 +12,21 @@ const SideBar = () => {
       <div>
         <div>
           <button className="addTransaction"
-           onClick={() => {dispatch({type: UPDATE_TRUE }); dispatch({type: SIDEBAR_OPEN })}} >ADD TRANSACTION</button>
+           onClick={() => {
+            dispatch({type: UPDATE_TRUE });
+            dispatch({type: SIDEBAR_OPEN });
+            dispatch({type: RECEIVE_TRUE})}} >
+            RECEIVE
+          </button>
+         <hr />
+          <button className="addTransaction"
+           onClick={() => {
+            dispatch({type: UPDATE_TRUE }); 
+            dispatch({type: SIDEBAR_OPEN });
+            dispatch({type:  RECEIVE_FALSE });
+            }} >
+            SEND
+          </button>
          <hr />
         </div>
       </div>

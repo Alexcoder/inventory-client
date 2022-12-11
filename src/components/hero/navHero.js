@@ -1,15 +1,14 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import CloseIcon from '@mui/icons-material/Close';
-// import {useGlobalContext} from '../../state/context';
-import { OPEN_FALSE, OPEN_TRUE, UPDATE_TRUE } from '../../state/constants';
+import { OPEN_FALSE, OPEN_TRUE, UPDATE_TRUE, RECEIVE_TRUE, RECEIVE_FALSE } from '../../state/constants';
 
 import "./navHero.css";
 
 
 const NavHero = () => { 
-  // const {open} = useGlobalContext();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  // const {receive} = useSelector((state)=> state.stateReducer);
 
 
   return (
@@ -21,8 +20,21 @@ const NavHero = () => {
           style={{float:"right",width:"2rem"}}><CloseIcon/></button>
         </div>
         <button className="heroNavButton" 
-          onClick={()=>{dispatch({type: UPDATE_TRUE}); dispatch({type: OPEN_TRUE}) }}>
-          ADD TRANSACTION
+          onClick={()=>{
+            dispatch({type: UPDATE_TRUE}); 
+            dispatch({type: OPEN_TRUE});
+            dispatch({type: RECEIVE_TRUE});
+             }}>
+          RECEIVE
+        </button>
+        <hr style={{background: "black"}}/>
+        <button className="heroNavButton mt" 
+          onClick={()=>{
+            dispatch({type: UPDATE_TRUE}); 
+            dispatch({type: OPEN_TRUE});
+            dispatch({type: RECEIVE_FALSE});
+             }}>
+          SEND
         </button>
         <hr style={{background: "black"}}/>
       </div>

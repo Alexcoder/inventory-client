@@ -6,7 +6,8 @@
     LOGOUT_TRUE, LOGOUT_FALSE,
     TRANSACTION_OPEN, TRANSACTION_CLOSE,
     DELETE_ID, SEARCH,
-    HAVEACCOUNT_TRUE, HAVEACCOUNT_FALSE, HAVEACCOUNT_TOGGLE
+    HAVEACCOUNT_TRUE, HAVEACCOUNT_FALSE, HAVEACCOUNT_TOGGLE,
+    RECEIVE_TRUE, RECEIVE_FALSE,
  } from '../constants';
 
 const INITIAL_STATE={
@@ -18,7 +19,8 @@ const INITIAL_STATE={
     logout : false,
     transaction: false,
     open : false,
-    haveAccount: true
+    haveAccount: true,
+    receive : true,
 }
 
 const StateReducer = (stateReducer=INITIAL_STATE, action)=>{
@@ -64,6 +66,11 @@ const StateReducer = (stateReducer=INITIAL_STATE, action)=>{
         case HAVEACCOUNT_TOGGLE:
             return {...stateReducer, haveAccount: !stateReducer.haveAccount}
     
+
+        case RECEIVE_TRUE:
+            return {...stateReducer, receive: true}
+        case RECEIVE_FALSE:
+            return {...stateReducer, receive: false}    
     
         case DELETE_ID:
             return {...stateReducer, deleteId: action?.payload}

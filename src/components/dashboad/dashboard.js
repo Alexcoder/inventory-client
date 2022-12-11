@@ -2,7 +2,7 @@ import React from 'react';
 import { useGlobalContext } from "../../state/context";
 import {useDispatch} from 'react-redux';
 import './dashboard.css';
-import { UPDATE_TRUE } from '../../state/constants';
+import { UPDATE_TRUE, RECEIVE_TRUE, RECEIVE_FALSE } from '../../state/constants';
 
 
 const Dashboard = () => {
@@ -171,12 +171,20 @@ const Dashboard = () => {
         </div>
         {
           user && 
+          <p>
         <button
           className= {user?.result ?  "add-transaction" : "add-transaction disabled"}
           disabled={!user?.result}
-          onClick={() => {dispatch({type: UPDATE_TRUE})}}>
-          ADD TRANSACTION
+          onClick={() => {dispatch({type: UPDATE_TRUE}); dispatch({type: RECEIVE_TRUE}) }}>
+          RECEIVE
         </button>
+        <button
+          className= {user?.result ?  "add-transaction" : "add-transaction disabled"}
+          disabled={!user?.result}
+          onClick={() => {dispatch({type: UPDATE_TRUE}); dispatch({type: RECEIVE_FALSE})}}>
+          SEND
+        </button>
+        </p>
         }
 
       </main>

@@ -13,9 +13,10 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  
 
   return (
-    <div id="navContainer"  >
+    <div id={ "navContainer" }  >
       <div >
         {
           user?.result &&

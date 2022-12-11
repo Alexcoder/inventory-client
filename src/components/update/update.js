@@ -1,6 +1,6 @@
 import React from "react";
-import { Grid,TextField,MenuItem,Button,Paper} from "@mui/material";
-import { useDispatch } from "react-redux";
+import { Grid,TextField,MenuItem,Button,Paper, Typography} from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 import { SingleMain } from "./singleMain";
 import { useGlobalContext } from "../../state/context";
 import { createPost } from "../../state/action/posts";
@@ -10,7 +10,10 @@ import './update.css';
 
 const Update =()=>{
     const dispatch = useDispatch();
+    const {receive} = useSelector((state)=> state.stateReducer);
     const { formData, setFormData, user, creator } = useGlobalContext();
+    const incomming = "incomming";
+    const outgoing = "outgoing";
   
     const amount = formData.price * formData.quantity;
   
@@ -25,7 +28,7 @@ const Update =()=>{
           createPost(
             {
             user: user?.result.name,
-            type: formData.type,
+            type: receive ? incomming : outgoing,
             location: formData.location,
             category: formData.category,
             quantity: formData.quantity,
@@ -56,21 +59,13 @@ const Update =()=>{
           rowSpacing="0.5rem"
           justifyContent="center"
           textAlign="center"
-          sx={{
-            width: { md: "25rem", xs: "99%", sm: "90%" },
-          }}>
-          <Grid item xs={12} sm={12} md={12}  sx={{margin:"0.5rem 0rem 0rem 0rem", textAlign: "center"}}>
-            <Button 
-           sx={{margin:"0rem 1rem 0rem -4rem", textAlign: "center"}} variant="contained" onClick={()=> setFormData({...formData, type: "incomming"})}>Receive</Button>
-            <Button variant="contained" onClick={()=> setFormData({...formData, type: "outgoing"})}> Send</Button>
-          </Grid>
-  
+          sx={{width: { md: "25rem", xs: "99%", sm: "90%" }}}>
+            <Typography  sx={{margin:"0.5rem 1rem 0rem 0rem",}}>
+               {receive? "RECEIVE" : "SEND"}
+            </Typography>
 
           <Grid item xs={12} sm={12} md={12} 
-          sx={{ 
-            width: {md:"17rem", sm:"12rem" },
-            }}
-            >
+          sx={{width: {md:"17rem", sm:"12rem" }}}>
             <TextField
               label="category"
               select
