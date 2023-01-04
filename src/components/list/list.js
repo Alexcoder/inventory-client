@@ -4,17 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { List as MUIList, ListItem, ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, IconButton, Slide } from "@mui/material";
 import moment from 'moment'
 import { Delete, MoneyOff } from '@mui/icons-material';
-import { deletePost, } from "../../state/action/posts";
 import { useGlobalContext } from "../../state/context";
 import { MdOutlineVisibility } from 'react-icons/md';
-import { Hero } from '../index';
-import { BIN_OPEN, BIN_CLOSE, DELETE_ID, UPDATE_TRUE} from '../../state/constants';
+import { BIN_OPEN, DELETE_ID, UPDATE_TRUE} from '../../state/constants';
 
 import './list.css';
 
 const ListSingle = () => {
   const { Loading } = useSelector((state) => state.posts);
-  const { filteredByUser, search, bin, deleteId, incomming } = useGlobalContext();
+  const { filteredByUser, search, incomming } = useGlobalContext();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -32,11 +30,6 @@ const ListSingle = () => {
     else {
       return filteredByUser
     }
-  }
-
-  const deleteItem = () => {
-    dispatch(deletePost(deleteId));
-    dispatch({type: BIN_CLOSE})
   }
 
   return (
@@ -87,7 +80,6 @@ const ListSingle = () => {
                     </ListItem>
                   </Slide>
                 )))}
-            {bin && <Hero onClickDelete={deleteItem} />}
           </MUIList>
           </div>
       }

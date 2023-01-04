@@ -9,7 +9,7 @@ import {Navbar, Main, Detail, Auth, SideBar,Hero, NavHero, Update, Welcome} from
 
 function App() {
   const dispatch = useDispatch();
-  const {user, logout, open, sidebar, update}= useGlobalContext();
+  const {user, logout, bin, open, sidebar, update}= useGlobalContext();
   
   useEffect(()=> {
      dispatch(getPosts());
@@ -32,7 +32,7 @@ function App() {
              <Route path='/welcome'  element={<Welcome/>}/>
            </Routes>
          </div>
-         { logout && <Hero/> }
+         { (logout || bin) && <Hero/> }
          { open && <NavHero /> } 
          { update && <div><Update/></div> }
     </div>

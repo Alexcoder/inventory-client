@@ -2,15 +2,24 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {useGlobalContext} from '../../state/context';
+import { deletePost, } from "../../state/action/posts";
+
 import {logOut} from '../../state/action/user'
 import { BIN_CLOSE, LOGOUT_FALSE, } from '../../state/constants';
 import './heroPrompt.css';
 
-const HeroPrompt=({onClickDelete})=>{ 
-    const {bin,logout} = useGlobalContext();
+const HeroPrompt =()=>{ 
+    const {bin, logout, deleteId} = useGlobalContext();
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const deleteItem = () => {
+        dispatch(deletePost(deleteId));
+        dispatch({type: BIN_CLOSE})
+      }
+    
+    
     return(
         <div id="heroContainer">
          <div>
@@ -24,8 +33,16 @@ const HeroPrompt=({onClickDelete})=>{
               </button>
               {
                logout ?
-               <button className="button bColor2" onClick={()=>{dispatch(logOut(navigate)) ; dispatch({type: LOGOUT_FALSE })}}>Yes</button>:
-               <button className="button bColor2" onClick={onClickDelete}>Delete</button>
+               <button className="button bColor2"
+                onClick={()=>{
+                dispatch(logOut(navigate)) ; 
+                dispatch({type: LOGOUT_FALSE })}}>
+                    Yes
+                </button>:
+               <button className="button bColor2"
+                onClick={deleteItem}>
+                    Delete
+                </button>
               }
              </div>
          </div> 
