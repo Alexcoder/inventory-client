@@ -16,11 +16,13 @@ const ListSingle = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const SearchResult = filteredByUser.filter((p) =>
-    p.category.includes(search) || p.category.toLowerCase().includes(search) ||
-    p.type.includes(search) || p.type.toUpperCase().includes(search) ||
-    p.user.includes(search) || p.user.toUpperCase().includes(search)
-  )
+  const SearchResult = filteredByUser.filter((item) =>
+   Object.entries(search).every(([key, value])=>
+    item.category[key].includes(value) || item.category[key].toLowerCase().includes(value)||
+    item.type[key].includes(value) || item.type[key].toUpperCase().includes(value) ||
+    item.user[key].includes(value) || item.user[key].toUpperCase().includes(value)
+
+  ))
 
 
   const handleMap = () => {

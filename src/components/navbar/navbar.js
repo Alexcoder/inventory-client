@@ -2,9 +2,10 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from 'react-redux';
 import { Button } from "@mui/material";
-import {BiMenu} from 'react-icons/bi'
+import MenuIcon from "@mui/icons-material/Menu";
+
 import { useGlobalContext } from "../../state/context";
-import { SIDEBAR_TOGGLE, OPEN_TOGGLE, LOGOUT_TRUE, SEARCH, HAVEACCOUNT_TRUE, HAVEACCOUNT_FALSE } from '../../state/constants';
+import { SIDEBAR_TOGGLE, OPEN_TOGGLE, LOGOUT_TRUE, SEARCH, HAVEACCOUNT_TRUE,  } from '../../state/constants';
 
 import './navbar.css';
 
@@ -20,12 +21,12 @@ const Navbar = () => {
       <div >
         {
           user?.result &&
-            <button 
+            <div 
                onClick={()=> {
                dispatch({type: OPEN_TOGGLE }); 
                dispatch({type: SIDEBAR_TOGGLE }) }}
-               className="menuIcon"><BiMenu/>
-            </button>
+               className="menuIcon"><MenuIcon sx={{fontSize:"3rem", color:"white"}}/>
+            </div>
         }
         <h1 className="inventoryControl" style={{textAlign:"start", width:"12rem"}}>INVENTORY</h1>
         <h4 className="user">
@@ -44,9 +45,10 @@ const Navbar = () => {
         { user?.result?
         <Button
                   sx={{
-                    flexBasis: "10%",
+                    justifyContent:"flexEnd",
+                    // flexBasis: "10%",
                     color: "white",
-                    margin: "1rem -1rem 1.3rem 1rem",
+                    margin: "1rem -1rem 1.3rem 0.5rem",
                     width:{md:"8rem",xs:"4.5rem", sm:"6.3rem"}
                   }}
         
@@ -63,7 +65,9 @@ const Navbar = () => {
         { !user?.result?
         <Button
                   sx={{
-                    flexBasis: "10%",
+                    justifyContent:"flexStart",
+                    flex:"4",
+
                     color: "white",
                     margin: "1rem 1rem 1.3rem 1rem",
                     width:{md:"8rem",xs:"6rem", sm:"6.3rem"}
@@ -80,7 +84,7 @@ const Navbar = () => {
         </Button> : null
         } 
 
-        { !user?.result?
+        {/* { !user?.result?
         <Button
                   sx={{
                     flexBasis: "10%",
@@ -98,7 +102,7 @@ const Navbar = () => {
         >
           SIGN UP
         </Button> : null
-    }
+    } */}
       </div>
     </div>
   );

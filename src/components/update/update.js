@@ -59,6 +59,7 @@ const Update =()=>{
           rowSpacing="0.5rem"
           justifyContent="center"
           textAlign="center"
+          max={""}
           sx={{width: { md: "25rem", xs: "99%", sm: "90%" }}}>
             <Typography  sx={{margin:"0.5rem 1rem 0rem 0rem",}}>
                {receive? "RECEIVE" : "SEND"}
@@ -90,6 +91,11 @@ const Update =()=>{
             sx={{ width: { md: "8rem", xs: "15rem", sm: "15rem" } }}
             type="number"
             name="quantity"
+            InputProps={{
+              inputProps: { 
+                  max: 20, min: 0 
+              }
+          }}
             value={formData.quantity}
             onChange={(e) =>
               setFormData({ ...formData, quantity: e.target.value })}/>
