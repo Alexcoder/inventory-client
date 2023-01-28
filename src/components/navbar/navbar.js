@@ -46,7 +46,6 @@ const Navbar = () => {
         <Button
                   sx={{
                     justifyContent:"flexEnd",
-                    // flexBasis: "10%",
                     color: "white",
                     margin: "1rem -1rem 1.3rem 0.5rem",
                     width:{md:"8rem",xs:"4.5rem", sm:"6.3rem"}
