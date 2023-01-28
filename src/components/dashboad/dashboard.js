@@ -163,10 +163,10 @@ const Dashboard = () => {
 
           </div>
           {/* Total Amount In and Out Below */}
-          <div style={{ display: "block", gap: "2rem", padding: "2rem 1rem 2rem 2rem", backgroundColor: "smokewhite", height: "2rem" }}>
-            <div><span style={{ fontWeight: "700" }}>TOTAL RECEIVED</span>: ${Money(IncommingTotalAmount)}.00</div>
-            <div><span style={{ fontWeight: "700" }}>TOTAL SENT</span>: ${Money(OutgoingTotalAmount)}.00 </div>
-            <div style={{ fontWeight: "700", fontSize: "1.2rem" }}><span >TOTAL BALANCE</span>: ${Money(IncommingTotalAmount - OutgoingTotalAmount)}.00</div>
+          <div className="sumContainer">
+            <div style={{border:"1px solid gray",padding:"0.5rem",background:"gray", color:"black",borderRadius:"0.2rem",display:"flex", flexDirection:"column"}}><span style={{ fontWeight: "700" }}>RECEIVED</span> ${Money(IncommingTotalAmount)}.00</div>
+            <div style={{border:"1px solid gray",padding:"0.5rem",background:"gray", color:"black",borderRadius:"0.2rem",display:"flex", flexDirection:"column"}}><span style={{ fontWeight: "700" }}>SENT</span> ${Money(OutgoingTotalAmount)}.00 </div>
+            <div style={{ border:"1px solid gray",padding:"0.5rem",background:"gray", color:"black",borderRadius:"0.2rem",display:"flex", flexDirection:"column", fontWeight: "700", fontSize: "1.2rem" }}><span >BALANCE</span> ${Money(IncommingTotalAmount - OutgoingTotalAmount)}.00</div>
           </div>
         </div>
         {
