@@ -16,7 +16,7 @@
 
 @media screen and (max-width: 1024px){
     .welcome_main{
-        margin: 6rem 0rem 1rem 0.5rem;
+        margin: 1.5rem 0rem 1rem 0.5rem;
         width: 98%;
     }
     .welcome_text{
@@ -27,7 +27,7 @@
 }
 @media screen and (max-width: 620px){
     .welcome_main{
-        margin: 6rem 0rem 1rem 0.5rem;
+        margin: 1.5rem 0rem 1rem 0.5rem;
         width: 95%;
     }
     .welcome_text{
