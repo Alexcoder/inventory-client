@@ -132,13 +132,13 @@ export const Context =({children})=>{
       return(
         <div>
           <h5 style={{marginBottom:"-1.5rem",}}
-            >{type=== incomming ? "Total Quantity Received Till Date" : "Total Quantity Sent Till Date"}
+            >{type=== incomming ? "Total Quantity Received" : "Total Quantity Sent"}
               : <span style={{color: type=== incomming ? "blue" : "red"}}>
                  {detailPostTotalQuantity}
               </span>
           </h5>
           <h5 
-          >{type=== incomming ? "Total Amount Received Till Date " : "Total Amount Sent Till Date "} 
+          >{type=== incomming ? "Total Amount Received " : "Total Amount Sent "} 
            : $<span style={{color: type=== incomming ? "blue" : "red"}}>
               {Intl.NumberFormat().format(detailPostTotalAmount)}.00
             </span>

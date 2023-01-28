@@ -76,7 +76,7 @@ const Detail = () => {
 sx={{ 
   border: "1px solid gray",
   borderRadius: "0.5rem",
-  maxHeight: {md:"26rem", sm:"25rem", xs:"28rem"}, 
+  maxHeight: {md:"26rem", sm:"25rem", xs:"26rem"}, 
   width:{md: "25rem", sm:"49vw", xs:"90vw"},
   marginBottom:{sm:"0.5rem", xs:"1rem"} ,
   marginLeft:{sm:"0.2rem", xs:"0rem"},
