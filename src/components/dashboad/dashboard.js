@@ -166,7 +166,7 @@ const Dashboard = () => {
           <div className="sumContainer">
             <div style={{border:"1px solid gray",padding:"0.5rem",background:"gray", color:"black",borderRadius:"0.2rem",display:"flex", flexDirection:"column"}}><span style={{ fontWeight: "700" }}>RECEIVED</span> ${Money(IncommingTotalAmount)}.00</div>
             <div style={{border:"1px solid gray",padding:"0.5rem",background:"gray", color:"black",borderRadius:"0.2rem",display:"flex", flexDirection:"column"}}><span style={{ fontWeight: "700" }}>SENT</span> ${Money(OutgoingTotalAmount)}.00 </div>
-            <div style={{ border:"1px solid gray",padding:"0.5rem",background:"gray", color:"black",borderRadius:"0.2rem",display:"flex", flexDirection:"column", fontWeight: "700", fontSize: "1.2rem" }}><span >BALANCE</span> ${Money(IncommingTotalAmount - OutgoingTotalAmount)}.00</div>
+            <div style={{ border:"1px solid gray",padding:"0.5rem",background:"gray", color:"black",borderRadius:"0.2rem",display:"flex", flexDirection:"column", fontWeight: "700" }}><span >BALANCE</span> ${Money(IncommingTotalAmount - OutgoingTotalAmount)}.00</div>
           </div>
         </div>
         {
