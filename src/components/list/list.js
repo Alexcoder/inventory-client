@@ -35,7 +35,8 @@ const ListSingle = () => {
   }
 
   return (
-    <section >
+    <section style={{display:"flex", justifyContent:"center", height:"100%", position:"absolute", width:"100%"}}>
+      <main className="list-main-container">
       {
         Loading ? "Loading..." : !handleMap()[0] ?
           <div
@@ -48,7 +49,7 @@ const ListSingle = () => {
           <h1 className="record">RECORD</h1>
           <MUIList dense={false}
             sx={{
-              maxHeight: "450px",
+              maxHeight: "fit-content",
               overflow: "auto",
               width: { sm: "100%", xs: "100%", md: "100%" },
               marginTop: { xs: "0.3rem", sm: "0.3rem", md: "1rem" },
@@ -85,6 +86,7 @@ const ListSingle = () => {
           </MUIList>
           </div>
       }
+      </main>
       </section>
         );
      };

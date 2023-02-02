@@ -1,29 +1,29 @@
 #dashboardContainer {
-  max-width: 80%;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  
+}
+#dashboardContainer >main{
+  width: fit-content;
+  height: fit-content;
   background: white;
   box-shadow: 0.1rem 0.1rem 0.1rem 0rem gray;
-  padding: 0rem 0rem 1rem 0rem;
+  padding:1rem;
 }
 
 .add-transaction{
-  width: 10%;
-  padding: 0.7rem; 
-  margin-top: 0.5rem;
-  margin-left: 2rem;
-  border-radius:0.2rem ;
-  border: none;
-  color:  white;
   background: rgba(131, 10, 131);
   font-weight:  550;  
   font-size: 15px; 
+  border: none;
 }
 .disabled{
   background: gray;
 }
 .paper-wrap {
-  width: 70%;
   margin: 0rem 0rem 0rem 0.5rem;
-  padding: 1rem 0rem 0.3rem 0rem;
+  padding: 0.5rem;
 }
 .flexItem{
   display: flex;
@@ -122,36 +122,31 @@
 
 /*--MEDIA QUERY 1024PX-- */
 @media screen and (max-width: 1024px) {
-  #dashboardContainer {
-    max-width: 100%;
+  #dashboardContainer >main{
+    max-width: 90%;
     overflow: hidden;
-    margin: 0.5rem;
+    margin-top: 1rem;
   }
-  #flexItem{
-    max-width: 100%;
-  }
+  .data {
+    max-width: 90%;
+    overflow:auto;
+  } 
+  
   .add-transaction{
     margin-top: 1rem;
     margin-left: 8rem;
     width: 25%;
   }
-  .data {
-    max-width: 70%;
-    overflow: auto
-  } 
   .paper-wrap {
-    width: 55rem;
-    margin: 0rem -2rem 0rem 0.5rem;
+    width: 100%;
     padding: 1rem 0rem 0.3rem 0rem;
   }
 }
 
 /* -- MEDIA QUERY 620PX-- */
 @media screen and (max-width: 620px) {
-  #dashboardContainer {
-    max-width: 100%;
-    overflow: hidden;
-    margin: 0.5rem;
+  #dashboardContainer >main{
+    max-width: 90%;
   }
   .data {
     max-width: 60%;
@@ -164,7 +159,6 @@
   }
   .paper-wrap {
     width: 100%;
-    margin: 0rem -2rem 0rem 0.5rem;
     padding: 1rem 0rem 0.3rem 0rem;
   }
   .sumContainer{
@@ -175,11 +169,12 @@
 }
 
 @media screen and (max-width: 420px) {
-  #dashboardContainer {
-    max-width: 100%;
+  #dashboardContainer >main{
+    max-width: 88%;
     overflow: hidden;
-    margin: 0.5rem;
+    margin-top: 1rem;
   }
+
   .data {
     display: grid;
     max-width: 20%;

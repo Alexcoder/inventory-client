@@ -12,11 +12,10 @@ const Main = () => {
     <div className="mainContainer" >
 
       <div>
-        <Dashboard />
-
-        <div style={{padding:"0rem 0.1rem"}}>
+        <div><Dashboard /></div>
+        <div>
           {Loading ? <h3 className="loading"><CircularProgress/></h3> :
-            <div style={{ marginTop: "-0.5rem", padding: "0rem 0.2rem" }}>
+            <div>
               <List />
             </div>
           }

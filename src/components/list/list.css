@@ -1,4 +1,10 @@
-
+.list-main-container{
+  width: 100%;
+  display: flex; 
+  justify-content: center;
+  max-height: 100%;
+  overflow: auto
+}
 .noRecordFound{
     color: red;
      width: fit-content;
@@ -13,25 +19,31 @@
 }
 .record{
     margin-bottom: 0.5rem;
-    margin-top: 1rem;
     text-align: center;
+    align-items: center;
     font-size: 1.8rem;
-    /* background: gray; */
   }
   .listContainer{
     margin-top:  1rem;
     background:  white;
     box-shadow:  1px 1px 2rem -0.2rem gray;
-    width: 50%;
+    width: 64%;
     border: 0.2px solid lightgray;
-    padding: 0.5rem 1rem;
-
+    padding: 0.5rem;
+    max-height: 70%;
+    overflow: auto;
+  
   }
 
   @media screen and (max-width: 1024px) {
+    .list-main-container{
+      width: 100%;
+      display: flex; 
+      justify-content: center;
+    }
+    
     .listContainer{
-        width: 95.4%;
-        margin:1rem 1rem 0rem 0rem;
+        width: 92%;
       }
      .record{
     width: 96%;
@@ -40,23 +52,19 @@
     
     @media screen and (max-width: 620px) {
         .listContainer{
-            width: 91.5%;
+            width: 100%;
           }
         .record{
-        width: 96%;
+        width: 94%;
       }
     }
   
     @media screen and (max-width: 420px) {
-      section{
-        margin: 0.2rem 0.5rem 0.2rem 0rem;
-      }
         .listContainer{
-            width: 91.5%;
+            width: 90%;
           }
       .record{
-        width: 96%;
-        border-radius: 2rem;
+        width: 92%;
       }
   }
   

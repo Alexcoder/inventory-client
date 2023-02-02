@@ -13,11 +13,14 @@ const Welcome =()=>{
 
 
     return(
-     <main className="welcome_main">
-            <Dashboard />
+     <main className="welcome-main">
+        <section>
+        
+        <div> <Dashboard /> </div>
 
-        <div >
-            <div className="welcome_text">
+
+        <div className="welcome-text-cont">
+            <div className="welcome-text">
                 <h2 className="inventory_text"> INVENTORY CHECK </h2>
                <div>
                  Built to monitor and track inflow and outflow<br/>
@@ -34,6 +37,7 @@ const Welcome =()=>{
                </div>
               </div>
         </div>
+        </section>  
     </main>
     )
 }

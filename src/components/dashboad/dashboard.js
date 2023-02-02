@@ -121,7 +121,7 @@ const Dashboard = () => {
   return (
     <section id="dashboardContainer">
 
-      <main style={{ padding: "0rem 0.5rem" }}>
+      <main >
 
         <div className="paper-wrap">
           <div style={{ display: "flex", margin: "0rem 0rem 0rem 2rem" }}>
