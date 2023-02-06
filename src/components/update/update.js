@@ -20,6 +20,7 @@ const Update =()=>{
     const handleChange = (e) => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+    const MinMax = {max: 10}
    
   
     const handleSubmit = (e) => {
@@ -104,6 +105,7 @@ const Update =()=>{
             sx={{ width: { md: "12rem", xs: "15rem", sm: "15rem" } }}
             type="number"
             name="price"
+            inputProps={MinMax}
             value={formData.price}
             onChange={(e) => setFormData({ ...formData, price: e.target.value })}/>
           <SingleMain

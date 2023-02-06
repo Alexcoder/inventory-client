@@ -1,11 +1,13 @@
 import React from 'react';
 import { useGlobalContext } from "../../state/context";
 import {useDispatch} from 'react-redux';
+import AddIcon from "@mui/icons-material/Add"
+import RemoveIcon from "@mui/icons-material/Remove"
 import './dashboard.css';
 import { UPDATE_TRUE, RECEIVE_TRUE, RECEIVE_FALSE } from '../../state/constants';
 
 
-const Dashboard = () => {
+const Dashboard = () => { 
   const dispatch = useDispatch()
 
   const {
@@ -113,7 +115,8 @@ const Dashboard = () => {
   ]
 
   const Money = (num) => {
-    const moneyFormat = `${Intl.NumberFormat().format(num.toFixed(2))}`
+    // const SignCheck = num<0? num*-1 : num
+    const moneyFormat = `${Intl.NumberFormat().format(Math.abs(num).toFixed(2))}`
     return moneyFormat
   }
 
@@ -124,37 +127,36 @@ const Dashboard = () => {
       <main >
 
         <div className="paper-wrap">
-          <div style={{ display: "flex", margin: "0rem 0rem 0rem 2rem" }}>
-            <div style={{ marginTop: "3.5rem" }}>
+          <div style={{ display: "flex", margin: "0rem 1rem 0rem 1rem" }}>
+            <div style={{ marginTop: "4.8rem", marginRight:"1rem"}}>
               {
                 displayData?.map((p, i) => (
                   <div key={i}  >
-                    <div style={{ marginBottom: "1.1rem" }}>{p.type}</div>
+                    <div style={{ marginBottom: "1.1rem", fontWeight:"500" }}>{p.type}</div>
                   </div>
                 ))
               }
             </div>
 
             <div className="data">
-              <div style={{ display: "flex", margin: "0rem 0rem 2rem 0rem" }}>
-                <div className="receivedText">RECEIVED</div>
-                <div className="sentText">SENT</div>
-                <div className="stockText">STOCK</div>
-                <div className="receivedTotalText">$RECEIVED</div>
-                <div className="sentTotalText">$SENT</div>
-                <div className="balanceTotalText" >$BALANCE</div>
-                <hr />
+              <div style={{ display: "flex", margin: "0rem 0rem 0.5rem 0rem" }}>
+                <div className="dash-data1" style={{color:"blue"}}>RECEIVED</div>
+                <div className="dash-data1" style={{color:"red"}}>SENT</div>
+                <div className="dash-data1" style={{}}>STOCK</div>
+                <div className="dash-data1" style={{color:"darkgreen"}}>AMOUNT <br/> RECEIVED</div>
+                <div className="dash-data1" style={{color:"red"}}>AMOUNT <br/> SENT</div>
+                <div className="dash-data1" style={{minWidth:"4rem"}} >BALANCE</div>
               </div>
-
+              <div><hr/></div>
               {displayData?.map((p, i) => (
                 <div key={i}>
                   <div className="flexItem" >
-                    <div className="quantityIn">{p.quantityin}</div>
-                    <div className="quantityOut">{p.quantityout}</div>
-                    <div className="stock">{p.stock}</div>
-                    <div className="amountIn">{Money(p.amountIn)}</div>
-                    <div className="amountOut">{Money(p.amountOut)}</div>
-                    <div className="balance">{Money(p.balance)}</div>
+                    <div className="dash-data" style={{color:"blue"}}>{p.quantityin}</div>
+                    <div className="dash-data" style={{color:"red"}}>{p.quantityout}</div>
+                    <div className="dash-data" style={{color: p.balance<=0 ? "red" : "blue"}}>{Math.abs(p.stock)}</div>
+                    <div className="dash-data" style={{color:"blue"}}><span style={{color:"gray"}}>&#8358;</span> {Money(p.amountIn)}</div>
+                    <div className="dash-data" style={{color:"red"}}><span style={{color:"gray"}}>&#8358;</span> {Money(p.amountOut)}</div>
+                    <div className="dash-data" style={{color: p.balance<=0 ? "red" : "green", minWidth:"4rem"}}><span style={{color:"gray"}}>&#8358;</span> {Money(p.balance)}</div>
                   </div>
                   <hr />
                 </div>
@@ -164,25 +166,42 @@ const Dashboard = () => {
           </div>
           {/* Total Amount In and Out Below */}
           <div className="sumContainer">
-            <div style={{border:"1px solid gray",padding:"0.5rem",background:"gray", color:"black",borderRadius:"0.2rem",display:"flex", flexDirection:"column"}}><span style={{ fontWeight: "700" }}>RECEIVED</span> ${Money(IncommingTotalAmount)}.00</div>
-            <div style={{border:"1px solid gray",padding:"0.5rem",background:"gray", color:"black",borderRadius:"0.2rem",display:"flex", flexDirection:"column"}}><span style={{ fontWeight: "700" }}>SENT</span> ${Money(OutgoingTotalAmount)}.00 </div>
-            <div style={{ border:"1px solid gray",padding:"0.5rem",background:"gray", color:"black",borderRadius:"0.2rem",display:"flex", flexDirection:"column", fontWeight: "700" }}><span >BALANCE</span> ${Money(IncommingTotalAmount - OutgoingTotalAmount)}.00</div>
+            <div className="dash-group-result">
+               <div >RECEIVED</div>
+               <div>
+                 <span>&#8358;</span>  {Money(IncommingTotalAmount)}.00
+               </div>
+              </div>
+            <div className="dash-group-result">
+               <div >SENT</div>
+               <div>
+                 <span>&#8358;</span>  {Money(OutgoingTotalAmount)}.00
+               </div>
+              </div>
+            <div className="dash-group-result">
+               <div >BALANCE</div>
+               <div>
+                 <span>&#8358;</span>  {Money(IncommingTotalAmount - OutgoingTotalAmount)}.00
+               </div>
+              </div>
           </div>
         </div>
         {
           user && 
-          <p>
+        <p style={{justifyContent:"center", display:"flex", gap:"3rem"}}>
         <button
           className= {user?.result ?  "add-transaction" : "add-transaction disabled"}
           disabled={!user?.result}
           onClick={() => {dispatch({type: UPDATE_TRUE}); dispatch({type: RECEIVE_TRUE}) }}>
-          RECEIVE
+           <div><AddIcon sx={{fontSize: "2rem"}}/></div> 
+          <div>RECEIVE</div>
         </button>
         <button
           className= {user?.result ?  "add-transaction" : "add-transaction disabled"}
           disabled={!user?.result}
           onClick={() => {dispatch({type: UPDATE_TRUE}); dispatch({type: RECEIVE_FALSE})}}>
-          SEND
+          <div><RemoveIcon sx={{fontSize: "2rem"}}/></div> 
+          <div>SEND</div>
         </button>
         </p>
         }
