@@ -1,70 +1,40 @@
-.list-main-container{
-  width: 100%;
-  display: flex; 
-  justify-content: center;
-  max-height: 100%;
-  overflow: auto
+.list-cont{
+    display: flex;
+    justify-content: center;
+    width: 100%; 
 }
-.noRecordFound{
-    color: red;
-     width: fit-content;
-     padding: 2rem;
-     border:  1px solid gray;
-     font-size: 1.3rem;
-     font-weight: 700;
-     border-radius: 0.5rem;
-     background-color: gray;
-     margin: 2rem 0rem 0rem 0rem;
-     box-shadow: 0rem 0.5px -0.5rem 0rem gray;
+.list-paper{
+     width:100%;
+     border: none;
+     box-shadow:2px 2px 2px 0px gray; 
+     background: white; 
+     align-items:center ; 
 }
-.record{
-    margin-bottom: 0.5rem;
-    text-align: center;
-    align-items: center;
-    font-size: 1.8rem;
-  }
-  .listContainer{
-    margin-top:  1rem;
-    background:  white;
-    box-shadow:  1px 1px 2rem -0.2rem gray;
-    width: 64%;
-    border: 0.2px solid lightgray;
-    padding: 0.5rem;
-    max-height: 70%;
-    overflow: auto;
-  
-  }
+.list-title{
+    display: flex;  
+    gap: 0.6rem;   
+    padding: 1rem 2rem;  
+    font-size: 1.3rem;  
+    font-weight: 700;  
+    background: blue;  
+    color: white; 
+}
 
-  @media screen and (max-width: 1024px) {
-    .list-main-container{
-      width: 100%;
-      display: flex; 
-      justify-content: center;
-    }
-    
-    .listContainer{
-        width: 92%;
-      }
-     .record{
-    width: 96%;
-  }
-  }
-    
-    @media screen and (max-width: 620px) {
-        .listContainer{
-            width: 100%;
-          }
-        .record{
-        width: 94%;
-      }
-    }
-  
-    @media screen and (max-width: 420px) {
-        .listContainer{
-            width: 90%;
-          }
-      .record{
-        width: 92%;
-      }
-  }
-  
+@media screen and (max-width:1024px){    
+    .list-paper{
+        max-width: 70%;
+        overflow: auto;
+   }
+   .list-title{
+    width: 121%;
+}
+}
+@media screen and (max-width:600px){    
+    .list-paper{
+        max-width: 60%;
+        overflow: auto;
+   }
+   .list-title{
+    width: 150%;
+}
+}

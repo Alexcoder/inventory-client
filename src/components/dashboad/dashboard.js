@@ -115,7 +115,6 @@ const Dashboard = () => {
   ]
 
   const Money = (num) => {
-    // const SignCheck = num<0? num*-1 : num
     const moneyFormat = `${Intl.NumberFormat().format(Math.abs(num).toFixed(2))}`
     return moneyFormat
   }
@@ -188,7 +187,7 @@ const Dashboard = () => {
         </div>
         {
           user && 
-        <p style={{justifyContent:"center", display:"flex", gap:"3rem"}}>
+        <p  className="dash-btn-grp">
         <button
           className= {user?.result ?  "add-transaction" : "add-transaction disabled"}
           disabled={!user?.result}

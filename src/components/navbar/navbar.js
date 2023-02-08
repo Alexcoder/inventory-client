@@ -5,16 +5,19 @@ import { Button } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import { useGlobalContext } from "../../state/context";
-import { SIDEBAR_TOGGLE, OPEN_TOGGLE, LOGOUT_TRUE, SEARCH, HAVEACCOUNT_TRUE,  } from '../../state/constants';
+import { SIDEBAR_TOGGLE, OPEN_TOGGLE, LOGOUT_TRUE, HAVEACCOUNT_TRUE,  } from '../../state/constants';
 
 import './navbar.css';
 
 const Navbar = () => {
-  const { user, search } = useGlobalContext();
+  const { user, searchPost, setSearchPost } = useGlobalContext();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  
+const handleChange = (e) =>{
+  setSearchPost({...searchPost, [e.target.name] : e.target.value})
+
+}  
 
   return (
     <div id={ "navContainer" }  >
@@ -38,8 +41,9 @@ const Navbar = () => {
           className="navSearch"
           placeholder="search..."
           type="text"
-          value={search}
-          onChange={(e)=> dispatch({type: SEARCH , payload: e.target.value})}
+          name="category"
+          value={searchPost.category}
+          onChange={handleChange}
         />
         }
         { user?.result?

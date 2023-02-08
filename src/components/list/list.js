@@ -1,94 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { List as MUIList, ListItem, ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, IconButton, Slide } from "@mui/material";
-import moment from 'moment'
-import { Delete, MoneyOff } from '@mui/icons-material';
+import { useDispatch,  } from "react-redux";
+// useSelector
+// import moment from 'moment';
+import {useEffect} from "react";
+import { Delete } from '@mui/icons-material';
 import { useGlobalContext } from "../../state/context";
 import { MdOutlineVisibility } from 'react-icons/md';
-import { BIN_OPEN, DELETE_ID, UPDATE_TRUE} from '../../state/constants';
+import { BIN_OPEN, DELETE_ID,  } from '../../state/constants';
+// UPDATE_TRUE
+import Pagination from "../Pagination";
 
 import './list.css';
 
 const ListSingle = () => {
-  const { Loading } = useSelector((state) => state.posts);
-  const { filteredByUser, search, incomming } = useGlobalContext();
+  // const { Loading } = useSelector((state) => state.posts);
+  const { filteredByUser, searchPost, incomming, setSelected } = useGlobalContext();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const SearchResult = filteredByUser.filter((item) =>
-   Object.entries(search).every(([key, value])=>
-    item.category[key].includes(value) || item.category[key].toLowerCase().includes(value)||
-    item.type[key].includes(value) || item.type[key].toUpperCase().includes(value) ||
-    item.user[key].includes(value) || item.user[key].toUpperCase().includes(value)
+  const SearchFilter = filteredByUser.filter((item) =>
+    Object.entries(searchPost).every(([key, value]) =>
+       item[key].includes(value) 
+       || item[key].toLowerCase().includes(value)
+       || item[key].toUpperCase().includes(value)
+    ))
 
-  ))
+  const [currentPage, setCurrentPage] = useState(1)
+  const postsPerPage = 7;
 
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const slicedData = SearchFilter.slice((indexOfFirstPost), (indexOfLastPost))
 
-  const handleMap = () => {
-    if (search) {
-      return SearchResult
-    }
-    else {
-      return filteredByUser
-    }
-  }
+  const totalPages = Math.ceil(SearchFilter.length/postsPerPage);
+
+  const goToPage = (number) => setCurrentPage(number)
+
+  useEffect(()=>{
+    if(searchPost) {goToPage(1); setSelected(0)}
+  },[searchPost, setSelected])
+
 
   return (
-    <section style={{display:"flex", justifyContent:"center", height:"100%", position:"absolute", width:"100%"}}>
-      <main className="list-main-container">
-      {
-        Loading ? "Loading..." : !handleMap()[0] ?
-          <div
-            onClick={() => dispatch({type: UPDATE_TRUE})}
-            className="noRecordFound">
-            NO RECORD FOUND
-          </div> :
+    <main className="list-cont">
+      <div className="list-paper" >
+      <div className="list-title">
+              <div style={{ minWidth:"9rem", padding:"0.3rem", }}>STATUS</div>
+              <div style={{ minWidth:"10rem", padding:"0.3rem", textTransform:"UpperCase", }}>ITEM</div>
+              <div style={{ minWidth:"7rem", padding:"0.3rem"}}>TYPE</div>
+              <div style={{ minWidth:"15rem", padding:"0.3rem"}}>DATE</div>
+            </div>
 
-         <div className="listContainer">
-          <h1 className="record">RECORD</h1>
-          <MUIList dense={false}
-            sx={{
-              maxHeight: "fit-content",
-              overflow: "auto",
-              width: { sm: "100%", xs: "100%", md: "100%" },
-              marginTop: { xs: "0.3rem", sm: "0.3rem", md: "1rem" },
-              background: "white",
-              border:"1px solid lightgray",
-              borderRadius:"0.4rem"
-
-            }}
-          >
-            {
-              (
-                handleMap().sort((a,b)=> a.createdAt - b.createdAt).map((p) => (
-                  <Slide direction="down" in mountOnEnter unmountOnExit key={p._id}
-                    onClick={() => { navigate(`/${p.category}`, { state: { id: p._id } }) }}>
-                    <ListItem>
-                      <ListItemAvatar>
-                        <Avatar sx={{ backgroundColor: p.type ===  incomming  ? "blue" : "red" }}>
-                          <MoneyOff />
-                        </Avatar>
-                      </ListItemAvatar>
-                      <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY')}`} />
-                      <ListItemSecondaryAction>
-                        <IconButton edge="end" aria-label="delete" onClick={() => { navigate(`/${p.category}`, { state: { id: p._id } }) }}>
-                          <MdOutlineVisibility />
-                        </IconButton>
-                        <IconButton edge="end" aria-label="delete" 
-                        onClick={() => {dispatch({type: BIN_OPEN}); dispatch({type: DELETE_ID, payload: p._id}) }}>
-                          <Delete />
-                        </IconButton>
-                      </ListItemSecondaryAction>
-                    </ListItem>
-                  </Slide>
-                )))}
-          </MUIList>
+        <div>
+        {
+          slicedData.map((p) => (
+            <div key={p._id} style={{ display: "flex",gap:"0.6rem", border: "0.2px solid lightgray", fontWeight:"500", color:"black", padding:"0.3rem 1rem", alignItems:"center"}}>
+              <div style={{ minWidth:"9rem", padding:"0.3rem",height:"1.2rem", background: p.type===incomming? "green" : "red", }}></div>
+              <div style={{ minWidth:"10rem", padding:"0.3rem", textTransform:"UpperCase", }}>{p.category}</div>
+              <div style={{ minWidth:"7rem", padding:"0.3rem", textTransform:"UpperCase", }}>{p.type}</div>
+              <div style={{ minWidth:"15rem", padding:"0.3rem"}}>{p.date}</div>
+              <div style={{ minWidth:"5rem", padding:"0.3rem"}} onClick={() => { navigate(`/${p.category}`, { state: { id: p._id } }) }}><MdOutlineVisibility style={{fontSize:"2rem"}} /></div>
+              <div style={{ minWidth:"5rem", padding:"0.3rem"}} onClick={() => { dispatch({ type: BIN_OPEN }); dispatch({ type: DELETE_ID, payload: p._id }) }}> <Delete style={{fontSize:"2rem"}}/></div>
+            </div>
+          ))}
           </div>
-      }
-      </main>
-      </section>
-        );
-     };
+        <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", border:"1px solid gray", padding:"0.3rem 2rem", fontSize:"1.2rem", color:"gray"}}>
+          <div>{totalPages>0 ?  `Showing ${currentPage} of ${totalPages} ${totalPages>1? "pages": "page"}` : "NO MATCHING CONTENT" }</div>
+          <div>
+           <Pagination postsPerPage={postsPerPage} totalPosts={SearchFilter.length} goToPage={goToPage} />
+          </div>
+        </div>
+      </div> 
+    </main>
+  );
+};
 
-        export default ListSingle;
+export default ListSingle;

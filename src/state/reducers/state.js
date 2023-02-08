@@ -11,7 +11,7 @@
  } from '../constants';
 
 const INITIAL_STATE={
-    search: "",
+    search: {},
     deleteId:"",
     bin: false,
     sidebar: false,

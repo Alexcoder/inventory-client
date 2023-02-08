@@ -14,8 +14,8 @@ const Main = () => {
       <div>
         <div><Dashboard /></div>
         <div>
-          {Loading ? <h3 className="loading"><CircularProgress/></h3> :
-            <div>
+          {Loading ? <div className="loading"><CircularProgress/> Fetching data...</div> :
+            <div style={{ marginTop:"1rem"}}>
               <List />
             </div>
           }

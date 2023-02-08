@@ -35,6 +35,8 @@ export const Context =({children})=>{
     open}= useSelector((state)=> state.stateReducer)
 
     const [formData, setFormData]= useState(initialState)
+    const [searchPost, setSearchPost]= useState({})
+    const [selected, setSelected]= useState(0)
     const { allposts } = useSelector((state)=> state.posts)
     const user =  JSON.parse(localStorage.getItem("profile"));
     const creator =   user?.result._id
@@ -160,7 +162,7 @@ export const Context =({children})=>{
       ButylGlycolAmountIn, ButylGlycolAmountOut,SurfactantAmountIn, SurfactantAmountOut, ViscosifierAmountIn,
       ViscosifierAmountOut,IncommingTotalAmount, OutgoingTotalAmount, HandleTotal, user, creator, 
       filteredByUser,search, transaction, open,bin, logout, incomming,
-      deleteId, sidebar,update,
+      deleteId, sidebar,update, searchPost, setSearchPost, selected, setSelected
       }}
     >
       {children}

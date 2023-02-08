@@ -5,8 +5,6 @@
   
 }
 #dashboardContainer >main{
-  width: fit-content;
-  height: fit-content;
   background: white;
   box-shadow: 0.1rem 0.1rem 0.1rem 0rem gray;
   padding:1rem;
@@ -14,7 +12,6 @@
 
 .add-transaction{
   background: rgba(131, 10, 131);
-  /* justify-content: center; */
   align-items: center;
   display: flex;
   gap: 1.5rem;
@@ -22,7 +19,6 @@
   font-size: 15px; 
   border: none;
   width: 17%;
-  /* padding: 0.5rem; */
   color: white;
   border-radius: 0.2rem;
 }
@@ -30,7 +26,6 @@
   background: gray;
 }
 .paper-wrap {
-  margin: 0rem 0rem 0rem 0.5rem;
   padding: 0.5rem;
 }
 .flexItem{
@@ -78,7 +73,8 @@
   justify-content: space-between;
   width: 97%;
   padding: 0.4rem 1rem; 
-  background: rgb(42, 42, 148);
+  background: white;
+  /* background: rgb(42, 42, 148); */
   font-weight: 700;
   font-size: 1.5rem;
   color: black;
@@ -92,12 +88,18 @@
     display: flex; 
     flex-direction: column; 
 }
+.dash-btn-grp{
+  justify-content: center; 
+  display: flex; 
+  gap: 3rem;
+}
+
 
 /*--MEDIA QUERY 1024PX-- */
 @media screen and (max-width: 1024px) {
   #dashboardContainer >main{
     max-width: 90%;
-    overflow: hidden;
+    overflow: auto;
     margin-top: 1rem;
   }
   .data {
@@ -116,75 +118,3 @@
   }
 }
 
-/* -- MEDIA QUERY 620PX-- */
-@media screen and (max-width: 620px) {
-  #dashboardContainer >main{
-    max-width: 90%;
-  }
-  .data {
-    max-width: 60%;
-    overflow: auto
-  }
-  .add-transaction{
-    width: 30%;
-    margin-left: 0.5rem;
-    padding: 1rem; 
-  }
-  .paper-wrap {
-    width: 100%;
-    padding: 1rem 0rem 0.3rem 0rem;
-  }
-  .sumContainer{
-    display: flex;
-    width: 80%;
-  }
-  
-}
-
-@media screen and (max-width: 420px) {
-  #dashboardContainer >main{
-    max-width: 88%;
-    overflow: hidden;
-    margin-top: 1rem;
-  }
-
-  .data {
-    display: grid;
-    max-width: 20%;
-    overflow: auto
-  }
-  p{
-    display:flex;
-  }
-  .add-transaction{
-    width: 40%;
-    margin-left: 1.5rem;
-    margin-top: 0.5rem;
-    padding: 1rem; 
-  }
-  .paper-wrap {
-    width: 55rem;
-    margin: 0rem -2rem 0rem 0.5rem;
-    padding: 1rem 0rem 0.3rem 0rem;
-  }
-  .sumContainer{
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    width: 33%;
-  }
-
-}
-@media screen and (max-width: 390px) {
-  .sumContainer{
-    width: 29%;
-  }
-
-}
-@media screen and (max-width: 360px) {
-  .sumContainer{
-    width: 27%;
-    gap:0.1rem;
-  }
-
-}
