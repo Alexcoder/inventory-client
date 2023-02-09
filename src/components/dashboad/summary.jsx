@@ -13,8 +13,8 @@ const Summary = () => {
 
 
   return (
-    <main className="dash-cont">
-              <div className="sumContainer">
+    <main className="dash-contx">
+          <div className="sumContainer">
             <div className="dash-group-result">
                <div >RECEIVED</div>
                <div>

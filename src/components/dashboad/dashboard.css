@@ -123,8 +123,15 @@
   .sumContainer{
     justify-content: center;
     flex-direction:column;
-    width: 90%;
+    /* width: 92%; */
+    border-radius: 0rem;
   }
+  .dash-group-result{
+    flex-direction: row; 
+    justify-content: space-between;
+    /* width: 90%; */
+}
+
   
 }
 
