@@ -10,17 +10,17 @@ const Main = () => {
 
   return (
     <div className="mainContainer" >
-
       <div>
-        <div><Dashboard /></div>
-        <div>
+
+        <Dashboard />
+      <div>
           {Loading ? <div className="loading"><CircularProgress/> Fetching data...</div> :
             <div style={{ marginTop:"1rem"}}>
               <List />
             </div>
           }
-        </div>
-      </div>
+    </div>
+    </div>
     </div>
   );
 };

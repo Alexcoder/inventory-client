@@ -5,6 +5,7 @@ import AddIcon from "@mui/icons-material/Add"
 import RemoveIcon from "@mui/icons-material/Remove"
 import './dashboard.css';
 import { UPDATE_TRUE, RECEIVE_TRUE, RECEIVE_FALSE } from '../../state/constants';
+import Summary from "./summary";
 
 
 const Dashboard = () => { 
@@ -18,7 +19,7 @@ const Dashboard = () => {
     FluidLossAmountIn, FluidLossAmountOut, DispersantAmountIn, DispersantAmountOut, CementAmountIn,
     CementAmountOut, BentoniteAmountIn, BentoniteAmountOut, CalciumChlorideAmountIn, CalciumChlorideAmountOut,
     ButylGlycolAmountIn, ButylGlycolAmountOut, SurfactantAmountIn, SurfactantAmountOut, ViscosifierAmountIn,
-    ViscosifierAmountOut, IncommingTotalAmount, OutgoingTotalAmount, user,
+    ViscosifierAmountOut, user,
   } = useGlobalContext();
 
   const displayData = [
@@ -121,13 +122,12 @@ const Dashboard = () => {
 
 
   return (
-    <section id="dashboardContainer">
+    <main className="dash-cont">
+          <Summary/>
 
-      <main >
-
-        <div className="paper-wrap">
-          <div style={{ display: "flex", margin: "0rem 1rem 0rem 1rem" }}>
-            <div style={{ marginTop: "4.8rem", marginRight:"1rem"}}>
+      <section>
+        <div className="paper-wrap" style={{background:"white",}}>
+            <div style={{ marginTop: "5.8rem", marginRight:"1rem"}}>
               {
                 displayData?.map((p, i) => (
                   <div key={i}  >
@@ -138,24 +138,25 @@ const Dashboard = () => {
             </div>
 
             <div className="data">
-              <div style={{ display: "flex", margin: "0rem 0rem 0.5rem 0rem" }}>
-                <div className="dash-data1" style={{color:"blue"}}>RECEIVED</div>
-                <div className="dash-data1" style={{color:"red"}}>SENT</div>
-                <div className="dash-data1" style={{}}>STOCK</div>
-                <div className="dash-data1" style={{color:"darkgreen"}}>AMOUNT <br/> RECEIVED</div>
-                <div className="dash-data1" style={{color:"red"}}>AMOUNT <br/> SENT</div>
-                <div className="dash-data1" style={{minWidth:"4rem"}} >BALANCE</div>
+              <div style={{ display: "flex",marginLeft:"-8rem", padding: "0.5rem 0rem 1rem 1rem",alignItems:"center", background:"blue", borderRadius:"0.2rem" }}>
+                <div className="dash-data1" style={{color:"white"}}>ITEM</div>
+                <div className="dash-data1" style={{color:"white"}}>RECEIVED</div>
+                <div className="dash-data1" style={{color:"white"}}>SENT OUT</div>
+                <div className="dash-data1" style={{color:"white"}}>AVAILABLE <br/>STOCK</div>
+                <div className="dash-data1" style={{color:"white"}}>AMOUNT <br/> RECEIVED</div>
+                <div className="dash-data1" style={{color:"white"}}>AMOUNT <br/> SENT OUT</div>
+                <div className="dash-data1" style={{ color:"white",}} >BALANCE</div>
               </div>
               <div><hr/></div>
               {displayData?.map((p, i) => (
                 <div key={i}>
-                  <div className="flexItem" >
+                  <div className="flexReduced" >
                     <div className="dash-data" style={{color:"blue"}}>{p.quantityin}</div>
                     <div className="dash-data" style={{color:"red"}}>{p.quantityout}</div>
                     <div className="dash-data" style={{color: p.balance<=0 ? "red" : "blue"}}>{Math.abs(p.stock)}</div>
                     <div className="dash-data" style={{color:"blue"}}><span style={{color:"gray"}}>&#8358;</span> {Money(p.amountIn)}</div>
                     <div className="dash-data" style={{color:"red"}}><span style={{color:"gray"}}>&#8358;</span> {Money(p.amountOut)}</div>
-                    <div className="dash-data" style={{color: p.balance<=0 ? "red" : "green", minWidth:"4rem"}}><span style={{color:"gray"}}>&#8358;</span> {Money(p.balance)}</div>
+                    <div className="dash-data" style={{color: p.balance<=0 ? "red" : "green", }}><span style={{color:"gray"}}>&#8358;</span> {Money(p.balance)}</div>
                   </div>
                   <hr />
                 </div>
@@ -163,28 +164,7 @@ const Dashboard = () => {
             </div>
 
           </div>
-          {/* Total Amount In and Out Below */}
-          <div className="sumContainer">
-            <div className="dash-group-result">
-               <div >RECEIVED</div>
-               <div>
-                 <span>&#8358;</span>  {Money(IncommingTotalAmount)}.00
-               </div>
-              </div>
-            <div className="dash-group-result">
-               <div >SENT</div>
-               <div>
-                 <span>&#8358;</span>  {Money(OutgoingTotalAmount)}.00
-               </div>
-              </div>
-            <div className="dash-group-result">
-               <div >BALANCE</div>
-               <div>
-                 <span>&#8358;</span>  {Money(IncommingTotalAmount - OutgoingTotalAmount)}.00
-               </div>
-              </div>
-          </div>
-        </div>
+          {/* TOTAL GROUP HERE */}
         {
           user && 
         <p  className="dash-btn-grp">
@@ -205,8 +185,8 @@ const Dashboard = () => {
         </p>
         }
 
-      </main>
-    </section>
+      </section>
+    </main>
   )
 }
 

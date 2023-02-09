@@ -1,13 +1,15 @@
-#dashboardContainer {
-  width: 100%;
-  justify-content: center;
-  display: flex;
+.dash-cont {
+  /* justify-content: center; */
+  /* display: flex; */
   
 }
-#dashboardContainer >main{
-  background: white;
+ .dash-cont >section{
+  background: gray;
+  justify-content: center;
+
   box-shadow: 0.1rem 0.1rem 0.1rem 0rem gray;
-  padding:1rem;
+  padding:0.5rem;
+  max-width: 100%;
 }
 
 .add-transaction{
@@ -26,11 +28,12 @@
   background: gray;
 }
 .paper-wrap {
+  display: flex;
   padding: 0.5rem;
 }
-.flexItem{
+.flexReduced{
   display: flex;
-  margin: 0rem 2.5rem 0rem 0rem;
+  align-items: center;
 }
 .dash-data1{
   min-width: 9rem; 
@@ -40,14 +43,8 @@
 }
 .dash-data{
   min-width: 9rem; 
-  text-align: start;
+  text-align: center;
   font-weight: 500;
-}
-#dashboard>div {
-  overflow: auto;
-  border: 1.4px solid gray;
-  margin: 0rem 0rem 0rem 4rem;
-  padding: 0.3rem 0rem 0.3rem 0rem;
 }
 .data {
   display: grid;
@@ -58,27 +55,20 @@
   text-align: center
 }
 
-.itemDiv {
-  width: 8rem
-}
-
 .itemDisplayDiv {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  width: 25rem;
-  margin: 1rem 0rem 0rem 2rem;
 }
 .sumContainer{
   display: flex;
   justify-content: space-between;
-  width: 97%;
   padding: 0.4rem 1rem; 
-  background: white;
-  /* background: rgb(42, 42, 148); */
+  background: gray;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: black;
   border-radius: 0.5rem;
+  margin-bottom: 1rem;
 }
 .dash-group-result{
     border: 1px solid gray;
@@ -97,24 +87,44 @@
 
 /*--MEDIA QUERY 1024PX-- */
 @media screen and (max-width: 1024px) {
-  #dashboardContainer >main{
-    max-width: 90%;
-    overflow: auto;
-    margin-top: 1rem;
+  .dash-cont{
+    width: 100%;
+  }
+  .dash-cont >section{
+    max-width: 100%;
+    overflow: hidden;
+    padding: 0.5rem 0.5rem;
+
   }
   .data {
-    max-width: 90%;
+    max-width: 100%;
     overflow:auto;
   } 
   
-  .add-transaction{
-    margin-top: 1rem;
-    margin-left: 8rem;
-    width: 25%;
-  }
   .paper-wrap {
-    width: 100%;
-    padding: 1rem 0rem 0.3rem 0rem;
+    max-width: 100%;
+    overflow: auto;
   }
+  .add-transaction{
+    display: flex;
+    gap: 1.5rem;
+    font-size: 15px; 
+    width: 40%;
+  }
+  
+  .sumContainer{
+    /* justify-content: center;
+    flex-direction:column;
+    width: 90%; */
+  }
+  
+}
+@media screen and (max-width: 400px) {
+  .sumContainer{
+    justify-content: center;
+    flex-direction:column;
+    width: 90%;
+  }
+  
 }
 

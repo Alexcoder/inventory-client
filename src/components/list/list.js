@@ -31,11 +31,16 @@ const ListSingle = () => {
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const slicedData = SearchFilter.slice((indexOfFirstPost), (indexOfLastPost))
+  const slicedData = SearchFilter.slice(indexOfFirstPost, indexOfLastPost)
 
   const totalPages = Math.ceil(SearchFilter.length/postsPerPage);
 
   const goToPage = (number) => setCurrentPage(number)
+
+  const serialNumber = (id) => {
+   const serial = SearchFilter.findIndex((item)=> item._id===id )
+    return serial+1
+  }
 
   useEffect(()=>{
     if(searchPost) {goToPage(1); setSelected(0)}
@@ -46,7 +51,8 @@ const ListSingle = () => {
     <main className="list-cont">
       <div className="list-paper" >
       <div className="list-title">
-              <div style={{ minWidth:"9rem", padding:"0.3rem", }}>STATUS</div>
+              <div style={{ minWidth:"3rem", padding:"0.3rem", }}>SN</div>
+              <div style={{ minWidth:"6rem", padding:"0.3rem", }}>STATUS</div>
               <div style={{ minWidth:"10rem", padding:"0.3rem", textTransform:"UpperCase", }}>ITEM</div>
               <div style={{ minWidth:"7rem", padding:"0.3rem"}}>TYPE</div>
               <div style={{ minWidth:"15rem", padding:"0.3rem"}}>DATE</div>
@@ -55,8 +61,9 @@ const ListSingle = () => {
         <div>
         {
           slicedData.map((p) => (
-            <div key={p._id} style={{ display: "flex",gap:"0.6rem", border: "0.2px solid lightgray", fontWeight:"500", color:"black", padding:"0.3rem 1rem", alignItems:"center"}}>
-              <div style={{ minWidth:"9rem", padding:"0.3rem",height:"1.2rem", background: p.type===incomming? "green" : "red", }}></div>
+            <div key={p._id} className="list-map" onClick={() => { navigate(`/${p.category}`, { state: { id: p._id } }) }} >
+              <div style={{ minWidth:"3rem", padding:"0.3rem", }}>{serialNumber(p._id)}</div>
+              <div style={{ minWidth:"6rem", padding:"0.3rem",height:"1.2rem", background: p.type===incomming? "green" : "red", }}></div>
               <div style={{ minWidth:"10rem", padding:"0.3rem", textTransform:"UpperCase", }}>{p.category}</div>
               <div style={{ minWidth:"7rem", padding:"0.3rem", textTransform:"UpperCase", }}>{p.type}</div>
               <div style={{ minWidth:"15rem", padding:"0.3rem"}}>{p.date}</div>
@@ -65,13 +72,13 @@ const ListSingle = () => {
             </div>
           ))}
           </div>
-        <div style={{display:"flex", justifyContent:"space-between", alignItems:"center", border:"1px solid gray", padding:"0.3rem 2rem", fontSize:"1.2rem", color:"gray"}}>
+      </div> 
+        <div className="list-pagination" >
           <div>{totalPages>0 ?  `Showing ${currentPage} of ${totalPages} ${totalPages>1? "pages": "page"}` : "NO MATCHING CONTENT" }</div>
           <div>
            <Pagination postsPerPage={postsPerPage} totalPosts={SearchFilter.length} goToPage={goToPage} />
           </div>
         </div>
-      </div> 
     </main>
   );
 };

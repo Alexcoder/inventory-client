@@ -34,22 +34,15 @@
     #navContainer {
         width: 100%
     }
-    #navContainer >div{
-        padding:0rem 0.5rem 0rem 0.5rem;
-    }
-    
-    .user{
+    /* .user{
         flex-basis: 17%;
         margin: 1rem 0rem 0rem 1rem;
-    }
-    .navSearch{
+    } */
+    /* .navSearch{
         height: 2rem;
         width: 6rem;
         margin-left: 3rem
-    }
-    .menuIcon{
-        margin:1rem 0rem 0rem 0.5rem;
-    }
+    } */
     
 }
 @media screen and (max-width:620px){
@@ -70,11 +63,11 @@
         display: none;
     }
     .user{
-        flex-basis: 17%;
-        margin: 1.5rem 0rem 0rem 1rem;
+        margin: 0rem 2rem 0rem 1rem;
     }
     .navSearch{
-        height: 2rem;
+        width: 7rem;
+        margin: 0rem 1rem 0rem 0rem;
     }
     
 }

@@ -15,19 +15,18 @@ const Welcome =()=>{
     return(
      <main className="welcome-main">
         <section>
-        
+            <h1 style={{color: "white", textAlign:"center", padding:"1rem 0rem"}}>ALEX HUB</h1>
         <div> <Dashboard /> </div>
-
 
         <div className="welcome-text-cont">
             <div className="welcome-text">
                 <h2 className="inventory_text"> INVENTORY CHECK </h2>
                <div>
-                 Built to monitor and track inflow and outflow<br/>
-                 of additives used for welbore cementing .<br/>
+                 Built to monitor and track inflow and outflow<br/><br/>
+                 of welbore cementing additives used.<br/>
 
                  <Button
-                  sx={{textTransform:"lowercase"}}
+                  sx={{textTransform:"lowercase", marginTop:"2rem", width:"50%"}}
                   variant="contained"
                   color ="secondary"
                   onClick={() => {

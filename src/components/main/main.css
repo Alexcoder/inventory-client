@@ -1,10 +1,11 @@
 .mainContainer {
   display: flex;
+  width: 100vw;
   justify-content: center;
-  width: 100%;
   padding-top: 6rem;
   padding-bottom: 2rem;
   background: rgb(15, 11, 11);
+  /* background: lightgray; */
 }
 
 
@@ -22,7 +23,7 @@
 
 @media screen and (max-width: 1024px) {
   .mainContainer {
-    margin: 5.1rem 0rem 0rem 0rem;
+    display: block;
   }
 }
 
