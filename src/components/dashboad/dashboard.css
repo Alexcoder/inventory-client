@@ -6,7 +6,6 @@
  .dash-cont >section{
   background: gray;
   justify-content: center;
-
   box-shadow: 0.1rem 0.1rem 0.1rem 0rem gray;
   padding:0.5rem;
   max-width: 100%;
@@ -113,6 +112,9 @@
   }
   
   .sumContainer{
+    border-radius: 0rem;
+    margin-bottom: 0.4rem;
+
     /* justify-content: center;
     flex-direction:column;
     width: 90%; */
@@ -123,13 +125,10 @@
   .sumContainer{
     justify-content: center;
     flex-direction:column;
-    /* width: 92%; */
-    border-radius: 0rem;
   }
   .dash-group-result{
     flex-direction: row; 
     justify-content: space-between;
-    /* width: 90%; */
 }
 
   

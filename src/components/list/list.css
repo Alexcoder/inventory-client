@@ -1,10 +1,9 @@
 .list-cont{
-    /* display: flex; */
     justify-content: center;
-    width: 100%; 
+    background: gray;
+    padding: 1rem 0.5rem;
 }
 .list-paper{
-     width:100%;
      border: none;
      box-shadow:2px 2px 2px 0px gray; 
      background: white; 
@@ -36,18 +35,21 @@
     padding: 0.3rem 2rem;
     font-size: 1.2rem; 
     color: gray;
-    position: sticky;
     background: white;
 }
+.main-list-cont{
+  margin-top: 1rem; 
+}
 
-@media screen and (max-width:1024px){    
+@media screen and (max-width:1024px){ 
+    .main-list-cont{
+        margin-top: 0.5rem; 
+      }
+         
     .list-paper{
         max-width: 100%;
         overflow: auto;
    }
-   /* .list-title{
-    width: 121%;
-} */
 }
 @media screen and (max-width:600px){    
     .list-paper{
@@ -63,8 +65,6 @@
 .list-pagination{
     flex-direction: column;
     gap: 0.6rem;
-    width: 83.2%;
+    width: 82%;
 }
-
-
 }
