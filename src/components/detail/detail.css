@@ -1,22 +1,10 @@
 #detailContainer{
-    margin: 5.5rem 0rem 0rem 8rem;
-    padding-bottom: 1rem;
     display: flex;
-    height: 92%;
-    width: 97%;
-    position: fixed;
-}
-.noSimilarRecord{
-    color: rgb(245, 236, 236);
-    width: 80%;
-    padding: 2rem;
-    border:  1px solid gray;
-    font-size: 1.3rem;
-    font-weight: 500;
-    border-radius: 0.5rem;
-    background-color: rgb(110, 84, 84);
-    text-align:  center;
-    box-shadow: 0rem 0.5px 0.5rem 0rem gray;
+    gap:1rem;
+    justify-content: center;
+    margin-top: 7rem;
+    height: 100%;
+    width: 100%;
 }
 .backButton{
     width: 30%; 
@@ -28,31 +16,20 @@
     background: linear-gradient(to bottom right, brown , blue);
 }
 .recommendedRecord{
-    padding: 0.5rem 1rem 1rem 0.6rem; 
-    width: 25rem; 
-    height: 30.5rem;
+    width: 22%; 
     background: white;
-    margin-bottom: 4rem;
-    border-radius: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
     box-shadow: 0rem 0.5px 0.5rem 0rem gray;
 }
 
-@media screen and (max-width:830px){
+@media screen and (max-width: 1024px){
     #detailContainer{
-        margin: 5rem 0rem 0rem 0rem;
-        position: relative;
+        margin: 9rem 0rem 0rem 0rem;
         height: 100%;
     }
     .recommendedRecord{
-        padding: 0.5rem 1rem 1rem 0.6rem; 
-        width: 25rem; 
-        height: 30.5rem;
-        margin-top: 0.5rem;
-        margin-bottom: 0rem;
-        margin-right: -0.4rem;
-        margin-left: 0.8rem;
-        border-radius: 0.5rem;
-        box-shadow: 0rem 0.5px 0.5rem 0rem gray;
+        width: 50%; 
     }
     
 }
@@ -60,61 +37,22 @@
 @media screen and (max-width:620px){
     #detailContainer{
         flex-direction: column;
-        margin: 5rem 0rem 0rem 0rem;
-        position: relative;
-        height: 100%;
+        padding-bottom: 0.5rem;
+        padding-top: 5rem;
+        margin:0;
+        gap: 0.3rem;
+        background: black;
     }
     .recommendedRecord{
-        padding: 0.5rem 1rem 1rem 0.6rem; 
-        width: 25rem; 
-        height: 30.5rem;
-        margin-top: 0.5rem;
-        margin-bottom: 0rem;
-        margin-right: -0.4rem;
-        margin-left: 0.8rem;
-        border-radius: 0.5rem;
-        box-shadow: 0rem 0.5px 0.5rem 0rem gray;
+        width: 95.3%; 
     }
     
 
    
-    .noSimilarRecord{
-        width: 92%;
-        padding: 1rem;
-        font-size: 1.5rem;
-        font-weight: 700;
-        border-radius: 0.5rem;
-        text-align:  center;
-    }
 
 }
 @media screen and (max-width:420px){
     #detailContainer{
-    flex-direction: column;
-    margin: 5rem 0rem 0rem 0rem;
     position: relative;
-    height: 100%;
 }
-.recommendedRecord{
-    padding: 0.5rem 1rem 1rem 0.6rem; 
-    width: 23rem; 
-    height: 30.5rem;
-    margin-top: 0.7rem;
-    margin-bottom: 0rem;
-    /* margin-right: -0.4rem; */
-    margin-left: 0.5rem;
-    border-radius: 0.5rem;
-    box-shadow: 0rem 0.5px 0.5rem 0rem gray;
-}
-
-    .noSimilarRecord{
-        width: 92%;
-        padding: 1rem;
-        font-size: 1.5rem;
-        font-weight: 700;
-        border-radius: 0.5rem;
-        text-align:  center;
-        box-shadow: 0rem 0.5px 0.5rem 0rem gray;
-    }
-
 }

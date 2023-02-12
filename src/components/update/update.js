@@ -49,10 +49,8 @@ const Update =()=>{
         sx={{ 
            position:"fixed",
            textAlign:"center",
-          margin:{md:"0rem 0rem 0rem 25rem", sm: "0.2rem 0rem 0rem 11rem", xs:"1.5rem 0rem 0rem 2.5rem"},
-         maxHeight: {md: "34rem", sm:"45rem", xs:"45rem"},
-         width:{xs:"82%", sm:"55%", md:"25%"}, }}>
-
+           maxHeight: {md: "34rem", sm:"45rem", xs:"45rem"},
+           width:{xs:"82%", sm:"55%", md:"25%"}, }}>
         <Grid
           container
           p={2}

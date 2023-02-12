@@ -1,14 +1,22 @@
 
-.welcome-main{
-    justify-content: center;
+.welcome-main, 
+.welcome-section, 
+.welcome-text-cont,
+.welcome-text{
+    display: grid;
+    place-items: center;
     width: 100%;
-    padding: 1.5rem;
     background: black;
-    height: 100%;
+}
+
+.welcome-text{
+    color: white;
+    text-align: center; 
 }
 .welcome-text-cont{
-    justify-content: center;
-    text-align: center;
-    margin-top: 2rem;
-    color: white;
+    padding-bottom: 2rem;
+}
+.welcome-dash-cont{
+    max-width: 90%;
+    overflow: auto;
 }

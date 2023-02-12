@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, } from "react-router-dom";
 import { useDispatch,  } from "react-redux";
 // useSelector
-// import moment from 'moment';
+import moment from 'moment';
 import {useEffect} from "react";
 import { Delete } from '@mui/icons-material';
 import { useGlobalContext } from "../../state/context";
@@ -19,7 +19,7 @@ const ListSingle = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const SearchFilter = filteredByUser.filter((item) =>
+  const SearchFilter = filteredByUser.sort((a,b)=>a.createdAt - b.createdAt).filter((item) =>
     Object.entries(searchPost).every(([key, value]) =>
        item[key].includes(value) 
        || item[key].toLowerCase().includes(value)
@@ -31,7 +31,7 @@ const ListSingle = () => {
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const slicedData = SearchFilter.slice(indexOfFirstPost, indexOfLastPost)
+  const slicedData = SearchFilter.slice(indexOfFirstPost, indexOfLastPost);
 
   const totalPages = Math.ceil(SearchFilter.length/postsPerPage);
 
@@ -51,7 +51,7 @@ const ListSingle = () => {
     <main className="list-cont">
       <div className="list-paper" >
       <div className="list-title">
-              <div style={{ minWidth:"3rem", padding:"0.3rem", }}>SN</div>
+              <div style={{ minWidth:"3rem", padding:"0.3rem", marginLeft:"-1rem", marginRight:"1rem" }}>#</div>
               <div style={{ minWidth:"6rem", padding:"0.3rem", }}>STATUS</div>
               <div style={{ minWidth:"10rem", padding:"0.3rem", textTransform:"UpperCase", }}>ITEM</div>
               <div style={{ minWidth:"7rem", padding:"0.3rem"}}>TYPE</div>
@@ -66,7 +66,7 @@ const ListSingle = () => {
               <div style={{ minWidth:"6rem", padding:"0.3rem",height:"1.2rem", background: p.type===incomming? "green" : "red", }}></div>
               <div style={{ minWidth:"10rem", padding:"0.3rem", textTransform:"UpperCase", }}>{p.category}</div>
               <div style={{ minWidth:"7rem", padding:"0.3rem", textTransform:"UpperCase", }}>{p.type}</div>
-              <div style={{ minWidth:"15rem", padding:"0.3rem"}}>{p.date}</div>
+              <div style={{ minWidth:"15rem", padding:"0.3rem"}}>{moment(p.date).format('MMMM Do YYYY, h:mm:ss a')}</div>
               <div style={{ minWidth:"5rem", padding:"0.3rem"}} onClick={() => { navigate(`/${p.category}`, { state: { id: p._id } }) }}><MdOutlineVisibility style={{fontSize:"2rem"}} /></div>
               <div style={{ minWidth:"5rem", padding:"0.3rem"}} onClick={() => { dispatch({ type: BIN_OPEN }); dispatch({ type: DELETE_ID, payload: p._id }) }}> <Delete style={{fontSize:"2rem"}}/></div>
             </div>

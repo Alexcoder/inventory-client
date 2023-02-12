@@ -14,9 +14,11 @@ const Welcome =()=>{
 
     return(
      <main className="welcome-main">
-        <section>
-            <h1 style={{color: "white", textAlign:"center", padding:"1rem 0rem"}}>ALEX HUB</h1>
-        <div> <Dashboard /> </div>
+        <section className="welcome-section">
+            <div className="welcome-dash-cont">
+              <h1 style={{color: "white", textAlign:"center", padding:"1rem 0rem"}}>ALEX HUB</h1>
+              <div> <Dashboard /> </div>
+            </div>
 
         <div className="welcome-text-cont">
             <div className="welcome-text">
@@ -26,7 +28,7 @@ const Welcome =()=>{
                  of welbore cementing additives used.<br/>
 
                  <Button
-                  sx={{textTransform:"lowercase", marginTop:"2rem", width:"50%"}}
+                  sx={{textTransform:"lowercase", marginTop:"2rem", width:"40%"}}
                   variant="contained"
                   color ="secondary"
                   onClick={() => {
