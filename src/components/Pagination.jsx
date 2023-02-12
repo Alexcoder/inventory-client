@@ -19,7 +19,7 @@ const Pagination =({postsPerPage, totalPosts, goToPage})=>{
             {
                 pageNumbers.map((number, i)=>
                   <div  key={i}>
-                     <div onClick={()=> {goToPage(number); setSelected(i); }} style={{border:"0.4px solid gray", padding:"0.3rem 0.8rem", color:selected===i? "white":"black", fontSize:"1.3rem", background: selected===i ? "blue": ""}}>
+                     <div onClick={()=> {goToPage(number); setSelected(i); }} style={{border:"0.4px solid gray", padding:"0.3rem 0.8rem", color:selected===i? "white":"black", fontSize:"1.3rem", background: selected===i ? "gray": ""}}>
                         {number}
                     </div>
                   </div>
