@@ -26,11 +26,15 @@ const ListSingle = () => {
   const item = query.get('item');
   const page = query.get('page');
 
+  const QueryCheck = {
+    category:item,
+    page
+  }
   console.log(item)
   console.log(page)
 
   const SearchFilter = filteredByUser.sort((a,b)=>a.createdAt - b.createdAt).filter((item) =>
-    Object.entries(searchPost).every(([key, value]) =>
+    Object.entries(QueryCheck).every(([key, value]) =>
        item[key].includes(value) 
        || item[key].toLowerCase().includes(value)
        || item[key].toUpperCase().includes(value)
