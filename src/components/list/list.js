@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation} from "react-router-dom";
 import { useDispatch,  } from "react-redux";
 // useSelector
 import moment from 'moment';
-import {useEffect} from "react";
 import { Delete } from '@mui/icons-material';
 import { useGlobalContext } from "../../state/context";
 import { MdOutlineVisibility } from 'react-icons/md';
@@ -58,8 +57,9 @@ const ListSingle = () => {
 
 
   useEffect(()=>{
-    if(searchPost) {setCurrentPage(1); setSelected(0)}
-  },[searchPost, setSelected, setCurrentPage])
+    if(searchPost) {setCurrentPage(1); setSelected(0)};
+    if(item) setSearchPost({...searchPost, category: item})
+  },[searchPost, setSelected, setCurrentPage, item, category])
 
 
   return (
