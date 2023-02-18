@@ -28,7 +28,6 @@ const ListSingle = () => {
 
   const QueryCheck = {
     category:item,
-    page
   }
   console.log(item)
   console.log(page)
