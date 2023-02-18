@@ -43,8 +43,8 @@ const ListSingle = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const postsPerPage = 7;
 
-  const indexOfFirstPost = (Number(currentPage)-1) * postsPerPage;
-  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = (Number(page)-1) * postsPerPage;
+  const indexOfLastPost = page * postsPerPage;
   const slicedData = SearchFilter.slice(indexOfFirstPost, indexOfLastPost);
 
   const totalPages = Math.ceil(SearchFilter.length/postsPerPage);
