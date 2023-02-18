@@ -44,12 +44,12 @@ const ListSingle = () => {
   const postsPerPage = 7;
 
   const indexOfFirstPost = (Number(page)-1) * postsPerPage;
-  const indexOfLastPost = page * postsPerPage;
+  const indexOfLastPost = Number(page) * postsPerPage;
   const slicedData = SearchFilter.slice(indexOfFirstPost, indexOfLastPost);
 
   const totalPages = Math.ceil(SearchFilter.length/postsPerPage);
 
-  const goToPage = (number) => {setCurrentPage(page); navigate(`/home?item=${searchPost.category || "all"}&page=${number}`) }
+  const goToPage = (number) => {setCurrentPage(Number(page)); navigate(`/home?item=${searchPost.category || "all"}&page=${number}`) }
 
   const serialNumber = (id) => {
    const serial = SearchFilter.findIndex((item)=> item._id===id )
