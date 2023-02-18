@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from 'react-redux';
 import { Button } from "@mui/material";
@@ -15,9 +15,15 @@ const Navbar = () => {
   const navigate = useNavigate();
 
 const handleChange = (e) =>{
-  setSearchPost({...searchPost, [e.target.name] : e.target.value})
-
+  setSearchPost({...searchPost, [e.target.name] : e.target.value}); 
 }  
+
+useEffect(()=>{
+  if(searchPost.category) {
+    // navigate(`/home?item=${searchPost.category || ""}`);
+    navigate(`/home?item=${searchPost.category}&page=${1}`) 
+  }
+},[navigate, searchPost.category])
 
   return (
     <div id={ "navContainer" }  >

@@ -31,6 +31,7 @@ function App() {
            <Routes >
              <Route path='/'  element={ <Navigate to="/home"/> } />
              <Route path='/home'  element={<ProtectedRoute><Main/></ProtectedRoute>}/>
+             {/* <Route path='/home/search'  element={<ProtectedRoute><Main/></ProtectedRoute>}/> */}
              <Route path='/:category'  element={<ProtectedRoute><Detail/></ProtectedRoute>}/>
              <Route path='/auth'  element={<LoginRoute><Auth/></LoginRoute>}/>
              <Route path='/welcome'  element={<Welcome/>}/>

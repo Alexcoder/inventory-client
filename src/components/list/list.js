@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, } from "react-router-dom";
+import { useNavigate, useLocation} from "react-router-dom";
 import { useDispatch,  } from "react-redux";
 // useSelector
 import moment from 'moment';
@@ -15,9 +15,19 @@ import './list.css';
 
 const ListSingle = () => {
   // const { Loading } = useSelector((state) => state.posts);
-  const { filteredByUser, searchPost, incomming, setSelected } = useGlobalContext();
+  const { filteredByUser, searchPost, setSearchPost, incomming, setSelected } = useGlobalContext();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const useQuery=()=> new URLSearchParams(location.search)
+
+  const query = useQuery();
+  const item = query.get('item');
+  const page = query.get('page');
+
+  console.log(item)
+  console.log(page)
 
   const SearchFilter = filteredByUser.sort((a,b)=>a.createdAt - b.createdAt).filter((item) =>
     Object.entries(searchPost).every(([key, value]) =>
@@ -26,25 +36,27 @@ const ListSingle = () => {
        || item[key].toUpperCase().includes(value)
     ))
 
+
   const [currentPage, setCurrentPage] = useState(1)
   const postsPerPage = 7;
 
+  const indexOfFirstPost = (Number(currentPage)-1) * postsPerPage;
   const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const slicedData = SearchFilter.slice(indexOfFirstPost, indexOfLastPost);
 
   const totalPages = Math.ceil(SearchFilter.length/postsPerPage);
 
-  const goToPage = (number) => setCurrentPage(number)
+  const goToPage = (number) => {setCurrentPage(number); navigate(`/home?item=${searchPost.category || "all"}&page=${number}`) }
 
   const serialNumber = (id) => {
    const serial = SearchFilter.findIndex((item)=> item._id===id )
     return serial+1
   }
 
+
   useEffect(()=>{
-    if(searchPost) {goToPage(1); setSelected(0)}
-  },[searchPost, setSelected])
+    if(searchPost) {setCurrentPage(1); setSelected(0)}
+  },[searchPost, setSelected, setCurrentPage])
 
 
   return (
@@ -67,7 +79,7 @@ const ListSingle = () => {
               <div style={{ minWidth:"10rem", padding:"0.3rem", textTransform:"UpperCase", }}>{p.category}</div>
               <div style={{ minWidth:"7rem", padding:"0.3rem", textTransform:"UpperCase", }}>{p.type}</div>
               <div style={{ minWidth:"15rem", padding:"0.3rem"}}>{moment(p.date).format('MMMM Do YYYY, h:mm:ss a')}</div>
-              <div style={{ minWidth:"5rem", padding:"0.3rem"}} onClick={() => { navigate(`/${p.category}`, { state: { id: p._id } }) }}><MdOutlineVisibility style={{fontSize:"2rem"}} /></div>
+              <div style={{ minWidth:"5rem", padding:"0.3rem"}} onClick={() => { navigate(`/${p.category}`, { state: { id: p._id } }) ; setSearchPost({...searchPost, category:""})}}><MdOutlineVisibility style={{fontSize:"2rem"}} /></div>
               <div style={{ minWidth:"5rem", padding:"0.3rem"}} onClick={() => { dispatch({ type: BIN_OPEN }); dispatch({ type: DELETE_ID, payload: p._id }) }}> <Delete style={{fontSize:"2rem"}}/></div>
             </div>
           ))}
