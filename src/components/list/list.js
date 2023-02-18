@@ -40,7 +40,7 @@ const ListSingle = () => {
     ))
 
 
-  const [currentPage, setCurrentPage] = useState(page)
+  const [currentPage, setCurrentPage] = useState(1)
   const postsPerPage = 7;
 
   const indexOfFirstPost = (Number(currentPage)-1) * postsPerPage;
