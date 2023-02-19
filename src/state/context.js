@@ -37,10 +37,11 @@ export const Context =({children})=>{
     const [formData, setFormData]= useState(initialState)
     const [searchPost, setSearchPost]= useState({})
     const [selected, setSelected]= useState(0)
-    const { allposts } = useSelector((state)=> state.posts)
+    const [currentPage, setCurrentPage]= useState(1)
+    const { allPosts } = useSelector((state)=> state.posts)
     const user =  JSON.parse(localStorage.getItem("profile"));
     const creator =   user?.result._id
-    const filteredByUser = allposts.filter((p)=> creator? p.creator === creator : p.creator === "63349538279187e29b40cdfe")
+    const filteredByUser = allPosts.filter((p)=> creator? p.creator === creator : p.creator === "63349538279187e29b40cdfe")
     
     useEffect(()=>{
       JSON.parse(localStorage.getItem("profile"))
@@ -162,7 +163,7 @@ export const Context =({children})=>{
       ButylGlycolAmountIn, ButylGlycolAmountOut,SurfactantAmountIn, SurfactantAmountOut, ViscosifierAmountIn,
       ViscosifierAmountOut,IncommingTotalAmount, OutgoingTotalAmount, HandleTotal, user, creator, 
       filteredByUser,search, transaction, open,bin, logout, incomming,
-      deleteId, sidebar,update, searchPost, setSearchPost, selected, setSelected
+      deleteId, sidebar,update, searchPost, setSearchPost, selected, setSelected,currentPage, setCurrentPage
       }}
     >
       {children}

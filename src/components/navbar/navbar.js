@@ -21,7 +21,7 @@ const handleChange = (e) =>{
 useEffect(()=>{
   if(searchPost.category) {
     // navigate(`/home?item=${searchPost.category || ""}`);
-    navigate(`/home?item=${searchPost.category}&page=${1}`) 
+    navigate(`/home?item=${searchPost.category}`) 
   }
 },[navigate, searchPost.category])
 

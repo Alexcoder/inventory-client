@@ -1,10 +1,15 @@
 import {GET_POST, CREATE_POST, DELETE_POST, UPDATE_POST, GET_POST_BY_ID } from '../constants';
 
-const Posts = (posts={ Loading:false, promt: "", errorMessage:"", allposts:[], post:{} }, action)=>{
+const Posts = (posts={ Loading:false, promt: "", errorMessage:"", allPosts:[], post:{} }, action)=>{
     switch(action.type){
         case GET_POST:
             return {...posts,
-                   allposts: action.payload}
+                   allPosts: action.payload.data,
+                   page: action.payload.page,
+                   totalPosts: action.payload.total,
+                   pageNumbers: action.payload.pageNumbers,
+                   postsPerPage: action.payload.limit
+                }
 
         case GET_POST_BY_ID:
             return {...posts,

@@ -1,11 +1,11 @@
 import {GET_POST, CREATE_POST, UPDATE_POST, DELETE_POST, GET_POST_BY_ID,} from '../constants';
 import * as api from '../api';
 
-export const getPosts = ()=> async(dispatch)=> {
+export const getPosts = (page, user)=> async(dispatch)=> {
 
   try{
     dispatch({type: "LOADING_START"})
-    const {data} = await api.getPosts()
+    const {data} = await api.getPosts(page, user)
     dispatch({type: GET_POST, payload: data })
     dispatch({type: "LOADING_STOP"})
   }
