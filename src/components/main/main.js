@@ -1,18 +1,20 @@
 import React, {useEffect} from "react";
 import {Dashboard,List, } from '../'
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, } from "react-redux";
+// useDispatch
 import { CircularProgress  } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { useGlobalContext } from "../../state/context";
-import {getPosts} from '../../state/action/posts'
+// import {getPosts} from '../../state/action/posts'
 
 import './main.css'
 
 
 const Main = () => {  
   const { Loading,  } = useSelector((state) => state.posts);
-  const { creator, setCurrentPage } = useGlobalContext();
-  const dispatch = useDispatch();
+  const { setCurrentPage } = useGlobalContext();
+  // creator, 
+  // const dispatch = useDispatch();
 
 
   const location = useLocation()  ;
@@ -24,8 +26,9 @@ const Main = () => {
   
   useEffect(()=> {
     if(page) setCurrentPage(page);
-     dispatch(getPosts(page, creator));
-  },[dispatch, creator, page, setCurrentPage])
+    //  dispatch(getPosts(page, creator));
+    //  dispatch, creator, 
+  },[page, setCurrentPage])
 
 
   console.log({"main": page})

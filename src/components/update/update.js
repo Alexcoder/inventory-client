@@ -1,4 +1,5 @@
 import React from "react";
+import {useNavigate} from "react-router-dom";
 import { Grid,TextField,MenuItem,Button,Paper, Typography} from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { SingleMain } from "./singleMain";
@@ -10,6 +11,7 @@ import './update.css';
 
 const Update =()=>{
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const {receive} = useSelector((state)=> state.stateReducer);
     const { formData, setFormData, user, creator } = useGlobalContext();
     const incomming = "incomming";
@@ -40,7 +42,8 @@ const Update =()=>{
           },
             )
         ); 
-        dispatch({type: UPDATE_FALSE})
+        dispatch({type: UPDATE_FALSE});
+        navigate(`/home?page=1`)
       };
     
     return(

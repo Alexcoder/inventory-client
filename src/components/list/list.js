@@ -61,7 +61,7 @@ const ListSingle = ({ page }) => {
         </div>
       </div>
       <div className="list-pagination" >
-        <div>{pageNumbers > 0 ? `Showing ${page} of ${pageNumbers} ${pageNumbers > 1 ? "pages" : "page"}` : "NO MATCHING CONTENT"}</div>
+        <div>{pageNumbers > 0 ? `Showing ${page? page : 1} of ${pageNumbers} ${pageNumbers > 1 ? "pages" : "page"}` : "NO MATCHING CONTENT"}</div>
         <div>
           <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} goToPage={goToPage} />
         </div>

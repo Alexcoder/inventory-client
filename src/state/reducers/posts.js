@@ -5,10 +5,10 @@ const Posts = (posts={ Loading:false, promt: "", errorMessage:"", allPosts:[], p
         case GET_POST:
             return {...posts,
                    allPosts: action.payload.data,
-                   page: action.payload.page,
-                   totalPosts: action.payload.total,
-                   pageNumbers: action.payload.pageNumbers,
-                   postsPerPage: action.payload.limit
+                   page: action.payload?.page,
+                   totalPosts: action.payload?.total,
+                   pageNumbers: action.payload?.pageNumbers,
+                   postsPerPage: action.payload?.limit
                 }
 
         case GET_POST_BY_ID:
@@ -17,13 +17,13 @@ const Posts = (posts={ Loading:false, promt: "", errorMessage:"", allPosts:[], p
 
         case CREATE_POST:
             return{...posts,
-                  allposts: [...posts.allposts, action.payload]}
+                  allPosts: [...posts.allPosts, action.payload]}
 
         case DELETE_POST:
-            return {...posts, allposts: posts.allposts.filter((p)=>p._id !== action.payload)}
+            return {...posts, allPosts: posts.allPosts.filter((p)=>p._id !== action.payload)}
 
         case UPDATE_POST:
-             return{...posts, allposts: posts.allposts.map(({_id})=>_id === action.payload.id ? action.payload : null)}
+             return{...posts, allPosts: posts.allPosts.map(({_id})=>_id === action.payload.id ? action.payload : null)}
         
              case "LOADING_START":
              return{...posts, Loading: true}
