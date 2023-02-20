@@ -10,8 +10,8 @@ import './main.css'
 
 
 const Main = () => {  
-  const { Loading } = useSelector((state) => state.posts);
-  const { creator } = useGlobalContext();
+  const { Loading,  } = useSelector((state) => state.posts);
+  const { creator, setCurrentPage } = useGlobalContext();
   const dispatch = useDispatch();
 
 
@@ -23,8 +23,9 @@ const Main = () => {
 
   
   useEffect(()=> {
+    if(page) setCurrentPage(page);
      dispatch(getPosts(page, creator));
-  },[dispatch, creator, page])
+  },[dispatch, creator, page, setCurrentPage])
 
 
   console.log({"main": page})

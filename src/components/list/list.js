@@ -12,7 +12,7 @@ import './list.css';
 
 const ListSingle = ({ page }) => {
   const { pageNumbers, totalPosts, postsPerPage, allPosts, } = useSelector((state) => state.posts);
-  const { searchPost, setSearchPost, incomming, setSelected, currentPage, setCurrentPage } = useGlobalContext();
+  const { searchPost, setSearchPost, incomming, setSelected, setCurrentPage } = useGlobalContext();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const ListSingle = ({ page }) => {
   const serialNumber = (id) => {
     const index = allPosts.findIndex((item) => item._id === id);
     const factor = (Number(page) - 1) * postsPerPage;
-    const serial = (index + 1) + factor
+    const serial = page?  (index + 1) + factor : (index+1)
     return serial
   }
 
@@ -61,7 +61,7 @@ const ListSingle = ({ page }) => {
         </div>
       </div>
       <div className="list-pagination" >
-        <div>{pageNumbers > 0 ? `Showing ${currentPage} of ${pageNumbers} ${pageNumbers > 1 ? "pages" : "page"}` : "NO MATCHING CONTENT"}</div>
+        <div>{pageNumbers > 0 ? `Showing ${page} of ${pageNumbers} ${pageNumbers > 1 ? "pages" : "page"}` : "NO MATCHING CONTENT"}</div>
         <div>
           <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} goToPage={goToPage} />
         </div>
