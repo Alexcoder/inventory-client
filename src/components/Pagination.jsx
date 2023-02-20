@@ -13,6 +13,24 @@ const Pagination =({postsPerPage, totalPosts, goToPage})=>{
         pageNumbers.push(i);
     }
 
+    const handleSelected = (clicked) =>{
+       const check = pageNumbers.find((number)=> number===clicked);
+       if(check){
+        setSelected([...selected, clicked])
+    }else{
+        setSelected(selected.filter((p)=> p!==clicked))
+    }
+    }
+
+    const handleBackgroundColor = (clicked) =>{
+       const check = pageNumbers.find((number)=> number===clicked);
+       if(check){
+        return "gray"
+    }else{
+        return ""
+    }
+    }
+
 
     return(
         <div style={{display:"flex", gap:"0.1rem",}}>
@@ -20,13 +38,13 @@ const Pagination =({postsPerPage, totalPosts, goToPage})=>{
                 pageNumbers.map((number, i)=>
                   <div  key={i}>
                      <div 
-                        onClick={()=> {goToPage(number); setSelected(number); }} 
+                        onClick={()=> {goToPage(number); handleSelected(number); }} 
                         style={{
                             border:"0.4px solid gray", 
                             padding:"0.3rem 0.8rem", 
                             color:selected===number? "white":"black", 
                             fontSize:"1.3rem", 
-                            background: selected===number ? "gray": ""
+                            background: handleBackgroundColor(number),
                             }}>
                         {number}
                     </div>

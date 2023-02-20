@@ -36,7 +36,7 @@ export const Context =({children})=>{
 
     const [formData, setFormData]= useState(initialState)
     const [searchPost, setSearchPost]= useState({})
-    const [selected, setSelected]= useState(0)
+    const [selected, setSelected]= useState([])
     const [currentPage, setCurrentPage]= useState(1)
     const { allPosts } = useSelector((state)=> state.posts)
     const user =  JSON.parse(localStorage.getItem("profile"));
