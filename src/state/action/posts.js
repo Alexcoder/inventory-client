@@ -1,11 +1,23 @@
-import {GET_POST, CREATE_POST, UPDATE_POST, DELETE_POST, GET_POST_BY_ID,} from '../constants';
+import {GET_ALL_POST, GET_POST, CREATE_POST, UPDATE_POST, DELETE_POST, GET_POST_BY_ID,} from '../constants';
 import * as api from '../api';
 
-export const getPosts = (page, user)=> async(dispatch)=> {
+export const getAllPosts = (creator)=> async(dispatch)=> {
 
   try{
     dispatch({type: "LOADING_START"})
-    const {data} = await api.getPosts(page, user)
+    const {data} = await api.getAllPosts(creator)
+    dispatch({type: GET_ALL_POST, payload: data })
+    dispatch({type: "LOADING_STOP"})
+  }
+  catch(error){
+    console.log(error)
+  }
+}
+export const getPosts = (page, user, category)=> async(dispatch)=> {
+
+  try{
+    dispatch({type: "LOADING_START"})
+    const {data} = await api.getPosts(page, user, category)
     dispatch({type: GET_POST, payload: data })
     dispatch({type: "LOADING_STOP"})
   }

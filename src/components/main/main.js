@@ -1,37 +1,28 @@
 import React, {useEffect} from "react";
 import {Dashboard,List, } from '../'
-import { useSelector, } from "react-redux";
-// useDispatch
+import { useSelector, useDispatch } from "react-redux";
 import { CircularProgress  } from "@mui/material";
-import { useLocation } from "react-router-dom";
 import { useGlobalContext } from "../../state/context";
-// import {getPosts} from '../../state/action/posts'
+import {getPosts} from '../../state/action/posts'
 
 import './main.css'
 
 
 const Main = () => {  
   const { Loading,  } = useSelector((state) => state.posts);
-  const { setCurrentPage } = useGlobalContext();
-  // creator, 
-  // const dispatch = useDispatch();
+  const { setCurrentPage, creator, query } = useGlobalContext();
+  const dispatch = useDispatch();
 
-
-  const location = useLocation()  ;
-  const useQuery=()=> { return new URLSearchParams(location.search) }
-  const query = useQuery();
-  const item = query.get('item');
-  const page = query.get('page');
+  const page = query.get('page') || 1;
+  const category = query.get('category') || "";
 
   
   useEffect(()=> {
     if(page) setCurrentPage(page);
-    //  dispatch(getPosts(page, creator));
-    //  dispatch, creator, 
-  },[page, setCurrentPage])
+     dispatch(getPosts(page, creator, category));
+  },[dispatch, page, creator, setCurrentPage, category, ])
 
 
-  console.log({"main": page})
 
 
   return (
@@ -42,7 +33,7 @@ const Main = () => {
       <div>
           {Loading ? <div className="loading"><CircularProgress/> Fetching data...</div> :
             <div className="main-list-cont">
-              <List item={item} page={page} />
+              <List page={page} category={category}/>
             </div>
           }
     </div>

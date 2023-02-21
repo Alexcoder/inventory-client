@@ -34,14 +34,17 @@ export const Context =({children})=>{
     const {search, deleteId, bin, sidebar, update, logout, transaction,
     open}= useSelector((state)=> state.stateReducer)
 
-    const [formData, setFormData]= useState(initialState)
-    const [searchPost, setSearchPost]= useState({})
-    const [selected, setSelected]= useState([])
+    const [formData, setFormData]= useState(initialState);
+    const [searchPost, setSearchPost]= useState({});
+    const [selected, setSelected]= useState([]);
     const [currentPage, setCurrentPage]= useState(1)
-    const { allPosts } = useSelector((state)=> state.posts)
+    const { allUserPosts } = useSelector((state)=> state.posts);
     const user =  JSON.parse(localStorage.getItem("profile"));
-    const creator =   user?.result._id
-    const filteredByUser = allPosts.filter((p)=> creator? p.creator === creator : p.creator === "63349538279187e29b40cdfe")
+    const creator =   user?.result._id;
+    const useQuery=()=> { return new URLSearchParams(location.search) };
+    const query = useQuery();
+    const filteredByUser = allUserPosts
+    // const filteredByUser = allUserPosts?.filter((p)=> creator? p.creator === creator : p.creator === "63349538279187e29b40cdfe")
     
     useEffect(()=>{
       JSON.parse(localStorage.getItem("profile"))
@@ -163,7 +166,8 @@ export const Context =({children})=>{
       ButylGlycolAmountIn, ButylGlycolAmountOut,SurfactantAmountIn, SurfactantAmountOut, ViscosifierAmountIn,
       ViscosifierAmountOut,IncommingTotalAmount, OutgoingTotalAmount, HandleTotal, user, creator, 
       filteredByUser,search, transaction, open,bin, logout, incomming,
-      deleteId, sidebar,update, searchPost, setSearchPost, selected, setSelected,currentPage, setCurrentPage
+      deleteId, sidebar,update, searchPost, setSearchPost, selected, setSelected,currentPage, setCurrentPage,
+      query,
       }}
     >
       {children}

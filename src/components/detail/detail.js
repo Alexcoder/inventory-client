@@ -15,7 +15,8 @@ import Pagination from "../Pagination";
 import './detail.css';
 
 const Detail = () => { 
-  const { HandleTotal, filteredByUser, bin, deleteId}= useGlobalContext();
+  const { HandleTotal, bin, deleteId}= useGlobalContext();
+  // , filteredByUser
   const [currentPage, setCurrentPage]= useState(1)
 
   const  {category}  = useParams();
@@ -23,9 +24,10 @@ const Detail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const {post, Loading} = useSelector((state)=> state.posts)
+  const {post, Loading, allUnSlicedPosts} = useSelector((state)=> state.posts)
 
-  const RecommendedPosts = filteredByUser.filter((p)=>id? p._id !==id & p.category=== category : null )
+  const RecommendedPosts = allUnSlicedPosts.filter((p)=>id? p._id !==id & p.category=== category : null )
+  // const RecommendedPosts = filteredByUser.filter((p)=>id? p._id !==id & p.category=== category : null )
   
 
   const deleteItem = ()=>{

@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Container,Typography, Grid, Paper, TextField, Button, CircularProgress} from '@mui/material';
 import {signIn, signUp} from '../../state/action/user';
 import {HAVEACCOUNT_TOGGLE} from '../../state/constants';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 import './auth.css';
 
 const Auth = () => { 
@@ -39,7 +40,8 @@ useEffect(()=>{
   <Container maxWidth="xs" sx={{marginTop: {md:"6rem", xs:"0rem", sm:"2rem"},}}>
     <Paper elevation={5} pt={1} >
 
-    <Grid sx={{textAlign:"center", color:"red", fontWeight:"600", paddingTop:"1rem"}}>{alert}</Grid>
+    <Grid sx={{textAlign:"center",justifyContent:"center", color:"red", fontWeight:"600", paddingTop:"1rem"}}>{alert}</Grid>
+     <div style={{ margin:"0rem 0rem 0rem 10.5rem "}}><LockOpenIcon sx={{fontSize:"3.5rem", color:"blue"}}/></div>
     <Typography variant= "h5" sx={{textAlign:"center"}}> Inventory Check </Typography>
     <Grid container textAlign="center" p={3} rowSpacing={2}>
       <Grid item xs={12} sm={12} md={12}>

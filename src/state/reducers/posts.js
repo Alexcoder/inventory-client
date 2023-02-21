@@ -1,10 +1,16 @@
-import {GET_POST, CREATE_POST, DELETE_POST, UPDATE_POST, GET_POST_BY_ID } from '../constants';
+import {GET_ALL_POST, GET_POST, CREATE_POST, DELETE_POST, UPDATE_POST, GET_POST_BY_ID } from '../constants';
 
-const Posts = (posts={ Loading:false, promt: "", errorMessage:"", allPosts:[], post:{} }, action)=>{
+const Posts = (posts={ Loading:false, promt: "", errorMessage:"", allUserPosts:[], allUnSlicedPosts:[], allPosts:[], post:{} }, action)=>{
     switch(action.type){
+        case GET_ALL_POST:
+            return {...posts,
+                   allUserPosts: action.payload.data,
+                   Total : action.payload.total
+                }
         case GET_POST:
             return {...posts,
-                   allPosts: action.payload.data,
+                   allPosts: action.payload.slicedData,
+                   allUnSlicedPosts: action.payload.unSlicedData,
                    page: action.payload?.page,
                    totalPosts: action.payload?.total,
                    pageNumbers: action.payload?.pageNumbers,

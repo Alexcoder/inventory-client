@@ -10,15 +10,15 @@ import Pagination from "../Pagination";
 
 import './list.css';
 
-const ListSingle = ({ page }) => {
-  const { pageNumbers, totalPosts, postsPerPage, allPosts, } = useSelector((state) => state.posts);
+const ListSingle = ({ page, category }) => {
+  const { pageNumbers, totalPosts, postsPerPage, allPosts,Total } = useSelector((state) => state.posts);
   const { searchPost, setSearchPost, incomming, setSelected, setCurrentPage } = useGlobalContext();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.log({ "page": page, "pageNumbers": pageNumbers, "totalPosts": totalPosts })
+  // console.log({ "page": page, "pageNumbers": pageNumbers, "totalPosts": totalPosts })
 
-  const goToPage = (number) => { setCurrentPage(number); navigate(`/home?page=${number}`) }
+  const goToPage = (number) => { setCurrentPage(number); navigate(`/home?category=${category}&page=${number}`) }
 
 
   const serialNumber = (id) => {
@@ -61,7 +61,8 @@ const ListSingle = ({ page }) => {
         </div>
       </div>
       <div className="list-pagination" >
-        <div>{pageNumbers > 0 ? `Showing ${page? page : 1} of ${pageNumbers} ${pageNumbers > 1 ? "pages" : "page"}` : "NO MATCHING CONTENT"}</div>
+        <div>{pageNumbers > 0 ? `Showing ${page} of ${pageNumbers} ${pageNumbers > 1 ? "pages" : "page"}` : "NO MATCHING CONTENT"}</div>
+        <div>( filtered {totalPosts} from {Total} Items )</div>
         <div>
           <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} goToPage={goToPage} />
         </div>

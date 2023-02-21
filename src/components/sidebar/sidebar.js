@@ -2,7 +2,6 @@ import React from 'react'
 import {useDispatch} from 'react-redux';
 import { SIDEBAR_OPEN, UPDATE_TRUE, RECEIVE_TRUE, RECEIVE_FALSE} from '../../state/constants';
 
-
 import './sidebar.css';
 
 const SideBar = () => {

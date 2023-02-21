@@ -20,10 +20,12 @@ const handleChange = (e) =>{
 
 useEffect(()=>{
   if(searchPost.category) {
-    // navigate(`/home?item=${searchPost.category || ""}`);
-    navigate(`/home?item=${searchPost.category}`) 
+    navigate(`/home?category=${searchPost.category}&page=1`) 
   }
-},[navigate, searchPost.category])
+  // else if(!searchPost.category){
+  //   navigate(`/home?all-category&page=1`) 
+  // }
+},[navigate, searchPost.category, setSearchPost, searchPost])
 
   return (
     <div id={ "navContainer" }  >

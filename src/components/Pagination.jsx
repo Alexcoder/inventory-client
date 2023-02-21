@@ -13,22 +13,11 @@ const Pagination =({postsPerPage, totalPosts, goToPage})=>{
         pageNumbers.push(i);
     }
 
-    const handleSelected = (clicked) =>{
-       const check = pageNumbers.find((number)=> number===clicked);
-       if(check){
-        setSelected([...selected, clicked])
-    }else{
-        setSelected(selected.filter((p)=> p!==clicked))
-    }
-    }
+    const handleSelected = (clicked) => setSelected(clicked)
 
     const handleBackgroundColor = (clicked) =>{
-       const check = pageNumbers.find((number)=> number===clicked);
-       if(check){
-        return "gray"
-    }else{
-        return ""
-    }
+      if(selected===Number(clicked))    return "gray";
+     else return ""
     }
 
 
