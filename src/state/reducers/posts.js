@@ -10,7 +10,7 @@ const Posts = (posts={ Loading:false, promt: "", errorMessage:"", allUserPosts:[
         case GET_POST:
             return {...posts,
                    allPosts: action.payload.slicedData,
-                   allUnSlicedPosts: action.payload.unSlicedData,
+                //    allUnSlicedPosts: action.payload.unSlicedData,
                    page: action.payload?.page,
                    totalPosts: action.payload?.total,
                    pageNumbers: action.payload?.pageNumbers,
