@@ -1,7 +1,6 @@
 import React, {useEffect} from "react";
 import {Dashboard,List, } from '../'
-import { useSelector, useDispatch } from "react-redux";
-import { CircularProgress  } from "@mui/material";
+import { useDispatch } from "react-redux";
 import { useGlobalContext } from "../../state/context";
 import {getPosts} from '../../state/action/posts'
 
@@ -9,7 +8,6 @@ import './main.css'
 
 
 const Main = () => {  
-  const { Loading,  } = useSelector((state) => state.posts);
   const { setCurrentPage, creator, query } = useGlobalContext();
   const dispatch = useDispatch();
 
@@ -31,11 +29,9 @@ const Main = () => {
 
         <Dashboard />
       <div>
-          {Loading ? <div className="loading"><CircularProgress/> Fetching data...</div> :
             <div className="main-list-cont">
               <List page={page} category={category}/>
             </div>
-          }
     </div>
     </div>
     </div>

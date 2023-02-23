@@ -3,6 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {useDispatch} from 'react-redux';
 import { Button } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import CloseIcon from "@mui/icons-material/Close";
 
 import { useGlobalContext } from "../../state/context";
 import { SIDEBAR_TOGGLE, OPEN_TOGGLE, LOGOUT_TRUE, HAVEACCOUNT_TRUE,  } from '../../state/constants';
@@ -45,14 +46,20 @@ useEffect(()=>{
         </h4>
         {
          user &&
-        <input
-          className="navSearch"
-          placeholder="search..."
-          type="text"
-          name="category"
-          value={searchPost.category}
-          onChange={handleChange}
-        />
+         <div className="navSearchContainer">
+           <input
+             className="navSearch"
+             placeholder="search..."
+             type="text"
+             name="category"
+             value={searchPost.category}
+             onChange={handleChange}
+           />
+           <div 
+            onClick={()=> {setSearchPost({...searchPost, category: ""}); navigate(`/home`) }}>
+            <CloseIcon sx={{fontSize:"1.1rem"}}/>
+           </div>
+         </div>
         }
         { user?.result?
         <Button

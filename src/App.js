@@ -1,16 +1,18 @@
 import React, {useEffect} from 'react';
 import {Route, Routes, Navigate, } from 'react-router-dom';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {getAllPosts} from './state/action/posts';
 import { useGlobalContext } from './state/context';
 import {ProtectedRoute, LoginRoute} from './components/protectedRoute';
-import {Navbar, Main, Detail, Auth, SideBar,Hero, Update, Welcome} from './components';
+import {Navbar, Main, Detail, Auth, SideBar,Hero, Update, Welcome, LoadingPage} from './components';
 import { SIDEBAR_CLOSE } from './state/constants';
 
 
 function App() {
   const dispatch = useDispatch();
+  const { Loading,  } = useSelector((state) => state.posts);
   const { user, creator, logout, bin, sidebar, update, }= useGlobalContext();
+
 
   useEffect(()=> {
      dispatch(getAllPosts(creator));
@@ -39,6 +41,7 @@ function App() {
          </div>
          { (logout || bin) && <Hero/> }
          { update && <div><Update/></div> }
+         { Loading && <div><LoadingPage/></div> }
     </div>
   );
 }
