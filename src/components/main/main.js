@@ -13,7 +13,7 @@ const Main = () => {
   const { setCurrentPage, creator, query } = useGlobalContext();
   // const { Loading,  } = useSelector((state) => state.posts);
   const dispatch = useDispatch();
-
+  
   const page = query.get('page') || 1;
   const category = query.get('category') || "";
 

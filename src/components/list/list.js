@@ -33,9 +33,22 @@ const ListSingle = ({ page, category }) => {
     setSearchPost({ ...searchPost, category: "" }) 
   }
 
+  const nextPage =()=>{
+    if(Number(page)<Number(pageNumbers)){
+    navigate(`/home?category=${category}&page=${Number(page)+1}`);
+    setSelected(Number(page))
+  }
+};
+  const previousPage =()=>{
+    if(Number(page)>1){
+      navigate(`/home?category=${category}&page=${Number(page)-1}`);
+      setSelected(Number(page)-2)
+    }
+  };
+
   useEffect(() => {
     if (searchPost) { setCurrentPage(1); setSelected(0) };
-  }, [searchPost, setSelected, setCurrentPage,])
+  }, [searchPost, setSelected, setCurrentPage,]);
 
 
   return (
@@ -66,12 +79,12 @@ const ListSingle = ({ page, category }) => {
       </div>
       <div className="list-pagination" >
         <div>{pageNumbers > 0 ? `Showing ${page} of ${pageNumbers} ${pageNumbers > 1 ? "pages" : "page"}` : "NO MATCHING CONTENT"}</div>
-        <div>( filtered {totalPosts} from {Total} Items )</div>
+        <div>( {searchPost.category? "filtered" : "found"} {totalPosts} from {Total} Items )</div>
         {/* PAGINATION */}
         <div style={{display:"flex", alignItems:"center", gap:"0.5rem"}}>
-          {/* <div style={{fontSize:"1.8rem"}}>-</div> */}
+          <div onClick={previousPage} style={{fontSize:"1rem"}}>Prev</div>
           <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} goToPage={goToPage} />
-          {/* <div style={{fontSize:"1.8rem"}}>+</div> */}
+          <div onClick={nextPage} style={{fontSize:"1rem"}}>Next</div>
         </div>
       </div>
     </main>
