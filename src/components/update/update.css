@@ -33,6 +33,14 @@
 }
 
 
+@media screen and (max-width: 390px){
+  .update-category-input{
+    margin-left: 0.5rem;
+    width: 11.5rem; 
+  }  
+}
+
+
 @media screen and (max-width: 375px){
   .update-category-input{
     margin-left: 0rem;
