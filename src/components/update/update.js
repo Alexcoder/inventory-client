@@ -68,15 +68,24 @@ const Update =()=>{
             </Typography>
 
           <Grid item xs={12} sm={12} md={12} 
-          sx={{width: {md:"17rem", sm:"12rem" }}}>
+          sx={{
+               width: {md:"23rem", sm:"18rem", xs:"15rem"} , 
+               display:"flex", 
+               marginLeft: {md:"3rem", sm:"4rem", xs:"1rem"}}}>
+            <input
+             className="update-category-input"
+             name="category"
+             value={formData.category}
+             onChange={handleChange}
+             placeholder="Category"/>
             <TextField
-              label="category"
+              // label="category"
               select
               name="category"
               value={formData.category}
               sx={{
-                width: { md: "13rem", xs: "15rem", sm: "19rem" },
-                marginLeft: {md:"-4rem", sm: "3rem" },
+                width: { md: "3rem", sm: "3rem", xs: "3rem" },
+                marginLeft: {md:"0rem", sm: "0rem" },
                 color: "black",
               }}
               onChange={handleChange}>

@@ -1,9 +1,10 @@
-import React, {useEffect} from "react";
+// import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from 'react-redux';
 import { Button } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import SearchIcon from "@mui/icons-material/Search";
 
 import { useGlobalContext } from "../../state/context";
 import { SIDEBAR_TOGGLE, OPEN_TOGGLE, LOGOUT_TRUE, HAVEACCOUNT_TRUE,  } from '../../state/constants';
@@ -19,14 +20,11 @@ const handleChange = (e) =>{
   setSearchPost({...searchPost, [e.target.name] : e.target.value}); 
 }  
 
-useEffect(()=>{
-  if(searchPost.category) {
-    navigate(`/home?category=${searchPost.category}&page=1`) 
-  }
-  // else if(!searchPost.category){
-  //   navigate(`/home?all-category&page=1`) 
-  // }
-},[navigate, searchPost.category, setSearchPost, searchPost])
+const handleNavigate= ()=>{
+  if(searchPost.category) navigate(`/home?category=${searchPost.category}&page=1`) 
+}
+const handleClear= ()=> navigate(`/home`) 
+
 
   return (
     <div id={ "navContainer" }  >
@@ -55,9 +53,12 @@ useEffect(()=>{
              value={searchPost.category}
              onChange={handleChange}
            />
-           <div 
-            onClick={()=> {setSearchPost({...searchPost, category: ""}); navigate(`/home`) }}>
-            <CloseIcon sx={{fontSize:"1.1rem"}}/>
+           <div>
+            {
+              searchPost.category? 
+              <SearchIcon  onClick={handleNavigate} sx={{fontSize:"1.1rem"}}/> :
+              <CloseIcon onClick={handleClear} sx={{fontSize:"1.1rem"}}/>
+            }
            </div>
          </div>
         }

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment'
-import { CircularProgress, Paper, List as MUIList,ListItem, 
+import { Paper, List as MUIList,ListItem, 
   ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, Slide , IconButton } from "@mui/material";
 import { Delete, MoneyOff } from '@mui/icons-material';
 import { useParams, useNavigate, useLocation } from "react-router-dom";
@@ -16,7 +16,6 @@ import './detail.css';
 
 const Detail = () => { 
   const { HandleTotal, bin, deleteId, filteredByUser}= useGlobalContext();
-  // , filteredByUser
   const [currentPage, setCurrentPage]= useState(1)
 
   const  {category}  = useParams();
@@ -24,7 +23,7 @@ const Detail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const {post, Loading, } = useSelector((state)=> state.posts)
+  const {post,} = useSelector((state)=> state.posts)
   // allUnSlicedPosts
 
   // const RecommendedPosts = allUnSlicedPosts.filter((p)=>id? p._id !==id & p.category=== category : null )
@@ -77,52 +76,50 @@ const Detail = () => {
         </p>
         </Paper>
 
- { 
- Loading ? <div style={{textAlign: "center", marginTop:"1rem"}}><CircularProgress/></div> :
 
-<div className="recommendedRecord">
-  <h1 style={{textAlign:"center", marginTop:""}}>SIMILAR RECORD</h1>
-<MUIList dense={false} 
-sx={{ 
-  border: "1px solid lightgray",
-  borderRadius: "0.5rem",
-  height: "fit-content",
-  width: "100%",
-  overflow:"auto", 
-  background: !RecommendedPosts[0] ? "transparent" : "white",    }} >
-{ 
- !RecommendedPosts[0] ? "NO SIMILAR RECORD" :
- slicedRecommendedPosts.map((p) => (
-  <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
-     onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
-    <ListItem>
-      <ListItemAvatar>
-        <Avatar sx={{backgroundColor: p.type==="incomming"? "blue" : "red" }}>
-          <MoneyOff />
-        </Avatar>
-      </ListItemAvatar>
-      <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY')}`} />
-      <ListItemSecondaryAction
-      >
-      <IconButton edge="end" aria-label="delete" 
-       onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})} }>
-          <MdOutlineVisibility />
-      </IconButton
-      >
-      <IconButton edge="end" aria-label="delete" onClick={()=> {dispatch({type: BIN_OPEN}); dispatch({type: DELETE_ID, payload: p._id})}}>
-          <Delete />
-      </IconButton>
-      </ListItemSecondaryAction>
-    </ListItem>
-  </Slide>
-))}
-{bin && <Hero onClickDelete={deleteItem} /> } 
-</MUIList>
-  <div style={{padding:"1rem"}}>
-    <Pagination postsPerPage={postsPerPage} totalPosts={RecommendedPosts.length} goToPage={goToPage}/>
+   <div className="recommendedRecord">
+      <h1 style={{textAlign:"center", marginTop:""}}>SIMILAR RECORD</h1>
+        <MUIList dense={false} 
+         sx={{ 
+           border: "1px solid lightgray",
+           borderRadius: "0.5rem",
+           height: "fit-content",
+           width: "100%",
+           overflow:"auto", 
+           background: !RecommendedPosts[0] ? "transparent" : "white",    
+           }} >
+         { 
+          !RecommendedPosts[0] ? "NO SIMILAR RECORD" :
+            slicedRecommendedPosts.map((p) => (
+             <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
+               onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
+               <ListItem>
+                 <ListItemAvatar>
+                   <Avatar sx={{backgroundColor: p.type==="incomming"? "blue" : "red" }}>
+                    <MoneyOff />
+                   </Avatar>
+                 </ListItemAvatar>
+                <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY')}`} />
+               <ListItemSecondaryAction>
+                 <IconButton edge="end" aria-label="delete" 
+                   onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})} }>
+                   <MdOutlineVisibility />
+                 </IconButton>
+              <IconButton edge="end" aria-label="delete" onClick={()=> {dispatch({type: BIN_OPEN}); dispatch({type: DELETE_ID, payload: p._id})}}>
+                <Delete />
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+           </Slide>
+         ))
+         }
+       {bin && <Hero onClickDelete={deleteItem} /> } 
+       </MUIList>
+       <div style={{padding:"1rem"}}>
+         <Pagination postsPerPage={postsPerPage} totalPosts={RecommendedPosts.length} goToPage={goToPage}/>
+       </div>
   </div>
-</div>
-  }
+
 </section>
   )
 }

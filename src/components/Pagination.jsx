@@ -16,7 +16,7 @@ const Pagination =({postsPerPage, totalPosts, goToPage})=>{
     const handleSelected = (clicked) => setSelected(clicked)
 
     const handleBackgroundColor = (clicked) =>{
-      if(selected===Number(clicked))    return "gray";
+      if(selected===clicked)    return "blue";
      else return ""
     }
 
@@ -27,13 +27,13 @@ const Pagination =({postsPerPage, totalPosts, goToPage})=>{
                 pageNumbers.map((number, i)=>
                   <div  key={i}>
                      <div 
-                        onClick={()=> {goToPage(number); handleSelected(number); }} 
+                        onClick={()=> {goToPage(number); handleSelected(Number(i)); }} 
                         style={{
                             border:"0.4px solid gray", 
                             padding:"0.3rem 0.8rem", 
-                            color:selected===number? "white":"black", 
+                            color:selected===i? "white":"black", 
                             fontSize:"1.3rem", 
-                            background: handleBackgroundColor(number),
+                            background: handleBackgroundColor(Number(i)),
                             }}>
                         {number}
                     </div>

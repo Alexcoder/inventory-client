@@ -11,11 +11,32 @@
     /* transition:2s ease in; */
     background: rgba(0, 0, 0, 0.600);
 }
+.update-category-input{
+  width: 9.5rem; 
+  font-size: 1rem;
+  /* border: none;  */
+}
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 1024px){
   .update{
     padding: 2rem 0rem 0rem 0rem;
   }
+  .update-category-input{
+    width: 15rem; 
+  }  
+}
+@media screen and (max-width: 600px){
+  .update-category-input{
+    width: 11.5rem; 
+    margin-left: 1rem;
+  }  
+}
+
+
+@media screen and (max-width: 375px){
+  .update-category-input{
+    width: 11.5rem; 
+  }  
 }
 
 
