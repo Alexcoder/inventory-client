@@ -68,10 +68,10 @@ const ListSingle = ({ page, category }) => {
         <div>{pageNumbers > 0 ? `Showing ${page} of ${pageNumbers} ${pageNumbers > 1 ? "pages" : "page"}` : "NO MATCHING CONTENT"}</div>
         <div>( filtered {totalPosts} from {Total} Items )</div>
         {/* PAGINATION */}
-        <div style={{display:"flex", alignItems:"center"}}>
-          <div style={{fontSize:"1.8rem"}}>-</div>
+        <div style={{display:"flex", alignItems:"center", gap:"0.5rem"}}>
+          {/* <div style={{fontSize:"1.8rem"}}>-</div> */}
           <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} goToPage={goToPage} />
-          <div style={{fontSize:"1.8rem"}}>+</div>
+          {/* <div style={{fontSize:"1.8rem"}}>+</div> */}
         </div>
       </div>
     </main>

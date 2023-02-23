@@ -1,16 +1,17 @@
 import React, {useEffect} from "react";
 import {Dashboard,List, } from '../'
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, } from "react-redux";
+// useSelector 
 import { useGlobalContext } from "../../state/context";
 import {getPosts} from '../../state/action/posts'
-import { LoadingPage } from "../";
+// import { LoadingPage } from "../";
 
 import './main.css'
 
 
 const Main = () => {  
   const { setCurrentPage, creator, query } = useGlobalContext();
-  const { Loading,  } = useSelector((state) => state.posts);
+  // const { Loading,  } = useSelector((state) => state.posts);
   const dispatch = useDispatch();
 
   const page = query.get('page') || 1;
@@ -33,7 +34,7 @@ const Main = () => {
               <List page={page} category={category}/>
             </div>
     </div>
-      {Loading && <LoadingPage/>}
+      {/* {Loading && <LoadingPage/>} */}
     </div>
   );
 };
