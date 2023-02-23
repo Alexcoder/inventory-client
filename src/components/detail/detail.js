@@ -72,7 +72,7 @@ const Detail = () => {
         <h3>{HandleTotal(post.type, post.category)}</h3>
         <p>
         <button className="backButton"
-         onClick={()=> navigate('/')}>Back</button>
+         onClick={()=> navigate('/home')}>Back</button>
         </p>
         </Paper>
 

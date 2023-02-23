@@ -28,6 +28,10 @@ const ListSingle = ({ page, category }) => {
     return serial
   }
 
+  const handleView =(item)=>{
+    navigate(`/${item.category}`, { state: { id: item._id } }); 
+    setSearchPost({ ...searchPost, category: "" }) 
+  }
 
   useEffect(() => {
     if (searchPost) { setCurrentPage(1); setSelected(0) };
@@ -48,13 +52,13 @@ const ListSingle = ({ page, category }) => {
         <div>
           {
             allPosts.map((p) => (
-              <div key={p._id} className="list-map" onClick={() => { navigate(`/${p.category}`, { state: { id: p._id } }) }} >
+              <div key={p._id} className="list-map" >
                 <div style={{ minWidth: "3rem", padding: "0.3rem", }}>{serialNumber(p._id)}</div>
                 <div style={{ minWidth: "6rem", padding: "0.3rem", height: "1.2rem", background: p.type === incomming ? "green" : "red", }}></div>
                 <div style={{ minWidth: "10rem", padding: "0.3rem", textTransform: "UpperCase", }}>{p.category}</div>
                 <div style={{ minWidth: "7rem", padding: "0.3rem", textTransform: "UpperCase", }}>{p.type}</div>
                 <div style={{ minWidth: "15rem", padding: "0.3rem" }}>{moment(p.date).format('MMMM Do YYYY, h:mm:ss a')}</div>
-                <div style={{ minWidth: "5rem", padding: "0.3rem" }} onClick={() => { navigate(`/${p.category}`, { state: { id: p._id } }); setSearchPost({ ...searchPost, category: "" }) }}><MdOutlineVisibility style={{ fontSize: "2rem" }} /></div>
+                <div style={{ minWidth: "5rem", padding: "0.3rem" }} onClick={()=>handleView(p)}><MdOutlineVisibility style={{ fontSize: "2rem" }} /></div>
                 <div style={{ minWidth: "5rem", padding: "0.3rem" }} onClick={() => { dispatch({ type: BIN_OPEN }); dispatch({ type: DELETE_ID, payload: p._id }) }}> <Delete style={{ fontSize: "2rem" }} /></div>
               </div>
             ))}
@@ -63,8 +67,11 @@ const ListSingle = ({ page, category }) => {
       <div className="list-pagination" >
         <div>{pageNumbers > 0 ? `Showing ${page} of ${pageNumbers} ${pageNumbers > 1 ? "pages" : "page"}` : "NO MATCHING CONTENT"}</div>
         <div>( filtered {totalPosts} from {Total} Items )</div>
-        <div>
+        {/* PAGINATION */}
+        <div style={{display:"flex", alignItems:"center"}}>
+          <div style={{fontSize:"1.8rem"}}>-</div>
           <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} goToPage={goToPage} />
+          <div style={{fontSize:"1.8rem"}}>+</div>
         </div>
       </div>
     </main>

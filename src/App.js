@@ -41,7 +41,7 @@ function App() {
          </div>
          { (logout || bin) && <Hero/> }
          { update && <div><Update/></div> }
-         { Loading && <div><LoadingPage/></div> }
+         {/* { Loading && <div><LoadingPage/></div> } */}
     </div>
   );
 }
