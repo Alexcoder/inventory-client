@@ -35,6 +35,7 @@
 
 @media screen and (max-width: 375px){
   .update-category-input{
+    margin-left: 0rem;
     width: 11.5rem; 
   }  
 }
