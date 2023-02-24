@@ -95,8 +95,8 @@ const Update =()=>{
         }else{
           dispatch( createPost(dispatchData) ); 
           dispatch({type: UPDATE_FALSE});
-          navigate(`/home?page=1`)
         }
+        navigate(`/home?page=1`)
       };
     
     return(

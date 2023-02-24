@@ -64,7 +64,7 @@ const ListSingle = ({ page, category }) => {
 
         <div>
           {
-            allPosts.map((p) => (
+            allPosts.sort((a,b)=> a.date - b.date).map((p) => (
               <div key={p._id} className="list-map" >
                 <div style={{ minWidth: "3rem", padding: "0.3rem", }}>{serialNumber(p._id)}</div>
                 <div style={{ minWidth: "6rem", padding: "0.3rem", height: "1.2rem", background: p.type === incomming ? "green" : "red", }}></div>
