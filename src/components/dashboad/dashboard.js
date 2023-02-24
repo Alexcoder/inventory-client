@@ -153,7 +153,7 @@ const Dashboard = () => {
                   <div className="flexReduced" >
                     <div className="dash-data" style={{color:"blue"}}>{p.quantityin}</div>
                     <div className="dash-data" style={{color:"red"}}>{p.quantityout}</div>
-                    <div className="dash-data" style={{color: p.balance<=0 ? "red" : "blue"}}>{Math.abs(p.stock)}</div>
+                    <div className="dash-data" style={{color: p.stock<=0 ? "red" : "blue"}}>{Math.abs(p.stock)}</div>
                     <div className="dash-data" style={{color:"blue"}}><span style={{color:"gray"}}>&#8358;</span> {Money(p.amountIn)}</div>
                     <div className="dash-data" style={{color:"red"}}><span style={{color:"gray"}}>&#8358;</span> {Money(p.amountOut)}</div>
                     <div className="dash-data" style={{color: p.balance<=0 ? "red" : "green", }}><span style={{color:"gray"}}>&#8358;</span> {Money(p.balance)}</div>
@@ -164,7 +164,7 @@ const Dashboard = () => {
             </div>
 
           </div>
-          {/* TOTAL GROUP HERE */}
+          {/* TOTAL AMOUNT  GROUP HERE */}
         {
           user && 
         <p  className="dash-btn-grp">

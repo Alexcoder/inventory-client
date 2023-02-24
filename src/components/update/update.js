@@ -13,7 +13,20 @@ const Update =()=>{
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {receive} = useSelector((state)=> state.stateReducer);
-    const { formData, setFormData, user, creator } = useGlobalContext();
+    const {
+      FluidLossIn, FluidLossOut, AntifoamIn, AntifoamOut,
+      DispersantIn, DispersantOut, RetarderIn, RetarderOut, CementIn, CementOut, BentoniteIn, BentoniteOut,
+      CalciumChlorideIn, CalciumChlorideOut, ButylGlycolIn, ButylGlycolOut, SurfactantIn, SurfactantOut,
+      ViscosifierIn, ViscosifierOut, 
+      // AntifoamAmountIn, AntifoamAmountOut, RetarderAmountIn, RetarderAmountOut,
+      // FluidLossAmountIn, FluidLossAmountOut, DispersantAmountIn, DispersantAmountOut, CementAmountIn,
+      // CementAmountOut, BentoniteAmountIn, BentoniteAmountOut, CalciumChlorideAmountIn, CalciumChlorideAmountOut,
+      // ButylGlycolAmountIn, ButylGlycolAmountOut, SurfactantAmountIn, SurfactantAmountOut, ViscosifierAmountIn,
+      // ViscosifierAmountOut,
+      formData, setFormData, user, creator,
+    } = useGlobalContext();
+  
+    // const { formData, setFormData, user, creator } = useGlobalContext();
     const incomming = "incomming";
     const outgoing = "outgoing";
   
@@ -23,27 +36,67 @@ const Update =()=>{
       setFormData({ ...formData, [e.target.name]: e.target.value });
     };
     const MinMax = {max: 10}
+
+    const computeStock=()=>{
+      if(formData.category==="Antifoam"){
+        return AntifoamIn-AntifoamOut
+      }else if(formData.category==="FluidLoss"){
+        return FluidLossIn-FluidLossOut
+      }else if(formData.category==="Retarder"){
+        return RetarderIn-RetarderOut
+      }
+      else if(formData.category==="Dispersant"){
+        return DispersantIn-DispersantOut
+      }
+      else if(formData.category==="Viscosifier"){
+        return ViscosifierIn-ViscosifierOut
+      }
+      else if(formData.category==="Calciumchloride"){
+        return CalciumChlorideIn-CalciumChlorideOut
+      }
+      else if(formData.category==="Butylglycol"){
+        return ButylGlycolIn-ButylGlycolOut
+      }
+      else if(formData.category==="Surfactant"){
+        return SurfactantIn-SurfactantOut
+      }
+      else if(formData.category==="Cement"){
+        return CementIn-CementOut
+      }
+      else if(formData.category==="Bentonite"){
+        return BentoniteIn-BentoniteOut
+      }
+    }
+
+    const dispatchData={
+      user: user?.result.name,
+      type: receive ? incomming : outgoing,
+      location: formData.location,
+      category: formData.category,
+      quantity: formData.quantity,
+      price: formData.price,
+      date: formData.Data,
+      amount, 
+      creator 
+    };
    
   
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(
-          createPost(
-            {
-            user: user?.result.name,
-            type: receive ? incomming : outgoing,
-            location: formData.location,
-            category: formData.category,
-            quantity: formData.quantity,
-            price: formData.price,
-            date: formData.Data,
-            amount, 
-            creator 
-          },
-            )
-        ); 
-        dispatch({type: UPDATE_FALSE});
-        navigate(`/home?page=1`)
+        // if(receive){
+        //   dispatch( createPost(dispatchData) ); 
+        //   dispatch({type: UPDATE_FALSE});
+        //   navigate(`/home?page=1`)
+        // }
+        if((!receive)&(Number(computeStock())<=0)){
+          alert("No available stock")
+        }else if((!receive)&(formData.quantity>Number(computeStock()))){
+          alert("You cannot send above stock available")
+        }else{
+          dispatch( createPost(dispatchData) ); 
+          dispatch({type: UPDATE_FALSE});
+          navigate(`/home?page=1`)
+        }
       };
     
     return(
@@ -63,8 +116,9 @@ const Update =()=>{
           textAlign="center"
           max={""}
           sx={{width: { md: "25rem", xs: "99%", sm: "90%" }}}>
-            <Typography  sx={{margin:"0.5rem 1rem 0rem 0rem",}}>
-               {receive? "RECEIVE" : "SEND"}
+            <Typography  sx={{margin:"0.5rem 2rem 0rem 0rem", fontWeight:"600", fontSize:"1rem"}}>
+               {receive? "RECEIVE" : "SEND"} <br/>
+               <div style={{}}>Stock <span style={{color: computeStock()>0 ? "green" : "red"}}>{computeStock()}</span></div>
             </Typography>
 
           <Grid item xs={12} sm={12} md={12} 
@@ -148,14 +202,14 @@ const Update =()=>{
               sx={{
                 marginLeft:{ md: "-3rem", sm:"3rem"  } ,
                 width: { md: "12rem", xs: "15.1rem", sm: "19rem" }, 
-                height: "2.5rem" 
+                height: "2.5rem",
+                background: !receive && "darkred"
                 }}>
-              ADD TRANSACTION
+              {receive? "RECEIVE" : "SEND"}
             </Button>
           </Grid>
           <Grid item xs={12} sm={12} md={12}>
             <Button
-              type="submit"
               onClick={()=> dispatch({type: UPDATE_FALSE}) }
               variant="contained"
               mt={1}
@@ -163,7 +217,7 @@ const Update =()=>{
                 marginTop:"1.5rem", 
                 width: { md: "12rem", xs: "15.1rem", sm: "19rem" }, 
                 marginLeft:{md:"-3rem", sm:"3rem"} ,
-                height: "2.5rem" }}>
+                height: "1.5rem" }}>
               BACK
             </Button>
           </Grid>
