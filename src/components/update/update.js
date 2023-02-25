@@ -40,7 +40,7 @@ const Update =()=>{
     const computeStock=()=>{
       if(formData.category==="Antifoam"){
         return AntifoamIn-AntifoamOut
-      }else if(formData.category==="FluidLoss"){
+      }else if(formData.category==="Fluidloss"){
         return FluidLossIn-FluidLossOut
       }else if(formData.category==="Retarder"){
         return RetarderIn-RetarderOut
@@ -83,11 +83,6 @@ const Update =()=>{
   
     const handleSubmit = (e) => {
         e.preventDefault();
-        // if(receive){
-        //   dispatch( createPost(dispatchData) ); 
-        //   dispatch({type: UPDATE_FALSE});
-        //   navigate(`/home?page=1`)
-        // }
         if((!receive)&(Number(computeStock())<=0)){
           alert("No available stock")
         }else if((!receive)&(formData.quantity>Number(computeStock()))){
