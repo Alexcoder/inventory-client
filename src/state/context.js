@@ -51,10 +51,10 @@ export const Context =({children})=>{
     },[location])
     
 
-    const IncommingAntifoam = filteredByUser.filter(({type, category})=> type === incomming  & category=== Antifoam )
+    const IncommingAntifoam = filteredByUser.filter(({type, category})=> type === incomming  & category.match(Antifoam) )
     const AntifoamIn = IncommingAntifoam.reduce((x,y)=> x + y.quantity, 0)
     const AntifoamAmountIn = IncommingAntifoam.reduce((x,y)=> x + y.amount, 0)
-    const OutgoingAntifoam = filteredByUser.filter(({type, category})=> type === outgoing  & category=== Antifoam )
+    const OutgoingAntifoam = filteredByUser.filter(({type, category})=> type === outgoing  & category.match(Antifoam) )
     const AntifoamOut = OutgoingAntifoam.reduce((x,y)=> x + y.quantity, 0)
     const AntifoamAmountOut = OutgoingAntifoam.reduce((x,y)=> x+y.amount, 0)
   
