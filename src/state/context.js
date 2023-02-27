@@ -51,6 +51,19 @@ export const Context =({children})=>{
     },[location])
     
 
+    const Incomming = filteredByUser.filter(({type, category})=> 
+    (type === incomming &
+    ( category.includes(searchPost.category)  ||
+      category.toLowerCase().includes(searchPost.category)||
+      category.toUpperCase().includes(searchPost.category)
+     ))
+     );
+    const In = Incomming.reduce((x,y)=> x + y.quantity, 0)
+    const AmountIn = Incomming.reduce((x,y)=> x + y.amount, 0)
+    const Outgoing = filteredByUser.filter(({type, category})=> type === outgoing  & category.includes(searchPost.category) )
+    const Out = Outgoing.reduce((x,y)=> x + y.quantity, 0)
+    const AmountOut = Outgoing.reduce((x,y)=> x+y.amount, 0)
+
     const IncommingAntifoam = filteredByUser.filter(({type, category})=> type === incomming  & category=== Antifoam )
     const AntifoamIn = IncommingAntifoam.reduce((x,y)=> x + y.quantity, 0)
     const AntifoamAmountIn = IncommingAntifoam.reduce((x,y)=> x + y.amount, 0)
@@ -167,7 +180,7 @@ export const Context =({children})=>{
       ViscosifierAmountOut,IncommingTotalAmount, OutgoingTotalAmount, HandleTotal, user, creator, 
       filteredByUser,search, transaction, open,bin, logout, incomming,
       deleteId, sidebar,update, searchPost, setSearchPost, selected, setSelected,currentPage, setCurrentPage,
-      query,
+      query, In, Out, AmountIn, AmountOut,
       }}
     >
       {children}

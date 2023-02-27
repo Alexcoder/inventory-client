@@ -129,7 +129,7 @@ const Dashboard = () => {
         <div className="paper-wrap" style={{background:"white",}}>
             <div style={{ marginTop: "5.8rem", marginRight:"1rem"}}>
               {
-                displayData?.map((p, i) => (
+                displayData.map((p, i) => (
                   <div key={i}  >
                     <div style={{ marginBottom: "1.1rem", fontWeight:"500" }}>{p.type}</div>
                   </div>
@@ -148,7 +148,7 @@ const Dashboard = () => {
                 <div className="dash-data1" style={{ color:"white",}} >BALANCE</div>
               </div>
               <div><hr/></div>
-              {displayData?.map((p, i) => (
+              {displayData.map((p, i) => (
                 <div key={i}>
                   <div className="flexReduced" >
                     <div className="dash-data" style={{color:"blue"}}>{p.quantityin}</div>

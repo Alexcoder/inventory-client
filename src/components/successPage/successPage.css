@@ -1,0 +1,35 @@
+.success{
+    position: fixed; 
+    top: 0;
+    left:0; 
+    bottom:0;
+    display: grid;
+    place-items:center;
+    /* padding-top: 2rem; */
+    width:100%;
+    height:100%;
+    background: rgba(0, 0, 0, 0.600);
+}
+.success-div{
+  width: 20%;
+  background: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.success-ok-button{
+  background: blue;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem
+}
+.success-div, .success-ok-button{
+  border-radius: 0.2rem;
+}
+
+@media screen and (max-width: 1024px){
+  .success{
+    padding: 2rem 0rem 0rem 0rem;
+  }
+}

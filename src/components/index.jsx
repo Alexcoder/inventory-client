@@ -9,5 +9,6 @@ import Hero from './hero/heroPrompt';
 import Auth from './auth/auth';
 import Welcome from './welcome/welcome';
 import LoadingPage from "./loading/loading"
+import SuccessPage from "./successPage/successPage"
 
-export {Main, Navbar, Dashboard, Detail, List, Auth, SideBar, Update, Hero, Welcome, LoadingPage}
+export {Main, Navbar, Dashboard, Detail, List, Auth, SideBar, Update, Hero, Welcome, LoadingPage, SuccessPage}

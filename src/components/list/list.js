@@ -12,7 +12,7 @@ import './list.css';
 
 const ListSingle = ({ page, category }) => {
   const { pageNumbers, totalPosts, postsPerPage, allPosts,Total } = useSelector((state) => state.posts);
-  const { searchPost, setSearchPost, incomming, setSelected, setCurrentPage } = useGlobalContext();
+  const { searchPost, setSearchPost, incomming, setSelected, setCurrentPage, In, Out, AmountIn, AmountOut } = useGlobalContext();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -54,6 +54,7 @@ const ListSingle = ({ page, category }) => {
   return (
     <main className="list-cont">
       <div className="list-paper" >
+        {searchPost.category} In={In}, Out={Out}, AmountIn=&#8358;{AmountIn}, AmountOut=&#8358;{AmountOut}
         <div className="list-title">
           <div style={{ minWidth: "3rem", padding: "0.3rem", marginLeft: "-1rem", marginRight: "1rem" }}>#</div>
           <div style={{ minWidth: "6rem", padding: "0.3rem", }}>STATUS</div>

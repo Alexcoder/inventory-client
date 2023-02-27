@@ -84,14 +84,14 @@ const Update =()=>{
     const handleSubmit = (e) => {
         e.preventDefault();
         if((!receive)&(Number(computeStock())<=0)){
-          alert("No available stock")
+          alert("Out of stock")
         }else if((!receive)&(formData.quantity>Number(computeStock()))){
           alert("You cannot send above stock available")
         }else{
           dispatch( createPost(dispatchData) ); 
           dispatch({type: UPDATE_FALSE});
         }
-        navigate(`/home?page=1`)
+        navigate(`/success`)
       };
     
     return(
