@@ -4,44 +4,50 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from 'moment';
 import { Delete } from '@mui/icons-material';
 import { useGlobalContext } from "../../state/context";
-import { MdOutlineVisibility } from 'react-icons/md';
+import { getHistoryByQuery } from "../../state/action/history";
 import { BIN_OPEN, DELETE_ID, } from '../../state/constants';
 import Pagination from "../Pagination";
+import { MdOutlineVisibility } from 'react-icons/md';
 
-import './list.css';
+import './history.css';
 
-const ListSingle = ({ page, category }) => {
-  const { pageNumbers, totalPosts, postsPerPage, allPosts,Total } = useSelector((state) => state.posts);
-  const { searchPost, setSearchPost, incomming, setSelected, setCurrentPage, In, Out, AmountIn, AmountOut } = useGlobalContext();
+const History = () => {
+  const { totalPages, totalQuantity, quantity, limit, historyByQuery, } = useSelector((state) => state.history);
+  // , allHistory
+  // historyById
+  const { searchPost,setSearchPost, incomming, setSelected, setCurrentPage, creator, query } = useGlobalContext();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // console.log({ "page": page, "pageNumbers": pageNumbers, "totalPosts": totalPosts })
+  const goToPage = (number) => { 
+    setCurrentPage(number); 
+    navigate(`/home/history?category=${category}&page=${number}`) 
+  }
 
-  const goToPage = (number) => { setCurrentPage(number); navigate(`/home?category=${category}&page=${number}`) }
-
+  const page = query.get("page") || 1;
+  const category = query.get("category") || "all";
 
   const serialNumber = (id) => {
-    const index = allPosts.findIndex((item) => item._id === id);
-    const factor = (Number(page) - 1) * postsPerPage;
+    const index = historyByQuery?.findIndex((item) => item._id === id);
+    const factor = (Number(page) - 1) * limit;
     const serial = page?  (index + 1) + factor : (index+1)
     return serial
   }
 
   const handleView =(item)=>{
-    navigate(`/${item.category}`, { state: { id: item._id } }); 
+    navigate(`/home/find?id=${item._id}&category=${item.category}`); 
     setSearchPost({ ...searchPost, category: "" }) 
   }
 
   const nextPage =()=>{
-    if(Number(page)<Number(pageNumbers)){
-    navigate(`/home?category=${category}&page=${Number(page)+1}`);
+    if(Number(page)<Number(totalPages)){
+    navigate(`/home/history?category=${category}&page=${Number(page)+1}`);
     setSelected(Number(page))
   }
 };
   const previousPage =()=>{
     if(Number(page)>1){
-      navigate(`/home?category=${category}&page=${Number(page)-1}`);
+      navigate(`/home/history?category=${category}&page=${Number(page)-1}`);
       setSelected(Number(page)-2)
     }
   };
@@ -50,11 +56,15 @@ const ListSingle = ({ page, category }) => {
     if (searchPost) { setCurrentPage(1); setSelected(0) };
   }, [searchPost, setSelected, setCurrentPage,]);
 
+  useEffect(()=> {
+    dispatch(getHistoryByQuery({creator, category, page}));
+ },[dispatch, creator, category, page ])
+
+
 
   return (
-    <main className="list-cont">
+    <main className="list-cont" style={{marginTop:"4rem", width:"100vw", display:"grid", alignItems:"center", minHeight:"100vh"}}>
       <div className="list-paper" >
-        {searchPost.category} In={In}, Out={Out}, AmountIn=&#8358;{AmountIn}, AmountOut=&#8358;{AmountOut}
         <div className="list-title">
           <div style={{ minWidth: "3rem", padding: "0.3rem", marginLeft: "-1rem", marginRight: "1rem" }}>#</div>
           <div style={{ minWidth: "6rem", padding: "0.3rem", }}>STATUS</div>
@@ -65,7 +75,7 @@ const ListSingle = ({ page, category }) => {
 
         <div>
           {
-            allPosts.sort((a,b)=> a.date - b.date).map((p) => (
+            historyByQuery?.map((p) => (
               <div key={p._id} className="list-map" >
                 <div style={{ minWidth: "3rem", padding: "0.3rem", }}>{serialNumber(p._id)}</div>
                 <div style={{ minWidth: "6rem", padding: "0.3rem", height: "1.2rem", background: p.type === incomming ? "green" : "red", }}></div>
@@ -73,18 +83,18 @@ const ListSingle = ({ page, category }) => {
                 <div style={{ minWidth: "7rem", padding: "0.3rem", textTransform: "UpperCase", }}>{p.type}</div>
                 <div style={{ minWidth: "15rem", padding: "0.3rem" }}>{moment(p.date).format('MMMM Do YYYY, h:mm:ss a')}</div>
                 <div style={{ minWidth: "5rem", padding: "0.3rem" }} onClick={()=>handleView(p)}><MdOutlineVisibility style={{ fontSize: "2rem" }} /></div>
-                <div style={{ minWidth: "5rem", padding: "0.3rem" }} onClick={() => { dispatch({ type: BIN_OPEN }); dispatch({ type: DELETE_ID, payload: p._id }) }}> <Delete style={{ fontSize: "2rem" }} /></div>
+                <div style={{ minWidth: "5rem", padding: "0.3rem" }} onClick={() => { dispatch({ type: BIN_OPEN }); dispatch({ type: DELETE_ID, payload: p }) }}> <Delete style={{ fontSize: "2rem" }} /></div>
               </div>
-            ))}
-        </div>
+              ))} 
+              </div>
       </div>
       <div className="list-pagination" >
-        <div>{pageNumbers > 0 ? `Showing ${page} of ${pageNumbers} ${pageNumbers > 1 ? "pages" : "page"}` : "NO MATCHING CONTENT"}</div>
-        <div>( {searchPost.category? "filtered" : "found"} {totalPosts} from {Total} Items )</div>
+        <div>{totalPages > 0 ? `Showing ${page} of ${totalPages} ${totalPages > 1 ? "pages" : "page"}` : "NO MATCHING CONTENT"}</div>
+        <div>( {searchPost.category? "filtered" : "found"} {quantity} from {totalQuantity} Items )</div>
         {/* PAGINATION */}
         <div style={{display:"flex", alignItems:"center", gap:"0.5rem"}}>
           <div onClick={previousPage} style={{fontSize:"1rem"}}>Prev</div>
-          <Pagination postsPerPage={postsPerPage} totalPosts={totalPosts} goToPage={goToPage} />
+          <Pagination limit={limit} totalPosts={totalPages} goToPage={goToPage} />
           <div onClick={nextPage} style={{fontSize:"1rem"}}>Next</div>
         </div>
       </div>
@@ -92,4 +102,4 @@ const ListSingle = ({ page, category }) => {
   );
 };
 
-export default ListSingle;
+export default History;

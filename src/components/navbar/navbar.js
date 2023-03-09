@@ -21,7 +21,7 @@ const handleChange = (e) =>{
 }  
 
 const handleNavigate= ()=>{
-  if(searchPost.category) navigate(`/home?category=${searchPost.category}&page=1`) 
+  if(searchPost.category) navigate(`/home/history?category=${searchPost.category}&page=1`) 
 }
 const handleClear= ()=> navigate(`/home`) 
 

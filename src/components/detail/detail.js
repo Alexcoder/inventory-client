@@ -4,8 +4,9 @@ import moment from 'moment'
 import { Paper, List as MUIList,ListItem, 
   ListItemAvatar, Avatar, ListItemText, ListItemSecondaryAction, Slide , IconButton } from "@mui/material";
 import { Delete, MoneyOff } from '@mui/icons-material';
-import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { getPost,deletePost, } from '../../state/action/posts';
+import { useNavigate,  } from "react-router-dom";
+import { getHistoryById, deleteHistory, } from '../../state/action/history';
+import { updateDashboard } from '../../state/action/dashboard';
 import { useGlobalContext } from '../../state/context';
 import {MdOutlineVisibility} from 'react-icons/md';
 import {Hero, } from "../index";
@@ -15,28 +16,30 @@ import Pagination from "../Pagination";
 import './detail.css';
 
 const Detail = () => { 
-  const { HandleTotal, bin, deleteId, filteredByUser}= useGlobalContext();
+  const { HandleTotal, bin, deleteId, filteredByUser, query}= useGlobalContext();
   const [currentPage, setCurrentPage]= useState(1)
 
-  const  {category}  = useParams();
-  const id = useLocation().state.id ;
+  const id = query.get("id");
+  const category = query.get("category");
+  // const {category}  = useParams();
+  // const id = useLocation().state.id ;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const {post,} = useSelector((state)=> state.posts)
-  // allUnSlicedPosts
+  const {historyById} = useSelector((state)=> state.history)
 
-  // const RecommendedPosts = allUnSlicedPosts.filter((p)=>id? p._id !==id & p.category=== category : null )
+
   const RecommendedPosts = filteredByUser.filter((p)=>id? p._id !==id & p.category=== category : null )
   
 
   const deleteItem = ()=>{
-    dispatch(deletePost(deleteId));
+    dispatch(deleteHistory(deleteId));
+    dispatch(updateDashboard(deleteId));
     dispatch({type: BIN_CLOSE})
    }
   
   useEffect(()=>{
-    dispatch(getPost(id))
+    dispatch(getHistoryById(id))
   },[id, dispatch])
 
   const Money =(num)=>{
@@ -54,22 +57,22 @@ const Detail = () => {
   
   return (
     <section id="detailContainer">
-        <Paper key={post._id} elevation={5} 
+        <Paper key={historyById._id} elevation={5} 
         sx={{ 
            padding: "2rem", 
            height: "fit-content",
            }} >
         <div  style={{textAlign: "start", }}> 
-          <h2 style={{textAlign: "center"}}>{post.type==="incomming"? <span style={{color:"blue"}}>RECEIVED</span>: <span style={{color:"red"}}>SENT</span>}</h2>
-          <div><span style={{fontWeight:"700"}}>By:  </span> {post.user}</div>
-          <div style={{textTransform:"capitalize"}}><span style={{fontWeight:"700"}}>Item:  </span>{post.category}</div>
-          <div><span style={{fontWeight:"700"}}>Price:  </span>${Money(post.price)}.00</div>
-          <div><span style={{color: post.type==="incomming"? "blue" : "red",fontWeight:"700"}}>Quantity:  </span>{post.quantity}</div>
-          <div><span style={{color: post.type==="incomming"? "blue" : "red",fontWeight:"700"}}>Amount:  </span> ${Money(post.amount)}.00</div>
-          <div><span style={{fontWeight:"700"}}> Location: </span>{post.location}</div>
-          <div><span style={{fontWeight:"700"}}>Date:  </span>{moment(post.date).format('MMMM Do YYYY, h:mm:ss a')}</div>
+          <h2 style={{textAlign: "center"}}>{historyById.type==="incomming"? <span style={{color:"blue"}}>RECEIVED</span>: <span style={{color:"red"}}>SENT</span>}</h2>
+          <div><span style={{fontWeight:"700"}}>By:  </span> {historyById.user}</div>
+          <div style={{textTransform:"capitalize"}}><span style={{fontWeight:"700"}}>Item:  </span>{historyById.category}</div>
+          <div><span style={{fontWeight:"700"}}>Price:  </span>${Money(historyById.price)}.00</div>
+          <div><span style={{color: historyById.type==="incomming"? "blue" : "red",fontWeight:"700"}}>Quantity:  </span>{historyById.quantity}</div>
+          <div><span style={{color: historyById.type==="incomming"? "blue" : "red",fontWeight:"700"}}>Amount:  </span> ${Money(historyById.amount)}.00</div>
+          <div><span style={{fontWeight:"700"}}> Location: </span>{historyById.location}</div>
+          <div><span style={{fontWeight:"700"}}>Date:  </span>{moment(historyById.date).format('MMMM Do YYYY, h:mm:ss a')}</div>
         </div>
-        <h3>{HandleTotal(post.type, post.category)}</h3>
+        <h3>{HandleTotal(historyById.type, historyById.category)}</h3>
         <p>
         <button className="backButton"
          onClick={()=> navigate('/home')}>Back</button>
@@ -92,7 +95,7 @@ const Detail = () => {
           !RecommendedPosts[0] ? "NO SIMILAR RECORD" :
             slicedRecommendedPosts.map((p) => (
              <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
-               onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})}}>
+               onClick={() => {navigate(`/home/find?id=${p._id}&category=${p.category}` )}}>
                <ListItem>
                  <ListItemAvatar>
                    <Avatar sx={{backgroundColor: p.type==="incomming"? "blue" : "red" }}>

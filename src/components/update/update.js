@@ -1,224 +1,164 @@
-import React from "react";
-import {useNavigate} from "react-router-dom";
-import { Grid,TextField,MenuItem,Button,Paper, Typography} from "@mui/material";
+import React, {useState, useEffect} from "react";
+import { Paper } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { SingleMain } from "./singleMain";
 import { useGlobalContext } from "../../state/context";
-import { createPost } from "../../state/action/posts";
-import { Category } from "../../objects/object";
+import { createDashboard } from "../../state/action/dashboard";
+import { createHistory } from "../../state/action/history";
 import {UPDATE_FALSE} from '../../state/constants';
+import Popup from "../popup/popup"
 import './update.css';
 
 const Update =()=>{
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const {receive} = useSelector((state)=> state.stateReducer);
-    const {
-      FluidLossIn, FluidLossOut, AntifoamIn, AntifoamOut,
-      DispersantIn, DispersantOut, RetarderIn, RetarderOut, CementIn, CementOut, BentoniteIn, BentoniteOut,
-      CalciumChlorideIn, CalciumChlorideOut, ButylGlycolIn, ButylGlycolOut, SurfactantIn, SurfactantOut,
-      ViscosifierIn, ViscosifierOut, 
-      // AntifoamAmountIn, AntifoamAmountOut, RetarderAmountIn, RetarderAmountOut,
-      // FluidLossAmountIn, FluidLossAmountOut, DispersantAmountIn, DispersantAmountOut, CementAmountIn,
-      // CementAmountOut, BentoniteAmountIn, BentoniteAmountOut, CalciumChlorideAmountIn, CalciumChlorideAmountOut,
-      // ButylGlycolAmountIn, ButylGlycolAmountOut, SurfactantAmountIn, SurfactantAmountOut, ViscosifierAmountIn,
-      // ViscosifierAmountOut,
-      formData, setFormData, user, creator,
-    } = useGlobalContext();
+    const {allDashboard} = useSelector((state)=> state.dashboard);
+    const {formData, setFormData, user, creator, } = useGlobalContext();
+    // setPopup, popup
+
+    const [stock, setStock] = useState();
+    const [found, setFound] = useState([]);
+    const [select, setSelect] = useState(false);
+    const [buyPrice, setBuyPrice] = useState();
+    const [addProp, setAddProp] = useState(true);
+    const [deleteProp, setDeleteProp] = useState(false);
   
-    // const { formData, setFormData, user, creator } = useGlobalContext();
     const incomming = "incomming";
     const outgoing = "outgoing";
-  
-    const amount = formData.price * formData.quantity;
+
+      
+      
   
     const handleChange = (e) => {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
+      setFormData({ ...formData, [e.target.name]: e.target.value.toUpperCase() });
     };
-    const MinMax = {max: 10}
 
-    const computeStock=()=>{
-      if(formData.category==="Antifoam"){
-        return AntifoamIn-AntifoamOut
-      }else if(formData.category==="Fluidloss"){
-        return FluidLossIn-FluidLossOut
-      }else if(formData.category==="Retarder"){
-        return RetarderIn-RetarderOut
-      }
-      else if(formData.category==="Dispersant"){
-        return DispersantIn-DispersantOut
-      }
-      else if(formData.category==="Viscosifier"){
-        return ViscosifierIn-ViscosifierOut
-      }
-      else if(formData.category==="Calciumchloride"){
-        return CalciumChlorideIn-CalciumChlorideOut
-      }
-      else if(formData.category==="Butylglycol"){
-        return ButylGlycolIn-ButylGlycolOut
-      }
-      else if(formData.category==="Surfactant"){
-        return SurfactantIn-SurfactantOut
-      }
-      else if(formData.category==="Cement"){
-        return CementIn-CementOut
-      }
-      else if(formData.category==="Bentonite"){
-        return BentoniteIn-BentoniteOut
-      }
-    }
-
-    const dispatchData={
+    const dispatchData2={
+      category: formData.category,
       user: user?.result.name,
       type: receive ? incomming : outgoing,
-      location: formData.location,
-      category: formData.category,
-      quantity: formData.quantity,
       price: formData.price,
-      date: formData.Data,
-      amount, 
-      creator 
+      quantityIn : receive? formData.quantity : 0 ,
+      quantityOut :!receive? formData.quantity : 0 ,
+      amountIn: receive ? (formData.price * formData.quantity) : 0 ,
+      amountOut: !receive ? (formData.price * formData.quantity) : 0 ,
+      date: formData.date,
+      location: formData.location,
+      creator
     };
-   
+
+    
+    useEffect(()=>{
+      const handleCheckStock =()=>{
+        const verify =   allDashboard?.find((p)=>
+        (p.category.match(formData.category) ) 
+       )
+       verify && setFound(verify)
+       console.log(verify)
+       const quantityIn =verify ? (verify.quantityIn) : 0
+       const quantityOut = verify? (verify.quantityOut) :0
+       const stock =verify? (quantityIn - quantityOut) : "Does not Exist"
+       const highestBoughtPrice = verify? verify.buyPrice : 0;
+       setStock(stock)
+       setBuyPrice(highestBoughtPrice)
+      }
+      handleCheckStock()
+    },[allDashboard, formData.category])
   
     const handleSubmit = (e) => {
-        e.preventDefault();
-        if((!receive)&(Number(computeStock())<=0)){
-          alert("Out of stock")
-        }else if((!receive)&(formData.quantity>Number(computeStock()))){
-          alert("You cannot send above stock available")
-        }else{
-          dispatch( createPost(dispatchData) ); 
-          dispatch({type: UPDATE_FALSE});
-        }
-        navigate(`/success`)
+      e.preventDefault();
+      if(!found){      
+       alert("Item does not exist")
+       } else if(!receive & (formData.quantity>stock)){
+        alert("Cannot send above available stock")
+       }else if(!receive & (formData.price < buyPrice)){
+        alert ("Selling at loss")
+       }
+       else {
+        dispatch( createDashboard(dispatchData2) ); 
+        dispatch( createHistory(dispatchData2) ); 
+        dispatch({type: UPDATE_FALSE}); }
+
+        receive && setAddProp(true)  ;
+        !receive && setDeleteProp(true)  ;
       };
+
     
     return(
       <div className="update">
-        <Paper elevation={5} 
-        sx={{ 
-           position:"fixed",
-           textAlign:"center",
-           maxHeight: {md: "34rem", sm:"45rem", xs:"45rem"},
-           width:{xs:"82%", sm:"55%", md:"25%"}, }}>
-        <Grid
-          container
-          p={2}
-          mt={2}
-          rowSpacing="0.5rem"
-          justifyContent="center"
-          textAlign="center"
-          max={""}
-          sx={{width: { md: "25rem", xs: "99%", sm: "90%" }}}>
-            <Typography  sx={{margin:"0.5rem 2rem 0rem 0rem", fontWeight:"600", fontSize:"1rem"}}>
-               {receive? "RECEIVE" : "SEND"} <br/>
-               <div style={{}}>Stock <span style={{color: computeStock()>0 ? "green" : "red"}}>{computeStock()}</span></div>
-            </Typography>
+        <Paper elevation={5} style={{ padding:"1rem 2rem", display:"grid", gap:"0.6rem" }}>
 
-          <Grid item xs={12} sm={12} md={12} 
-          sx={{
-               width: {md:"23rem", sm:"18rem", xs:"15rem"} , 
-               display:"flex", 
-               marginLeft: {md:"3rem", sm:"4rem", xs:"1rem"}}}>
+            <header  style={{textAlign:"center", fontWeight:"600", fontSize:"1rem"}}>
+               {receive? "RECEIVE" : "SEND"} <br/>
+               {formData.category && `${stock} InStock`}
+               {formData.category && <div> &#8358; {buyPrice} Buy Price</div>  }
+            </header>
+           
+           <section> {/*SELECT SECTION*/}
+           <div style={{display:"flex", border:"0.5px solid lightgray", padding:"0.2rem", alignItems:"center"}}>
             <input
-             className="update-category-input"
-             name="category"
-             value={formData.category}
-             onChange={handleChange}
-             placeholder="Category"/>
-            <TextField
-              // label="category"
-              select
+              className="update-category-input"
+              style={{border:"none", padding:"0.6rem 0.1rem"}}
               name="category"
               value={formData.category}
-              sx={{
-                width: { md: "3rem", sm: "3rem", xs: "3rem" },
-                marginLeft: {md:"0rem", sm: "0rem" },
-                color: "black",
-              }}
-              onChange={handleChange}>
-              {Category.map((i) => (
-                <MenuItem key={i.value} value={i.value}>
-                  {i.category}
-                </MenuItem>
+              onChange={handleChange}
+              placeholder="Category"/>
+               <div style={{padding:"0.3rem 0.3rem",borderRadius:"0.2rem", fontSize:"1rem", background:"purple", color:"white"}}
+                 onClick={()=> setSelect(prev=> !prev)}> select
+               </div>
+            </div>     
+            <div style={{position:"fixed", zIndex:"200", width:"16.4%",borderRadius:"0rem 0rem 0.2rem 0.2rem", border:"1px solid gray", textAlign:"center", maxHeight:"10rem", overflow:"auto"}}>
+              {select && allDashboard?.map((i) => (
+                <div style={{background:"lightgray", borderTop:"1px solid white"}} key={i._id} value={i.category}>
+                  <div onClick={()=> {setFormData({...formData, category: i.category}); setSelect(false)}}>{i.category}</div> 
+                </div>
               ))}
-            </TextField>
-          </Grid>
+            </div> 
+          </section>    
 
           <SingleMain
             label="Quantity"
-            sx={{ width: { md: "8rem", xs: "15rem", sm: "15rem" } }}
             type="number"
             name="quantity"
-            InputProps={{
-              inputProps: { 
-                  max: 20, min: 0 
-              }
-          }}
+            min={5}
+            max={stock}
             value={formData.quantity}
-            onChange={(e) =>
-              setFormData({ ...formData, quantity: e.target.value })}/>
+            onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}/>
           <SingleMain
             label="Price"
-            sx={{ width: { md: "12rem", xs: "15rem", sm: "15rem" } }}
             type="number"
             name="price"
-            inputProps={MinMax}
             value={formData.price}
             onChange={(e) => setFormData({ ...formData, price: e.target.value })}/>
           <SingleMain
             label="Location"
-            sx={{ width: { md: "12rem", xs: "15rem", sm: "15rem" } }}
             name="location"
             value={formData.location}
-            onChange={(e) =>
-              setFormData({ ...formData, location: e.target.value })
-            } />
+            onChange={(e) => setFormData({ ...formData, location: e.target.value })} />
           <SingleMain
             label="Date"
-            sx={{ width: { md: "12rem", xs: "15rem", sm: "15rem" } }}
             type="date"
             name="date"
             value={formData.date}
             onChange={(e) => setFormData({ ...formData, date: e.target.value })}/>
 
-          <Grid item xs={12} sm={12} md={12}
-            sx={{
-            marginTop:{ md: "1rem", sm: "3rem", xs: "2rem" } ,
-            width: { md: "12rem", xs: "15.1rem", sm: "14rem" }, 
-            height: "2rem" }}>
-       
-            <Button
+          <div>
+            <button
               type="submit"
               onClick={handleSubmit}
-              variant="contained"
-              mt={1}
-              sx={{
-                marginLeft:{ md: "-3rem", sm:"3rem"  } ,
-                width: { md: "12rem", xs: "15.1rem", sm: "19rem" }, 
-                height: "2.5rem",
-                background: !receive && "darkred"
-                }}>
-              {receive? "RECEIVE" : "SEND"}
-            </Button>
-          </Grid>
-          <Grid item xs={12} sm={12} md={12}>
-            <Button
+              style={{ background: !receive && "darkred" }}> {receive? "RECEIVE" : "SEND"}
+            </button>
+            <button
               onClick={()=> dispatch({type: UPDATE_FALSE}) }
-              variant="contained"
-              mt={1}
-              sx={{
-                marginTop:"1.5rem", 
-                width: { md: "12rem", xs: "15.1rem", sm: "19rem" }, 
-                marginLeft:{md:"-3rem", sm:"3rem"} ,
-                height: "1.5rem" }}>
-              BACK
-            </Button>
-          </Grid>
-        </Grid>
-        </Paper>
+              style={{marginTop:"1.5rem", }}>   BACK
+            </button>
+          </div>
 
+
+        </Paper>
+       <Popup message={ "Add Succesful" }/>
+       {addProp && <Popup message={ "Add Succesful" }/>}
+       {deleteProp && <Popup message={ "Delete Succesful" }/>}
         </div>
     )
 }

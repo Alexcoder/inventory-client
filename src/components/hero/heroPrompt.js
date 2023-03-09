@@ -2,20 +2,22 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {useGlobalContext} from '../../state/context';
-import { deletePost, } from "../../state/action/posts";
+import { updateDashboard } from "../../state/action/dashboard";
+import { deleteHistory } from "../../state/action/history";
 
 import {logOut} from '../../state/action/user'
 import { BIN_CLOSE, LOGOUT_FALSE, } from '../../state/constants';
 import './heroPrompt.css';
 
 const HeroPrompt =()=>{ 
-    const {bin, logout, deleteId} = useGlobalContext();
+    const {bin, logout, toDelete} = useGlobalContext();
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const deleteItem = () => {
-        dispatch(deletePost(deleteId));
+        dispatch(updateDashboard(toDelete));
+        dispatch(deleteHistory(toDelete));
         dispatch({type: BIN_CLOSE})
       }
     

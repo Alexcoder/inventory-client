@@ -12,7 +12,7 @@
 
 const INITIAL_STATE={
     search: {},
-    deleteId:"",
+    toDelete: {},
     bin: false,
     sidebar: false,
     update: false,
@@ -73,7 +73,7 @@ const StateReducer = (stateReducer=INITIAL_STATE, action)=>{
             return {...stateReducer, receive: false}    
     
         case DELETE_ID:
-            return {...stateReducer, deleteId: action?.payload}
+            return {...stateReducer, toDelete: action?.payload}
 
         case SEARCH:
             return {...stateReducer, search: action?.payload}

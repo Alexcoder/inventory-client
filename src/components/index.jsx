@@ -1,8 +1,7 @@
-import Main from './main/main';
 import Navbar from './navbar/navbar';
 import Detail from './detail/detail';
-import Dashboard from './dashboad/dashboard';
-import List from './list/list';
+import DashboardAuto from './dashboad/dashboardAuto';
+import History from './history/history';
 import SideBar from './sidebar/sidebar';
 import Update from './update/update';
 import Hero from './hero/heroPrompt';
@@ -10,5 +9,9 @@ import Auth from './auth/auth';
 import Welcome from './welcome/welcome';
 import LoadingPage from "./loading/loading"
 import SuccessPage from "./successPage/successPage"
+import Popup from "./popup/popup"
 
-export {Main, Navbar, Dashboard, Detail, List, Auth, SideBar, Update, Hero, Welcome, LoadingPage, SuccessPage}
+export {Navbar, DashboardAuto, Detail,History, Auth, 
+    SideBar, Update, Hero, Welcome, LoadingPage, SuccessPage,
+    Popup,
+}
