@@ -1,9 +1,20 @@
-import { useSelector} from 'react-redux';
+import {useEffect} from "react"
+import {getAllDashboard} from '../../../state/action/dashboard';
+import {useDispatch, useSelector} from 'react-redux';
+import { useGlobalContext } from '../../../state/context';
 
 import "../dashboard.css";
 
 const Category = () =>{
-    const { allDashboard } = useSelector((state)=> state.dashboard)
+    const { creator,  }= useGlobalContext();
+    const { allDashboard , Loading} = useSelector((state)=> state.dashboard);
+    const dispatch = useDispatch();
+
+    useEffect(()=> {
+      dispatch(getAllDashboard(creator));
+   },[dispatch, creator, ])
+ 
+ 
 
     return(
         <div style={{background: "white"}} >
@@ -16,6 +27,7 @@ const Category = () =>{
                }}>    ITEM
            </div>
           { 
+          Loading ? "fetching" :
             allDashboard?.map((list)=>(
               <div  key={list._id} 
                  style={{

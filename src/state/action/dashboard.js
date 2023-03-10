@@ -6,10 +6,10 @@ import {
 import * as api from '../api';
 
 export const getAllDashboard = (creator)=> async(dispatch)=> {
-
   try{
     dispatch({type: "LOADING_START"})
     const {data} = await api.getAllDashboard(creator)
+    console.log(data)
     dispatch({type: GET_ALL_DASHBOARD, payload: data })
     dispatch({type: "LOADING_STOP"})
   }
@@ -20,11 +20,9 @@ export const getAllDashboard = (creator)=> async(dispatch)=> {
 
 
   export const createDashboard = (newData)=> async(dispatch)=> {
-
     try{
       dispatch({type: "LOADING_START"})
       const {data} = await api.createDashboard(newData)
-      console.log(data)
       dispatch({type: CREATE_DASHBOARD, payload: data })
       dispatch({type: "LOADING_STOP"})
     }

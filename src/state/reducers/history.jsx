@@ -39,10 +39,12 @@ switch(action.type){
             }
 
     case UPDATE_HISTORY:
-         return{...history, allHistory: history.allHistory.map(({_id})=>_id === action.payload._id ? action.payload : null)}
+         return{...history, 
+            allHistory: history.allHistory.map(({_id})=>_id === action.payload._id ? action.payload : null)}
    
     case DELETE_HISTORY:
-         return{...history, allHistory: history.allHistory.filter(({_id})=>_id !== action.payload._id )}
+         return{...history, 
+            allHistory: history.allHistory.filter(({_id})=>_id !== action.payload._id )}
     
          case "LOADING_START":
          return{...history, Loading: true}

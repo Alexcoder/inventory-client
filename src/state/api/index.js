@@ -1,8 +1,7 @@
 import axios from 'axios';
 
-const baseURL = "https://inventory-api-2j2i.onrender.com/api"
-const API = axios.create({baseURL})
-// const API = axios.create({baseURL: "http://127.0.0.1:5000/api" })
+// const API = axios.create({baseURL: "https://inventory-api-2j2i.onrender.com/api"})
+const API = axios.create({baseURL: "http://127.0.0.1:5000/api" })
 // const API = axios.create({baseURL: "http://localhost:5000/api" })
 
 
@@ -13,7 +12,7 @@ export const updateDashboard = (toDelete)=> API.put(`/dashboard`, toDelete );
 
 export const getAllHistory = (creator)=> API.get(`/history?creator=${creator}`);
 export const getHistoryByQuery = ({creator, page, category})=> API.get(
-              `/history/find/search?creator=${creator || "6334855d560610c8f673ab72"}&page=${page || 1}
+              `/history/find/search?creator=${creator}&page=${page || 1}
               &category=${(category==="all" || category==="")? "" : category}`
               )
 export const getHistoryById = (id)=> API.get(`/history/${id}`)

@@ -12,7 +12,6 @@ export const getAllHistory = (creator)=> async(dispatch)=> {
   try{
     dispatch({type: "LOADING_START"})
     const {data} = await api.getAllHistory(creator)
-    console.log(data)
     dispatch({type: GET_ALL_HISTORY, payload: data })
     dispatch({type: "LOADING_STOP"})
   }

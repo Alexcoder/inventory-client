@@ -63,7 +63,7 @@ const History = () => {
 
 
   return (
-    <main className="list-cont" style={{marginTop:"4rem", width:"100vw", display:"grid", alignItems:"center", minHeight:"100vh"}}>
+    <main className="list-cont" style={{marginTop:"4rem", width:"100vw", display:"grid", alignItems:"center", height:"100vh"}}>
       <div className="list-paper" >
         <div className="list-title">
           <div style={{ minWidth: "3rem", padding: "0.3rem", marginLeft: "-1rem", marginRight: "1rem" }}>#</div>

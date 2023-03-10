@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {Route, Routes, Navigate, } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {getAllDashboard} from './state/action/dashboard';
+// import {getAllDashboard} from './state/action/dashboard';
 import {getAllHistory} from './state/action/history';
 import { useGlobalContext } from './state/context';
 import {ProtectedRoute, LoginRoute} from './components/protectedRoute';
@@ -16,7 +16,7 @@ function App() {
 
 
   useEffect(()=> {
-     dispatch(getAllDashboard(creator));
+    //  dispatch(getAllDashboard(creator));
      dispatch(getAllHistory(creator));
   },[dispatch, creator, ])
 

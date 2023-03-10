@@ -51,10 +51,9 @@ const Update =()=>{
     useEffect(()=>{
       const handleCheckStock =()=>{
         const verify =   allDashboard?.find((p)=>
-        (p.category.match(formData.category) ) 
+        (p.category.matchAll(formData.category) ) 
        )
        verify && setFound(verify)
-       console.log(verify)
        const quantityIn =verify ? (verify.quantityIn) : 0
        const quantityOut = verify? (verify.quantityOut) :0
        const stock =verify? (quantityIn - quantityOut) : "Does not Exist"

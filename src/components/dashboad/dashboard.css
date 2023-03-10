@@ -125,14 +125,13 @@
     max-width: 100%;
   } 
   .summary{
-    width: 90%;
     margin-top: -4rem;
   }
   .summary-group-cont{
     max-width: 90%;
   }
   .dash-heading-values-cont{
-    max-width: 90%;
+    max-width: 100%;
     overflow: auto;
   }  
 }
