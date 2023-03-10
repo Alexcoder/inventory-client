@@ -35,20 +35,22 @@ const Values = () =>{
     
 
     return(
-        <div style={{color:"black",background:"white", textAlign:"center" }}>
+        <div style={{color:"black", textAlign:"", background:"white" }}>
         { 
             allDashboard?.map((list)=>(
-              <div key={list._id} style={{display:"flex"}}>
-                    <div className="dash-value-data2">{Money(handleQuantityIn(list))}</div>
-                    <div className="dash-value-data3">{Money(handleQuantityOut(list))}</div>
-                    <div className="dash-value-data4">{Money(handleQuantityIn(list)-handleQuantityOut(list))}</div>
-                    <div className="dash-value-data5">{Money(handleAmountIn(list))}</div>
-                    <div className="dash-value-data6">{Money(handleAmountOut(list))}</div>
-                    <div className="dash-value-data7">{Money(handleAmountIn(list)-handleAmountOut(list))}</div>
-                   <hr style={{border:"0.5px solid white"}}/>
-         </div>
+              <div key={list._id} style={{background:"white"}}>
+              <div style={{display:"flex", }}>
+                    <div className="dash-value-data1">{Money(handleQuantityIn(list))}</div>
+                    <div className="dash-value-data2">{Money(handleQuantityOut(list))}</div>
+                    <div className="dash-value-data3">{Money(handleQuantityIn(list)-handleQuantityOut(list))}</div>
+                    <div className="dash-value-data4">{Money(handleAmountIn(list))}</div>
+                    <div className="dash-value-data5">{Money(handleAmountOut(list))}</div>
+                    <div className="dash-value-data6">{Money(handleAmountIn(list)-handleAmountOut(list))}</div>
+               </div>
+                    {/* <hr style={{border:"0.5px solid gray"}}/> */}
+               </div>
            ))}
-          </div>
+           </div>
 
     )
 }

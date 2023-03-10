@@ -37,16 +37,16 @@ const DashboardAuto = () => {
     <main className="main-dash">
        <Summary/>
       <section className="main-section-cont">
-        <Heading/>
-        <section style={{display:"flex",}}>
           <Category/>
+        <section className="dash-heading-values-cont" >
+          <Heading/>
           <Values/>
         </section>         
       </section>
 
       {
       user &&
-      <div style={{textAlign:"center",paddingTop:"0.8rem",}}>
+      <div className="dash-button-cont">
         <button 
           className="dash-button"
           onClick={()=> addTransaction()}>  Add Transaction
@@ -57,4 +57,4 @@ const DashboardAuto = () => {
   )
 }
 
-export default DashboardAuto
+export default DashboardAuto;
