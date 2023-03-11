@@ -47,7 +47,7 @@ const Values = () =>{
                     <div className="dash-value-data5">{Money(handleAmountOut(list))}</div>
                     <div className="dash-value-data6">{Money(handleAmountIn(list)-handleAmountOut(list))}</div>
                </div>
-                    <hr style={{border:"0.2px solid lightgray"}}/>
+                    {/* <hr style={{border:"0.2px solid lightgray"}}/> */}
                </div>
            ))}
            </div>

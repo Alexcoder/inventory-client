@@ -39,7 +39,7 @@ const Category = () =>{
                     }}>
                   <div >{list.category}</div>
               </div>
-                <hr style={{border:"0.2px solid lightgray"}}/>
+                {/* <hr style={{border:"0.2px solid lightgray"}}/> */}
               </div>
             ))}
 
