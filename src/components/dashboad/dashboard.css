@@ -2,7 +2,7 @@
   display: flex;
   gap: 2rem;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   flex-direction: column;
   padding: 2rem;
   background: rgb(31, 21, 21);
@@ -19,6 +19,7 @@
   align-items: center;
 }
 
+
 .summary{
   width: 100%;
   display: flex;
@@ -28,12 +29,12 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-top: 4rem;
 }
 .summary-group-cont{
   width: 100%;
   display: flex;
   gap: 4rem;
-  margin-top: -6rem;  
 }
 .summary-group-item{
   background: purple;
@@ -44,7 +45,10 @@
 
 .main-section-cont{ /*second*/
   display: flex;
-  width: 100%;
+  width: 70%;
+  background: purple;
+  padding: 0.7rem; 
+  border-radius: 0.3rem;
 }
 
 .dash-heading-data1,
@@ -125,10 +129,11 @@
     max-width: 100%;
   } 
   .summary{
-    margin-top: -4rem;
+    margin-top: 0rem;
   }
   .summary-group-cont{
-    max-width: 90%;
+    max-width: 120%;
+    overflow: auto;
   }
   .dash-heading-values-cont{
     max-width: 100%;

@@ -28,7 +28,8 @@ const Category = () =>{
            </div>
           { 
             allDashboard?.map((list)=>(
-              <div  key={list._id} 
+              <div  key={list._id}>
+              <div 
                  style={{
                     display:"flex", 
                     flexDirection:"column",
@@ -38,8 +39,10 @@ const Category = () =>{
                     }}>
                   <div >{list.category}</div>
               </div>
+                <hr style={{border:"0.2px solid lightgray"}}/>
+              </div>
             ))}
-            {/* <hr style={{border:"0.5px solid white"}}/> */}
+
           </div>  
 
     )

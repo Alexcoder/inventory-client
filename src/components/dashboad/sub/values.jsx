@@ -14,22 +14,22 @@ const Values = () =>{
 
     const handleQuantityIn = (list) =>{
         const qIn = allHistory?.filter((item)=> (list.category.includes(item.category)&(item.type.includes("incomming"))))
-        const qInRed = qIn?.reduce((prev, acc)=> Number(prev)+ Number(acc.quantity), 0)
+        const qInRed = qIn?.reduce((prev, acc)=> Number(prev)+ Number(acc.quantity), 0) || 0;
         return qInRed
       }
       const handleQuantityOut = (list) =>{
        const qOut = allHistory?.filter((item)=> (list.category.includes(item.category)&(item.type.includes("outgoing"))))
-       const qOutRed = qOut?.reduce((prev, acc)=> Number(prev)+ Number(acc.quantity), 0)
+       const qOutRed = qOut?.reduce((prev, acc)=> Number(prev)+ Number(acc.quantity), 0) || 0;
        return qOutRed
       }
       const handleAmountIn = (list) =>{
        const amtIn =  allHistory?.filter((item)=> (list.category.includes(item.category)&(item.type.includes("incomming"))))
-       const amtInRed = amtIn?.reduce((prev, acc)=> Number(prev)+ Number(acc.amount), 0)
+       const amtInRed = amtIn?.reduce((prev, acc)=> Number(prev)+ Number(acc.amount), 0) || 0;
        return amtInRed
       }
       const handleAmountOut = (list) =>{
        const amtOut = allHistory?.filter((item)=> (list.category.includes(item.category)&(item.type.includes("outgoing"))))
-       const amtOutRed = amtOut?.reduce((prev, acc)=> Number(prev)+ Number(acc.amount), 0)
+       const amtOutRed = amtOut?.reduce((prev, acc)=> Number(prev)+ Number(acc.amount), 0) || 0;
        return amtOutRed   
       }
     
@@ -47,7 +47,7 @@ const Values = () =>{
                     <div className="dash-value-data5">{Money(handleAmountOut(list))}</div>
                     <div className="dash-value-data6">{Money(handleAmountIn(list)-handleAmountOut(list))}</div>
                </div>
-                    {/* <hr style={{border:"0.5px solid gray"}}/> */}
+                    <hr style={{border:"0.2px solid lightgray"}}/>
                </div>
            ))}
            </div>
