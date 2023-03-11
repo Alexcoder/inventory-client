@@ -106,7 +106,7 @@
   } 
   .summary{
     width: 90%;
-    margin-top: -10rem;
+    margin-top: 2rem;
   }
   .summary-group-cont{
     max-width: 90%;
@@ -129,10 +129,10 @@
     max-width: 100%;
   } 
   .summary{
-    margin-top: 0rem;
+    margin-top: 2rem;
   }
   .summary-group-cont{
-    max-width: 120%;
+    max-width: 100%;
     overflow: auto;
   }
   .dash-heading-values-cont{
