@@ -16,8 +16,8 @@ const Summary = () => {
   const In = allHistory?.filter((p)=> p.type==="incomming")
   const Out = allHistory?.filter((p)=> p.type==="outgoing")
 
-  const InTotal = In?.reduce((x,y)=> x+y.amount, 0);
-  const OutTotal = Out?.reduce((x,y)=> x+y.amount, 0);
+  const InTotal = In?.reduce((x,y)=> x+y.amount, 0) || 0;
+  const OutTotal = Out?.reduce((x,y)=> x+y.amount, 0) || 0;
   const Balance = InTotal - OutTotal;
 
 

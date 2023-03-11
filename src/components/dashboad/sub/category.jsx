@@ -7,7 +7,7 @@ import "../dashboard.css";
 
 const Category = () =>{
     const { creator,  }= useGlobalContext();
-    const { allDashboard , Loading} = useSelector((state)=> state.dashboard);
+    const { allDashboard ,} = useSelector((state)=> state.dashboard);
     const dispatch = useDispatch();
 
     useEffect(()=> {
@@ -27,7 +27,6 @@ const Category = () =>{
                }}>    ITEM
            </div>
           { 
-          Loading ? "fetching" :
             allDashboard?.map((list)=>(
               <div  key={list._id} 
                  style={{

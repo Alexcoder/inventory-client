@@ -51,7 +51,7 @@ const Update =()=>{
     useEffect(()=>{
       const handleCheckStock =()=>{
         const verify =   allDashboard?.find((p)=>
-        (p.category.matchAll(formData.category) ) 
+        (p.category===(formData.category) ) 
        )
        verify && setFound(verify)
        const quantityIn =verify ? (verify.quantityIn) : 0
