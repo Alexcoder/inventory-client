@@ -43,7 +43,7 @@ const DashboardAuto = () => {
           <Values/>
         </section> 
       </section>
-        <div style={{marginTop:"-2rem"}}>PAGINATION</div>        
+        {/* <div style={{marginTop:"-2rem"}}>PAGINATION</div>         */}
 
       {
       user &&
