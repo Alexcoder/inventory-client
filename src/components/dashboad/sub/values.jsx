@@ -39,7 +39,7 @@ const Values = () =>{
         { 
             allDashboard?.map((list)=>(
               <div key={list._id} style={{background:"white"}}>
-              <div style={{display:"flex", }}>
+              <div style={{display:"flex",background:"white" }}>
                     <div className="dash-value-data1">{Money(handleQuantityIn(list))}</div>
                     <div className="dash-value-data2">{Money(handleQuantityOut(list))}</div>
                     <div className="dash-value-data3">{Money(handleQuantityIn(list)-handleQuantityOut(list))}</div>
