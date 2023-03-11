@@ -41,8 +41,9 @@ const DashboardAuto = () => {
         <section className="dash-heading-values-cont" >
           <Heading/>
           <Values/>
-        </section>         
+        </section> 
       </section>
+        <div style={{marginTop:"-2rem"}}>PAGINATION</div>        
 
       {
       user &&

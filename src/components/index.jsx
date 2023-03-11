@@ -10,8 +10,9 @@ import Welcome from './welcome/welcome';
 import LoadingPage from "./loading/loading"
 import SuccessPage from "./successPage/successPage"
 import Popup from "./popup/popup"
+import SlimNav from "./slimNav/slimNav"
 
 export {Navbar, DashboardAuto, Detail,History, Auth, 
     SideBar, Update, Hero, Welcome, LoadingPage, SuccessPage,
-    Popup,
+    Popup, SlimNav
 }

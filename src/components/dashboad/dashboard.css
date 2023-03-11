@@ -24,6 +24,8 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin-top: 0.5rem;
+  margin-bottom: -0.5rem;
 }
 .summary-sub-cont{
   width: 100%;
@@ -105,8 +107,8 @@
     padding: 1rem;
   } 
   .summary{
-    width: 90%;
-    margin-top: 2rem;
+    width: 100%;
+    margin-top: 0rem;
   }
   .summary-group-cont{
     max-width: 90%;
@@ -116,11 +118,11 @@
     padding: 1rem 1rem;
   }
   .main-section-cont{ /*second*/
-    max-width: 90%;
+    max-width: 100%;
     /* overflow: hidden; */
   }
   .dash-heading-values-cont{
-    max-width: 90%;
+    max-width: 100%;
     overflow: auto;
   }  
 }
@@ -129,14 +131,16 @@
     max-width: 100%;
   } 
   .summary{
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
   .summary-group-cont{
-    max-width: 100%;
-    overflow: auto;
+    /* max-width: 100%; */
+    width: 100%;
+    /* overflow: auto; */
   }
   .dash-heading-values-cont{
-    max-width: 100%;
-    overflow: auto;
+    /* max-width: 100%; */
+    width: 100%;
+    /* overflow: auto; */
   }  
 }

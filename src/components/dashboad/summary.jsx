@@ -1,4 +1,5 @@
 // import { useGlobalContext } from "../../state/context";
+import {useState, useEffect} from "react";
 import {useSelector} from "react-redux";
 import './dashboard.css';
 
@@ -20,32 +21,51 @@ const Summary = () => {
   const OutTotal = Out?.reduce((x,y)=> x+y.amount, 0) || 0;
   const Balance = InTotal - OutTotal;
 
+const summary =[
+  {
+    status: "RECEIVED",
+    amount: `${Money(InTotal)}.00`
+  },
+  {
+    status: "SENT",
+    amount: `${Money(OutTotal)}.00`
+  },
+  {
+    status: "BALANCE",
+    amount: `${Money(Balance)}.00`
+  },
+]
 
+const postsPerPage = 1
+const [current, setCurrent]=useState(1)
+const first = (current-1)* postsPerPage
+const last = (current)* postsPerPage
+
+useEffect(()=>{
+  setTimeout(()=>{
+    setCurrent(current>2? 1 : current+1)
+},6000)
+},[current])
 
   return (
     <main className="summary">
           <div className="summary-sub-cont" >
 
-            <div className="summary-group-cont">                            
-            <div className="summary-group-item">
-               <div >RECEIVED</div>
-               <div>
-                 <span>&#8358;</span>  {Money(InTotal)}.00
-               </div>
-              </div>
-            <div className="summary-group-item">
-               <div >SENT</div>
-               <div>
-                 <span>&#8358;</span>  {Money(OutTotal)}.00
-               </div>
-              </div>
-            <div className="summary-group-item">
-               <div >BALANCE</div>
-               <div>
-                 <span>&#8358;</span>  {Money(Balance)}.00
-               </div>
-              </div> 
-
+            <div className="summary-group-cont"> 
+            {
+              summary.slice(first,last).map((sum)=>
+              <div key={sum.status} 
+               className="summary-group-item"
+               style={{
+                background: sum.status==="RECEIVED"? "green":
+                sum.status==="SENT"? "darkred" : "yellow",
+                color: sum.status==="RECEIVED"? "white":
+                sum.status==="SENT"? "white" : "black",
+               }}>
+                <div >{sum.status}</div>
+                <span>&#8358; {sum.amount}</span> 
+             </div>
+            )}
               </div>
           </div>
 

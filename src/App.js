@@ -5,7 +5,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getAllHistory} from './state/action/history';
 import { useGlobalContext } from './state/context';
 import {ProtectedRoute, LoginRoute} from './components/protectedRoute';
-import {Navbar, Detail, Auth, SideBar,Hero, Update, Welcome, LoadingPage, SuccessPage, History, DashboardAuto} from './components';
+import {Navbar, Detail, Auth, SideBar,Hero, Update, Welcome, 
+        LoadingPage, SuccessPage, History, DashboardAuto,
+        SlimNav} from './components';
 import { SIDEBAR_CLOSE } from './state/constants';
 
 
@@ -46,6 +48,7 @@ function App() {
          { (logout || bin) && <Hero/> }
          { update && <div><Update/></div> }
          { Loading && <div><LoadingPage/></div> }
+         <div><SlimNav/></div>
     </div>
   );
 }
