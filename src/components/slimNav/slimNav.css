@@ -1,11 +1,16 @@
 .slimNav-cont{
-    background: rgb(6, 6, 92);
+    /* background: rgb(6, 6, 92); */
+    background: rgb(31, 21, 21);
+    /* background:lightgray; */
     z-index: 400;
     position: fixed; 
-    top: 5rem; 
+    top: 5.8rem; 
     left:0; 
     min-height: 100vh; 
-    width:5rem
+    /* width:5rem; */
+    padding: 1rem 0.5rem;
+    border-right: 0.1px solid rgb(37, 34, 34);
+
 }
 
 @media screen and (max-width: 800px){

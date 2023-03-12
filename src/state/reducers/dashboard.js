@@ -20,6 +20,9 @@ const Dashboard = (dashboard={InitialState}, action)=>{
                 return {...dashboard,
                         allDashboard: [...dashboard.allDashboard, action.payload]
                     }
+                }
+                else if(isFound){
+                return dashboard
             }
             break;
 

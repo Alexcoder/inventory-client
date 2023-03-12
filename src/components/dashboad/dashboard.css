@@ -16,19 +16,19 @@
 .dash-heading-values-cont
 {
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 
 
 .summary{
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   margin-top: 0.5rem;
   margin-bottom: -0.5rem;
 }
 .summary-sub-cont{
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   margin-top: 4rem;
@@ -39,7 +39,6 @@
   gap: 4rem;
 }
 .summary-group-item{
-  background: purple;
   padding: 1rem 2rem;
   border-radius: 0.2rem;
 }
@@ -47,11 +46,12 @@
 
 .main-section-cont{ /*second*/
   display: flex;
-  width: 70%;
-  background: purple;
+  width: 100vw;
+  /* background: purple; */
   padding: 0.7rem; 
   border-radius: 0.3rem;
 }
+
 
 .dash-heading-data1,
 .dash-heading-data2,
@@ -100,6 +100,14 @@
   border-radius: 0.2rem;
 }
 
+@media screen and (max-width: 1024px){
+  .main-section-cont{
+    background: purple;
+    width: 90%;
+  }
+}
+
+
 @media screen and (max-width: 620px){
   .main-dash{ /*first*/
     max-width: 100%;
@@ -108,18 +116,17 @@
   } 
   .summary{
     width: 100%;
-    margin-top: 0rem;
+    margin-top: -7rem;
   }
   .summary-group-cont{
-    max-width: 90%;
+    width: 90%;
     gap: 0.5rem;
   }
   .summary-group-item{
     padding: 1rem 1rem;
   }
   .main-section-cont{ /*second*/
-    max-width: 100%;
-    /* overflow: hidden; */
+    width:93%;
   }
   .dash-heading-values-cont{
     max-width: 100%;
@@ -128,19 +135,30 @@
 }
 @media screen and (max-width: 390px){
   .main-dash{ /*first*/
-    max-width: 100%;
+    width: 90%;
   } 
+  .summary{
+    margin-top: -4rem;
+    margin-left:-1.2rem;
+  }
+  .summary-group-cont{
+    width: 100%;
+  }
+  .main-section-cont{
+    background: purple;
+    width: 94%;
+  }
+  .dash-heading-values-cont{
+    max-width: 100%;
+    overflow: auto;
+  }  
+}
+@media screen and (max-width: 376px){
   .summary{
     margin-top: 1rem;
   }
-  .summary-group-cont{
-    /* max-width: 100%; */
-    width: 100%;
-    /* overflow: auto; */
-  }
-  .dash-heading-values-cont{
-    /* max-width: 100%; */
-    width: 100%;
-    /* overflow: auto; */
-  }  
+  .main-section-cont{
+    background: purple;
+    width: 94%;
+}
 }

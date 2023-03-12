@@ -17,13 +17,14 @@ const Category = () =>{
  
 
     return(
-        <div style={{background: "white"}} >
+        <div style={{background: "lightgray", borderRadius: "0.3rem 0rem 0rem 0.3rem" }} >
           <div 
              style={{
               background:"blue", 
               color:"white",
                padding:"0.5rem 0.2rem", 
-               minWidth:"8rem"
+               minWidth:"8rem",
+               borderRadius: "0.3rem 0rem 0rem 0.3rem"
                }}>    ITEM
            </div>
           { 
@@ -35,9 +36,9 @@ const Category = () =>{
                     flexDirection:"column",
                     color:"black", 
                     minWidth:"8rem", 
-                    padding:"0.5rem 0.2rem"
+                    padding:"0.5rem 0.2rem",
                     }}>
-                  <div >{list.category}</div>
+                  <div>{list.category}</div>
               </div>
                 {/* <hr style={{border:"0.2px solid lightgray"}}/> */}
               </div>

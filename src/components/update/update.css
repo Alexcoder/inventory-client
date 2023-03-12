@@ -8,7 +8,7 @@
     padding-top: 2rem;
     width:100%;
     height:100%;
-    /* transition:2s ease in; */
+    transition:2s ease in;
     background: rgba(0, 0, 0, 0.600);
 }
 .update-category-input{
@@ -16,35 +16,43 @@
   font-size: 1rem;
   /* border: none;  */
 }
+.update-category-map{
+  width: 13.8rem; 
+}  
+
 
 @media screen and (max-width: 1024px){
   .update{
     padding: 2rem 0rem 0rem 0rem;
   }
   .update-category-input{
-    width: 15rem; 
+    width: 9.8rem; 
   }  
-}
-@media screen and (max-width: 600px){
-  .update-category-input{
-    width: 11.5rem; 
-    margin-left: 1rem;
+  .update-category-map{
+    width: 13.8rem; 
   }  
+
 }
 
 
-@media screen and (max-width: 420px){
+@media screen and (max-width: 620px){
   .update-category-input{
     margin-left: 0.5rem;
-    width: 11.5rem; 
-  }  
+    width: 9.2rem; 
+  } 
+  .update-category-map{
+    width: 13.8rem; 
+  }   
 }
 
 
 @media screen and (max-width: 375px){
   .update-category-input{
     margin-left: 0rem;
-    width: 11.5rem; 
+    width: 9.5rem; 
+  }  
+  .update-category-map{
+    width: 13.8rem; 
   }  
 }
 

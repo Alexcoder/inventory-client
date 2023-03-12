@@ -20,8 +20,8 @@ const Update =()=>{
     const [found, setFound] = useState([]);
     const [select, setSelect] = useState(false);
     const [buyPrice, setBuyPrice] = useState();
-    const [addProp, setAddProp] = useState(true);
-    const [deleteProp, setDeleteProp] = useState(false);
+    const [notification, setNotification] = useState(false);
+    const [submit, setSubmit] = useState(false);
   
     const incomming = "incomming";
     const outgoing = "outgoing";
@@ -63,9 +63,10 @@ const Update =()=>{
       }
       handleCheckStock()
     },[allDashboard, formData.category])
+
   
-    const handleSubmit = (e) => {
-      e.preventDefault();
+    const handleSubmit = () => {
+      // e.preventDefault();
       if(!found){      
        alert("Item does not exist")
        } else if(!receive & (formData.quantity>stock)){
@@ -76,12 +77,24 @@ const Update =()=>{
        else {
         dispatch( createDashboard(dispatchData2) ); 
         dispatch( createHistory(dispatchData2) ); 
-        dispatch({type: UPDATE_FALSE}); }
-
-        receive && setAddProp(true)  ;
-        !receive && setDeleteProp(true)  ;
+        // dispatch({type: UPDATE_FALSE}); 
+      }   
+      setSubmit(true)
       };
 
+     useEffect(()=>{
+       setInterval(()=>{
+         setNotification(submit? true : false)
+       },4000)
+
+       setNotification(false)
+      // return ()=> clearInterval(Interval)
+     },[submit, dispatch])
+
+      console.log({
+        "notification": notification,
+        "receive": receive,
+      })
     
     return(
       <div className="update">
@@ -106,10 +119,10 @@ const Update =()=>{
                  onClick={()=> setSelect(prev=> !prev)}> select
                </div>
             </div>     
-            <div style={{position:"fixed", zIndex:"200", width:"16.4%",borderRadius:"0rem 0rem 0.2rem 0.2rem", border:"1px solid gray", textAlign:"center", maxHeight:"10rem", overflow:"auto"}}>
+            <div className="update-category-map"  style={{position:"fixed", zIndex:"200", width:"",borderRadius:"0rem 0rem 0.2rem 0.2rem", border:"1px solid gray", textAlign:"center", maxHeight:"15rem", overflow:"auto"}}>
               {select && allDashboard?.map((i) => (
                 <div style={{background:"lightgray", borderTop:"1px solid white"}} key={i._id} value={i.category}>
-                  <div onClick={()=> {setFormData({...formData, category: i.category}); setSelect(false)}}>{i.category}</div> 
+                  <div  onClick={()=> {setFormData({...formData, category: i.category}); setSelect(false)}}>{i.category}</div> 
                 </div>
               ))}
             </div> 
@@ -143,8 +156,8 @@ const Update =()=>{
 
           <div>
             <button
-              type="submit"
-              onClick={handleSubmit}
+              // type="submit"
+              onClick={()=>{handleSubmit()}}
               style={{ background: !receive && "darkred" }}> {receive? "RECEIVE" : "SEND"}
             </button>
             <button
@@ -155,9 +168,7 @@ const Update =()=>{
 
 
         </Paper>
-       <Popup message={ "Add Succesful" }/>
-       {addProp && <Popup message={ "Add Succesful" }/>}
-       {deleteProp && <Popup message={ "Delete Succesful" }/>}
+       {notification && <Popup message={receive? "Receive Successful" : "Sent Successful"} />}
         </div>
     )
 }

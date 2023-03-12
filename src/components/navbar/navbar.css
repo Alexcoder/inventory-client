@@ -3,17 +3,19 @@
     position: fixed;
     width: 100%;
     justify-content: center;
-    background: rgb(6, 6, 92);
+    /* background: rgb(6, 6, 92); */
+    background: rgb(31, 21, 21);
     z-index: 300;
+    border-bottom: 0.1px solid rgb(37, 34, 34);
 }
 
 #navContainer >div{
     display: grid;
     width: 100%;
     grid-template-columns:repeat(5, 1fr);
-    justify-content: center;
-    align-items: center;
-    opacity: 0.8;
+    place-content: center;
+    place-items: center;
+    /* opacity: 0.8; */
 }
 .inventoryControl{
     flex-basis: 50%; 
