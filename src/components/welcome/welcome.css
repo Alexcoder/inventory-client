@@ -3,10 +3,18 @@
 .welcome-section, 
 .welcome-text-cont,
 .welcome-text{
-    display: grid;
-    place-items: center;
     width: 100%;
-    background: black;
+    min-height: 100vh;
+    /* background: black; */
+    background: rgb(31, 21, 21);
+}
+
+.welcome-main,
+.welcome-section
+{
+    display: grid;
+    width: 100vw;
+    place-content : center;
 }
 
 .welcome-text{
@@ -17,6 +25,6 @@
     padding-bottom: 2rem;
 }
 .welcome-dash-cont{
-    max-width: 90%;
-    overflow: auto;
+    place-items: center;
+    /* overflow: auto; */
 }

@@ -48,7 +48,7 @@ function App() {
          { (logout || bin) && <Hero/> }
          { update && <div><Update/></div> }
          { Loading && <div><LoadingPage/></div> }
-         <div><SlimNav/></div>
+         { user && <div><SlimNav/></div> }
     </div>
   );
 }

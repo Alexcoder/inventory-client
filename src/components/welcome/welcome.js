@@ -13,14 +13,14 @@ const Welcome = () => {
 
 
     return (
-        <main className="welcome-main">
-            <section className="welcome-section">
-                <div className="welcome-dash-cont">
-                    <h1 style={{ color: "white", textAlign: "center", padding: "1rem 0rem" }}>ALEX HUB</h1>
-                    <div> <DashboardAuto /> </div>
+        <main className="welcome-main" >
+            <section className="welcome-section" >
+                <div className="welcome-dash-cont" style={{marginTop:"-15rem",}}>
+                    {/* <h1 style={{ color: "white", textAlign: "center", padding: "1rem 0rem -8rem 0rem", }}>ALEX HUB</h1> */}
+                       <div style={{display:"grid", width:"100vw", placeContent:"center"}}><DashboardAuto /> </div>  
                 </div>
 
-                <div className="welcome-text-cont">
+                <div className="welcome-text-cont" style={{marginTop:"-5rem"}}>
                     <div className="welcome-text">
                         <h2 className="inventory_text"> INVENTORY CHECK </h2>
                         <div>
