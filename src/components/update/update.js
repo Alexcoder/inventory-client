@@ -86,8 +86,6 @@ const Update =()=>{
        setInterval(()=>{
          setNotification(submit? true : false)
        },3000)
-
-       setNotification(false)
       // return ()=> clearInterval(Interval)
      },[submit, dispatch])
 
