@@ -155,7 +155,7 @@
 }
 @media screen and (max-width: 376px){
   .summary{
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
   .main-section-cont{
     background: purple;
