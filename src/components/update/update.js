@@ -85,7 +85,7 @@ const Update =()=>{
      useEffect(()=>{
        setInterval(()=>{
          setNotification(submit? true : false)
-       },4000)
+       },3000)
 
        setNotification(false)
       // return ()=> clearInterval(Interval)
