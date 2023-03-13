@@ -78,8 +78,8 @@ const Update =()=>{
         dispatch( createDashboard(dispatchData2) ); 
         dispatch( createHistory(dispatchData2) ); 
         // dispatch({type: UPDATE_FALSE}); 
+        setSubmit(true)
       }   
-      setSubmit(true)
       };
 
      useEffect(()=>{
