@@ -1,7 +1,7 @@
 // import { useGlobalContext } from "../../state/context";
 import {useState, useEffect} from "react";
 import {useSelector} from "react-redux";
-import './dashboard.css';
+import '../dashboard.css';
 
 
 const Summary = () => { 

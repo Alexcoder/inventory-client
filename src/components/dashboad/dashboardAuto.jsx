@@ -1,14 +1,12 @@
-import {useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector} from 'react-redux';
-import Summary from "./summary";
+import {useEffect,} from "react";
 import { useGlobalContext } from "../../state/context";
-import {getAllDashboard} from '../../state/action/dashboard'
+import {getAllDashboard} from '../../state/action/dashboard';
+import {useDispatch, useSelector } from "react-redux";
+import Summary from "./sub/summary";
 import Heading from "./sub/heading";
 import Category from "./sub/category";
 import Values from "./sub/values";
-import AddIcon from "@mui/icons-material/Add"
-import RemoveIcon from "@mui/icons-material/Remove"
+import Pagination from "./sub/pagination";
 import { UPDATE_TRUE, RECEIVE_TRUE, } from '../../state/constants';
 // RECEIVE_FALSE 
 import './dashboard.css';
@@ -16,23 +14,16 @@ import './dashboard.css';
 
 const DashboardAuto = () => { 
   const dispatch = useDispatch();
-  const navigate= useNavigate();
   const {allDashboard} = useSelector((state)=> state.dashboard)
   const {user, query, creator,} = useGlobalContext();
 
   const page = query.get('page') || 1;
   const category = query.get('category') || "all";
 
-  const [selected, setSelected] = useState(Number(page)-1)
   const postsPerPage = 8;
   const startIndex =  (Number(page)-1) * Number(postsPerPage);
   const endIndex = Number(page) * Number(postsPerPage);
   const totalPages = Math.ceil(allDashboard?.length/postsPerPage)
-  const pageNumbers=[];
-  for(let i=1; i<=totalPages ;i++) {
-    pageNumbers.push(i)
-  };
-  const gotoPage=(number)=> navigate(`/home?page=${number}`);
 
 
   const addTransaction=()=>{
@@ -40,16 +31,6 @@ const DashboardAuto = () => {
     dispatch({type: UPDATE_TRUE})
   }
 
-  const handlePage=(direction)=>{
-   if(direction==="next"){
-     navigate(`/home?page=${page<totalPages? (Number(page)+1): totalPages}`);
-     setSelected(page<totalPages? Number(page) : Number(page)-1 ) 
-   }
-   else if(direction==="prev"){
-     navigate(`/home?page=${page>1? (Number(page)-1): 1}`) ;
-     setSelected(page>1? Number(page)-2 : Number(page)-1)
-   }
-  }
   
   useEffect(()=> {
      dispatch(getAllDashboard(creator));
@@ -66,20 +47,12 @@ const DashboardAuto = () => {
           <Values  startIndex={startIndex} endIndex={endIndex}/>
         </section> 
       </section>
-        <div style={{marginTop:"-1.5rem", textAlign:"center", color:"gray", justifyContent:"center", alignItems:"center", background:"", display:"flex", gap:"0.5rem"  }}>
-           <div>page</div>
-           <div onClick={()=> handlePage("prev")}><RemoveIcon/></div>
-          {
-            pageNumbers.map((pageNumber,i) => 
-              <div key={i} >     
-                <div
-                 onClick={()=> {setSelected(i) ; gotoPage(pageNumber)}}
-                 style={{color:selected===i ? "black": "gray",background: selected===i && "lightgray" ,border:"0.5px solid gray", padding:"0.2rem 0.8rem", borderRadius:"100%" }}>{pageNumber}</div> 
-              </div>
-            )
-         }
-          <div onClick={()=> handlePage("next")}><AddIcon/></div>
-        </div>        
+      {
+        (user & allDashboard?.length>1) && 
+        <Pagination 
+         totalPages={totalPages}
+        />
+        }    
     
       {
       user &&
