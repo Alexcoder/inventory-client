@@ -5,7 +5,7 @@ import { useGlobalContext } from '../../../state/context';
 
 import "../dashboard.css";
 
-const Category = () =>{
+const Category = ({startIndex, endIndex}) =>{
     const { creator,  }= useGlobalContext();
     const { allDashboard ,} = useSelector((state)=> state.dashboard);
     const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const Category = () =>{
                }}>    ITEM
            </div>
           { 
-            allDashboard?.map((list)=>(
+            allDashboard?.slice(startIndex, endIndex).map((list)=>(
               <div  key={list._id}>
               <div 
                  style={{

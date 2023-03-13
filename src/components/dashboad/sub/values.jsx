@@ -2,7 +2,7 @@ import { useSelector} from 'react-redux';
 
 import "../dashboard.css";
 
-const Values = () =>{
+const Values = ({startIndex, endIndex}) =>{
     const {allDashboard} = useSelector((state)=> state.dashboard);
     const {allHistory} = useSelector((state)=> state.history);
 
@@ -37,7 +37,7 @@ const Values = () =>{
     return(
         <div style={{color:"black", textAlign:"", background:"white" }}>
         { 
-            allDashboard?.map((list)=>(
+            allDashboard?.slice(startIndex, endIndex).map((list)=>(
               <div key={list._id} style={{background:"white"}}>
               <div style={{display:"flex",background:"white" }}>
                     <div className="dash-value-data1">{Money(handleQuantityIn(list))}</div>

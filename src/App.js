@@ -7,7 +7,7 @@ import { useGlobalContext } from './state/context';
 import {ProtectedRoute, LoginRoute} from './components/protectedRoute';
 import {Navbar, Detail, Auth, SideBar,Hero, Update, Welcome, 
         LoadingPage, SuccessPage, History, DashboardAuto,
-        SlimNav} from './components';
+        } from './components';
 import { SIDEBAR_CLOSE } from './state/constants';
 
 
@@ -48,7 +48,7 @@ function App() {
          { (logout || bin) && <Hero/> }
          { update && <div><Update/></div> }
          { Loading && <div><LoadingPage/></div> }
-         { user && <div><SlimNav/></div> }
+         {/* { user && <div><SlimNav/></div> } */}
     </div>
   );
 }
