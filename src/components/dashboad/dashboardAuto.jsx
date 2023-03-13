@@ -48,7 +48,7 @@ const DashboardAuto = () => {
         </section> 
       </section>
       {
-        (user & allDashboard?.length>1) && 
+        (user && allDashboard) && 
         <Pagination 
          totalPages={totalPages}
         />
