@@ -43,11 +43,11 @@ const DashboardAuto = () => {
   const handlePage=(direction)=>{
    if(direction==="next"){
      navigate(`/home?page=${page<totalPages? (Number(page)+1): totalPages}`);
-     setSelected(Number(page)) 
+     setSelected(page<totalPages? Number(page) : Number(page)-1 ) 
    }
    else if(direction==="prev"){
      navigate(`/home?page=${page>1? (Number(page)-1): 1}`) ;
-     setSelected(Number(page)-2)
+     setSelected(page>1? Number(page)-2 : Number(page)-1)
    }
   }
   
