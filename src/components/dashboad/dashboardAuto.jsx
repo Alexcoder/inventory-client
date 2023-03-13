@@ -7,8 +7,8 @@ import {getAllDashboard} from '../../state/action/dashboard'
 import Heading from "./sub/heading";
 import Category from "./sub/category";
 import Values from "./sub/values";
-// import AddIcon from "@mui/icons-material/Add"
-// import RemoveIcon from "@mui/icons-material/Remove"
+import AddIcon from "@mui/icons-material/Add"
+import RemoveIcon from "@mui/icons-material/Remove"
 import { UPDATE_TRUE, RECEIVE_TRUE, } from '../../state/constants';
 // RECEIVE_FALSE 
 import './dashboard.css';
@@ -23,7 +23,7 @@ const DashboardAuto = () => {
   const page = query.get('page') || 1;
   const category = query.get('category') || "all";
 
-  const [selected, setSelected] = useState(page-1)
+  const [selected, setSelected] = useState(Number(page)-1)
   const postsPerPage = 8;
   const startIndex =  (Number(page)-1) * Number(postsPerPage);
   const endIndex = Number(page) * Number(postsPerPage);
@@ -40,6 +40,16 @@ const DashboardAuto = () => {
     dispatch({type: UPDATE_TRUE})
   }
 
+  const handlePage=(direction)=>{
+   if(direction==="next"){
+     navigate(`/home?page=${page<totalPages? (Number(page)+1): totalPages}`);
+     setSelected(Number(page)) 
+   }
+   else if(direction==="prev"){
+     navigate(`/home?page=${page>1? (Number(page)-1): 1}`) ;
+     setSelected(Number(page)-2)
+   }
+  }
   
   useEffect(()=> {
      dispatch(getAllDashboard(creator));
@@ -56,16 +66,19 @@ const DashboardAuto = () => {
           <Values  startIndex={startIndex} endIndex={endIndex}/>
         </section> 
       </section>
-        <div style={{marginTop:"-1.5rem", textAlign:"center", justifyContent:"center", background:"", display:"flex", gap:"0.2rem"  }}>
+        <div style={{marginTop:"-1.5rem", textAlign:"center", color:"gray", justifyContent:"center", alignItems:"center", background:"", display:"flex", gap:"0.5rem"  }}>
+           <div>page</div>
+           <div onClick={()=> handlePage("prev")}><RemoveIcon/></div>
           {
             pageNumbers.map((pageNumber,i) => 
               <div key={i} >     
                 <div
                  onClick={()=> {setSelected(i) ; gotoPage(pageNumber)}}
-                 style={{color:selected===i ? "black": "gray",background: selected===i && "lightgray" ,border:"0.5px solid gray", padding:"0rem 0.5rem", borderRadius:"100%" }}>{pageNumber}</div> 
+                 style={{color:selected===i ? "black": "gray",background: selected===i && "lightgray" ,border:"0.5px solid gray", padding:"0.2rem 0.8rem", borderRadius:"100%" }}>{pageNumber}</div> 
               </div>
             )
          }
+          <div onClick={()=> handlePage("next")}><AddIcon/></div>
         </div>        
     
       {
