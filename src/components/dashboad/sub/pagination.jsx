@@ -35,7 +35,7 @@ const Pagination = ({totalPages })=>{
 
     return(
         <div style={{marginTop:"-1.5rem", textAlign:"center", color:"gray", justifyContent:"center", alignItems:"center", background:"", display:"flex", gap:"0.5rem"  }}>
-           <div>page</div>
+           {/* <div>page</div> */}
            <div onClick={()=> handlePage("prev")}><RemoveIcon/></div>
        { 
          pageNumbers.map((pageNumber,i) => 

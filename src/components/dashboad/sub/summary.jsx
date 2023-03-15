@@ -52,7 +52,7 @@ useEffect(()=>{
           <div className="summary-sub-cont" >
 
             <div className="summary-group-cont"> 
-            {
+            { 
               summary.slice(first,last).map((sum)=>
               <div key={sum.status} 
                className="summary-group-item"
@@ -61,6 +61,7 @@ useEffect(()=>{
                 sum.status==="SENT"? "darkred" : "yellow",
                 color: sum.status==="RECEIVED"? "white":
                 sum.status==="SENT"? "white" : "black",
+                transition: "3s ease in"
                }}>
                 <div >{sum.status}</div>
                 <span>&#8358; {sum.amount}</span> 

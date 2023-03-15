@@ -14,9 +14,10 @@ const Category = ({startIndex, endIndex}) =>{
       dispatch(getAllDashboard(creator));
    },[dispatch, creator, ])
  
-  //Background Color Select 
+  
+ //Background Color Select 
  //of Dashboard Mapped Item 
- //index%2 returns true for even numbers
+ //index%2 returns true for odd numbers
  const handleBackground = (id) =>{
   const index = allDashboard?.findIndex(({_id})=> _id===id );
   return index%2 ?  "white" : "lightgray"; 
