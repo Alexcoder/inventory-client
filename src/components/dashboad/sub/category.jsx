@@ -14,7 +14,14 @@ const Category = ({startIndex, endIndex}) =>{
       dispatch(getAllDashboard(creator));
    },[dispatch, creator, ])
  
- 
+  //Background Color Select 
+ //of Dashboard Mapped Item 
+ //index%2 returns true for even numbers
+ const handleBackground = (id) =>{
+  const index = allDashboard?.findIndex(({_id})=> _id===id );
+  return index%2 ?  "white" : "lightgray"; 
+}
+
 
     return(
         <div style={{background: "lightgray", borderRadius: "0.3rem 0rem 0rem 0.3rem" }} >
@@ -37,6 +44,7 @@ const Category = ({startIndex, endIndex}) =>{
                     color:"black", 
                     minWidth:"8rem", 
                     padding:"0.5rem 0.2rem",
+                    background: handleBackground(list._id)
                     }}>
                   <div>{list.category}</div>
               </div>
