@@ -35,3 +35,17 @@ export const ViewHistory = () => {
   )
 }
 
+
+export const Goto = ({placeHolder, path}) => {
+  const navigate = useNavigate();
+  return (
+        <div>
+          <button className="addTransaction"
+           onClick={() => navigate(path)} >
+            {placeHolder}
+          </button>
+         <hr />
+         </div>
+  )
+}
+

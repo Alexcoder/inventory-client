@@ -31,7 +31,7 @@ switch(action.type){
             }
     case GET_HISTORY_BY_ID:
         return {...history,
-                 historyById: action.payload,
+                 historyById: action?.payload,
             }
     case CREATE_HISTORY:
         return {...history,

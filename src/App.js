@@ -25,7 +25,7 @@ function App() {
 
   
   return (
-    <div style={{maxWidth:"100%", overflow:"hidden"}}>
+    <div style={{maxWidth:"100%", overflow:"hidden", display:"", alignContent:""}}>
       {user?.result
         ?<Navbar />
         :null

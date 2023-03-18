@@ -58,11 +58,11 @@ export const getHistoryByQuery = (searchQuery)=> async(dispatch)=> {
     }
   }
 
-  export const getHistoryById = (id)=> async(dispatch)=> {
+  export const getHistoryById = (id, creator)=> async(dispatch)=> {
 
     try{
       dispatch({type: "LOADING_START"})
-      const {data} = await api.getHistoryById(id)
+      const {data} = await api.getHistoryById(id, creator)
       dispatch({type: GET_HISTORY_BY_ID, payload: data })
       dispatch({type: "LOADING_STOP"})
     }

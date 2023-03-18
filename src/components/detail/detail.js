@@ -16,7 +16,9 @@ import Pagination from "../Pagination";
 import './detail.css';
 
 const Detail = () => { 
-  const { HandleTotal, bin, deleteId, filteredByUser, query}= useGlobalContext();
+  const {  bin, deleteId, query, creator}= useGlobalContext();
+  // HandleTotal,
+  const {historyById, allHistory} = useSelector((state)=> state.history)
   const [currentPage, setCurrentPage]= useState(1)
 
   const id = query.get("id");
@@ -26,10 +28,9 @@ const Detail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const {historyById} = useSelector((state)=> state.history)
 
 
-  const RecommendedPosts = filteredByUser.filter((p)=>id? p._id !==id & p.category=== category : null )
+  const RecommendedPosts = allHistory?.filter((p)=>id? p._id !==id & p.category=== category : null )
   
 
   const deleteItem = ()=>{
@@ -39,40 +40,42 @@ const Detail = () => {
    }
   
   useEffect(()=>{
-    dispatch(getHistoryById(id))
-  },[id, dispatch])
+    dispatch(getHistoryById(id, creator))
+  },[id, creator, dispatch])
+  // console.log({"id": id})
+  // console.log({"historyById": historyById})
 
   const Money =(num)=>{
     const moneyFormat =`${Intl.NumberFormat().format(num)}`
     return moneyFormat
     }
 
-    const postsPerPage=3;
+    const postsPerPage=10;
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage
-    const slicedRecommendedPosts = RecommendedPosts.slice(indexOfFirstPost, indexOfLastPost).sort((a,b)=>a.createdAt - b.createdAt);
+    const slicedRecommendedPosts = RecommendedPosts?.slice(indexOfFirstPost, indexOfLastPost).sort((a,b)=>a.createdAt - b.createdAt);
   
     const goToPage = (page) => setCurrentPage(page)
 
   
   return (
     <section id="detailContainer">
-        <Paper key={historyById._id} elevation={5} 
+        <Paper elevation={5} 
         sx={{ 
            padding: "2rem", 
            height: "fit-content",
            }} >
         <div  style={{textAlign: "start", }}> 
-          <h2 style={{textAlign: "center"}}>{historyById.type==="incomming"? <span style={{color:"blue"}}>RECEIVED</span>: <span style={{color:"red"}}>SENT</span>}</h2>
-          <div><span style={{fontWeight:"700"}}>By:  </span> {historyById.user}</div>
-          <div style={{textTransform:"capitalize"}}><span style={{fontWeight:"700"}}>Item:  </span>{historyById.category}</div>
-          <div><span style={{fontWeight:"700"}}>Price:  </span>${Money(historyById.price)}.00</div>
-          <div><span style={{color: historyById.type==="incomming"? "blue" : "red",fontWeight:"700"}}>Quantity:  </span>{historyById.quantity}</div>
-          <div><span style={{color: historyById.type==="incomming"? "blue" : "red",fontWeight:"700"}}>Amount:  </span> ${Money(historyById.amount)}.00</div>
-          <div><span style={{fontWeight:"700"}}> Location: </span>{historyById.location}</div>
-          <div><span style={{fontWeight:"700"}}>Date:  </span>{moment(historyById.date).format('MMMM Do YYYY, h:mm:ss a')}</div>
+          <h2 style={{textAlign: "center"}}>{historyById?.type==="incomming"? <span style={{color:"blue"}}>RECEIVED</span>: <span style={{color:"red"}}>SENT</span>}</h2>
+          <div><span style={{fontWeight:"700"}}>By:  </span> {historyById?.user}</div>
+          <div style={{textTransform:"capitalize"}}><span style={{fontWeight:"700"}}>Item:  </span>{historyById?.category}</div>
+          <div><span style={{fontWeight:"700"}}>Price:  </span>${Money(historyById?.price)}.00</div>
+          <div><span style={{color: historyById?.type==="incomming"? "blue" : "red",fontWeight:"700"}}>Quantity:  </span>{historyById?.quantity}</div>
+          <div><span style={{color: historyById?.type==="incomming"? "blue" : "red",fontWeight:"700"}}>Amount:  </span> ${Money(historyById?.amount)}.00</div>
+          <div><span style={{fontWeight:"700"}}> Location: </span>{historyById?.location}</div>
+          <div><span style={{fontWeight:"700"}}>Date:  </span>{moment(historyById?.date).format('MMMM Do YYYY, h:mm:ss a')}</div>
         </div>
-        <h3>{HandleTotal(historyById.type, historyById.category)}</h3>
+        {/* <h3>{HandleTotal(historyById?.type, historyById?.category)}</h3> */}
         <p>
         <button className="backButton"
          onClick={()=> navigate('/home')}>Back</button>
@@ -89,11 +92,11 @@ const Detail = () => {
            height: "fit-content",
            width: "100%",
            overflow:"auto", 
-           background: !RecommendedPosts[0] ? "transparent" : "white",    
+          //  background: !RecommendedPosts[0] ? "transparent" : "white",    
            }} >
          { 
           !RecommendedPosts[0] ? "NO SIMILAR RECORD" :
-            slicedRecommendedPosts.map((p) => (
+            slicedRecommendedPosts?.map((p) => (
              <Slide direction="down" in mountOnEnter unmountOnExit key={p._id} 
                onClick={() => {navigate(`/home/find?id=${p._id}&category=${p.category}` )}}>
                <ListItem>
@@ -105,7 +108,8 @@ const Detail = () => {
                 <ListItemText primary={`${p.category}-${p.quantity}`} secondary={`$${p.amount} - ${moment(p.date).format('MM Do YYYY')}`} />
                <ListItemSecondaryAction>
                  <IconButton edge="end" aria-label="delete" 
-                   onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})} }>
+                  //  onClick={() => {navigate(`/${p.category}`, {state:{id: p._id}})} }>
+                  onClick={() => {navigate(`/home/find?id=${p._id}&category=${p.category}` )}}>
                    <MdOutlineVisibility />
                  </IconButton>
               <IconButton edge="end" aria-label="delete" onClick={()=> {dispatch({type: BIN_OPEN}); dispatch({type: DELETE_ID, payload: p._id})}}>

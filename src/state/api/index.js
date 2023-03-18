@@ -19,10 +19,10 @@ export const updateDashboard = (toDelete)=> API.put(`/dashboard`, toDelete );
 
 export const getAllHistory = (creator)=> API.get(`/history?creator=${creator}`);
 export const getHistoryByQuery = ({creator, page, category})=> API.get(
-              `/history/find/search?creator=${creator}&page=${page || 1}
+              `/history/search?creator=${creator}&page=${page || 1}
               &category=${(category==="all" || category==="")? "" : category}`
               )
-export const getHistoryById = (id)=> API.get(`/history/${id}`)
+export const getHistoryById = (id, creator)=> API.get(`/history/find/${id}?creator=${creator}`)
 export const createHistory = (post)=> API.post("/history", post);
 export const deleteHistory = (toDelete)=> API.delete(`/history/${toDelete._id}` );
 
