@@ -1,9 +1,15 @@
 import axios from 'axios';
 
-// const token =  JSON.parse(localStorage.getItem("profile")).token;
+const user =  JSON.parse(localStorage.getItem("profile")).token;
+const token =  `Bearer ${user}`;
 
-const API = axios.create({baseURL: "https://inventory-api-2j2i.onrender.com/api"});
-// const API = axios.create({baseURL: "http://127.0.0.1:5000/api" });y
+const baseURL = "https://inventory-api-2j2i.onrender.com/api";
+const API = axios.create({baseURL});
+const userRequest = axios.create( { baseURL ,headers : {token} } );
+
+// const baseURL = "http://127.0.0.1:5000/api";
+// const API = axios.create({ baseURL });
+// const userRequest = axios.create( { baseURL,  headers: {token} }  );
 
 
 export const getAllDashboard = (creator)=> API.get(`/dashboard?creator=${creator}`);
@@ -21,6 +27,6 @@ export const createHistory = (post)=> API.post("/history", post);
 export const deleteHistory = (toDelete)=> API.delete(`/history/${toDelete._id}` );
 
 
-export const signIn =(authPage) => API.post(`/user/signIn`, authPage );
-export const signUp =(authPage) => API.post(`/user/signUp`, authPage );
+export const signIn =(authPage) => userRequest.post(`/user/signIn`, authPage );
+export const signUp =(authPage) => userRequest.post(`/user/signUp`, authPage );
 

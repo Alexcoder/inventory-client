@@ -25,7 +25,7 @@ function App() {
 
   
   return (
-    <div >
+    <div style={{maxWidth:"100%", overflow:"hidden"}}>
       {user?.result
         ?<Navbar />
         :null
@@ -48,7 +48,6 @@ function App() {
          { (logout || bin) && <Hero/> }
          { update && <div><Update/></div> }
          { Loading && <div><LoadingPage/></div> }
-         {/* { user && <div><SlimNav/></div> } */}
     </div>
   );
 }

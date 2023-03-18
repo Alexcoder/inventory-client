@@ -36,6 +36,7 @@
     font-size: 1.2rem; 
     color: gray;
     background: white;
+    
 }
 .main-list-cont{
   margin-top: 1rem; 
@@ -46,11 +47,13 @@
         margin-top: 0.5rem; 
         padding: 0.5rem 0.5rem;
 
-      }
-         
+      }         
     .list-paper{
         max-width: 100%;
         overflow: auto;
+   }
+   .list-pagination{
+    margin-top: -20rem;
    }
 }
 @media screen and (max-width:600px){    
@@ -68,5 +71,16 @@
     flex-direction: column;
     gap: 0.6rem;
     width: 82%;
+    margin-top: -7rem;
+}
+}
+@media screen and (max-width: 395px){    
+.list-pagination{
+    margin-top: -2rem;
+}
+}
+@media screen and (max-width: 375px){    
+.list-pagination{
+    margin-top: 0rem;
 }
 }
