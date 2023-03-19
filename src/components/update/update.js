@@ -61,10 +61,10 @@ const Update =()=>{
       //  const quantityIn =verify ? (verify.quantityIn) : 0
       //  const quantityOut = verify? (verify.quantityOut) :0
       //  const stock =verify? (quantityIn - quantityOut) : "Does not Exist"
-       const In = verify.filter((item)=> item.type==="incomming")
-       const Out = verify.filter((item)=> item.type==="outgoing")
-       const quantityIn =verify ? In.reduce((prev, acc)=> prev + acc.quantity, 0) : 0
-       const quantityOut =verify ? Out.reduce((prev, acc)=> prev + acc.quantity,0) : 0
+       const In = verify?.filter((item)=> item.type==="incomming")
+       const Out = verify?.filter((item)=> item.type==="outgoing")
+       const quantityIn =verify ? In?.reduce((prev, acc)=> prev + acc.quantity, 0) : 0
+       const quantityOut =verify ? Out?.reduce((prev, acc)=> prev + acc.quantity,0) : 0
        const stock =verify? (quantityIn - quantityOut) : "Does not Exist"
 
        const highestBoughtPrice = price? price.buyPrice : 0;
@@ -72,7 +72,7 @@ const Update =()=>{
        setBuyPrice(highestBoughtPrice)
       }
       handleCheckStock()
-    },[allDashboard, formData.category])
+    },[allDashboard, allHistory,formData.category])
 
   
     const handleSubmit = () => {
