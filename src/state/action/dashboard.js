@@ -31,11 +31,11 @@ export const getAllDashboard = (creator)=> async(dispatch)=> {
   }
 
 
-  export const updateDashboard = (newData)=> async(dispatch)=> {
+  export const updateDashboard = (toDelete)=> async(dispatch)=> {
 
     try{
       dispatch({type: "LOADING_START"})
-      const {data} = await api.updateDashboard(newData)
+      const {data} = await api.updateDashboard(toDelete)
       dispatch({type: UPDATE_DASHBOARD, payload: data })
       dispatch({type: "LOADING_STOP"})
     }

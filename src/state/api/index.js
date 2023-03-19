@@ -4,12 +4,9 @@ const user =  JSON.parse(localStorage.getItem("profile"))?.token;
 const token =  `Bearer ${user}`;
 
 const baseURL = "https://inventory-api-2j2i.onrender.com/api";
+// const baseURL = "http://127.0.0.1:5000/api";
 const API = axios.create({baseURL});
 const userRequest = axios.create( { baseURL , headers : {token} } );
-
-// const baseURL = "http://127.0.0.1:5000/api";
-// const API = axios.create({ baseURL });
-// const userRequest = axios.create( { baseURL,  headers: {token} }  );
 
 
 export const getAllDashboard = (creator)=> API.get(`/dashboard?creator=${creator}`);
