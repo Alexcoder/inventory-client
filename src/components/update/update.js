@@ -13,6 +13,7 @@ const Update =()=>{
     const dispatch = useDispatch();
     const {receive} = useSelector((state)=> state.stateReducer);
     const {allDashboard} = useSelector((state)=> state.dashboard);
+    const {allHistory} = useSelector((state)=> state.history);
     const {formData, setFormData, user, creator, } = useGlobalContext();
     // setPopup, popup
 
@@ -50,14 +51,23 @@ const Update =()=>{
     
     useEffect(()=>{
       const handleCheckStock =()=>{
-        const verify =   allDashboard?.find((p)=>
+        const verify =   allHistory?.find((p)=>
+        (p.category===(formData.category) ) 
+       )
+        const price =   allDashboard?.find((p)=>
         (p.category===(formData.category) ) 
        )
        verify && setFound(verify)
-       const quantityIn =verify ? (verify.quantityIn) : 0
-       const quantityOut = verify? (verify.quantityOut) :0
+      //  const quantityIn =verify ? (verify.quantityIn) : 0
+      //  const quantityOut = verify? (verify.quantityOut) :0
+      //  const stock =verify? (quantityIn - quantityOut) : "Does not Exist"
+       const In = verify.filter((item)=> item.type==="incomming")
+       const Out = verify.filter((item)=> item.type==="outgoing")
+       const quantityIn =verify ? In.reduce((prev, acc)=> prev + acc.quantity, 0) : 0
+       const quantityOut =verify ? Out.reduce((prev, acc)=> prev + acc.quantity,0) : 0
        const stock =verify? (quantityIn - quantityOut) : "Does not Exist"
-       const highestBoughtPrice = verify? verify.buyPrice : 0;
+
+       const highestBoughtPrice = price? price.buyPrice : 0;
        setStock(stock)
        setBuyPrice(highestBoughtPrice)
       }
