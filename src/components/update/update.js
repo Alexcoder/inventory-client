@@ -51,7 +51,7 @@ const Update =()=>{
     
     useEffect(()=>{
       const handleCheckStock =()=>{
-        const verify =   allHistory?.find((p)=>
+        const verify =   allHistory?.filter((p)=>
         (p.category===(formData.category) ) 
        )
         const price =   allDashboard?.find((p)=>
